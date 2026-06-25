@@ -1,0 +1,136 @@
+<?php
+declare(strict_types=1);
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+final class SpinesTech_Headless_Post_Types
+{
+    public const SERVICE = 'st_service';
+    public const PRODUCT = 'st_product';
+    public const SECTOR = 'st_sector';
+    public const CASE_STUDY = 'st_case_study';
+    public const PRICING = 'st_pricing';
+    public const FAQ = 'st_faq';
+    public const JOB = 'st_job';
+    public const TESTIMONIAL = 'st_testimonial';
+    public const TEAM = 'st_team';
+    public const SUBMISSION = 'st_submission';
+
+    public static function register(): void
+    {
+        $common = [
+            'public' => true,
+            'show_ui' => true,
+            'show_in_rest' => true,
+            'supports' => ['title', 'editor', 'excerpt', 'thumbnail', 'custom-fields', 'page-attributes'],
+            'has_archive' => true,
+        ];
+
+        register_post_type(self::SERVICE, array_merge($common, [
+            'label' => 'Services',
+            'menu_icon' => 'dashicons-admin-tools',
+            'rewrite' => ['slug' => 'services'],
+        ]));
+
+        register_post_type(self::PRODUCT, array_merge($common, [
+            'label' => 'Products',
+            'menu_icon' => 'dashicons-products',
+            'rewrite' => ['slug' => 'products'],
+        ]));
+
+        register_post_type(self::SECTOR, array_merge($common, [
+            'label' => 'Sectors',
+            'menu_icon' => 'dashicons-building',
+            'rewrite' => ['slug' => 'sectors'],
+        ]));
+
+        register_post_type(self::CASE_STUDY, array_merge($common, [
+            'label' => 'Case Studies',
+            'menu_icon' => 'dashicons-portfolio',
+            'rewrite' => ['slug' => 'case-studies'],
+        ]));
+
+        register_post_type(self::PRICING, array_merge($common, [
+            'label' => 'Pricing Plans',
+            'menu_icon' => 'dashicons-money-alt',
+            'rewrite' => ['slug' => 'pricing-plans'],
+            'has_archive' => false,
+            'publicly_queryable' => false,
+        ]));
+
+        register_post_type(self::FAQ, array_merge($common, [
+            'label' => 'FAQs',
+            'menu_icon' => 'dashicons-editor-help',
+            'rewrite' => ['slug' => 'faqs'],
+            'has_archive' => false,
+            'publicly_queryable' => false,
+        ]));
+
+        register_post_type(self::JOB, array_merge($common, [
+            'label' => 'Jobs',
+            'menu_icon' => 'dashicons-id-alt',
+            'rewrite' => ['slug' => 'careers', 'with_front' => false],
+            'has_archive' => false,
+        ]));
+
+        register_post_type(self::TESTIMONIAL, array_merge($common, [
+            'label' => 'Testimonials',
+            'menu_icon' => 'dashicons-format-quote',
+            'rewrite' => ['slug' => 'testimonials'],
+            'has_archive' => false,
+            'publicly_queryable' => false,
+        ]));
+
+        register_post_type(self::TEAM, array_merge($common, [
+            'label' => 'Team',
+            'menu_icon' => 'dashicons-groups',
+            'rewrite' => ['slug' => 'team'],
+            'has_archive' => false,
+            'publicly_queryable' => false,
+        ]));
+
+        register_post_type(self::SUBMISSION, [
+            'label' => 'Form Submissions',
+            'public' => false,
+            'show_ui' => true,
+            'show_in_rest' => false,
+            'supports' => ['title'],
+            'menu_icon' => 'dashicons-email',
+            'capability_type' => 'post',
+        ]);
+
+    }
+
+    /**
+     * Register CPTs with Polylang (Settings → Languages → Post types).
+     *
+     * @param array<string, string> $post_types
+     * @return array<string, string>
+     */
+    public static function register_polylang_types($post_types, $is_settings)
+    {
+        $types = [
+            self::SERVICE,
+            self::PRODUCT,
+            self::SECTOR,
+            self::CASE_STUDY,
+            self::PRICING,
+            self::FAQ,
+            self::JOB,
+            self::TESTIMONIAL,
+            self::TEAM,
+        ];
+
+        foreach ($types as $type) {
+            if ($is_settings) {
+                $post_types[$type] = $type;
+            } else {
+                $post_types[$type] = $type;
+            }
+        }
+
+        return $post_types;
+    }
+}
