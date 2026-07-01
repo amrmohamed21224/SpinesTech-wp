@@ -1,5 +1,6 @@
 <?php
 $locale = st_locale();
+$is_rtl = $locale === 'ar';
 $arrow = $locale === 'ar' ? 'arrow_back' : 'arrow_forward';
 $services = st_query_cpt('st_service', 3);
 $plans = st_query_cpt('st_pricing', 3);
@@ -11,49 +12,74 @@ $steps = [
     ['home.step4Title', 'home.step4Desc', '04'],
 ];
 ?>
-<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low text-start">
-    <div class="max-w-container-max mx-auto">
-        <div class="text-center mb-16">
-            <span class="text-secondary font-bold text-label-md tracking-widest uppercase mb-4 block"><?php echo esc_html(st_t('home.aboutBadge')); ?></span>
-            <h2 class="text-headline-xl mb-4 text-primary font-bold"><?php echo esc_html(st_t('home.aboutTitle')); ?></h2>
-            <div class="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
+<!-- About Section -->
+<section class="home-section home-section--gray">
+    <div class="container">
+        <div class="home-section__header">
+            <span class="home-pill home-pill--center">
+                <span class="material-symbols-outlined">auto_awesome</span>
+                <?php echo esc_html(st_t('home.aboutBadge')); ?>
+            </span>
+            <h2 class="home-section__title"><?php echo esc_html(st_t('home.aboutTitle')); ?></h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="md:col-span-2 p-10 bg-white rounded-2xl border border-outline-variant/20">
-                <h3 class="text-headline-lg mb-4 text-primary-container font-bold"><?php echo esc_html(st_t('home.visionTitle')); ?></h3>
-                <p class="text-body-lg text-on-surface-variant leading-relaxed"><?php echo esc_html(st_t('home.visionText')); ?></p>
-                <div class="mt-8 flex gap-4">
-                    <div class="bg-surface-container-high p-4 rounded-lg text-center flex-1"><div class="text-headline-lg font-bold text-secondary">+150</div><div class="text-caption"><?php echo esc_html(st_t('home.projects')); ?></div></div>
-                    <div class="bg-surface-container-high p-4 rounded-lg text-center flex-1"><div class="text-headline-lg font-bold text-secondary">50+</div><div class="text-caption"><?php echo esc_html(st_t('home.experts')); ?></div></div>
-                </div>
+        
+        <div class="home-about">
+            <div class="home-about__side">
+                <span class="material-symbols-outlined home-about__side-icon">hub</span>
+                <h3 class="home-about__side-title"><?php echo esc_html(st_t('home.sovereigntyTitle')); ?></h3>
+                <p class="home-about__side-text"><?php echo esc_html(st_t('home.sovereigntyText')); ?></p>
             </div>
-            <div class="p-10 bg-primary-container text-on-primary rounded-2xl text-center relative overflow-hidden">
-                <div class="islamic-pattern absolute inset-0"></div>
-                <span class="material-symbols-outlined text-6xl mb-6 text-secondary-fixed relative z-10">shield_person</span>
-                <h3 class="text-headline-sm mb-4 font-bold relative z-10"><?php echo esc_html(st_t('home.sovereigntyTitle')); ?></h3>
-                <p class="text-body-md opacity-80 relative z-10"><?php echo esc_html(st_t('home.sovereigntyText')); ?></p>
+
+            <div class="home-about__main">
+                <span class="home-about__eyebrow"><?php echo esc_html($is_rtl ? 'قابل للتوسع' : 'Scalable by design'); ?></span>
+                <h3 class="home-about__title"><?php echo esc_html(st_t('home.visionTitle')); ?></h3>
+                <p class="home-about__text"><?php echo esc_html(st_t('home.visionText')); ?></p>
+                <div class="home-about__stats">
+                    <div class="home-about__stat">
+                        <div class="home-about__stat-value">+150</div>
+                        <div class="home-about__stat-label"><?php echo esc_html(st_t('home.projects')); ?></div>
+                    </div>
+                    <div class="home-about__stat">
+                        <div class="home-about__stat-value">50+</div>
+                        <div class="home-about__stat-label"><?php echo esc_html(st_t('home.experts')); ?></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="py-24 px-margin-mobile md:px-margin-desktop text-start">
-    <div class="max-w-container-max mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <div class="max-w-2xl">
-                <h2 class="text-headline-xl mb-4 text-primary font-bold"><?php echo esc_html(st_t('home.servicesTitle')); ?></h2>
-                <p class="text-body-lg text-on-surface-variant"><?php echo esc_html(st_t('home.servicesSubtitle')); ?></p>
+<!-- Services Section -->
+<section class="home-section">
+    <div class="container">
+        <div class="home-section__split-header">
+            <div class="home-section__split-text">
+                <span class="home-pill">
+                    <span class="material-symbols-outlined">design_services</span>
+                    <?php echo esc_html($is_rtl ? 'ما نقدم' : 'What we deliver'); ?>
+                </span>
+                <h2 class="home-section__title"><?php echo esc_html(st_t('home.servicesTitle')); ?></h2>
+                <p class="home-section__subtitle"><?php echo esc_html(st_t('home.servicesSubtitle')); ?></p>
             </div>
-            <a href="<?php echo esc_url(st_url('/services/')); ?>" class="text-secondary font-bold inline-flex items-center gap-2"><?php echo esc_html(st_t('home.viewAllServices')); ?><span class="material-symbols-outlined"><?php echo esc_html($arrow); ?></span></a>
+            <a href="<?php echo esc_url(st_url('/services/')); ?>" class="home-services__link">
+                <?php echo esc_html(st_t('home.viewAllServices')); ?>
+                <span class="material-symbols-outlined"><?php echo esc_html($arrow); ?></span>
+            </a>
         </div>
+        
         <?php if ($services) : ?>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+            <div class="home-services">
                 <?php foreach ($services as $s) : ?>
-                    <a href="<?php echo esc_url(st_cpt_link('services', $s['slug'])); ?>" class="group p-8 bg-white border border-outline-variant/30 rounded-2xl hover:border-secondary hover:shadow-xl transition-all">
-                        <div class="bg-secondary/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:bg-secondary group-hover:text-white transition-colors"><span class="material-symbols-outlined text-3xl"><?php echo esc_html($s['icon'] ?? 'code'); ?></span></div>
-                        <h3 class="text-headline-sm mb-4 text-primary font-bold"><?php echo esc_html($s['title']); ?></h3>
-                        <p class="text-on-surface-variant mb-6"><?php echo esc_html($s['description']); ?></p>
-                        <span class="inline-flex items-center gap-2 font-bold text-secondary"><?php echo esc_html(st_t('common.learnMore')); ?><span class="material-symbols-outlined text-[18px]"><?php echo esc_html($arrow); ?></span></span>
+                    <a href="<?php echo esc_url(st_cpt_link('services', $s['slug'])); ?>" class="home-service-card">
+                        <div class="home-service-card__icon">
+                            <span class="material-symbols-outlined" style="font-size: 2rem;"><?php echo esc_html($s['icon'] ?? 'code'); ?></span>
+                        </div>
+                        <h3 class="home-service-card__title"><?php echo esc_html($s['title']); ?></h3>
+                        <p class="home-service-card__desc"><?php echo esc_html($s['description']); ?></p>
+                        <span class="home-service-card__link">
+                            <?php echo esc_html(st_t('common.learnMore')); ?>
+                            <span class="material-symbols-outlined"><?php echo esc_html($arrow); ?></span>
+                        </span>
                     </a>
                 <?php endforeach; ?>
             </div>
@@ -61,67 +87,118 @@ $steps = [
     </div>
 </section>
 
-<section class="py-24 px-margin-mobile md:px-margin-desktop bg-primary-container text-on-primary text-start">
-    <div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<!-- Sectors Section -->
+<section class="home-section home-section--dark">
+    <div class="container home-sectors">
+        <div class="home-sectors__visual">
+            <div class="home-sectors__visual-inner">
+                <div class="home-sectors__pulse"></div>
+                <div class="home-sectors__pulse home-sectors__pulse--two"></div>
+                <span class="material-symbols-outlined home-sectors__visual-icon" style="font-variation-settings:'FILL' 1">hub</span>
+                <strong><?php echo esc_html($is_rtl ? 'حلول حسب القطاع' : 'Sector-ready systems'); ?></strong>
+            </div>
+        </div>
         <div>
-            <h2 class="text-headline-xl mb-6 font-bold"><?php echo esc_html(st_t('home.sectorsTitle')); ?></h2>
-            <p class="text-body-lg opacity-80 mb-10"><?php echo esc_html(st_t('home.sectorsSubtitle')); ?></p>
-            <div class="grid grid-cols-2 gap-6">
+            <span class="home-pill home-pill--dark">
+                <span class="material-symbols-outlined">business_center</span>
+                <?php echo esc_html($is_rtl ? 'قطاعات رئيسية' : 'Key industries'); ?>
+            </span>
+            <h2 class="home-section__title" style="text-align: start;"><?php echo esc_html(st_t('home.sectorsTitle')); ?></h2>
+            <p class="home-section__subtitle" style="text-align: start; margin-inline: 0; margin-block-end: 2.5rem;">
+                <?php echo esc_html(st_t('home.sectorsSubtitle')); ?>
+            </p>
+            <div class="home-sectors__grid">
                 <?php foreach ([['business_center','home.sectorGov','home.sectorGovDesc'],['local_hospital','home.sectorHealth','home.sectorHealthDesc'],['shopping_cart','home.sectorEcom','home.sectorEcomDesc'],['factory','home.sectorIndustrial','home.sectorIndustrialDesc']] as [$icon,$t1,$t2]) : ?>
-                    <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors">
-                        <span class="material-symbols-outlined text-secondary-fixed"><?php echo esc_html($icon); ?></span>
-                        <div><h4 class="text-sm font-bold"><?php echo esc_html(st_t($t1)); ?></h4><p class="text-caption opacity-60"><?php echo esc_html(st_t($t2)); ?></p></div>
+                    <div class="home-sectors__item">
+                        <span class="material-symbols-outlined home-sectors__item-icon"><?php echo esc_html($icon); ?></span>
+                        <div>
+                            <h4 class="home-sectors__item-title"><?php echo esc_html(st_t($t1)); ?></h4>
+                            <p class="home-sectors__item-desc"><?php echo esc_html(st_t($t2)); ?></p>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>
-        </div>
-        <div class="bg-surface-container-highest/10 p-2 rounded-2xl border border-white/10 shadow-2xl">
-            <div class="h-[400px] rounded-xl bg-primary relative overflow-hidden flex items-center justify-center">
-                <div class="islamic-pattern absolute inset-0 opacity-10"></div>
-                <div class="absolute w-3/4 h-3/4 border border-secondary/20 rounded-full animate-pulse"></div>
-                <span class="material-symbols-outlined text-8xl text-secondary-fixed relative z-10" style="font-variation-settings:'FILL' 1">hub</span>
+            <div class="home-sectors__actions">
+                <a class="button button--secondary" href="<?php echo esc_url(st_url('/solutions/')); ?>">
+                    <?php echo esc_html($is_rtl ? 'استكشف الحلول' : 'Explore solutions'); ?>
+                    <span class="material-symbols-outlined"><?php echo esc_html($arrow); ?></span>
+                </a>
+                <a class="button button--outline-light" href="<?php echo esc_url(st_url('/sectors/')); ?>">
+                    <?php echo esc_html($is_rtl ? 'كل القطاعات' : 'All sectors'); ?>
+                </a>
             </div>
         </div>
     </div>
 </section>
 
-<section class="py-24 px-margin-mobile md:px-margin-desktop text-start">
-    <div class="max-w-container-max mx-auto text-center mb-16">
-        <h2 class="text-headline-xl mb-4 text-primary font-bold"><?php echo esc_html(st_t('home.processTitle')); ?></h2>
-        <p class="text-body-lg text-on-surface-variant"><?php echo esc_html(st_t('home.processSubtitle')); ?></p>
-    </div>
-    <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative text-center">
-        <div class="hidden md:block absolute top-1/4 inset-x-0 h-0.5 bg-outline-variant/30 -z-10"></div>
-        <?php foreach ($steps as [$title, $desc, $num]) : ?>
-            <div class="group">
-                <div class="w-16 h-16 bg-white border-4 border-background rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-secondary group-hover:text-white transition-all shadow-md"><span class="font-bold"><?php echo esc_html($num); ?></span></div>
-                <h3 class="text-headline-sm mb-2 text-primary font-bold"><?php echo esc_html(st_t($title)); ?></h3>
-                <p class="text-caption text-on-surface-variant px-4"><?php echo esc_html(st_t($desc)); ?></p>
-            </div>
-        <?php endforeach; ?>
+<!-- Process Section -->
+<section class="home-section">
+    <div class="container">
+        <div class="home-section__header">
+            <span class="home-pill home-pill--center">
+                <span class="material-symbols-outlined">timeline</span>
+                <?php echo esc_html($is_rtl ? 'من الفكرة للتشغيل' : 'From idea to launch'); ?>
+            </span>
+            <h2 class="home-section__title"><?php echo esc_html(st_t('home.processTitle')); ?></h2>
+            <p class="home-section__subtitle"><?php echo esc_html(st_t('home.processSubtitle')); ?></p>
+        </div>
+        
+        <div class="home-process">
+            <div class="home-process__line"></div>
+            <?php foreach ($steps as [$title, $desc, $num]) : ?>
+                <div class="home-process__step">
+                    <div class="home-process__num"><?php echo esc_html($num); ?></div>
+                    <h3 class="home-process__title"><?php echo esc_html(st_t($title)); ?></h3>
+                    <p class="home-process__desc"><?php echo esc_html(st_t($desc)); ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
 </section>
 
-<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container text-start">
-    <div class="max-w-container-max mx-auto text-center">
-        <h2 class="text-headline-xl mb-12 text-primary font-bold"><?php echo esc_html(st_t('home.pricingTitle')); ?></h2>
+<!-- Pricing Section -->
+<section class="home-section home-section--gray">
+    <div class="container">
+        <div class="home-section__header">
+            <span class="home-pill home-pill--center">
+                <span class="material-symbols-outlined">sell</span>
+                <?php echo esc_html($is_rtl ? 'باقات مرنة' : 'Flexible packages'); ?>
+            </span>
+            <h2 class="home-section__title"><?php echo esc_html(st_t('home.pricingTitle')); ?></h2>
+        </div>
+        
         <?php if ($plans) : ?>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="home-pricing">
                 <?php foreach ($plans as $plan) :
-                    $rec = !empty($plan['recommended']); ?>
-                    <div class="p-8 rounded-2xl flex flex-col items-start text-start relative <?php echo $rec ? 'bg-primary-container border-2 border-secondary scale-105 shadow-2xl z-10 text-on-primary' : 'bg-white border border-outline-variant/30'; ?>">
-                        <?php if ($rec) : ?><div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-white px-6 py-1 rounded-full text-caption font-bold"><?php echo esc_html(st_t('common.mostPopular')); ?></div><?php endif; ?>
-                        <span class="px-4 py-1 rounded-full text-caption font-bold mb-4 <?php echo $rec ? 'bg-white/10' : 'bg-surface-container-high'; ?>"><?php echo esc_html($plan['tier'] ?? ''); ?></span>
-                        <h3 class="text-headline-lg mb-4 font-bold"><?php echo esc_html($plan['name']); ?></h3>
-                        <p class="text-body-md mb-8 <?php echo $rec ? 'opacity-80' : 'text-on-surface-variant'; ?>"><?php echo esc_html($plan['description']); ?></p>
+                    $rec = !empty($plan['recommended']); 
+                    $cardCls = $rec ? 'home-pricing__card--featured' : '';
+                    $ctaCls = $rec ? 'home-pricing__cta--primary' : 'home-pricing__cta--outline';
+                ?>
+                    <div class="home-pricing__card <?php echo $cardCls; ?>">
+                        <?php if ($rec) : ?>
+                            <div class="home-pricing__badge"><?php echo esc_html(st_t('common.mostPopular')); ?></div>
+                        <?php endif; ?>
+                        
+                        <div>
+                            <span class="home-pricing__tier"><?php echo esc_html($plan['tier'] ?? ''); ?></span>
+                            <h3 class="home-pricing__title"><?php echo esc_html($plan['name']); ?></h3>
+                            <p class="home-pricing__desc"><?php echo esc_html($plan['description']); ?></p>
+                        </div>
+                        
                         <?php if (!empty($plan['features'])) : ?>
-                            <ul class="space-y-4 mb-10 w-full">
+                            <ul class="home-pricing__features">
                                 <?php foreach (array_slice($plan['features'], 0, 3) as $feat) : ?>
-                                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-secondary">check</span><?php echo esc_html($feat); ?></li>
+                                    <li class="home-pricing__feature">
+                                        <span class="material-symbols-outlined">check</span>
+                                        <?php echo esc_html($feat); ?>
+                                    </li>
                                 <?php endforeach; ?>
                             </ul>
                         <?php endif; ?>
-                        <a href="<?php echo esc_url(st_url('/quote/?plan=' . urlencode($plan['id']))); ?>" class="w-full text-center py-3 rounded-lg font-bold <?php echo $rec ? 'bg-secondary text-white hover:bg-secondary/90' : 'border-2 border-primary text-primary hover:bg-primary hover:text-white'; ?> transition-all"><?php echo esc_html($plan['ctaText'] ?? st_t('home.requestQuote')); ?></a>
+                        
+                        <a href="<?php echo esc_url(st_url('/quote/?plan=' . urlencode($plan['id']))); ?>" class="home-pricing__cta <?php echo $ctaCls; ?>">
+                            <?php echo esc_html($plan['ctaText'] ?? st_t('home.requestQuote')); ?>
+                        </a>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -129,21 +206,46 @@ $steps = [
     </div>
 </section>
 
-<section class="py-24 px-margin-mobile md:px-margin-desktop text-start">
-    <div class="max-w-3xl mx-auto">
-        <h2 class="text-headline-xl text-center mb-12 text-primary font-bold"><?php echo esc_html(st_t('home.faqTitle')); ?></h2>
+<!-- FAQ Section -->
+<section class="home-section">
+    <div class="container">
+        <div class="home-section__header">
+            <span class="home-pill home-pill--center">
+                <span class="material-symbols-outlined">help</span>
+                <?php echo esc_html($is_rtl ? 'إجابات سريعة' : 'Quick answers'); ?>
+            </span>
+            <h2 class="home-section__title"><?php echo esc_html(st_t('home.faqTitle')); ?></h2>
+        </div>
+        
         <?php if ($faqs) : ?>
-            <div class="space-y-4" data-st-accordion>
+            <div class="home-faq" data-st-accordion>
                 <?php foreach ($faqs as $i => $faq) : ?>
-                    <div class="bg-white border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm">
-                        <button type="button" class="st-accordion-trigger w-full p-6 flex justify-between items-center cursor-pointer font-bold text-primary text-start" aria-expanded="<?php echo $i === 0 ? 'true' : 'false'; ?>">
+                    <div class="home-faq__item">
+                        <button type="button" class="home-faq__trigger st-accordion-trigger" aria-expanded="<?php echo $i === 0 ? 'true' : 'false'; ?>">
                             <?php echo esc_html($faq['question']); ?>
-                            <span class="material-symbols-outlined transition-transform duration-300 <?php echo $i === 0 ? 'rotate-180' : ''; ?>">expand_more</span>
+                            <span class="material-symbols-outlined">expand_more</span>
                         </button>
-                        <div class="st-accordion-panel overflow-hidden transition-all duration-300 <?php echo $i === 0 ? 'max-h-96 opacity-100 p-6 pt-0' : 'max-h-0 opacity-0'; ?> text-on-surface-variant"><?php echo esc_html($faq['answer']); ?></div>
+                        <div class="home-faq__panel st-accordion-panel" style="<?php echo $i === 0 ? '' : 'display:none;'; ?>">
+                            <?php echo esc_html($faq['answer']); ?>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
+    </div>
+</section>
+
+<section class="home-final-cta">
+    <div class="container home-final-cta__box">
+        <span class="home-pill home-pill--dark home-pill--center">
+            <span class="material-symbols-outlined">support_agent</span>
+            <?php echo esc_html($is_rtl ? 'جاهز للخطوة التالية؟' : 'Ready for the next step?'); ?>
+        </span>
+        <h2><?php echo esc_html($is_rtl ? 'خلينا نختار أفضل مسار تقني لمشروعك' : 'Let us choose the right technical path for your project'); ?></h2>
+        <p><?php echo esc_html($is_rtl ? 'احجز استشارة مجانية أو اطلب عرض سعر، وسنرتب لك خطة واضحة قابلة للتنفيذ.' : 'Book a free consultation or request a quote and we will map a clear execution plan.'); ?></p>
+        <div class="home-final-cta__actions">
+            <a class="button button--secondary" href="<?php echo esc_url(st_url('/quote/')); ?>"><?php echo esc_html(st_t('home.requestQuote')); ?></a>
+            <a class="button button--outline-light" href="<?php echo esc_url(st_url('/consultation/')); ?>"><?php echo esc_html(st_t('home.bookConsultation')); ?></a>
+        </div>
     </div>
 </section>

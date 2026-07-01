@@ -1,30 +1,66 @@
 <?php get_header(); ?>
 <?php
-$arrow = st_locale() === 'ar' ? 'arrow_back' : 'arrow_forward';
+$is_rtl = st_locale() === 'ar';
+$arrow = $is_rtl ? 'arrow_back' : 'arrow_forward';
 $trust = ['home.trustCustom', 'home.trustErp', 'home.trustAi', 'home.trustLocal'];
+$stats = [
+    ['value' => '+150', 'label' => st_t('home.projects'), 'icon' => 'rocket_launch'],
+    ['value' => '+50', 'label' => st_t('home.experts'), 'icon' => 'groups'],
+    ['value' => '+8', 'label' => $is_rtl ? 'سنوات خبرة' : 'Years of experience', 'icon' => 'workspace_premium'],
+    ['value' => '99.9%', 'label' => $is_rtl ? 'استقرار تقني' : 'Platform stability', 'icon' => 'verified'],
+];
 ?>
-<header class="relative pt-24 sm:pt-28 md:pt-40 lg:pt-48 pb-16 md:pb-32 px-margin-mobile md:px-margin-desktop overflow-hidden gradient-mesh">
-    <div class="max-w-container-max mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-start">
-            <div class="z-10 order-2 lg:order-1">
-                <h1 class="text-display-lg-mobile md:text-display-lg mb-6 leading-tight text-primary font-bold"><?php echo esc_html(st_t('home.heroTitle')); ?></h1>
-                <p class="text-body-lg text-on-surface-variant mb-10 max-w-xl"><?php echo esc_html(st_t('home.heroSubtitle')); ?></p>
-                <div class="flex flex-wrap gap-3 sm:gap-4 mb-12">
-                    <a href="<?php echo esc_url(st_url('/consultation/')); ?>" class="bg-secondary text-on-secondary px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-bold inline-flex items-center gap-2 hover:bg-secondary-fixed-variant transition-all"><?php echo esc_html(st_t('home.bookConsultation')); ?><span class="material-symbols-outlined"><?php echo esc_html($arrow); ?></span></a>
-                    <a href="<?php echo esc_url(st_url('/quote/')); ?>" class="border-2 border-secondary text-secondary px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-bold hover:bg-secondary/5 transition-all"><?php echo esc_html(st_t('home.requestQuote')); ?></a>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-outline-variant/30">
-                    <?php foreach ($trust as $key) : ?>
-                        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1">check_circle</span><span class="text-label-md text-on-surface"><?php echo esc_html(st_t($key)); ?></span></div>
-                    <?php endforeach; ?>
+<main class="home">
+    <section class="home-hero">
+        <div class="container home-hero__content">
+            <div class="home-hero__media">
+                <div class="home-hero__image-card">
+                    <img src="<?php echo esc_url(st_asset('images/about/hero.png')); ?>" alt="" class="home-hero__image" loading="eager">
+                    <div class="home-hero__metric home-hero__metric--top">+50<br><span><?php echo esc_html($is_rtl ? 'خبير' : 'Experts'); ?></span></div>
+                    <div class="home-hero__metric home-hero__metric--bottom">+150<br><span><?php echo esc_html($is_rtl ? 'مشروع' : 'Projects'); ?></span></div>
                 </div>
             </div>
-            <div class="relative order-1 lg:order-2">
-                <div class="absolute inset-0 bg-secondary/10 rounded-3xl -rotate-3 scale-105"></div>
-                <img src="<?php echo esc_url(st_asset('images/about/hero.png')); ?>" alt="" class="rounded-3xl shadow-2xl relative z-10 w-full object-cover aspect-[1.79]" loading="eager">
+
+            <div class="home-hero__text-side">
+                <span class="home-pill">
+                    <span class="material-symbols-outlined">verified</span>
+                    <?php echo esc_html($is_rtl ? 'شريك تقني موثوق في السعودية' : 'Trusted technology partner'); ?>
+                </span>
+                <h1 class="home-hero__title"><?php echo esc_html(st_t('home.heroTitle')); ?></h1>
+                <p class="home-hero__subtitle"><?php echo esc_html(st_t('home.heroSubtitle')); ?></p>
+                <div class="home-hero__actions">
+                    <a href="<?php echo esc_url(st_url('/consultation/')); ?>" class="button button--primary">
+                        <?php echo esc_html(st_t('home.bookConsultation')); ?>
+                        <span class="material-symbols-outlined"><?php echo esc_html($arrow); ?></span>
+                    </a>
+                    <a href="<?php echo esc_url(st_url('/quote/')); ?>" class="button button--outline">
+                        <?php echo esc_html(st_t('home.requestQuote')); ?>
+                    </a>
+                </div>
+                <div class="home-hero__trust">
+                    <?php foreach ($trust as $key) : ?>
+                        <div class="home-hero__trust-item">
+                            <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">check_circle</span>
+                        <span><?php echo esc_html(st_t($key)); ?></span>
+                    </div>
+                <?php endforeach; ?>
+                </div>
             </div>
         </div>
-    </div>
-</header>
-<?php get_template_part('template-parts/home/sections'); ?>
+    </section>
+
+    <section class="home-stats" aria-label="<?php echo esc_attr($is_rtl ? 'إحصائيات SpinesTech' : 'SpinesTech stats'); ?>">
+        <div class="container home-stats__grid">
+            <?php foreach ($stats as $stat) : ?>
+                <div class="home-stats__item">
+                    <span class="material-symbols-outlined"><?php echo esc_html($stat['icon']); ?></span>
+                    <strong><?php echo esc_html($stat['value']); ?></strong>
+                    <span><?php echo esc_html($stat['label']); ?></span>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
+
+    <?php get_template_part('template-parts/home/sections'); ?>
+</main>
 <?php get_footer(); ?>

@@ -1,0 +1,130 @@
+/* Jobs page styles */
+.page-jobs {
+  padding-block: 6rem 5rem;
+}
+
+@media (min-width: 1024px) {
+  .page-jobs {
+    padding-block: 8rem 6rem;
+  }
+}
+
+.page-jobs__back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-secondary);
+  font-weight: 700;
+  margin-block-end: 2rem;
+}
+
+.page-jobs__title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-block-end: 1.5rem;
+  line-height: 1.1;
+}
+
+.page-jobs__grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-block-end: 5rem;
+}
+
+@media (min-width: 768px) {
+  .page-jobs__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.job-card {
+  padding: 2rem;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  display: block;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.job-card:hover {
+  border-color: var(--color-secondary);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.job-card__department {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  display: block;
+  margin-block-end: 0.5rem;
+}
+
+.job-card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-block-end: 0.75rem;
+}
+
+.job-card__description {
+  font-size: 0.875rem;
+  color: var(--color-on-surface-variant);
+  margin-block-end: 1rem;
+  line-height: 1.6;
+}
+
+.job-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--color-on-surface-variant);
+}
+
+.job-card__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.job-card__meta-icon {
+  font-size: 0.875rem;
+}
+
+.page-jobs__form {
+  max-width: 42rem;
+  padding: 2rem;
+  background-color: var(--color-surface-container-low);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+}
+
+.page-jobs__form-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-block-end: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.page-jobs__submit {
+  padding-inline: 2rem;
+}
+
+.form-control--file {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+}

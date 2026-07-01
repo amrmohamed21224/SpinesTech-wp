@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Theme Name: SpinesTech
  * Theme URI: https://spinestech.com
@@ -20,3 +21,14 @@ require_once get_template_directory() . '/inc/i18n.php';
 require_once get_template_directory() . '/inc/queries.php';
 require_once get_template_directory() . '/inc/template-tags.php';
 require_once get_template_directory() . '/inc/enqueue.php';
+
+add_filter('template_include', function ($template) {
+    if (is_page()) {
+        $slug = get_post_field('post_name', get_the_ID());
+        $custom = get_template_directory() . "/page-{$slug}.php";
+        if (file_exists($custom)) {
+            return $custom;
+        }
+    }
+    return $template;
+});

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 if (!defined('ABSPATH')) {
@@ -19,7 +20,8 @@ add_action('after_setup_theme', 'st_theme_setup');
 
 function st_enqueue_assets(): void
 {
-    $ver = wp_get_theme()->get('Version');
+    // Force fresh CSS on every load during development (change to theme version after launch)
+    $ver = time();
 
     wp_enqueue_style(
         'st-fonts',
@@ -29,6 +31,69 @@ function st_enqueue_assets(): void
     );
 
     wp_enqueue_style('st-main', st_asset('css/main.css'), ['st-fonts'], $ver);
+
+    // Specific Page Styles
+    $pages = [
+        'about' => 'st-about',
+        'contact' => 'st-contact',
+        'pricing' => 'st-pricing',
+        'quote' => 'st-quote',
+        'consultation' => 'st-consultation',
+        'solutions' => 'st-solutions',
+        'careers' => 'st-careers',
+        'jobs' => 'st-jobs',
+    ];
+
+    foreach ($pages as $slug => $handle) {
+        // Match by page slug OR page template named page-{slug}.php
+        if (is_page($slug) || is_page_template("page-{$slug}.php")) {
+            wp_enqueue_style($handle, st_asset("css/pages/{$slug}.css"), ['st-main'], $ver);
+        }
+    }
+
+    if (is_front_page()) {
+        wp_enqueue_style('st-home', st_asset('css/pages/home.css'), ['st-main'], $ver);
+    }
+
+    if (is_post_type_archive('st_service') || is_tax('st_service_cat')) {
+        wp_enqueue_style('st-services', st_asset('css/pages/services.css'), ['st-main'], $ver);
+    }
+
+    if (is_post_type_archive('st_product')) {
+        wp_enqueue_style('st-products', st_asset('css/pages/products.css'), ['st-main'], $ver);
+    }
+
+    if (is_post_type_archive('st_sector')) {
+        wp_enqueue_style('st-sectors', st_asset('css/pages/sectors.css'), ['st-main'], $ver);
+    }
+
+    if (is_post_type_archive('st_case_study')) {
+        wp_enqueue_style('st-case-studies', st_asset('css/pages/case-studies.css'), ['st-main'], $ver);
+    }
+
+    if (is_singular('st_service')) {
+        wp_enqueue_style('st-single-service', st_asset('css/pages/single-service.css'), ['st-main'], $ver);
+    }
+
+    if (is_singular('st_product')) {
+        wp_enqueue_style('st-single-product', st_asset('css/pages/single-product.css'), ['st-main'], $ver);
+    }
+
+    if (is_singular('st_sector')) {
+        wp_enqueue_style('st-single-sector', st_asset('css/pages/single-sector.css'), ['st-main'], $ver);
+    }
+
+    if (is_singular('st_case_study')) {
+        wp_enqueue_style('st-single-case-study', st_asset('css/pages/single-case-study.css'), ['st-main'], $ver);
+    }
+
+    if (is_singular('st_job')) {
+        wp_enqueue_style('st-single-job', st_asset('css/pages/single-job.css'), ['st-main'], $ver);
+    }
+
+    if (is_page_template('page-work-environment.php') || is_404()) {
+        wp_enqueue_style('st-work-env', st_asset('css/pages/work-environment.css'), ['st-main'], $ver);
+    }
 
     wp_enqueue_script('st-navbar', st_asset('js/navbar.js'), [], $ver, true);
     wp_enqueue_script('st-accordion', st_asset('js/accordion.js'), [], $ver, true);

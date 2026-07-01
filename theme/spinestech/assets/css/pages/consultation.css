@@ -1,0 +1,114 @@
+/* Consultation page styles */
+.page-consultation {
+  padding-block: 6rem 5rem;
+}
+
+@media (min-width: 1024px) {
+  .page-consultation {
+    padding-block: 8rem 6rem;
+  }
+}
+
+.page-consultation__grid {
+  display: grid;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .page-consultation__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.page-consultation__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-consultation__eyebrow {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-block-end: 1rem;
+  display: block;
+}
+
+.page-consultation__title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-block-end: 1.5rem;
+  line-height: 1.1;
+}
+
+.page-consultation__subtitle {
+  font-size: 1.125rem;
+  color: var(--color-on-surface-variant);
+  margin-block-end: 2rem;
+  line-height: 1.6;
+}
+
+.page-consultation__goals {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 480px) {
+  .page-consultation__goals {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.page-consultation__goal-chip {
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.75rem;
+  text-align: start;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.page-consultation__goal-chip:hover {
+  border-color: var(--color-secondary);
+}
+
+.page-consultation__goal-chip.is-active {
+  border-color: var(--color-secondary);
+  background-color: rgba(3, 109, 54, 0.05);
+  color: var(--color-secondary);
+}
+
+.page-consultation__form-wrapper {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 7rem;
+}
+
+.page-consultation__form-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-block-end: 1.5rem;
+}
+
+.page-consultation__submit {
+  width: 100%;
+}
+
+.page-consultation__form-footer {
+  margin-block-start: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.page-consultation__quote-link {
+  color: var(--color-secondary);
+  font-weight: 700;
+}

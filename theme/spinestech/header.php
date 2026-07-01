@@ -6,7 +6,6 @@
     <link rel="icon" href="<?php echo esc_url(st_asset('images/brand/icon.png')); ?>" type="image/png">
     <?php wp_head(); ?>
 </head>
-<body <?php body_class('min-h-screen bg-background text-on-surface antialiased'); ?>>
+<body <?php body_class('st-body'); ?>>
 <?php wp_body_open(); ?>
 <?php get_template_part('template-parts/navbar'); ?>
-<main id="main-content">

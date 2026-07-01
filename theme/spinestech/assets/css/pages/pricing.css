@@ -1,0 +1,11 @@
+/* Pricing page styles */
+.page-pricing {
+  padding-block: 4rem;
+}
+
+.pricing-card {
+  border-radius: 1.5rem;
+  background: #fff;
+  padding: 2rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}

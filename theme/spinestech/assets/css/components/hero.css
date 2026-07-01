@@ -1,0 +1,52 @@
+.hero {
+  position: relative;
+  padding-block: 8rem 5rem;
+  background-color: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-block-end: 2.5rem;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.hero__title {
+  max-width: 68rem;
+  margin-inline: auto;
+  font-size: clamp(2.3rem, 6vw, 4rem);
+  line-height: 1.04;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-block-end: 1.5rem;
+}
+
+.hero__copy {
+  max-width: 44rem;
+  margin-inline: auto;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding-block: 10rem 6rem;
+  }
+}

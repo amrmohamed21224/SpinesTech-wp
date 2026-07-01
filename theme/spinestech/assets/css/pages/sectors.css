@@ -1,0 +1,105 @@
+/* Sectors archive styles */
+.sectors-archive {
+  padding-block: 6rem 5rem;
+}
+
+@media (min-width: 1024px) {
+  .sectors-archive {
+    padding-block: 8rem 6rem;
+  }
+}
+
+.sectors-archive__header {
+  margin-block-end: 4rem;
+}
+
+.sectors-archive__title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.sectors-archive__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .sectors-archive__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .sectors-archive__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.sector-card {
+  display: block;
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  min-height: 280px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.sector-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.sector-card__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.sector-card:hover .sector-card__image {
+  transform: scale(1.05);
+}
+
+.sector-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 29, 47, 0.9) 0%, transparent 100%);
+  z-index: 1;
+}
+
+.sector-card__content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  min-height: 280px;
+  color: #fff;
+}
+
+.sector-card__icon {
+  color: var(--color-secondary-container);
+  margin-block-end: 0.75rem;
+  font-size: 2rem;
+}
+
+.sector-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.sector-card__description {
+  font-size: 0.875rem;
+  opacity: 0.8;
+  margin-block-start: 0.5rem;
+  margin-block-end: 0;
+  line-height: 1.6;
+}

@@ -1,0 +1,27 @@
+.stats-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.stats-grid__item {
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 1rem 1.25rem;
+}
+
+.stats-grid__value {
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+.stats-grid__label {
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 0.35rem;
+}
