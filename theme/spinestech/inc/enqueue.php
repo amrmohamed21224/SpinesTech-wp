@@ -149,6 +149,7 @@ function st_enqueue_assets(): void
     }
 
 
+    wp_enqueue_script('st-loader', st_asset('js/loader.js'), [], $ver, true);
     wp_enqueue_script('st-navbar', st_asset('js/navbar.js'), [], $ver, true);
     wp_enqueue_script('st-accordion', st_asset('js/accordion.js'), [], $ver, true);
     wp_enqueue_script('st-forms', st_asset('js/forms.js'), [], $ver, true);
