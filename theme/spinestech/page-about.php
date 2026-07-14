@@ -3,215 +3,398 @@
  * Template Name: About
  */
 get_header();
-$locale = st_locale();
-$dir = st_dir();
-$is_rtl = $dir === 'rtl';
+$is_rtl = st_locale() === 'ar';
 ?>
+<main class="about-page" dir="<?php echo esc_attr(st_dir()); ?>">
 
-<div dir="<?php echo esc_attr($dir); ?>" class="page-about">
+    <!-- ═══════════════════════════════
+         1. HERO
+    ═══════════════════════════════ -->
+    <section class="ab-hero">
+        <div class="ab-hero__grid"></div>
+        <div class="ab-hero__glow ab-hero__glow--1"></div>
+        <div class="ab-hero__glow ab-hero__glow--2"></div>
+        <div class="ab-hero__overlay"></div>
 
-  <!-- ==================== HERO SECTION ==================== -->
-  <section class="about-hero">
-    <div class="container about-hero__inner">
-      <div class="about-hero__content">
-        <span class="about-label">
-          <span class="material-symbols-outlined about-label__icon">group</span>
-          <?php echo $is_rtl ? 'من نحن' : 'About Us'; ?>
-        </span>
-        
-        <h1 class="about-hero__title">
-          <?php echo $is_rtl
-            ? 'نصمم مستقبل الأعمال الرقمية بأيدٍ سعودية عالمية'
-            : 'Designing the Future of Digital Business with Global Saudi Expertise'; ?>
-        </h1>
-        
-        <p class="about-hero__subtitle">
-          <?php echo $is_rtl
-            ? 'SpinesTech شريكك الاستراتيجي في التحول الرقمي. نبني حلولاً تقنية متطورة تجمع بين الخبرة المحلية العميقة والمعايير الهندسية العالمية.'
-            : 'SpinesTech is your strategic partner in digital transformation. We build advanced tech solutions combining deep local expertise with global engineering standards.'; ?>
-        </p>
-
-        <div class="about-hero__tags">
-          <?php foreach ([
-            ['verified', $is_rtl ? 'ثقة وأمان' : 'Trust & Security'],
-            ['security', $is_rtl ? 'أمن سيبراني' : 'Cybersecurity'],
-            ['category', $is_rtl ? 'صناعة تقنية' : 'Tech Industry'],
-            ['support_agent', $is_rtl ? 'دعم فني' : 'Tech Support'],
-          ] as $tag): ?>
-            <span class="about-hero__tag">
-              <span class="material-symbols-outlined"><?php echo $tag[0]; ?></span>
-              <?php echo $tag[1]; ?>
-            </span>
-          <?php endforeach; ?>
-        </div>
-      </div>
-
-      <div class="about-hero__image-wrapper">
-        <img src="<?php echo esc_url(st_asset('images/about/hero.png')); ?>" alt="SpinesTech Office" class="about-hero__image">
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== VISION & MISSION ==================== -->
-  <section class="about-vision">
-    <div class="container about-vision__grid">
-      
-      <!-- Vision Card -->
-      <div class="about-vision__card about-vision__card--light">
-        <div class="about-vision__card-icon">
-          <span class="material-symbols-outlined">visibility</span>
-        </div>
-        <h2 class="about-vision__card-title"><?php echo $is_rtl ? 'رؤيتنا 2030' : 'Our Vision 2030'; ?></h2>
-        <p class="about-vision__card-text">
-          <?php echo $is_rtl
-            ? 'أن نكون الخيار الأول والعمود الفقري التقني للتحول الرقمي في المنطقة، محركاً دولياً لمركز الابتكار والتميز الهندسي المنطلق من قلب المملكة العربية السعودية.'
-            : 'To be the first choice and technical backbone for digital transformation in the region, an international engine for innovation and engineering excellence originating from the heart of Saudi Arabia.'; ?>
-        </p>
-        <div class="about-vision__card-footer">
-          <span class="material-symbols-outlined">calendar_month</span>
-          <?php echo $is_rtl ? 'رؤية طموحة' : 'Ambitious Vision'; ?>
-        </div>
-      </div>
-
-      <!-- Mission Card -->
-      <div class="about-vision__card about-vision__card--dark">
-        <div class="about-vision__card-icon about-vision__card-icon--green">
-          <span class="material-symbols-outlined">rocket_launch</span>
-        </div>
-        <h2 class="about-vision__card-title"><?php echo $is_rtl ? 'رسالتنا' : 'Our Mission'; ?></h2>
-        <p class="about-vision__card-text">
-          <?php echo $is_rtl
-            ? 'تمكين المؤسسات الحكومية والخاصة في الشرق الأوسط من خلال حلول تقنية مبتكرة، آمنة، وقابلة للتوسع تساهم في تسريع عجلة التطور الرقمي وتعزز السيادة التقنية المحلية.'
-            : 'Empowering public and private institutions in the Middle East through innovative, secure, and scalable tech solutions that accelerate digital evolution and enhance local technological sovereignty.'; ?>
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================== LOCATIONS ==================== -->
-  <section class="about-locations">
-    <div class="container">
-      <div class="about-section-header">
-        <span class="about-label">
-          <span class="material-symbols-outlined about-label__icon">public</span>
-          <?php echo $is_rtl ? 'تواجدنا الجغرافي' : 'Our Presence'; ?>
-        </span>
-        <h2 class="about-section-title"><?php echo $is_rtl ? 'تواجدنا الجغرافي' : 'Geographic Reach'; ?></h2>
-        <p class="about-section-subtitle">
-          <?php echo $is_rtl ? 'نخدم عملاءنا من مراكز عمل متعددة مع فرق عمل كفء وموثوقة.' : 'We serve our clients from multiple centers with highly capable and reliable teams.'; ?>
-        </p>
-      </div>
-
-      <div class="about-locations__grid">
-        <?php foreach ([
-          ['KSA', $is_rtl ? 'المملكة العربية السعودية' : 'Saudi Arabia'],
-          ['GCC', $is_rtl ? 'دول مجلس التعاون الخليجي' : 'GCC Countries'],
-          ['ARA', $is_rtl ? 'الوطن العربي' : 'Arab World'],
-          ['CAN', $is_rtl ? 'كندا (المركز التقني)' : 'Canada (Tech Hub)'],
-        ] as $loc): ?>
-          <div class="about-locations__card">
-            <span class="about-locations__badge"><?php echo $loc[0]; ?></span>
-            <span class="about-locations__name"><?php echo $loc[1]; ?></span>
-          </div>
-        <?php endforeach; ?>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== CORE VALUES ==================== -->
-  <section class="about-values">
-    <div class="container">
-      <div class="about-section-header about-section-header--center">
-        <span class="about-label">
-          <span class="material-symbols-outlined about-label__icon">star</span>
-          <?php echo $is_rtl ? 'قيمنا الأساسية' : 'Core Values'; ?>
-        </span>
-        <h2 class="about-section-title"><?php echo $is_rtl ? 'قيمنا الأساسية' : 'Our Core Values'; ?></h2>
-      </div>
-
-      <div class="about-values__grid">
-        <?php foreach ([
-          ['lightbulb', $is_rtl ? 'الابتكار' : 'Innovation', $is_rtl ? 'نسعى دائماً لتحدي الوضع الراهن وإيجاد حلول ذكية تسبق زمنها.' : 'We constantly challenge the status quo and find smart, ahead-of-time solutions.'],
-          ['security', $is_rtl ? 'الأمان' : 'Security', $is_rtl ? 'حماية بياناتك وسياساتك الرقمية هي أولويتنا القصوى وغير قابلة للمساومة.' : 'Protecting your data and digital policies is our top, non-negotiable priority.'],
-          ['verified', $is_rtl ? 'الموثوقية' : 'Reliability', $is_rtl ? 'نحن الشريك الذي تعتمد عليه في أصعب التحديات التقنية وأكثرها حساسية.' : 'We are the partner you rely on in the toughest and most sensitive tech challenges.'],
-          ['open_in_full', $is_rtl ? 'قابلية التوسع' : 'Scalability', $is_rtl ? 'حلولنا مصممة لتنمو مع طموحاتك، من الشركات الناشئة إلى المؤسسات الكبرى.' : 'Our solutions are designed to grow with your ambitions, from startups to enterprises.'],
-        ] as $val): ?>
-          <div class="about-values__card">
-            <div class="about-values__icon">
-              <span class="material-symbols-outlined"><?php echo $val[0]; ?></span>
+        <div class="container ab-hero__inner">
+            <div class="ab-hero__badge reveal">
+                <span class="ab-hero__badge-dot"></span>
+                <span>التميّز المؤسسي</span>
             </div>
-            <h3 class="about-values__title"><?php echo $val[1]; ?></h3>
-            <p class="about-values__text"><?php echo $val[2]; ?></p>
-          </div>
-        <?php endforeach; ?>
-      </div>
-    </div>
-  </section>
 
-  <!-- ==================== WHY SPINESTECH ==================== -->
-  <section class="about-why">
-    <div class="container">
-      <div class="about-why__header">
-        <span class="about-label about-label--dark">
-          <span class="material-symbols-outlined about-label__icon">workspace_premium</span>
-          <?php echo $is_rtl ? 'لماذا SpinesTech' : 'Why SpinesTech'; ?>
-        </span>
-        <h2 class="about-why__title"><?php echo $is_rtl ? 'لماذا SpinesTech؟' : 'Why SpinesTech?'; ?></h2>
-      </div>
+            <h1 class="ab-hero__title reveal" style="--delay:100ms">
+                لا نبني تطبيقات فحسب… نبني <span class="ab-hero__title-accent">أنظمة أعمال قابلة للتشغيل والنمو</span>
+            </h1>
 
-      <div class="about-why__grid">
-        <!-- List side -->
-        <div class="about-why__list">
-          <?php foreach ([
-            ['01', $is_rtl ? 'خبرة محلية برؤية عالمية' : 'Local Expertise, Global Vision', $is_rtl ? 'فهم عميق للبيئة التنظيمية والثقافية في المملكة مع تطبيق أفضل الممارسات الهندسية العالمية والمعايير.' : 'Deep understanding of the regulatory and cultural environment in the Kingdom with the application of the best global engineering practices.'],
-            ['02', $is_rtl ? 'السيادة التقنية التامة' : 'Total Tech Sovereignty', $is_rtl ? 'نضمن لك ملكية وتوطين الحلول التقنية بما يتماشى مع متطلبات الأمن الوطني وتوجيهات الهيئة الوطنية للأمن السيبراني.' : 'We guarantee ownership and localization of tech solutions in line with national security requirements and NCA directives.'],
-            ['03', $is_rtl ? 'فريق من النخبة' : 'Elite Team', $is_rtl ? 'نضم نخبة من المهندسين والمستشارين الذين قادوا مشاريع تحول رقمي ضخمة على مستوى المنطقة.' : 'An elite group of engineers and consultants who have led massive digital transformation projects across the region.'],
-          ] as $step): ?>
-            <div class="about-why__item">
-              <div class="about-why__item-num"><?php echo $step[0]; ?></div>
-              <div class="about-why__item-content">
-                <h3 class="about-why__item-title"><?php echo $step[1]; ?></h3>
-                <p class="about-why__item-text"><?php echo $step[2]; ?></p>
-              </div>
+            <p class="ab-hero__subtitle reveal" style="--delay:200ms">
+                SpinesTech استوديو هندسة منتجات يساعد الشركات والشركات الناشئة والشركاء التقنيين على تحويل الأفكار المعقدة إلى أنظمة رقمية متكاملة.
+            </p>
+
+            <p class="ab-hero__desc reveal" style="--delay:300ms">
+                نبدأ بفهم نموذج العمل، الأدوار، الصلاحيات، سير العمليات، وقواعد النظام — ثم نحوّل ذلك إلى منتج رقمي جاهز للتوسع.
+            </p>
+
+            <div class="ab-hero__actions reveal" style="--delay:400ms">
+                <a href="<?php echo esc_url(home_url('/consultation/')); ?>" class="ab-btn ab-btn--primary">ابدأ مشروعك</a>
+                <a href="<?php echo esc_url(home_url('/case-studies/')); ?>" class="ab-btn ab-btn--ghost">
+                    استعرض أعمالنا
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </a>
             </div>
-          <?php endforeach; ?>
         </div>
+    </section>
 
-        <!-- Stats side -->
-        <div class="about-why__stats">
-          <?php foreach ([
-            ['99%', $is_rtl ? 'نسبة رضا العملاء' : 'Client Satisfaction'],
-            ['+50', $is_rtl ? 'مشروع حكومي ناجح' : 'Successful Gov Projects'],
-            ['+100', $is_rtl ? 'خبير تقني' : 'Tech Experts'],
-            ['24/7', $is_rtl ? 'دعم فني مخصص' : 'Dedicated Support'],
-          ] as $stat): ?>
-            <div class="about-why__stat-card">
-              <div class="about-why__stat-val"><?php echo $stat[0]; ?></div>
-              <div class="about-why__stat-label"><?php echo $stat[1]; ?></div>
+    <!-- ═══════════════════════════════
+         2. ENGINEERING PARTNER
+    ═══════════════════════════════ -->
+    <section class="ab-section ab-section--white">
+        <div class="container">
+            <div class="ab-split-header reveal">
+                <div class="ab-split-header__main">
+                    <div class="ab-eyebrow">
+                        <span class="ab-eyebrow__dot"></span>
+                        التميّز التشغيلي
+                    </div>
+                    <h2 class="ab-title">شريك هندسي لمنتجات<br>رقمية تشغيلية</h2>
+                </div>
+                <div class="ab-split-header__side">
+                    <p>نتعامل مع كل مشروع كنظام أعمال متكامل، لا مجرد شاشات منفصلة. بنيتنا التقنية مصممة لتتحمل واقع التوسع الحقيقي.</p>
+                </div>
             </div>
-          <?php endforeach; ?>
-        </div>
-      </div>
 
-      <!-- Footer CTA -->
-      <div class="about-why__cta">
-        <h3 class="about-why__cta-title"><?php echo $is_rtl ? 'تبدأ المشاريع الكبرى بخطوة' : 'Great Projects Start With One Step'; ?></h3>
-        <p class="about-why__cta-text"><?php echo $is_rtl ? 'فريقنا جاهز لتحليل احتياجاتك وتقديم خارطة طريق تقنية واضحة تناسب طموحاتك.' : 'Our team is ready to analyze your needs and provide a clear tech roadmap that fits your ambitions.'; ?></p>
-        <div class="about-why__cta-actions">
-          <a href="<?php echo esc_url(st_url('/consultation/')); ?>" class="button button--secondary">
-            <?php echo $is_rtl ? 'احجز استشارة مجانية' : 'Book Free Consultation'; ?>
-            <span class="material-symbols-outlined" style="font-size:1.125rem;">arrow_outward</span>
-          </a>
-          <a href="<?php echo esc_url(st_url('/solutions/')); ?>" class="button button--outline-light">
-            <?php echo $is_rtl ? 'تصفح الحلول' : 'Browse Solutions'; ?>
-            <span class="material-symbols-outlined" style="font-size:1.125rem;">arrow_<?php echo $is_rtl ? 'back' : 'forward'; ?></span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+            <div class="ab-bento">
+                <div class="ab-bento__col ab-bento__col--main">
+                    <div class="ab-card ab-card--light reveal">
+                        <span class="ab-card__tag">قابل للتوسع 100%</span>
+                        <div class="ab-card__icon-circle">
+                            <span class="material-symbols-outlined">lightbulb</span>
+                        </div>
+                        <div class="ab-card__body">
+                            <h3>نفهم الأعمال أولاً</h3>
+                            <p>نحلل احتياجاتك التشغيلية قبل كتابة أي سطر كود لضمان جدوى المنتج واستمراريته على المدى الطويل.</p>
+                        </div>
+                    </div>
 
-</div>
+                    <div class="ab-card ab-card--dark reveal" style="--delay:150ms">
+                        <div class="ab-card__grid-bg"></div>
+                        <span class="ab-card__tag ab-card__tag--dark">مستوى مؤسسي</span>
+                        <div class="ab-card__icon-circle ab-card__icon-circle--glass">
+                            <span class="material-symbols-outlined">hub</span>
+                        </div>
+                        <div class="ab-card__body">
+                            <h3>نبني أنظمة، لا شاشات</h3>
+                            <p>نربط التطبيق بلوحات الإدارة، المحاسبة، والمخازن في نظام واحد متناغم يعمل لصالحك.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ab-bento__col ab-bento__col--side">
+                    <div class="ab-mini-card reveal" style="--delay:100ms">
+                        <div class="ab-mini-card__icon">
+                            <span class="material-symbols-outlined">trending_up</span>
+                        </div>
+                        <div>
+                            <h3>تصميم للتوسع</h3>
+                            <p>بنية مرنة تدعم نمو المستخدمين والعمليات دون أي عثرات تقنية.</p>
+                        </div>
+                    </div>
+                    <div class="ab-mini-card reveal" style="--delay:250ms">
+                        <div class="ab-mini-card__icon">
+                            <span class="material-symbols-outlined">verified</span>
+                        </div>
+                        <div>
+                            <h3>تسليم واضح</h3>
+                            <p>تقارير دورية، كود نظيف، وتوثيق تقني شامل يضمن لك الملكية الكاملة.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════
+         3. DIFFERENTIATORS TIMELINE
+    ═══════════════════════════════ -->
+    <section class="ab-section ab-section--muted ab-timeline-section">
+        <div class="ab-timeline-glow ab-timeline-glow--1"></div>
+        <div class="ab-timeline-glow ab-timeline-glow--2"></div>
+        <div class="container">
+            <div class="ab-header reveal">
+                <div class="ab-eyebrow ab-eyebrow--center">
+                    <span class="ab-eyebrow__dot"></span>
+                    الميزة الاستراتيجية
+                </div>
+                <h2 class="ab-title">ما الذي يميز<br>SpinesTech؟</h2>
+                <p class="ab-subtitle">نتجاوز وكالات التطوير التقليدية. نهجنا متجذر في هندسة المنتجات والاستراتيجية التجارية، مصمم للتميز المؤسسي.</p>
+            </div>
+
+            <div class="ab-timeline">
+                <div class="ab-timeline__spine"><div class="ab-timeline__spine-fill"></div></div>
+
+                <?php
+                $steps = [
+                    ['01', 'التفكير من منطق الأعمال أولاً', 'نناقش الربحية والمنطق قبل التصميم لضمان عائد استثمار حقيقي لكل ميزة. نوائم التنفيذ التقني مع أهدافك التجارية.', 'left', 'dark'],
+                    ['02', 'خبرة المنصات متعددة الأدوار', 'أنظمة للعملاء والموظفين والإدارة مع صلاحيات دقيقة قائمة على الأدوار وسير عمل محسّن.', 'right', 'light'],
+                    ['03', 'من الجوال إلى لوحة التحكم', 'حلول متكاملة تضمن تجربة مستخدم سلسة عبر كل المنصات، من تطبيقات المستهلكين إلى الأنظمة الخلفية المعقدة.', 'left', 'light'],
+                    ['04', 'الأمن والوعي بالمخاطر', 'تطبيق معايير حماية البيانات والخصوصية من الطبقات الأساسية للبنية لحماية أصول أعمالك.', 'right', 'light'],
+                    ['05', 'تسليم واضح وقابل للتتبع', 'إدارة مشاريع احترافية تبقيك على اطلاع بكل خطوة في المسار بشفافية كاملة.', 'left', 'primary'],
+                    ['06', 'تعاون مرن', 'نعمل كشريك تقني أو كذراع تنفيذي حسب احتياجاتك الخاصة وقدراتك الداخلية.', 'right', 'light'],
+                ];
+                foreach ($steps as $i => [$num, $title, $desc, $side, $variant]) : ?>
+                    <div class="ab-timeline__step ab-timeline__step--<?php echo esc_attr($side); ?> reveal" style="--delay:<?php echo esc_attr($i * 80); ?>ms">
+                        <div class="ab-timeline__text">
+                            <h4><?php echo esc_html($title); ?></h4>
+                            <p><?php echo esc_html($desc); ?></p>
+                        </div>
+                        <div class="ab-timeline__dot ab-timeline__dot--<?php echo esc_attr($variant); ?>">
+                            <span><?php echo esc_html($num); ?></span>
+                        </div>
+                        <div class="ab-timeline__spacer"></div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════
+         4. ENGINEERING EXPERTISE
+    ═══════════════════════════════ -->
+    <section class="ab-section ab-section--dark">
+        <div class="ab-section--dark__grid"></div>
+        <div class="container">
+            <div class="ab-header ab-header--center reveal">
+                <h2 class="ab-title ab-title--light">خبرة هندسية خلف كل عملية</h2>
+                <p class="ab-subtitle ab-subtitle--light">مبنية على خبرة عملية في تنفيذ منتجات رقمية حساسة عبر قطاعات معقدة.</p>
+            </div>
+
+            <div class="ab-grid ab-grid--3">
+                <?php
+                $expertise = [
+                    ['precision_manufacturing', 'خبرة تشغيلية', 'بناء أنظمة تعالج آلاف العمليات يومياً بكفاءة حرجة للمهام.'],
+                    ['stack', 'إتقان الـ Stack التقني', 'إتقان تقني شامل يغطي الواجهات الحديثة والأنظمة الخلفية الموزعة المعقدة.'],
+                    ['encrypted', 'تركيز على الأمن', 'تشفير البيانات وحماية الثغرات وفق أعلى المعايير العالمية للصناعة.'],
+                    ['cloud_upload', 'نشر سلس', 'التعامل مع متطلبات الرفع الصارمة ومعايير القبول في متاجر التطبيقات العالمية.'],
+                    ['handshake', 'تنفيذ بقيادة الشريك', 'العمل بانسجام مع فرق خارجية لضمان وحدة كاملة في الرؤية والتماسك التقني.'],
+                    ['sync_alt', 'سير عمل حديث', 'اعتماد منهجيات Agile محسّنة وخطوط CI/CD لضمان السرعة وجودة الكود.'],
+                ];
+                foreach ($expertise as $i => [$icon, $title, $desc]) : ?>
+                    <div class="ab-glass-card reveal" style="--delay:<?php echo esc_attr($i * 90); ?>ms">
+                        <div class="ab-glass-card__icon">
+                            <span class="material-symbols-outlined"><?php echo esc_html($icon); ?></span>
+                        </div>
+                        <h5><?php echo esc_html($title); ?></h5>
+                        <p><?php echo esc_html($desc); ?></p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════
+         5. PRODUCT PHILOSOPHY
+    ═══════════════════════════════ -->
+    <section class="ab-section ab-section--white">
+        <div class="container">
+            <div class="ab-header ab-header--center reveal">
+                <h2 class="ab-title">فلسفتنا في المنتجات</h2>
+                <div class="ab-divider"></div>
+            </div>
+
+            <div class="ab-philosophy">
+                <?php
+                $philosophy = [
+                    ['01', 'لا نبدأ بالكود', 'نبدأ برسم منطق العمل ورحلة المستخدم الكاملة قبل كتابة أول سطر كود. فهم "لماذا" هو شرطنا الأساسي لفهم "كيف".'],
+                    ['02', 'لا نبني واجهات فحسب', 'الجمال مهم، لكن الوظيفة والكفاءة والأمان أسس لا نساوم عليها أبداً. الشاشة الجميلة عديمة الفائدة إذا فشل النظام خلفها.'],
+                    ['03', 'لا نبالغ في الوعود', 'نتحدث بشفافية عمّا يمكن تحقيقه تقنياً والجداول الزمنية الواقعية دون مبالغة. النزاهة هي جوهر ثقافتنا الهندسية.'],
+                    ['04', 'نبني للتوسع', 'نتوقع نجاحك، ونصمم النظام لاستيعاب نمو ضخم في الحجم منذ اليوم الأول. بنيتنا تنمو مع نمو أعمالك.'],
+                ];
+                foreach ($philosophy as $i => [$num, $title, $desc]) : ?>
+                    <div class="ab-phil-item reveal" style="--delay:<?php echo esc_attr($i * 100); ?>ms">
+                        <div class="ab-phil-item__num"><?php echo esc_html($num); ?></div>
+                        <div class="ab-phil-item__body">
+                            <h4><?php echo esc_html($title); ?></h4>
+                            <p><?php echo esc_html($desc); ?></p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════
+         6. SECTOR EXPERIENCE
+    ═══════════════════════════════ -->
+    <section class="ab-section ab-section--muted-soft">
+        <div class="container">
+            <div class="ab-split-header reveal">
+                <div class="ab-split-header__main">
+                    <h2 class="ab-title">تجربة عبر مختلف القطاعات</h2>
+                    <p class="ab-subtitle">حلول تقنية متخصصة وفهم عميق للتحديات الفريدة في صناعات سريعة النمو.</p>
+                </div>
+            </div>
+
+            <div class="ab-sector-grid">
+                <?php
+                $sectors = ['اللوجستيات والتوصيل', 'حفلات الأعراس والفعاليات', 'الخدمات العقارية والصيانة', 'الأسواق الرقمية', 'التجارة الإلكترونية', 'التعليم والتدريب', 'منصات الخدمات', 'العمليات التجارية'];
+                foreach ($sectors as $i => $sector) : ?>
+                    <div class="ab-sector-pill reveal" style="--delay:<?php echo esc_attr($i * 60); ?>ms"><?php echo esc_html($sector); ?></div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════
+         7. TECHNICAL PARTNERSHIPS
+    ═══════════════════════════════ -->
+    <section class="ab-section ab-section--dark">
+        <div class="ab-section--dark__grid"></div>
+        <div class="ab-timeline-glow ab-timeline-glow--1"></div>
+        <div class="ab-timeline-glow ab-timeline-glow--2"></div>
+        <div class="container">
+            <div class="ab-header ab-header--center reveal">
+                <div class="ab-eyebrow ab-eyebrow--center ab-eyebrow--outline">تحالفات استراتيجية</div>
+                <h2 class="ab-title ab-title--light">شراكات وتعاونات تقنية</h2>
+                <p class="ab-subtitle ab-subtitle--light">نوفر نماذج تعاون احترافية لوكالات التصميم وشركات البرمجيات لإتمام مشاريعها بأعلى جودة هندسية.</p>
+            </div>
+
+            <div class="ab-grid ab-grid--3">
+                <?php
+                $partnerships = [
+                    ['smartphone', 'تنفيذ تطبيقات الجوال', 'التعامل مع الجانب التقني لشركات التقنية مع الالتزام الصارم بهوية العلامة والمتطلبات.'],
+                    ['extension', 'تطوير وحدات المنتج', 'بناء ميزات جديدة أو تحسين وحدات تقنية متخصصة داخل أنظمتك الحالية.'],
+                    ['branding_watermark', 'تطبيق White-label', 'منصات مخصصة تُسلّم لك لتكون جزءاً من خدماتك تحت علامتك التجارية.'],
+                    ['handshake', 'تنفيذ مشترك', 'العمل كفريق موحد على مشاريع ضخمة تتطلب توزيع الجهود وخبرة عميقة.'],
+                    ['support_agent', 'دعم فريق التطوير', 'توفير مهندسين متخصصين لسد فجوات المهارات في فريقك لفترات أو مراحل محددة.'],
+                    ['history_edu', 'تحسين المنتجات الحالية', 'مراجعة الكود الحالي، إصلاح الأخطاء، وزيادة كفاءة الأنظمة القديمة المتعثرة.'],
+                ];
+                foreach ($partnerships as $i => [$icon, $title, $desc]) : ?>
+                    <div class="ab-glass-card reveal" style="--delay:<?php echo esc_attr($i * 90); ?>ms">
+                        <div class="ab-glass-card__icon">
+                            <span class="material-symbols-outlined"><?php echo esc_html($icon); ?></span>
+                        </div>
+                        <h5><?php echo esc_html($title); ?></h5>
+                        <p><?php echo esc_html($desc); ?></p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <div class="ab-center-btn reveal">
+                <a href="<?php echo esc_url(home_url('/consultation/')); ?>" class="ab-btn ab-btn--primary ab-btn--lg">ناقش شراكة</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════
+         8. STRATEGIC PARTNERSHIPS (LOGOS)
+    ═══════════════════════════════ -->
+    <section class="ab-section ab-section--white ab-logos-section">
+        <div class="container">
+            <h2 class="ab-logos__label reveal">شراكات استراتيجية</h2>
+
+            <div class="ab-logos__grid reveal" style="--delay:100ms">
+                <?php
+                $companies = [
+                    ['Microsoft', 'https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg'],
+                    ['Google',    'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg'],
+                    ['Amazon',    'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg'],
+                    ['AWS',       'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg'],
+                    ['Azure',     'https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg'],
+                    ['Apple',     'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg'],
+                    ['Samsung',   'https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg'],
+                    ['Oracle',    'https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg'],
+                ];
+                foreach ($companies as $i => [$name, $src]) : ?>
+                    <div class="ab-logos__item" style="--delay:<?php echo esc_attr($i * 60); ?>ms">
+                        <img src="<?php echo esc_url($src); ?>" alt="<?php echo esc_attr($name); ?>" loading="lazy">
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <p class="ab-logos__disclaimer reveal" style="--delay:200ms">
+                تختلف طبيعة التعاون؛ فقد عملنا كشريك تقني بعلامة بيضاء (White-label) لوكالات، أو كمطورين لوحدات متخصصة، أو كمستشارين هندسيين لفرق نامية.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════
+         9. TRANSPARENCY
+    ═══════════════════════════════ -->
+    <section class="ab-section ab-section--white">
+        <div class="container">
+            <div class="ab-transparency-card reveal">
+                <div class="ab-transparency-card__icon">
+                    <span class="material-symbols-outlined">verified_user</span>
+                </div>
+                <div class="ab-transparency-card__body">
+                    <h2>الشفافية في العمل والأدوار</h2>
+                    <p>في SpinesTech، نؤمن بالوضوح المهني. بعض الأعمال التي نفذناها كانت كشريك تقني خفي (White-label) لوكالات أخرى، بينما مشاريع أخرى كانت مباشرة لعملائنا. نلتزم دائماً باتفاقيات عدم الإفصاح (NDA) ونفخر بدورنا في نجاح كل مشروع بغض النظر عن ظهور واجهتنا.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════
+         9. GULF MARKET FIT
+    ═══════════════════════════════ -->
+    <section class="ab-section ab-section--muted-soft">
+        <div class="container">
+            <h2 class="ab-title ab-title--center reveal">مصمم لفهم احتياجات سوق الخليج</h2>
+
+            <div class="ab-grid ab-grid--5">
+                <?php
+                $gulf = [
+                    ['language', 'عربي أولاً / جاهز لـ RTL', 'دعم كامل لتجارب المستخدم العربية و RTL من مستوى الكود.'],
+                    ['account_tree', 'التركيز على سير العمل', 'تصميم أنظمة تناسب سير العمل التجاري الإقليمي والتوقعات الثقافية.'],
+                    ['admin_panel_settings', 'تحكم إداري', 'لوحات تحكم قوية تمنحك سيطرة كاملة على العمليات المحلية المعقدة.'],
+                    ['rocket_launch', 'تسليم قابل للتوسع', 'مواكبة الطفرة الرقمية والنمو السريع في منطقة الخليج.'],
+                    ['handshake', 'صديق للشركاء', 'بناء علاقات إقليمية طويلة الأمد قائمة على الثقة والاحترافية.'],
+                ];
+                foreach ($gulf as $i => [$icon, $title, $desc]) : ?>
+                    <div class="ab-gulf-card reveal" style="--delay:<?php echo esc_attr($i * 90); ?>ms">
+                        <span class="material-symbols-outlined"><?php echo esc_html($icon); ?></span>
+                        <h6><?php echo esc_html($title); ?></h6>
+                        <p><?php echo esc_html($desc); ?></p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════
+         10. FINAL CTA
+    ═══════════════════════════════ -->
+    <section class="ab-cta">
+        <div class="ab-cta__grid"></div>
+        <div class="ab-cta__glow"></div>
+        <div class="container ab-cta__inner reveal">
+            <h2>تبحث عن شريك يبني المنتجات<br>كأنظمة أعمال قابلة للتوسع؟</h2>
+            <p>دعنا نناقش كيف يمكننا تحويل رؤيتك إلى منتج رقمي متين وقابل للتوسع يتصدّر السوق.</p>
+            <div class="ab-cta__actions">
+                <a href="<?php echo esc_url(home_url('/consultation/')); ?>" class="ab-btn ab-btn--primary ab-btn--lg">ابدأ مشروعك</a>
+                <a href="<?php echo esc_url(home_url('/case-studies/')); ?>" class="ab-btn ab-btn--outline-light ab-btn--lg">تصفح دراسات الحالة</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script>
+(function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('reveal--visible'); });
+        return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal--visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    els.forEach(function (el) { observer.observe(el); });
+})();
+</script>
 
 <?php get_footer(); ?>

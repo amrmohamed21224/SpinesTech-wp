@@ -7,7 +7,8 @@
 @import "./components/utilities.css";
 @import "./components/navbar.css";
 @import "./components/footer.css";
-
+@import "./pages/home.css"; 
+/* أو @import "./components/home.css"; حسب المكان اللي حفظت فيه الملف */
 :root {
   --color-primary: #000000;
   --color-secondary: #036d36;

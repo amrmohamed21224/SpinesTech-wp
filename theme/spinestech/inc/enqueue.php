@@ -53,10 +53,44 @@ function st_enqueue_assets(): void
 
     if (is_front_page()) {
         wp_enqueue_style('st-home', st_asset('css/pages/home.css'), ['st-main'], $ver);
+        wp_enqueue_script('st-pricing-reveal', st_asset('js/pricing-reveal.js'), [], $ver, true);
     }
 
     if (is_post_type_archive('st_service') || is_tax('st_service_cat')) {
         wp_enqueue_style('st-services', st_asset('css/pages/services.css'), ['st-main'], $ver);
+
+        // Three.js must load BEFORE services-hero.js (dependency)
+        wp_enqueue_script(
+            'st-threejs',
+            'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js',
+            [],
+            '128',
+            true
+        );
+
+        wp_enqueue_script(
+            'st-services-hero',
+            st_asset('js/services-hero.js'),
+            ['st-threejs'],
+            $ver,
+            true
+        );
+    }
+
+    if (is_page('contact') || is_page_template('page-contact.php')) {
+        wp_enqueue_script('st-contact-hero', st_asset('js/contact-hero.js'), [], $ver, true);
+    }
+
+    // Articles archive page
+    if (is_page_template('page-articles.php')) {
+        wp_enqueue_style('st-articles', st_asset('css/pages/articles.css'), ['st-main'], $ver);
+        wp_enqueue_script('st-articles-js', st_asset('js/articles.js'), [], $ver, true);
+    }
+
+    // Single article page (native WP post)
+    if (is_singular('post')) {
+        wp_enqueue_style('st-single-article', st_asset('css/pages/single-article.css'), ['st-main'], $ver);
+        wp_enqueue_script('st-articles-js', st_asset('js/articles.js'), [], $ver, true);
     }
 
     if (is_post_type_archive('st_product')) {
@@ -85,6 +119,17 @@ function st_enqueue_assets(): void
 
     if (is_singular('st_case_study')) {
         wp_enqueue_style('st-single-case-study', st_asset('css/pages/single-case-study.css'), ['st-main'], $ver);
+        wp_enqueue_script('st-case-study', st_asset('js/case-study.js'), [], $ver, true);
+    }
+
+    if (is_singular('st_case_study') && in_array(get_post_field('post_name', get_the_ID()), ['merchant', 'merchant-ecommerce', 'fashion-marketplace'], true)) {
+        wp_enqueue_style('st-merchant-case-study', st_asset('css/pages/single-case-study-merchant.css'), ['st-main'], $ver);
+        wp_enqueue_script('st-case-study-merchant', st_asset('js/case-study-merchant.js'), [], $ver, true);
+    }
+
+    if (is_singular('st_case_study') && in_array(get_post_field('post_name', get_the_ID()), ['propcare', 'propcare-360', 'property-management'], true)) {
+        wp_enqueue_style('st-propcare-case-study', st_asset('css/pages/single-case-study-propcare.css'), ['st-main'], $ver);
+        wp_enqueue_script('st-case-study-propcare', st_asset('js/case-study-propcare.js'), [], $ver, true);
     }
 
     if (is_singular('st_job')) {
@@ -94,6 +139,15 @@ function st_enqueue_assets(): void
     if (is_page_template('page-work-environment.php') || is_404()) {
         wp_enqueue_style('st-work-env', st_asset('css/pages/work-environment.css'), ['st-main'], $ver);
     }
+
+    if (is_page_template('page-articles.php') || is_home() || is_category() || is_tag() || is_author() || is_search() || is_post_type_archive('post')) {
+        wp_enqueue_style('st-articles', st_asset('css/pages/articles.css'), ['st-main'], $ver);
+    }
+
+    if (is_singular('post')) {
+        wp_enqueue_style('st-single-article', st_asset('css/pages/single-article.css'), ['st-main'], $ver);
+    }
+
 
     wp_enqueue_script('st-navbar', st_asset('js/navbar.js'), [], $ver, true);
     wp_enqueue_script('st-accordion', st_asset('js/accordion.js'), [], $ver, true);

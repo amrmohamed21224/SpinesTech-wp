@@ -9,6 +9,22 @@
 
 if (!defined('ABSPATH')) exit;
 
+// Route Merchant case study to its own dedicated template
+$st_cs_slug     = get_post_field( 'post_name', get_the_ID() );
+$merchant_slugs = [ 'merchant', 'merchant-ecommerce', 'fashion-marketplace' ];
+
+if ( in_array( $st_cs_slug, $merchant_slugs, true ) ) {
+    include get_template_directory() . '/template-case-study-merchant.php';
+    exit;
+}
+
+// Route PropCare case study to its own dedicated template
+$propcare_slugs = [ 'propcare', 'propcare-360', 'property-management' ];
+if ( in_array( $st_cs_slug, $propcare_slugs, true ) ) {
+    include get_template_directory() . '/template-case-study-propcare.php';
+    exit;
+}
+
 get_header();
 
 while (have_posts()) : the_post();
