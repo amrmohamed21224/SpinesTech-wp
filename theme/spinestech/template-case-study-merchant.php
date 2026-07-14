@@ -271,30 +271,30 @@ get_header();
                     <span class="mcs__browser-url">dashboard.merchant.spines.tech</span>
                 </div>
                 <div class="mcs__browser-body">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.png')); ?>" alt="Merchant dashboard analytics overview" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard.png')); ?>" alt="Merchant dashboard analytics overview" loading="lazy" />
                 </div>
             </div>
 
             <div class="mcs__video-grid" data-mcs-reveal-group>
                 <div class="mcs__video-card" data-mcs-reveal>
                     <h4>Merchant Login Demo</h4>
-                    <div class="mcs__video-thumb">
-                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.png')); ?>" alt="Merchant login demo thumbnail" loading="lazy" />
+                    <a href="https://www.youtube.com/watch?v=OvxffxGhQ9E" target="_blank" class="mcs__video-thumb">
+                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard.png')); ?>" alt="Merchant login demo thumbnail" loading="lazy" />
                         <div class="mcs__video-overlay">
                             <span class="material-symbols-outlined">play_circle</span>
                             <p>Watch Video</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="mcs__video-card" data-mcs-reveal data-mcs-delay="120">
                     <h4>Products Adding &amp; Editing</h4>
-                    <div class="mcs__video-thumb">
-                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.png')); ?>" alt="Product management demo thumbnail" loading="lazy" />
+                    <a href="https://www.youtube.com/watch?v=KJGuiAH6qoc" target="_blank" class="mcs__video-thumb">
+                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard2.png')); ?>" alt="Product management demo thumbnail" loading="lazy" />
                         <div class="mcs__video-overlay">
                             <span class="material-symbols-outlined">play_circle</span>
                             <p>Watch Video</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -331,7 +331,7 @@ get_header();
             <div class="mcs__admin-visual" data-mcs-reveal data-mcs-delay="150">
                 <div class="mcs__admin-glow" aria-hidden="true"></div>
                 <div class="mcs__admin-frame">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.png')); ?>" alt="Admin dashboard with global merchant map" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard2.png')); ?>" alt="Admin dashboard with global merchant map" loading="lazy" />
                 </div>
             </div>
 
@@ -450,7 +450,7 @@ get_header();
                     <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.png')); ?>" alt="Wishlist screen montage" loading="lazy" />
                 </div>
                 <div class="mcs__showcase-item" data-mcs-reveal data-mcs-delay="320">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.png')); ?>" alt="Dashboard responsive views" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard.png')); ?>" alt="Dashboard responsive views" loading="lazy" />
                 </div>
             </div>
         </div>
@@ -465,23 +465,23 @@ get_header();
 
             <div class="mcs__demos-grid" data-mcs-reveal-group>
                 <div class="mcs__demo" data-mcs-reveal>
-                    <div class="mcs__demo-thumb mcs__demo-thumb--primary">
-                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.png')); ?>" alt="Merchant login workflow thumbnail" loading="lazy" />
+                    <a href="https://www.youtube.com/watch?v=OvxffxGhQ9E" target="_blank" class="mcs__demo-thumb mcs__demo-thumb--primary">
+                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard.png')); ?>" alt="Merchant login workflow thumbnail" loading="lazy" />
                         <div class="mcs__demo-overlay">
                             <span class="material-symbols-outlined">play_arrow</span>
                         </div>
-                    </div>
+                    </a>
                     <h4>Merchant Login Workflow</h4>
                     <p>A step-by-step demonstration of the secure merchant entry and multi-factor authentication process.</p>
                 </div>
 
                 <div class="mcs__demo" data-mcs-reveal data-mcs-delay="120">
-                    <div class="mcs__demo-thumb mcs__demo-thumb--gold">
-                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.png')); ?>" alt="Product management demo thumbnail" loading="lazy" />
+                    <a href="https://www.youtube.com/watch?v=KJGuiAH6qoc" target="_blank" class="mcs__demo-thumb mcs__demo-thumb--gold">
+                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard2.png')); ?>" alt="Product management demo thumbnail" loading="lazy" />
                         <div class="mcs__demo-overlay">
                             <span class="material-symbols-outlined">play_arrow</span>
                         </div>
-                    </div>
+                    </a>
                     <h4>Product Management Demo</h4>
                     <p>See how vendors can easily list, edit, and categorize products within their storefront in seconds.</p>
                 </div>
@@ -515,10 +515,10 @@ get_header();
                     <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Item+Details.png')); ?>" alt="Product details screen" loading="lazy" />
                 </div>
                 <div class="mcs__results-img mcs__results-img--up">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.png')); ?>" alt="Admin merchant listing table" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard2.png')); ?>" alt="Admin merchant listing table" loading="lazy" />
                 </div>
                 <div class="mcs__results-img">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.png')); ?>" alt="Merchant using dashboard in-store" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard.png')); ?>" alt="Merchant using dashboard in-store" loading="lazy" />
                 </div>
             </div>
 
