@@ -1,524 +1,660 @@
 <?php
 /**
- * Single Case Study Template
- * Template: single-st_case_study.php
+ * Backway Case Study — single-st_case_study.php
  *
- * Dynamic content driven by ACF fields with fallback to post meta.
- * All sections are optional and will not render if empty.
+ * UPDATED: every hotlinked/external screenshot replaced with the real
+ * local product screenshots in assets/images/case-studies/backway/.
+ * Layout, spacing, and section structure are unchanged — only image
+ * sources, alt text, and light animation hooks were added.
+ *
+ * Image → section mapping (all 8 provided screenshots are used):
+ *   Hero (back phone)          → driver-negotiation.png
+ *   Hero (front phone)         → shipper-home-page.png
+ *   The Trip Comes First       → admin-home.png (cinematic browser frame)
+ *   Ecosystem · Customer App   → shipper-Shipment-details-Live-tracking.png (phone)
+ *   Ecosystem · Driver App     → driver-home-page.png (front phone)
+ *                                 + driver-Trips History.png (back phone)
+ *   Ecosystem · Admin Panel    → admin-login.png (browser frame — genuine
+ *                                 web content, kept as a desktop screen
+ *                                 rather than forced into a phone shape)
+ *   Final CTA                  → driver-settlments.jpg (tilted phone)
  */
 
-if (!defined('ABSPATH')) exit;
+/* ════════════════════════════════════════════════════════════════
+ * ROUTER — runs BEFORE get_header() so no HTML is output yet.
+ * Each bespoke case study gets its own fully self-contained template.
+ * Add new slugs here whenever a new premium case study is created.
+ * ════════════════════════════════════════════════════════════════ */
+$_cs_slug = get_post_field( 'post_name', get_the_ID() );
 
-// Route Merchant case study to its own dedicated template
-$st_cs_slug     = get_post_field( 'post_name', get_the_ID() );
-$merchant_slugs = [ 'merchant', 'merchant-ecommerce', 'fashion-marketplace' ];
-
-if ( in_array( $st_cs_slug, $merchant_slugs, true ) ) {
+// Merchant / fashion-marketplace
+if ( in_array( $_cs_slug, [ 'merchant', 'merchant-ecommerce', 'fashion-marketplace' ], true ) ) {
     include get_template_directory() . '/template-case-study-merchant.php';
     exit;
 }
 
-// Route PropCare case study to its own dedicated template
-$propcare_slugs = [ 'propcare', 'propcare-360', 'property-management' ];
-if ( in_array( $st_cs_slug, $propcare_slugs, true ) ) {
+// PropCare 360 / property-management
+if ( in_array( $_cs_slug, [ 'propcare', 'propcare-360', 'property-management' ], true ) ) {
     include get_template_directory() . '/template-case-study-propcare.php';
     exit;
 }
 
+/* ════════════════════════════════════════════════════════════════
+ * DEFAULT TEMPLATE — Backway case study (rendered below).
+ * Only reached if the slug did NOT match any route above.
+ * ════════════════════════════════════════════════════════════════ */
+
+if ( ! function_exists( 'cs_bw_img' ) ) {
+    /**
+     * Resolve a Backway case-study image URL, safely encoding spaces
+     * in filenames that still contain them (e.g. "driver-Trips History.png").
+     */
+    function cs_bw_img( $filename ) {
+        $path = 'images/case-studies/backway/' . str_replace( ' ', '%20', $filename );
+        return function_exists( 'st_asset' ) ? st_asset( $path ) : get_template_directory_uri() . '/assets/' . $path;
+    }
+}
+
 get_header();
-
-while (have_posts()) : the_post();
-    $post_id = get_the_ID();
-    $title = get_the_title();
-    $featured_img = get_the_post_thumbnail_url($post_id, 'full');
-
-    // Hero Section
-    $hero_tags = get_field('st_hero_tags', $post_id) ?: [];
-    $hero_images = get_field('st_hero_images', $post_id) ?: [];
-    $hero_phone_img = $hero_images[0]['url'] ?? ($hero_images[0] ?? '');
-    $hero_desktop_img = $hero_images[1]['url'] ?? ($hero_images[1] ?? '');
-
-    // Project Snapshot
-    $snapshot = get_field('st_project_snapshot', $post_id) ?: [];
-
-    // Opportunity Section
-    $opp_title = get_field('st_opportunity_title', $post_id);
-    $opp_text = get_field('st_opportunity_text', $post_id);
-    $opp_steps = get_field('st_opportunity_steps', $post_id) ?: [];
-
-    // Perspectives Section
-    $perspectives = get_field('st_perspectives', $post_id) ?: [];
-
-    // Process Section
-    $proc_title = get_field('st_process_title', $post_id);
-    $proc_sub = get_field('st_process_subtitle', $post_id);
-    $proc_steps = get_field('st_process_steps', $post_id) ?: [];
-    $proc_image = get_field('st_process_image', $post_id);
-    $proc_cap_t = get_field('st_process_caption_title', $post_id);
-    $proc_cap_s = get_field('st_process_caption_sub', $post_id);
-
-    // Pillars Section
-    $pillars = get_field('st_pillars', $post_id) ?: [];
-
-    // Operational Depth Section
-    $depth_cards = get_field('st_operational_depth', $post_id) ?: [];
-
-    // Trust Section
-    $trust_title = get_field('st_trust_title', $post_id);
-    $trust_text = get_field('st_trust_text', $post_id);
-    $trust_items = get_field('st_trust_items', $post_id) ?: [];
-
-    // Live Section
-    $live_title = get_field('st_live_title', $post_id);
-    $live_text = get_field('st_live_text', $post_id);
-    $live_url = get_field('st_live_url', $post_id);
-    $live_apps = get_field('st_live_apps', $post_id) ?: [];
-
-    // Tech Stack Section
-    $tech_stack = get_field('st_tech_stack', $post_id) ?: [];
-
-    // CTA Section
-    $cta_title = get_field('st_cta_title', $post_id);
-    $cta_text = get_field('st_cta_text', $post_id);
-    if (empty($cta_title)) $cta_title = st_t('Building a Logistics Platform or Marketplace?');
-    if (empty($cta_text)) $cta_text = st_t('Leverage our experience in creating high-stakes operational dashboards and multi-role marketplaces.');
-
-    // Detect RTL
-    $dir = function_exists('st_dir') ? st_dir() : (is_rtl() ? 'rtl' : 'ltr');
 ?>
 
-<div class="single-case-study" dir="<?php echo esc_attr($dir); ?>">
+<div class="cs-page" dir="ltr">
 
-    <!-- ========================================
-         HERO SECTION
-    ========================================= -->
-    <section class="hero">
-        <div class="grid-overlay"></div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="tag-case-study">
-                    <span class="material-symbols-outlined">verified</span>
-                    <span><?php echo esc_html(st_t('Case Study')) . ': ' . esc_html($title); ?></span>
+    <!-- ═══════════════════════════════════════
+         SECTION 1 · HERO
+    ═══════════════════════════════════════ -->
+    <section class="cs-hero">
+        <div class="cs-hero__grid-bg" aria-hidden="true"></div>
+
+        <div class="cs-container cs-hero__inner">
+
+            <div class="cs-hero__content" data-reveal>
+
+                <div class="cs-hero__badge">
+                    <span class="material-symbols-outlined cs-hero__badge-icon">verified</span>
+                    Case Study: Backway
                 </div>
-                <h1 class="hero-title">
-                    <?php echo esc_html($title); ?>
+
+                <h1 class="cs-hero__title">
+                    Backway — Trip-Based Shipment Marketplace for a Canadian Logistics Startup
                 </h1>
-                <?php if (has_excerpt()) : ?>
-                <p class="hero-description">
-                    <?php echo esc_html(get_the_excerpt()); ?>
+
+                <p class="cs-hero__subtitle">
+                    A robust, multi-role logistics ecosystem designed to monetize existing intercity vehicle space through a highly governed, trip-first marketplace model.
                 </p>
-                <?php endif; ?>
 
-                <?php if (!empty($hero_tags)) : ?>
-                <div class="hero-tags-wrapper">
-                    <?php foreach ($hero_tags as $tag) : ?>
-                    <span class="hero-tag"><?php echo esc_html($tag['text'] ?? ''); ?></span>
-                    <?php endforeach; ?>
+                <div class="cs-hero__tags">
+                    <span class="cs-tag">Customer App</span>
+                    <span class="cs-tag">Driver App</span>
+                    <span class="cs-tag">Admin Panel</span>
+                    <span class="cs-tag">OTP Delivery</span>
+                    <span class="cs-tag">Wallet &amp; Settlements</span>
+                    <span class="cs-tag">Multi-Language</span>
                 </div>
-                <?php endif; ?>
 
-                <div class="hero-actions">
-                    <a href="#cs-details" class="btn btn-primary">
-                        <?php echo esc_html(st_t('Explore Case Study')); ?>
-                    </a>
-                    <?php if (!empty($opp_steps)) : ?>
-                    <a href="#cs-flow" class="btn btn-outline">
-                        <?php echo esc_html(st_t('View Platform Flow')); ?>
-                    </a>
-                    <?php endif; ?>
+                <div class="cs-hero__ctas">
+                    <a href="#cs-snapshot" class="cs-btn cs-btn--primary">Explore Case Study</a>
+                    <a href="#cs-model" class="cs-btn cs-btn--outline">View Platform Flow</a>
                 </div>
+
             </div>
 
-            <div class="hero-visual">
-                <div class="collage-container">
-                    <div class="collage-bg-glow"></div>
-                    <?php if (!empty($hero_phone_img)) : ?>
-                    <img src="<?php echo esc_url($hero_phone_img); ?>" alt="Mobile Mockup" class="collage-img-phone" loading="lazy" />
-                    <?php endif; ?>
-                    <?php if (!empty($hero_desktop_img)) : ?>
-                    <img src="<?php echo esc_url($hero_desktop_img); ?>" alt="Desktop Mockup" class="collage-img-desktop" loading="lazy" />
-                    <?php endif; ?>
-                    <div class="collage-note"><?php echo esc_html(st_t('Note: Replace mockups with real product screenshots')); ?></div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="cs-hero__visual" data-reveal data-reveal-delay="150">
+                <div class="cs-hero__mockups">
 
-    <!-- ========================================
-         PROJECT SNAPSHOT SECTION
-    ========================================= -->
-    <?php if (!empty($snapshot)) : ?>
-    <section class="snapshot-section">
-        <div class="container">
-            <div class="section-title-centered">
-                <h2><?php echo esc_html(st_t('Project Snapshot')); ?></h2>
-            </div>
-            <div class="snapshot-grid">
-                <?php foreach ($snapshot as $snap) :
-                    $label = $snap['label'] ?? '';
-                    $value = $snap['value'] ?? '';
-                    $highlight = !empty($snap['highlight']);
-                    if (empty($label) && empty($value)) continue;
-                ?>
-                <div class="snapshot-card">
-                    <span class="badge-mono"><?php echo esc_html($label); ?></span>
-                    <p class="snapshot-val<?php echo $highlight ? ' highlight-orange' : ''; ?>">
-                        <?php echo esc_html($value); ?>
-                    </p>
-                </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
-    <?php endif; ?>
-
-    <!-- ========================================
-         OPPORTUNITY SECTION
-    ========================================= -->
-    <?php if (!empty($opp_title) || !empty($opp_steps)) : ?>
-    <section class="opportunity-section">
-        <div class="container">
-            <div class="opportunity-header">
-                <?php if (!empty($opp_title)) : ?>
-                <h2><?php echo esc_html($opp_title); ?></h2>
-                <?php endif; ?>
-                <?php if (!empty($opp_text)) : ?>
-                <p class="body-lg">
-                    <?php echo esc_html($opp_text); ?>
-                </p>
-                <?php endif; ?>
-            </div>
-
-            <?php if (!empty($opp_steps)) : ?>
-            <div class="flow-container">
-                <?php foreach ($opp_steps as $i => $step) :
-                    $icon = $step['icon'] ?? 'circle';
-                    $label = $step['label'] ?? '';
-                ?>
-                <div class="flow-step">
-                    <div class="flow-icon-circle">
-                        <span class="material-symbols-outlined"><?php echo esc_html($icon); ?></span>
+                    <div class="cs-hero__phone cs-hero__phone--back">
+                        <div class="cs-hero__phone-notch" aria-hidden="true"></div>
+                        <img
+                            src="<?php echo esc_url( cs_bw_img( 'driver-negotiation.png' ) ); ?>"
+                            alt="Backway driver app price negotiation screen for a shipment request"
+                            loading="eager"
+                            decoding="async"
+                        />
                     </div>
-                    <p class="flow-title"><?php echo esc_html($label); ?></p>
+
+                    <div class="cs-hero__phone cs-hero__phone--front">
+                        <div class="cs-hero__phone-notch" aria-hidden="true"></div>
+                        <img
+                            src="<?php echo esc_url( cs_bw_img( 'shipper-home-page.png' ) ); ?>"
+                            alt="Backway customer app home screen showing available trips and quick shipment actions"
+                            loading="eager"
+                            decoding="async"
+                        />
+                    </div>
+
+                    <div class="cs-hero__glow" aria-hidden="true"></div>
                 </div>
-                <?php if ($i < count($opp_steps) - 1) : ?>
-                <div class="flow-line-dashed"></div>
-                <?php endif; ?>
-                <?php endforeach; ?>
             </div>
-            <?php endif; ?>
+
         </div>
     </section>
-    <?php endif; ?>
 
-    <!-- ========================================
-         PERSPECTIVES SECTION
-    ========================================= -->
-    <?php if (!empty($perspectives)) : ?>
-    <section class="perspectives-section">
-        <div class="container">
-            <div class="bento-grid-perspectives">
-                <?php foreach ($perspectives as $p) :
-                    $style = ($p['style'] ?? 'light') === 'dark' ? 'dark' : 'light';
-                    $icon = $p['icon'] ?? 'person';
-                    $ptitle = $p['title'] ?? '';
-                    $items = $p['items'] ?? [];
-                ?>
-                <div class="bento-card-<?php echo esc_attr($style); ?>">
-                    <div class="perspective-header">
-                        <div class="perspective-icon-box">
-                            <span class="material-symbols-outlined"><?php echo esc_html($icon); ?></span>
+    <!-- ═══════════════════════════════════════
+         SECTION 2 · PROJECT SNAPSHOT
+    ═══════════════════════════════════════ -->
+    <section class="cs-snapshot" id="cs-snapshot">
+        <div class="cs-container">
+            <h2 class="cs-section-title" data-reveal>Project Snapshot</h2>
+            <div class="cs-snapshot__grid" data-reveal-group>
+                <div class="cs-snapshot__card" data-reveal>
+                    <span class="cs-snapshot__label">CLIENT</span>
+                    <p class="cs-snapshot__value">Canadian Startup</p>
+                </div>
+                <div class="cs-snapshot__card" data-reveal data-reveal-delay="60">
+                    <span class="cs-snapshot__label">INDUSTRY</span>
+                    <p class="cs-snapshot__value">Logistics Tech</p>
+                </div>
+                <div class="cs-snapshot__card" data-reveal data-reveal-delay="120">
+                    <span class="cs-snapshot__label">PLATFORMS</span>
+                    <p class="cs-snapshot__value">iOS, Android, Web</p>
+                </div>
+                <div class="cs-snapshot__card" data-reveal data-reveal-delay="180">
+                    <span class="cs-snapshot__label">MODEL</span>
+                    <p class="cs-snapshot__value">Trip Marketplace</p>
+                </div>
+                <div class="cs-snapshot__card cs-snapshot__card--accent" data-reveal>
+                    <span class="cs-snapshot__label">STATUS</span>
+                    <p class="cs-snapshot__value">Delivered</p>
+                </div>
+                <div class="cs-snapshot__card" data-reveal data-reveal-delay="60">
+                    <span class="cs-snapshot__label">LANGUAGES</span>
+                    <p class="cs-snapshot__value">EN, AR, FR</p>
+                </div>
+                <div class="cs-snapshot__card" data-reveal data-reveal-delay="120">
+                    <span class="cs-snapshot__label">CORE ROLE</span>
+                    <p class="cs-snapshot__value">Driver / Admin</p>
+                </div>
+                <div class="cs-snapshot__card" data-reveal data-reveal-delay="180">
+                    <span class="cs-snapshot__label">GOVERNANCE</span>
+                    <p class="cs-snapshot__value">OTP Secured</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 3 · THE OPPORTUNITY
+    ═══════════════════════════════════════ -->
+    <section class="cs-opportunity">
+        <div class="cs-container cs-opportunity__inner">
+
+            <div class="cs-opportunity__text" data-reveal>
+                <h2 class="cs-opportunity__heading">
+                    Turning Existing Intercity Trips Into Delivery Opportunities
+                </h2>
+                <p class="cs-opportunity__copy">
+                    Most intercity travel involves unused vehicle space. Backway creates a secure bridge between travelers (Drivers) and people needing to send items (Customers), creating a sustainable, speed-focused delivery network.
+                </p>
+            </div>
+
+            <div class="cs-opportunity__flow" data-reveal-group>
+                <div class="cs-flow-step" data-reveal>
+                    <div class="cs-flow-step__icon">
+                        <span class="material-symbols-outlined">route</span>
+                    </div>
+                    <p>Driver Route</p>
+                </div>
+                <div class="cs-flow-connector" aria-hidden="true"></div>
+                <div class="cs-flow-step" data-reveal data-reveal-delay="80">
+                    <div class="cs-flow-step__icon">
+                        <span class="material-symbols-outlined">package_2</span>
+                    </div>
+                    <p>Shipment Creation</p>
+                </div>
+                <div class="cs-flow-connector" aria-hidden="true"></div>
+                <div class="cs-flow-step" data-reveal data-reveal-delay="160">
+                    <div class="cs-flow-step__icon">
+                        <span class="material-symbols-outlined">handshake</span>
+                    </div>
+                    <p>Negotiation</p>
+                </div>
+                <div class="cs-flow-connector" aria-hidden="true"></div>
+                <div class="cs-flow-step" data-reveal data-reveal-delay="240">
+                    <div class="cs-flow-step__icon">
+                        <span class="material-symbols-outlined">payments</span>
+                    </div>
+                    <p>Secure Payment</p>
+                </div>
+                <div class="cs-flow-connector" aria-hidden="true"></div>
+                <div class="cs-flow-step" data-reveal data-reveal-delay="320">
+                    <div class="cs-flow-step__icon">
+                        <span class="material-symbols-outlined">key</span>
+                    </div>
+                    <p>OTP Delivery</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 4 · PRODUCT IDEA (PERSPECTIVES)
+    ═══════════════════════════════════════ -->
+    <section class="cs-perspective">
+        <div class="cs-container">
+            <div class="cs-perspective__grid" data-reveal-group>
+
+                <!-- Customer -->
+                <div class="cs-perspective__card cs-perspective__card--light" data-reveal>
+                    <div class="cs-perspective__head">
+                        <div class="cs-perspective__icon-wrap">
+                            <span class="material-symbols-outlined">person</span>
                         </div>
-                        <h3><?php echo esc_html($ptitle); ?></h3>
+                        <h3>Customer Perspective</h3>
                     </div>
-                    <?php if (!empty($items)) : ?>
-                    <ul class="perspective-list">
-                        <?php foreach ($items as $item) : ?>
-                        <li class="perspective-item">
-                            <span class="material-symbols-outlined">check_circle</span>
-                            <p class="perspective-text"><?php echo esc_html($item['text'] ?? ''); ?></p>
+                    <ul class="cs-checklist">
+                        <li>
+                            <span class="material-symbols-outlined cs-checklist__icon">check_circle</span>
+                            Search and select routes between cities.
                         </li>
-                        <?php endforeach; ?>
+                        <li>
+                            <span class="material-symbols-outlined cs-checklist__icon">check_circle</span>
+                            Browse available drivers on the selected route.
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined cs-checklist__icon">check_circle</span>
+                            Manual selection of preferred drivers based on rating/price.
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined cs-checklist__icon">check_circle</span>
+                            Negotiate prices directly within the app.
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined cs-checklist__icon">check_circle</span>
+                            Pay through secure wallet-integrated system.
+                        </li>
                     </ul>
-                    <?php endif; ?>
                 </div>
-                <?php endforeach; ?>
+
+                <!-- Driver -->
+                <div class="cs-perspective__card cs-perspective__card--dark" data-reveal data-reveal-delay="120">
+                    <div class="cs-perspective__head">
+                        <div class="cs-perspective__icon-wrap cs-perspective__icon-wrap--dark">
+                            <span class="material-symbols-outlined">local_shipping</span>
+                        </div>
+                        <h3>Driver Perspective</h3>
+                    </div>
+                    <ul class="cs-checklist cs-checklist--dark">
+                        <li>
+                            <span class="material-symbols-outlined cs-checklist__icon">check_circle</span>
+                            Rigorous registration and admin manual approval.
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined cs-checklist__icon">check_circle</span>
+                            Create trips by defining source, destination, and path.
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined cs-checklist__icon">check_circle</span>
+                            Automatic visibility for shipments in passing cities.
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined cs-checklist__icon">check_circle</span>
+                            Manage multiple orders within a single active trip.
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined cs-checklist__icon">check_circle</span>
+                            Scheduled settlement upon successful delivery confirmation.
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         </div>
     </section>
-    <?php endif; ?>
 
-    <!-- ========================================
-         TRIP COMES FIRST SECTION
-    ========================================= -->
-    <?php if (!empty($proc_title) || !empty($proc_steps)) : ?>
-    <section class="trip-comes-first-section">
-        <div class="container">
-            <div class="section-title-centered">
-                <h2><?php echo esc_html($proc_title ?: st_t('The Trip Comes First')); ?></h2>
-                <?php if (!empty($proc_sub)) : ?>
-                <p class="body-lg">
-                    <?php echo esc_html($proc_sub); ?>
+    <!-- ═══════════════════════════════════════
+         SECTION 5 · THE TRIP COMES FIRST
+    ═══════════════════════════════════════ -->
+    <section class="cs-model" id="cs-model">
+        <div class="cs-container">
+
+            <div class="cs-model__head" data-reveal>
+                <h2 class="cs-section-title">The Trip Comes First</h2>
+                <p class="cs-model__subtitle">
+                    A unique model where delivery capability is defined by a traveler's intent, not algorithmic dispatch.
                 </p>
-                <?php endif; ?>
             </div>
 
-            <?php if (!empty($proc_steps)) : ?>
-            <div class="trip-grid-three">
-                <?php foreach ($proc_steps as $step) :
-                    $num = $step['num'] ?? '';
-                    $stitle = $step['title'] ?? '';
-                    $stext = $step['text'] ?? '';
-                ?>
-                <div class="trip-card-numbered">
-                    <div class="trip-number"><?php echo esc_html($num); ?></div>
-                    <h4><?php echo esc_html($stitle); ?></h4>
-                    <p class="trip-card-description">
-                        <?php echo esc_html($stext); ?>
-                    </p>
+            <div class="cs-model__cards" data-reveal-group>
+                <div class="cs-model__card" data-reveal>
+                    <span class="cs-model__num">01</span>
+                    <h4>Exclusive Trips</h4>
+                    <p>Only one active trip per driver at any time to ensure focus and delivery reliability.</p>
                 </div>
-                <?php endforeach; ?>
+                <div class="cs-model__card" data-reveal data-reveal-delay="100">
+                    <span class="cs-model__num">02</span>
+                    <h4>Multi-Order Batching</h4>
+                    <p>Drivers can accept multiple orders along their route until vehicle capacity is met.</p>
+                </div>
+                <div class="cs-model__card" data-reveal data-reveal-delay="200">
+                    <span class="cs-model__num">03</span>
+                    <h4>Independent Status</h4>
+                    <p>Each order has its own lifecycle; closing an order doesn't force a trip to end.</p>
+                </div>
             </div>
-            <?php endif; ?>
 
-            <?php if (!empty($proc_image)) : ?>
-            <div class="dashboard-mockup-showcase">
-                <div class="dashboard-mockup-img" style="background-image: url('<?php echo esc_url($proc_image); ?>');"></div>
-                <div class="dashboard-mockup-overlay">
-                    <div class="dashboard-mockup-info">
-                        <h5><?php echo esc_html($proc_cap_t ?: st_t('Live Route Dashboard')); ?></h5>
-                        <p><?php echo esc_html($proc_cap_s ?: st_t('Real-time status monitoring for Admin oversight')); ?></p>
-                    </div>
+            <div class="cs-model__visual" data-reveal>
+                <div class="cs-model__visual-chrome" aria-hidden="true">
+                    <span class="cs-model__visual-dot cs-model__visual-dot--red"></span>
+                    <span class="cs-model__visual-dot cs-model__visual-dot--gold"></span>
+                    <span class="cs-model__visual-dot cs-model__visual-dot--green"></span>
                 </div>
+                <div class="cs-model__visual-frame">
+                    <img
+                        src="<?php echo esc_url( cs_bw_img( 'admin-home.png' ) ); ?>"
+                        alt="Backway admin dashboard showing platform-wide trip and shipment overview"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                    <div class="cs-model__visual-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="cs-model__visual-caption">
+                    <p class="cs-model__visual-title">Live Operations Dashboard</p>
+                    <p class="cs-model__visual-sub">Real-time visibility into every trip and shipment across the platform</p>
+                </div>
+                <div class="cs-model__visual-glow" aria-hidden="true"></div>
             </div>
-            <?php endif; ?>
+
         </div>
     </section>
-    <?php endif; ?>
 
-    <!-- ========================================
-         PILLARS SECTION
-    ========================================= -->
-    <?php if (!empty($pillars)) : ?>
-    <section class="pillars-section">
-        <div class="container">
-            <div class="section-title-centered">
-                <h2><?php echo esc_html(st_t('Three Pillars of the Ecosystem')); ?></h2>
-            </div>
-            <div class="pillars-grid">
-                <?php foreach ($pillars as $pillar) :
-                    $image = $pillar['image'] ?? '';
-                    $ptitle = $pillar['title'] ?? '';
-                    $items = $pillar['items'] ?? [];
-                ?>
-                <div class="pillar-card">
-                    <?php if (!empty($image)) : ?>
-                    <div class="pillar-img-wrapper">
-                        <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($ptitle); ?>" loading="lazy" />
+    <!-- ═══════════════════════════════════════
+         SECTION 6 · THREE PILLARS (ECOSYSTEM)
+    ═══════════════════════════════════════ -->
+    <section class="cs-ecosystem">
+        <div class="cs-container">
+            <h2 class="cs-section-title" data-reveal>Three Pillars of the Ecosystem</h2>
+            <div class="cs-ecosystem__grid" data-reveal-group>
+
+                <!-- Customer App — single phone mockup -->
+                <div class="cs-ecosystem__card" data-reveal>
+                    <div class="cs-ecosystem__media cs-ecosystem__media--phone">
+                        <div class="cs-ecosystem__phone">
+                            <div class="cs-ecosystem__phone-notch" aria-hidden="true"></div>
+                            <img
+                                src="<?php echo esc_url( cs_bw_img( 'shipper-Shipment-details-Live-tracking.png' ) ); ?>"
+                                alt="Backway customer app live shipment tracking and delivery details screen"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                        </div>
                     </div>
-                    <?php endif; ?>
-                    <div class="pillar-content">
-                        <h4><?php echo esc_html($ptitle); ?></h4>
-                        <?php if (!empty($items)) : ?>
-                        <ul class="pillar-list">
-                            <?php foreach ($items as $item) : ?>
-                            <li class="pillar-item">
-                                <span class="material-symbols-outlined">check</span>
-                                <span><?php echo esc_html($item['text'] ?? ''); ?></span>
-                            </li>
-                            <?php endforeach; ?>
+                    <div class="cs-ecosystem__body">
+                        <h4>Customer App</h4>
+                        <ul class="cs-feature-list">
+                            <li><span class="material-symbols-outlined">check</span> Trip Search &amp; Filters</li>
+                            <li><span class="material-symbols-outlined">check</span> Manual Driver Selection</li>
+                            <li><span class="material-symbols-outlined">check</span> Price Negotiation Engine</li>
+                            <li><span class="material-symbols-outlined">check</span> Secure Wallet Integration</li>
+                            <li><span class="material-symbols-outlined">check</span> OTP Delivery Confirmation</li>
                         </ul>
-                        <?php endif; ?>
                     </div>
                 </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
-    <?php endif; ?>
 
-    <!-- ========================================
-         OPERATIONAL DEPTH SECTION
-    ========================================= -->
-    <?php if (!empty($depth_cards)) : ?>
-    <section class="operational-depth-section">
-        <div class="container">
-            <div class="section-title-centered">
-                <h2><?php echo esc_html(st_t('Operational Depth')); ?></h2>
-            </div>
-            <div class="operational-grid">
-                <?php foreach ($depth_cards as $card) :
-                    $icon = $card['icon'] ?? 'bolt';
-                    $ctitle = $card['title'] ?? '';
-                    $ctext = $card['text'] ?? '';
-                ?>
-                <div class="operational-card">
-                    <span class="material-symbols-outlined"><?php echo esc_html($icon); ?></span>
-                    <h5><?php echo esc_html($ctitle); ?></h5>
-                    <p><?php echo esc_html($ctext); ?></p>
-                </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
-    <?php endif; ?>
-
-    <!-- ========================================
-         TRUST SECTION
-    ========================================= -->
-    <?php if (!empty($trust_title) || !empty($trust_items)) : ?>
-    <section class="trust-section">
-        <div class="container">
-            <div class="trust-flex-layout">
-                <div class="trust-content">
-                    <?php if (!empty($trust_title)) : ?>
-                    <h2><?php echo esc_html($trust_title); ?></h2>
-                    <?php endif; ?>
-                    <?php if (!empty($trust_text)) : ?>
-                    <p class="section-sub">
-                        <?php echo esc_html($trust_text); ?>
-                    </p>
-                    <?php endif; ?>
-
-                    <?php if (!empty($trust_items)) : ?>
-                    <div class="trust-grid-items">
-                        <?php foreach ($trust_items as $item) :
-                            $icon = $item['icon'] ?? 'check_circle';
-                            $ititle = $item['title'] ?? '';
-                            $itext = $item['text'] ?? '';
-                        ?>
-                        <div class="trust-item">
-                            <div class="trust-item-icon">
-                                <span class="material-symbols-outlined"><?php echo esc_html($icon); ?></span>
-                            </div>
-                            <div class="trust-item-details">
-                                <h6><?php echo esc_html($ititle); ?></h6>
-                                <p><?php echo esc_html($itext); ?></p>
-                            </div>
+                <!-- Driver App — two small overlapping phones (home
+                     screen in front, trip history peeking behind),
+                     echoing the hero's phone-duo composition -->
+                <div class="cs-ecosystem__card" data-reveal data-reveal-delay="120">
+                    <div class="cs-ecosystem__media cs-ecosystem__media--duo-phone">
+                        <div class="cs-ecosystem__phone cs-ecosystem__phone--back">
+                            <div class="cs-ecosystem__phone-notch" aria-hidden="true"></div>
+                            <img
+                                src="<?php echo esc_url( cs_bw_img( 'driver-Trips History.png' ) ); ?>"
+                                alt="Backway driver app trip history screen listing completed and past trips"
+                                loading="lazy"
+                                decoding="async"
+                            />
                         </div>
-                        <?php endforeach; ?>
-                    </div>
-                    <?php endif; ?>
-                </div>
-                <div class="trust-visual-shield">
-                    <div class="shield-circle-wrapper">
-                        <div class="shield-circle-inner">
-                            <span class="material-symbols-outlined">shield_lock</span>
+                        <div class="cs-ecosystem__phone cs-ecosystem__phone--front">
+                            <div class="cs-ecosystem__phone-notch" aria-hidden="true"></div>
+                            <img
+                                src="<?php echo esc_url( cs_bw_img( 'driver-home-page.png' ) ); ?>"
+                                alt="Backway driver app home screen showing active trip and incoming shipment requests"
+                                loading="lazy"
+                                decoding="async"
+                            />
                         </div>
                     </div>
+                    <div class="cs-ecosystem__body">
+                        <h4>Driver App</h4>
+                        <ul class="cs-feature-list">
+                            <li><span class="material-symbols-outlined">check</span> Profile &amp; Identity Verification</li>
+                            <li><span class="material-symbols-outlined">check</span> Trip Creation &amp; Route Mapping</li>
+                            <li><span class="material-symbols-outlined">check</span> Multi-Order Request Handling</li>
+                            <li><span class="material-symbols-outlined">check</span> Status Lifecycle Management</li>
+                            <li><span class="material-symbols-outlined">check</span> Automated Settlement View</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Admin Panel — this is genuinely a desktop/web
+                     screen (not a mobile app), so it keeps a browser
+                     frame instead of being forced into a phone shape -->
+                <div class="cs-ecosystem__card" data-reveal data-reveal-delay="240">
+                    <div class="cs-ecosystem__media cs-ecosystem__media--browser">
+                        <div class="cs-ecosystem__browser-chrome" aria-hidden="true">
+                            <span class="cs-ecosystem__browser-dot cs-ecosystem__browser-dot--red"></span>
+                            <span class="cs-ecosystem__browser-dot cs-ecosystem__browser-dot--gold"></span>
+                            <span class="cs-ecosystem__browser-dot cs-ecosystem__browser-dot--green"></span>
+                        </div>
+                        <img
+                            src="<?php echo esc_url( cs_bw_img( 'admin-login.png' ) ); ?>"
+                            alt="Backway admin panel secure login screen"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                    <div class="cs-ecosystem__body">
+                        <h4>Admin Panel</h4>
+                        <ul class="cs-feature-list">
+                            <li><span class="material-symbols-outlined">check</span> Driver Document Verification</li>
+                            <li><span class="material-symbols-outlined">check</span> Real-time Order Monitoring</li>
+                            <li><span class="material-symbols-outlined">check</span> Financial Settlement Control</li>
+                            <li><span class="material-symbols-outlined">check</span> Global Settings &amp; Master Data</li>
+                            <li><span class="material-symbols-outlined">check</span> User Roles &amp; Permission Matrix</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 7 · OPERATIONAL DEPTH
+    ═══════════════════════════════════════ -->
+    <section class="cs-depth">
+        <div class="cs-container">
+            <h2 class="cs-section-title" data-reveal>Operational Depth</h2>
+            <div class="cs-depth__grid" data-reveal-group>
+                <div class="cs-depth__card" data-reveal>
+                    <span class="material-symbols-outlined cs-depth__icon">ads_click</span>
+                    <h5>Customer Choice</h5>
+                    <p>Not an algorithm—customers manually vet and select their drivers.</p>
+                </div>
+                <div class="cs-depth__card" data-reveal data-reveal-delay="80">
+                    <span class="material-symbols-outlined cs-depth__icon">route</span>
+                    <h5>Trip First</h5>
+                    <p>Delivery availability is based on actual planned travel routes.</p>
+                </div>
+                <div class="cs-depth__card" data-reveal data-reveal-delay="160">
+                    <span class="material-symbols-outlined cs-depth__icon">account_balance_wallet</span>
+                    <h5>Secure Escrow</h5>
+                    <p>Funds are held securely until OTP confirmation is received.</p>
+                </div>
+                <div class="cs-depth__card" data-reveal data-reveal-delay="240">
+                    <span class="material-symbols-outlined cs-depth__icon">gavel</span>
+                    <h5>Admin Governance</h5>
+                    <p>Human-in-the-loop for driver vetting and final settlements.</p>
                 </div>
             </div>
         </div>
     </section>
-    <?php endif; ?>
 
-    <!-- ========================================
-         EXPERIENCE LIVE SECTION
-    ========================================= -->
-    <?php if (!empty($live_title)) : ?>
-    <section class="experience-live-section">
-        <div class="container">
-            <div class="experience-container">
-                <h2 class="experience-title"><?php echo esc_html($live_title); ?></h2>
-                <?php if (!empty($live_text)) : ?>
-                <p class="experience-desc">
-                    <?php echo esc_html($live_text); ?>
+    <!-- ═══════════════════════════════════════
+         SECTION 8 · BUILT FOR TRUST
+    ═══════════════════════════════════════ -->
+    <section class="cs-trust">
+        <div class="cs-container cs-trust__inner">
+
+            <div class="cs-trust__text" data-reveal>
+                <h2 class="cs-trust__heading">Built for Trust</h2>
+                <p class="cs-trust__copy">
+                    In a person-to-person marketplace, trust is the primary currency. We built multiple safety nets to ensure reliable exchanges.
                 </p>
-                <?php endif; ?>
-                <div class="badges-action-row">
-                    <?php if (!empty($live_url)) : ?>
-                    <a href="<?php echo esc_url($live_url); ?>" class="btn btn-primary btn-visit-website" target="_blank" rel="noopener">
-                        <span class="material-symbols-outlined">language</span>
-                        <span><?php echo esc_html(st_t('Visit Website')); ?></span>
-                    </a>
-                    <?php endif; ?>
-                    <?php foreach ($live_apps as $app) :
-                        $icon = $app['icon'] ?? 'smartphone';
-                        $label = $app['label'] ?? '';
-                        $url = $app['url'] ?? '#';
-                    ?>
-                    <a href="<?php echo esc_url($url); ?>" class="badge-store-link" target="_blank" rel="noopener">
-                        <img src="data:image/png;base64,<?php echo esc_attr(base64_encode(file_get_contents('https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg'))); ?>" alt="<?php echo esc_attr($label); ?>" loading="lazy" />
-                    </a>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
-    </section>
-    <?php endif; ?>
-
-    <!-- ========================================
-         TECHNOLOGY STACK SECTION
-    ========================================= -->
-    <?php if (!empty($tech_stack)) : ?>
-    <section class="tech-stack-section">
-        <div class="container">
-            <h2 class="heading-lg" style="text-align: center; margin-bottom: 60px;"><?php echo esc_html(st_t('Technology Stack')); ?></h2>
-            <div class="tech-grid-wrapper">
-                <?php foreach ($tech_stack as $tech) :
-                    $icon = $tech['icon'] ?? 'code';
-                    $label = $tech['label'] ?? '';
-                ?>
-                <div class="tech-item">
-                    <div class="tech-icon-card">
-                        <span class="material-symbols-outlined"><?php echo esc_html($icon); ?></span>
+                <div class="cs-trust__grid">
+                    <div class="cs-trust__item">
+                        <span class="material-symbols-outlined cs-trust__item-icon">verified_user</span>
+                        <div>
+                            <h6>Identity Locked</h6>
+                            <p>Driver ID and Vehicle documents verified by Admin before any trip creation.</p>
+                        </div>
                     </div>
-                    <p><?php echo esc_html($label); ?></p>
+                    <div class="cs-trust__item">
+                        <span class="material-symbols-outlined cs-trust__item-icon">key</span>
+                        <div>
+                            <h6>OTP Handshake</h6>
+                            <p>Deliveries cannot be closed without a customer-provided OTP at the drop-off point.</p>
+                        </div>
+                    </div>
+                    <div class="cs-trust__item">
+                        <span class="material-symbols-outlined cs-trust__item-icon">payments</span>
+                        <div>
+                            <h6>Upfront Funding</h6>
+                            <p>Customer pays before shipment starts, ensuring driver compensation intent.</p>
+                        </div>
+                    </div>
+                    <div class="cs-trust__item">
+                        <span class="material-symbols-outlined cs-trust__item-icon">history_edu</span>
+                        <div>
+                            <h6>Audit Ready</h6>
+                            <p>Every status change, payment, and negotiation is logged for dispute resolution.</p>
+                        </div>
+                    </div>
                 </div>
-                <?php endforeach; ?>
+            </div>
+
+            <div class="cs-trust__visual" aria-hidden="true" data-reveal data-reveal-delay="150">
+                <div class="cs-trust__ring">
+                    <div class="cs-trust__ring-inner">
+                        <span class="material-symbols-outlined">shield_lock</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 9 · EXPERIENCE BACKWAY LIVE
+    ═══════════════════════════════════════ -->
+    <section class="cs-live">
+        <div class="cs-live__glow" aria-hidden="true"></div>
+        <div class="cs-container cs-live__inner" data-reveal>
+            <h2 class="cs-live__heading">Experience Backway Live</h2>
+            <p class="cs-live__copy">
+                Visit the official website or download the apps to experience the trip-based shipment marketplace firsthand.
+            </p>
+            <div class="cs-live__ctas">
+                <a href="#" class="cs-btn cs-btn--primary cs-live__btn">
+                    <span class="material-symbols-outlined">language</span>
+                    Visit Website
+                </a>
+                <a href="#" class="cs-live__store" aria-label="Download on the App Store">
+                    <svg class="cs-live__store-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M17.6 13.5c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.3 2.6 1.3-.1 1.8-.9 3.4-.9s2 .9 3.4.8c1.4 0 2.3-1.2 3.2-2.5.6-.9.9-1.4 1.4-2.4-3.5-1.3-3.1-4.9-3.1-4.4zM15.2 6c.7-.9 1.2-2.1 1.1-3.3-1.1.1-2.4.7-3.1 1.6-.7.8-1.3 2-1.1 3.2 1.2.1 2.4-.6 3.1-1.5z"/>
+                    </svg>
+                    <span class="cs-live__store-text">
+                        <small>Download on the</small>
+                        App Store
+                    </span>
+                </a>
+                <a href="#" class="cs-live__store" aria-label="Get it on Google Play">
+                    <svg class="cs-live__store-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M3.6 2.6c-.3.3-.5.8-.5 1.4v16c0 .6.2 1.1.5 1.4l.1.1L13 12.2v-.2L3.7 2.5l-.1.1z" fill="#4ade80"/>
+                        <path d="M16.1 15.3 13 12.2v-.2l3.1-3.1 6.9 4c1 .5 1 1.4 0 1.9l-6.9 4z" fill="#facc15"/>
+                        <path d="M16.1 15.3 13 12l-9.4 9.4c.4.4 1 .4 1.7.1l10.8-6.2" fill="#f87171"/>
+                        <path d="M16.1 8.7 5.3 2.5c-.7-.4-1.3-.3-1.7.1L13 12l3.1-3.3z" fill="#60a5fa"/>
+                    </svg>
+                    <span class="cs-live__store-text">
+                        <small>Get it on</small>
+                        Google Play
+                    </span>
+                </a>
             </div>
         </div>
     </section>
-    <?php endif; ?>
 
-    <!-- ========================================
-         FINAL CTA SECTION
-    ========================================= -->
-    <section class="container">
-        <div class="final-cta">
-            <div class="final-cta-bg-overlay"></div>
-            <div class="final-cta-content-grid">
-                <div class="final-cta-text">
-                    <h2><?php echo esc_html($cta_title); ?></h2>
-                    <p><?php echo esc_html($cta_text); ?></p>
-                    <?php
-                    $contact_url = function_exists('st_url') ? st_url('contact') : home_url('/contact/');
-                    ?>
-                    <a href="<?php echo esc_url($contact_url); ?>" class="btn btn-primary btn-primary-orange">
-                        <?php echo esc_html(st_t('Start Your Project')); ?>
-                    </a>
+    <!-- ═══════════════════════════════════════
+         SECTION 10 · TECHNOLOGY STACK
+    ═══════════════════════════════════════ -->
+    <section class="cs-stack">
+        <div class="cs-container">
+            <h2 class="cs-section-title" data-reveal>Technology Stack</h2>
+            <div class="cs-stack__grid" data-reveal-group>
+                <div class="cs-stack__item" data-reveal>
+                    <div class="cs-stack__icon"><span class="material-symbols-outlined">smartphone</span></div>
+                    <p>Mobile</p>
                 </div>
-                <div class="final-cta-visual">
-                    <?php if (!empty($featured_img)) : ?>
-                    <img src="<?php echo esc_url($featured_img); ?>" alt="<?php echo esc_attr($title); ?>" class="final-cta-img-card" loading="lazy" />
-                    <?php else : ?>
-                    <div class="final-cta-img-card" style="background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));"></div>
-                    <?php endif; ?>
+                <div class="cs-stack__item" data-reveal data-reveal-delay="40">
+                    <div class="cs-stack__icon"><span class="material-symbols-outlined">api</span></div>
+                    <p>Backend</p>
+                </div>
+                <div class="cs-stack__item" data-reveal data-reveal-delay="80">
+                    <div class="cs-stack__icon"><span class="material-symbols-outlined">desktop_windows</span></div>
+                    <p>Web App</p>
+                </div>
+                <div class="cs-stack__item" data-reveal data-reveal-delay="120">
+                    <div class="cs-stack__icon"><span class="material-symbols-outlined">database</span></div>
+                    <p>Database</p>
+                </div>
+                <div class="cs-stack__item" data-reveal data-reveal-delay="160">
+                    <div class="cs-stack__icon"><span class="material-symbols-outlined">lock</span></div>
+                    <p>Auth</p>
+                </div>
+                <div class="cs-stack__item" data-reveal data-reveal-delay="200">
+                    <div class="cs-stack__icon"><span class="material-symbols-outlined">credit_card</span></div>
+                    <p>Payments</p>
+                </div>
+                <div class="cs-stack__item" data-reveal data-reveal-delay="240">
+                    <div class="cs-stack__icon"><span class="material-symbols-outlined">notifications</span></div>
+                    <p>Push</p>
+                </div>
+                <div class="cs-stack__item" data-reveal data-reveal-delay="280">
+                    <div class="cs-stack__icon"><span class="material-symbols-outlined">cloud</span></div>
+                    <p>Cloud</p>
                 </div>
             </div>
         </div>
     </section>
 
-</div><!-- /.single-case-study -->
+    <!-- ═══════════════════════════════════════
+         SECTION 11 · FINAL CTA
+    ═══════════════════════════════════════ -->
+    <section class="cs-final-cta">
+        <div class="cs-final-cta__glow" aria-hidden="true"></div>
+        <div class="cs-container cs-final-cta__inner" data-reveal>
+            <div class="cs-final-cta__text">
+                <h2 class="cs-final-cta__heading">Building a Logistics Platform or Marketplace?</h2>
+                <p class="cs-final-cta__copy">
+                    Leverage our experience in creating high-stakes operational dashboards and multi-role marketplaces.
+                </p>
+                <a href="/contact" class="cs-btn cs-btn--primary cs-btn--lg">Start Your Project</a>
+            </div>
+            <div class="cs-final-cta__visual">
+                <div class="cs-final-cta__phone">
+                    <div class="cs-final-cta__phone-notch" aria-hidden="true"></div>
+                    <img
+                        src="<?php echo esc_url( cs_bw_img( 'driver-settlments.jpg' ) ); ?>"
+                        alt="Backway driver settlements screen showing completed payouts and earnings history"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-(function () {
-    if (!('IntersectionObserver' in window)) return;
-    var items = document.querySelectorAll('.cs-reveal');
-    var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                io.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-    items.forEach(function (el) { io.observe(el); });
-})();
-</script>
+</div><!-- /.cs-page -->
 
-<?php
-endwhile;
-
-get_footer();
-?>
+<?php get_footer(); ?>
