@@ -122,12 +122,12 @@ function st_enqueue_assets(): void
         wp_enqueue_script('st-case-study', st_asset('js/case-study.js'), [], $ver, true);
     }
 
-    if (is_singular('st_case_study') && in_array(get_post_field('post_name', get_the_ID()), ['merchant', 'merchant-ecommerce', 'fashion-marketplace'], true)) {
+    if (is_singular('st_case_study') && in_array(get_post_field('post_name', get_queried_object_id()), ['merchant', 'merchant-ecommerce', 'fashion-marketplace'], true)) {
         wp_enqueue_style('st-merchant-case-study', st_asset('css/pages/single-case-study-merchant.css'), ['st-main'], $ver);
         wp_enqueue_script('st-case-study-merchant', st_asset('js/case-study-merchant.js'), [], $ver, true);
     }
 
-    if (is_singular('st_case_study') && in_array(get_post_field('post_name', get_the_ID()), ['propcare', 'propcare-360', 'property-management'], true)) {
+    if (is_singular('st_case_study') && in_array(get_post_field('post_name', get_queried_object_id()), ['propcare', 'propcare-360', 'property-management'], true)) {
         wp_enqueue_style('st-propcare-case-study', st_asset('css/pages/single-case-study-propcare.css'), ['st-main'], $ver);
         wp_enqueue_script('st-case-study-propcare', st_asset('js/case-study-propcare.js'), [], $ver, true);
     }
