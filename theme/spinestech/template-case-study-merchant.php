@@ -78,13 +78,13 @@ get_header();
 
             <div class="mcs__hero-visual" data-mcs-reveal data-mcs-delay="150">
                 <div class="mcs__phone mcs__phone--left">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA49W4XYGRBX_FssDrZFm8k6TaCfx-P52aB5Ksf8UKdg6QU70-BVVGTy-rXLSBrLyL-Ud93KrrcL3onL5xvqVnAR3rRB9qh8uzq6P4szcKSd2qqhGHNA6vo0M1B7O1bkr1Ime0_FuHArs4UYnNsTNV15Zo3GYGO8812l3_VF5ch75O-mE1yICRnT0lEmfQspRGUHE4CkBT44lK54MAfQF9keAE1_4H2rtBtVaZNP0Yb-zlQhfyPH_wJgGdvLvMD9EhzI0dHftd45VI" alt="Merchant app welcome screen" loading="eager" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Welcome.png')); ?>" alt="Merchant app welcome screen" loading="eager" />
                 </div>
                 <div class="mcs__phone mcs__phone--center">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyZsqol7z9Ue9KH2KG2lvLCSjMoe_anP1DrV1ZdmINtekEzJ3M_fsf0XOJLy7A2DlvEfE0s0y0QDU0OLN5LssS_St26d1y__bnTQ4aTETy1b4h29iV-P7HBBBjZ2wKjIekiuUCBkgL81ASDcX2omfAX0p80gikMhb5dkfJPFN7IWKbt1XJXJ11EXAy7aEgTdcZOMorCC7x434nb7NYxdfUUPo9_k-3jk6_5v9SWoFEy6b4wYhatLtMFtGkvCaNMPlkkT4jgwatWow" alt="Merchant product detail screen" loading="eager" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Item+Details.png')); ?>" alt="Merchant product detail screen" loading="eager" />
                 </div>
                 <div class="mcs__phone mcs__phone--right">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnX67urxI4dPF-PfzPqh6doXex2wgAzS44DpBzH2LBvyWNakrnwD20kxNh5A8Vo8j3ATWOu6GRJ8OS2tWCRMUfpap9d7_o7gsRYfAbHhECbQqIZ1Tj4n63r2dDZHPFo0lHpHc7jrUW2kq8To8RFssWCs6ptpjW7rQnheNdA5HAlNjq30TjKXzhE9XQ3_YSEouDVdeLURYhRwhOiftVqhGviibWw3lZ-ufSO6Ex0-IrMnRqiGzu5IVxKOfCxBVKof86fkxosWnIvYg" alt="Merchant wishlist screen" loading="eager" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.png')); ?>" alt="Merchant wishlist screen" loading="eager" />
                 </div>
             </div>
 
@@ -227,13 +227,13 @@ get_header();
 
             <div class="mcs__shopping-phones" data-mcs-reveal>
                 <div class="mcs__mini-phone mcs__mini-phone--up">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA49W4XYGRBX_FssDrZFm8k6TaCfx-P52aB5Ksf8UKdg6QU70-BVVGTy-rXLSBrLyL-Ud93KrrcL3onL5xvqVnAR3rRB9qh8uzq6P4szcKSd2qqhGHNA6vo0M1B7O1bkr1Ime0_FuHArs4UYnNsTNV15Zo3GYGO8812l3_VF5ch75O-mE1yICRnT0lEmfQspRGUHE4CkBT44lK54MAfQF9keAE1_4H2rtBtVaZNP0Yb-zlQhfyPH_wJgGdvLvMD9EhzI0dHftd45VI" alt="Welcome screen" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Home.png')); ?>" alt="Home screen" loading="lazy" />
                 </div>
                 <div class="mcs__mini-phone">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyZsqol7z9Ue9KH2KG2lvLCSjMoe_anP1DrV1ZdmINtekEzJ3M_fsf0XOJLy7A2DlvEfE0s0y0QDU0OLN5LssS_St26d1y__bnTQ4aTETy1b4h29iV-P7HBBBjZ2wKjIekiuUCBkgL81ASDcX2omfAX0p80gikMhb5dkfJPFN7IWKbt1XJXJ11EXAy7aEgTdcZOMorCC7x434nb7NYxdfUUPo9_k-3jk6_5v9SWoFEy6b4wYhatLtMFtGkvCaNMPlkkT4jgwatWow" alt="Product details" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Item+Details.png')); ?>" alt="Product details" loading="lazy" />
                 </div>
                 <div class="mcs__mini-phone mcs__mini-phone--up">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnX67urxI4dPF-PfzPqh6doXex2wgAzS44DpBzH2LBvyWNakrnwD20kxNh5A8Vo8j3ATWOu6GRJ8OS2tWCRMUfpap9d7_o7gsRYfAbHhECbQqIZ1Tj4n63r2dDZHPFo0lHpHc7jrUW2kq8To8RFssWCs6ptpjW7rQnheNdA5HAlNjq30TjKXzhE9XQ3_YSEouDVdeLURYhRwhOiftVqhGviibWw3lZ-ufSO6Ex0-IrMnRqiGzu5IVxKOfCxBVKof86fkxosWnIvYg" alt="Wishlist" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.png')); ?>" alt="Wishlist" loading="lazy" />
                 </div>
             </div>
 
@@ -271,7 +271,7 @@ get_header();
                     <span class="mcs__browser-url">dashboard.merchant.spines.tech</span>
                 </div>
                 <div class="mcs__browser-body">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuABmSjnknukfQY09JZuMi2mL3oAbDAke0MlpdALUVH3u_uXeUAaa4wNzthZrZ_Jmzh8puKmSMc0CBR02jG9JIrQhgrAtG3kzKfw676mUV2hgLQ8P9BiYuMOTWxPd434XcUZP56Ppfzu8CB4rKyl_YzBJFstCKOeW5ASsoJnKP8KmyF6gvx6Jj-5RIQoNRj_QoT81Xs12cz9nz8nZVAg5RLGFknr5-L2oKf9MWuQxck3hNF2bNwRT5bx2yvZKUwI3J88TEhiDyNr-iQ" alt="Merchant dashboard analytics overview" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.png')); ?>" alt="Merchant dashboard analytics overview" loading="lazy" />
                 </div>
             </div>
 
@@ -279,7 +279,7 @@ get_header();
                 <div class="mcs__video-card" data-mcs-reveal>
                     <h4>Merchant Login Demo</h4>
                     <div class="mcs__video-thumb">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTUr6xoLY3q_VM6w0Aacf598rhcUFHD1WGUNYYNoFFEIMBN3zKtaE68JA2mVArhM3AoYdlGNvBGDgPiolSe1xX7OuD3ouvlFHiCYJkm5IDd2h6-Tu8ezKNhLad-1DdM_J0MkW-EO1Bn-YZdXQILB6Et4q1o41h13xGYEL1tizR8KE13a0G7YLZl4SfPlUR6nkyJJsxhKLRfxRHs33SWqcm0vtBNMbp197K9zupRLX6V6UYMt54RiLH8a7h9AQdrh5DDoW8xMphjwc" alt="Merchant login demo thumbnail" loading="lazy" />
+                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.png')); ?>" alt="Merchant login demo thumbnail" loading="lazy" />
                         <div class="mcs__video-overlay">
                             <span class="material-symbols-outlined">play_circle</span>
                             <p>Watch Video</p>
@@ -289,7 +289,7 @@ get_header();
                 <div class="mcs__video-card" data-mcs-reveal data-mcs-delay="120">
                     <h4>Products Adding &amp; Editing</h4>
                     <div class="mcs__video-thumb">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM6f6nS7xZlGgWMG3-B9IsfnA-oVtI4b0DC1e2kGhgvWmDJSWFAFDqbWBDx9N0kQhDuZfD_KQR6LMB-uLEYu-DIrCA-687W3exN2L0GaxJztj1tR_Joi_rmeeemhPSf_crBAEmDZXFas6xu30ABv5MH_XHFbPpEybufF3G5OXP4DQIm5Is0FFcnuLJF6PEYg_B1lMyXmWoFabyYJO6BUBWrtfNsmYJYJeheL3ozrhPQyVgtHZUNPd02n2jABEMuKSaY1A8ZCyBQGo" alt="Product management demo thumbnail" loading="lazy" />
+                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.png')); ?>" alt="Product management demo thumbnail" loading="lazy" />
                         <div class="mcs__video-overlay">
                             <span class="material-symbols-outlined">play_circle</span>
                             <p>Watch Video</p>
@@ -331,7 +331,7 @@ get_header();
             <div class="mcs__admin-visual" data-mcs-reveal data-mcs-delay="150">
                 <div class="mcs__admin-glow" aria-hidden="true"></div>
                 <div class="mcs__admin-frame">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuClBpsAvyf4NWgnFtectPkzpPBCWf02ODO-2zsZb74Dil1jn4wHxDM7CMflDSxXtHRNuxzJ7YCCWwR8SK65GAWPxwXh96I6IzZQAjvSs2y-da5IR_sqg9ipTVdiaOAlbjViI1HNWGHmeJMqrW9G-VAPtzhafzcFWOjpR-sz2NrepuAb80AWN9LsgMijxb0ELKwobwIou7upQQN4L0L1ET-4HZXdbwOgnxpeg2SByF2RR_W8SShdUeIBtahl8ZfYkLSr4z71pl4e-DE" alt="Admin dashboard with global merchant map" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.png')); ?>" alt="Admin dashboard with global merchant map" loading="lazy" />
                 </div>
             </div>
 
@@ -433,18 +433,24 @@ get_header();
     ═══════════════════════════════════════════ -->
     <section class="mcs__showcase">
         <div class="mcs__container">
-            <div class="mcs__showcase-grid" data-mcs-reveal-group>
-                <div class="mcs__showcase-item" data-mcs-reveal>
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3WDPhaXlUaFNzvMYI9Ns7WOobKCjl3_iheIWUi3CPkypM5gz86aZVx3oDI-kJBCsxEzInN30HqAiext6azrfJ8TrwGXai6uPSnwyVGc90nfIzh_3xUF11vxygP0Y8pPV_tmEKNOGUvgPItjzrXZ0CPaTEzIozUPy5IgdvTb77p1AaXr0nVtyq4gU3ijIQ9JmeqRf6BCkF_pqPfXeLPZ6y6RDhBNdSK6jp_fYl2yM7msRbQLEV4isG9ZtligX_yoEZ0XKMaMprIoE" alt="Merchant brand identity" loading="lazy" />
+            <div class="mcs__premium-card" data-mcs-reveal>
+                <div class="mcs__premium-card-inner">
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/card-veo.png')); ?>" alt="Merchant brand identity and project overview" loading="lazy" />
                 </div>
+            </div>
+
+            <div class="mcs__showcase-grid" data-mcs-reveal-group>
                 <div class="mcs__showcase-item" data-mcs-reveal data-mcs-delay="80">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA49W4XYGRBX_FssDrZFm8k6TaCfx-P52aB5Ksf8UKdg6QU70-BVVGTy-rXLSBrLyL-Ud93KrrcL3onL5xvqVnAR3rRB9qh8uzq6P4szcKSd2qqhGHNA6vo0M1B7O1bkr1Ime0_FuHArs4UYnNsTNV15Zo3GYGO8812l3_VF5ch75O-mE1yICRnT0lEmfQspRGUHE4CkBT44lK54MAfQF9keAE1_4H2rtBtVaZNP0Yb-zlQhfyPH_wJgGdvLvMD9EhzI0dHftd45VI" alt="Fashion product texture close-up" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Home.png')); ?>" alt="Customer home screen" loading="lazy" />
                 </div>
                 <div class="mcs__showcase-item" data-mcs-reveal data-mcs-delay="160">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyZsqol7z9Ue9KH2KG2lvLCSjMoe_anP1DrV1ZdmINtekEzJ3M_fsf0XOJLy7A2DlvEfE0s0y0QDU0OLN5LssS_St26d1y__bnTQ4aTETy1b4h29iV-P7HBBBjZ2wKjIekiuUCBkgL81ASDcX2omfAX0p80gikMhb5dkfJPFN7IWKbt1XJXJ11EXAy7aEgTdcZOMorCC7x434nb7NYxdfUUPo9_k-3jk6_5v9SWoFEy6b4wYhatLtMFtGkvCaNMPlkkT4jgwatWow" alt="Category screens montage" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Welcome.png')); ?>" alt="Welcome screen" loading="lazy" />
                 </div>
                 <div class="mcs__showcase-item" data-mcs-reveal data-mcs-delay="240">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnX67urxI4dPF-PfzPqh6doXex2wgAzS44DpBzH2LBvyWNakrnwD20kxNh5A8Vo8j3ATWOu6GRJ8OS2tWCRMUfpap9d7_o7gsRYfAbHhECbQqIZ1Tj4n63r2dDZHPFo0lHpHc7jrUW2kq8To8RFssWCs6ptpjW7rQnheNdA5HAlNjq30TjKXzhE9XQ3_YSEouDVdeLURYhRwhOiftVqhGviibWw3lZ-ufSO6Ex0-IrMnRqiGzu5IVxKOfCxBVKof86fkxosWnIvYg" alt="Dashboard responsive views" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.png')); ?>" alt="Wishlist screen montage" loading="lazy" />
+                </div>
+                <div class="mcs__showcase-item" data-mcs-reveal data-mcs-delay="320">
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.png')); ?>" alt="Dashboard responsive views" loading="lazy" />
                 </div>
             </div>
         </div>
@@ -460,7 +466,7 @@ get_header();
             <div class="mcs__demos-grid" data-mcs-reveal-group>
                 <div class="mcs__demo" data-mcs-reveal>
                     <div class="mcs__demo-thumb mcs__demo-thumb--primary">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOd995XBrH4PbFjDxjJqWXjt_T6Xl2lTj_hOaBI-2EDyIRH_iGkheguq3K7Tc4UT4Rak80MiPsAsBHAS8-S02NvozfR6ywN9tRaQ9oXFb825seWWPIc4Y6sCkEjATD7Fv1EqN37OPvh00ILZ-PywR_JoUdnzSfD4fCX83YSh4UllaYTczeqzxxxIEj1W6bHQEe9hTb4ed6DWmf5KnQzUkGZnYiK2TJarXyNSieu5KT5cfnOwKZT6sDrAEW6cqp_RC80dOdxGjxo0w" alt="Merchant login workflow thumbnail" loading="lazy" />
+                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.png')); ?>" alt="Merchant login workflow thumbnail" loading="lazy" />
                         <div class="mcs__demo-overlay">
                             <span class="material-symbols-outlined">play_arrow</span>
                         </div>
@@ -471,7 +477,7 @@ get_header();
 
                 <div class="mcs__demo" data-mcs-reveal data-mcs-delay="120">
                     <div class="mcs__demo-thumb mcs__demo-thumb--gold">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs4MVyEFGsXbxJpf0-VUKOvfY21MVxl5Hb0z77eICzbFuwQXbwKM4q0gB05-NXw6fazlhX4FToJlbUFgqpSXpUZAvI9ED_FY5Ct2vzxZg6lPsBITZQwmx5_G1uXHfHV_J8iL7Idqy7aCyU1eaNPDbfDg6C3CJDE4Yt7c50MfiYlk_OVBObSMqma-gC_IaptgVctN8CDwNr6u0Q1F2zuXEzX3YiFTCJ2noY5Q_Ik3N-u0mAWtrp5p3G7SSwG4udwcLtkJKLoaiTo74" alt="Product management demo thumbnail" loading="lazy" />
+                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.png')); ?>" alt="Product management demo thumbnail" loading="lazy" />
                         <div class="mcs__demo-overlay">
                             <span class="material-symbols-outlined">play_arrow</span>
                         </div>
@@ -503,16 +509,16 @@ get_header();
 
             <div class="mcs__results-gallery" data-mcs-reveal data-mcs-delay="150">
                 <div class="mcs__results-img">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_3fkv1NZZHEF-Pei0stjWydq50SXbm342XbXDz9u7A8gcknpwQP58BXdL-faxFSF1BMDkfGUUcHdoija92_Q_HVk91hT0DRVCHPta1wRrzJjB0xqxf0VJUZFvoDYAMsY-eyrzQfFvygioBFiMfsZWqD_FSmpEGiaO8LAZqB_3S_pTXUCu7ILG7U21NO0yjbSPDtnm2e6wc8Ln7I9POySZO5PICac3DVn6Fp93KT_Hed--bftXu4TTm_Xy5inbYegFeVM9CE_K0AE" alt="Customer review section" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Home.png')); ?>" alt="Customer home screen" loading="lazy" />
                 </div>
                 <div class="mcs__results-img mcs__results-img--down">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfVWkAfFr_ZcNXAhsWBWSQucspStS0o1mpXP8sLKO_qeM8Uksp_S_rWZR7Ct6YLTwST-Fc5T4WFr4uk2mCgGH8wmcp86zkjONQH7xH-RuzWGUhN-PO0KZA1lSgyoJaEdCPNKvpfv4cuhCoBSn0UiDyCVTXE4FD4818olnUGXiCCsDacNTjK9hB86ZUd4YU82txwz7EAxc3Ot7zbXn11Bfn-pLuO7N-HUGeazlLLo_U9So3J8LEWJZBy9bfomtkH0o-2wkhLvSSEmk" alt="Payment confirmation screen" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Item+Details.png')); ?>" alt="Product details screen" loading="lazy" />
                 </div>
                 <div class="mcs__results-img mcs__results-img--up">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-1QRHzwrzda12KJjXMeYxZPWyRvNTIUrrlGR1K0Ml7NV0g_qpigROaeYqGLc0SbS9pXC5U_uHZ-y1at8OIgacKW771N7YkeMQ6YC29jO9FxmVIANRVqIuYooYVyNMcRmSBNa6bysNfY_eMuVsqe_ZtltwioDjsSeagCrX51A-cHJagHiKiPrurYhdaKY5jSMlD--KidRJWIsJ9BzDW6hK9A7jkj2Osh7AGpq_KRt8tNnzW5CN-pDUlJVYyGYsozCsfWkKazcgDQI" alt="Admin merchant listing table" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.png')); ?>" alt="Admin merchant listing table" loading="lazy" />
                 </div>
                 <div class="mcs__results-img">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOxn-zW66JfG1JXYBHu1ZDw-GhByZTiHFFmeyLl_N-SMjyYU_rj6_ICZktzz8dluV_qEqyht3OlFnkUYdY8kCYfgTUF-98SPsg4Y8nP3AyiYvMKr3xw2cvkRAoTdxid-88RMem3zSA5cm9cbFj1gU2jma-0UHUVv3dPOLk724ULavvx_RwwMHwbvCpRRY3o4OS7Tkf-W2QRihvkT4GwZOEDKrim5E0P3VfFbNrhqwlVz33HFXA-1YDsA5MIvl7mPVVW4OL2yU4u3Y" alt="Merchant using dashboard in-store" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.png')); ?>" alt="Merchant using dashboard in-store" loading="lazy" />
                 </div>
             </div>
 
