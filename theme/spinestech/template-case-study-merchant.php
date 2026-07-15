@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Template Name: Case Study â€” Merchant
  * Template Post Type: st_case_study
@@ -439,17 +439,26 @@ get_header();
                 </div>
             </div>
 
-            <div class="mcs__showcase-grid" data-mcs-reveal-group>
-                <div class="mcs__showcase-item" data-mcs-reveal data-mcs-delay="80">
+            <div class="mcs__showcase-phones" data-mcs-reveal-group>
+                <div class="mcs__showcase-phone" data-mcs-reveal data-mcs-delay="80">
                     <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Home.jpg')); ?>" alt="Customer home screen" loading="lazy" />
                 </div>
-                <div class="mcs__showcase-item" data-mcs-reveal data-mcs-delay="160">
+                <div class="mcs__showcase-phone" data-mcs-reveal data-mcs-delay="160">
                     <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Welcome.jpg')); ?>" alt="Welcome screen" loading="lazy" />
                 </div>
-                <div class="mcs__showcase-item" data-mcs-reveal data-mcs-delay="240">
+                <div class="mcs__showcase-phone" data-mcs-reveal data-mcs-delay="240">
                     <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.jpg')); ?>" alt="Wishlist screen montage" loading="lazy" />
                 </div>
-                <div class="mcs__showcase-item" data-mcs-reveal data-mcs-delay="320">
+            </div>
+            
+            <div class="mcs__browser-frame mcs__showcase-desktop" data-mcs-reveal>
+                <div class="mcs__browser-chrome">
+                    <span class="mcs__browser-dot mcs__browser-dot--red"></span>
+                    <span class="mcs__browser-dot mcs__browser-dot--gold"></span>
+                    <span class="mcs__browser-dot mcs__browser-dot--green"></span>
+                    <span class="mcs__browser-url">dashboard.merchant.spines.tech</span>
+                </div>
+                <div class="mcs__browser-body">
                     <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.jpg')); ?>" alt="Dashboard responsive views" loading="lazy" />
                 </div>
             </div>

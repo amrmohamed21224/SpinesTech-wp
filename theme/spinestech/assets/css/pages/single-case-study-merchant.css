@@ -617,6 +617,8 @@
 
 .mcs__premium-card {
     position: relative;
+    max-width: 1024px;
+    margin-inline: auto;
     border-radius: 2rem;
     background: linear-gradient(145deg, #ffffff, #f8f9fa);
     padding: 1rem;
@@ -643,7 +645,6 @@
     position: relative;
     border-radius: 1.25rem;
     overflow: hidden;
-    aspect-ratio: 16/9;
     background: var(--mcs-surface-tint);
 }
 @media (min-width: 768px) {
@@ -659,28 +660,52 @@
 }
 .mcs__premium-card img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    display: block;
+    height: auto;
     transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .mcs__premium-card:hover img {
     transform: scale(1.04);
 }
 
-.mcs__showcase-grid { columns: 1; column-gap: 1.5rem; }
-@media (min-width: 640px)  { .mcs__showcase-grid { columns: 2; } }
-@media (min-width: 1024px) { .mcs__showcase-grid { columns: 3; } }
+.mcs__showcase-phones {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-block-end: 4rem;
+}
+@media (min-width: 1024px) {
+    .mcs__showcase-phones { gap: 3rem; }
+}
 
-.mcs__showcase-item {
-    break-inside: avoid;
-    margin-block-end: 1.5rem;
-    border-radius: 1.5rem;
+.mcs__showcase-phone {
+    width: 200px;
+    height: 425px;
+    border-radius: 2rem;
+    border: 5px solid var(--mcs-ink);
+    box-shadow: 0 20px 50px rgba(10,29,47,0.15);
     overflow: hidden;
-    box-shadow: 0 4px 24px rgba(10,29,47,0.06);
+    background: #fff;
     transition: transform 0.35s var(--mcs-ease), box-shadow 0.35s var(--mcs-ease);
 }
-.mcs__showcase-item:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 20px 44px rgba(10,29,47,0.14); }
-.mcs__showcase-item img { width: 100%; display: block; }
+.mcs__showcase-phone:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(10,29,47,0.2);
+}
+.mcs__showcase-phone img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.08);
+    transition: transform 0.3s ease;
+}
+
+.mcs__showcase-desktop {
+    max-width: 1024px;
+    margin-inline: auto;
+}
 
 /* =============================================================
    12 · WATCH IT IN ACTION
