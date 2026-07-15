@@ -1,15 +1,15 @@
-<?php
+﻿<?php
 /**
- * Template Name: Case Study — Merchant
+ * Template Name: Case Study â€” Merchant
  * Template Post Type: st_case_study
  *
  * theme/spinestech/template-case-study-merchant.php
  *
  * Fully static, hardcoded one-off case study page for the "Merchant"
  * project. Assign this template to the specific st_case_study post
- * from Page Attributes → Template in the WP editor.
+ * from Page Attributes â†’ Template in the WP editor.
  *
- * No dynamic postmeta, no ACF — every section is literal content
+ * No dynamic postmeta, no ACF â€” every section is literal content
  * matching the approved design 1:1. Uses the theme's real header/
  * footer (get_header/get_footer); everything between them is unique
  * to this page only.
@@ -22,9 +22,9 @@ get_header();
 
 <div class="mcs" dir="ltr">
 
-    <!-- ═══════════════════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
          SIDE DOCK NAV (desktop only, in-page anchors)
-    ═══════════════════════════════════════════ -->
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <aside class="mcs__dock" aria-label="Section navigation">
         <span class="mcs__dock-label">Nav</span>
         <a href="#overview" class="mcs__dock-link is-active" data-mcs-dock title="Overview">
@@ -41,9 +41,9 @@ get_header();
         </a>
     </aside>
 
-    <!-- ═══════════════════════════════════════════
-         01 · HERO
-    ═══════════════════════════════════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         01 Â· HERO
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="mcs__hero" id="hero">
         <div class="mcs__hero-grid-bg" aria-hidden="true"></div>
         <div class="mcs__container mcs__hero-inner">
@@ -78,22 +78,22 @@ get_header();
 
             <div class="mcs__hero-visual" data-mcs-reveal data-mcs-delay="150">
                 <div class="mcs__phone mcs__phone--left">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Welcome.png')); ?>" alt="Merchant app welcome screen" loading="eager" fetchpriority="high" decoding="async" width="195" height="415" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Welcome.jpg')); ?>" alt="Merchant app welcome screen" loading="eager" fetchpriority="high" decoding="async" width="195" height="415" />
                 </div>
                 <div class="mcs__phone mcs__phone--center">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Item+Details.png')); ?>" alt="Merchant product detail screen" loading="eager" fetchpriority="high" decoding="async" width="195" height="415" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Item+Details.jpg')); ?>" alt="Merchant product detail screen" loading="eager" fetchpriority="high" decoding="async" width="195" height="415" />
                 </div>
                 <div class="mcs__phone mcs__phone--right">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.png')); ?>" alt="Merchant wishlist screen" loading="eager" fetchpriority="low" decoding="async" width="195" height="415" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.jpg')); ?>" alt="Merchant wishlist screen" loading="eager" fetchpriority="low" decoding="async" width="195" height="415" />
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         02 · THE DIGITAL ECOSYSTEM (overview)
-    ═══════════════════════════════════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         02 Â· THE DIGITAL ECOSYSTEM (overview)
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="mcs__overview" id="overview">
         <div class="mcs__container mcs__overview-grid">
 
@@ -140,9 +140,9 @@ get_header();
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         03 · OPERATIONAL HURDLES (challenge)
-    ═══════════════════════════════════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         03 Â· OPERATIONAL HURDLES (challenge)
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="mcs__challenge" id="challenge">
         <div class="mcs__challenge-glow" aria-hidden="true"></div>
         <div class="mcs__container">
@@ -171,9 +171,9 @@ get_header();
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         04 · THE INTEGRATED SOLUTION
-    ═══════════════════════════════════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         04 Â· THE INTEGRATED SOLUTION
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="mcs__solution" id="solution">
         <div class="mcs__container">
             <div class="mcs__solution-head" data-mcs-reveal>
@@ -219,21 +219,21 @@ get_header();
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         05 · THE SHOPPING EXPERIENCE
-    ═══════════════════════════════════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         05 Â· THE SHOPPING EXPERIENCE
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="mcs__shopping">
         <div class="mcs__container mcs__shopping-grid">
 
             <div class="mcs__shopping-phones" data-mcs-reveal>
                 <div class="mcs__mini-phone mcs__mini-phone--up">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Home.png')); ?>" alt="Home screen" loading="lazy" decoding="async" width="195" height="415" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Home.jpg')); ?>" alt="Home screen" loading="lazy" decoding="async" width="195" height="415" />
                 </div>
                 <div class="mcs__mini-phone">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Item+Details.png')); ?>" alt="Product details" loading="lazy" decoding="async" width="195" height="415" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Item+Details.jpg')); ?>" alt="Product details" loading="lazy" decoding="async" width="195" height="415" />
                 </div>
                 <div class="mcs__mini-phone mcs__mini-phone--up">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.png')); ?>" alt="Wishlist" loading="lazy" decoding="async" width="195" height="415" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.jpg')); ?>" alt="Wishlist" loading="lazy" decoding="async" width="195" height="415" />
                 </div>
             </div>
 
@@ -253,9 +253,9 @@ get_header();
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         06 · MERCHANT DASHBOARD
-    ═══════════════════════════════════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         06 Â· MERCHANT DASHBOARD
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="mcs__dashboard">
         <div class="mcs__container">
             <div class="mcs__dashboard-head" data-mcs-reveal>
@@ -271,7 +271,7 @@ get_header();
                     <span class="mcs__browser-url">dashboard.merchant.spines.tech</span>
                 </div>
                 <div class="mcs__browser-body">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard.png')); ?>" alt="Merchant dashboard analytics overview" loading="lazy" decoding="async" width="1280" height="720" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.jpg')); ?>" alt="Merchant dashboard analytics overview" loading="lazy" decoding="async" width="1280" height="720" />
                 </div>
             </div>
 
@@ -279,7 +279,7 @@ get_header();
                 <div class="mcs__video-card" data-mcs-reveal>
                     <h4>Merchant Login Demo</h4>
                     <a href="https://www.youtube.com/watch?v=OvxffxGhQ9E" target="_blank" class="mcs__video-thumb">
-                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard.png')); ?>" alt="Merchant login demo thumbnail" loading="lazy" />
+                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.jpg')); ?>" alt="Merchant login demo thumbnail" loading="lazy" />
                         <div class="mcs__video-overlay">
                             <span class="material-symbols-outlined">play_circle</span>
                             <p>Watch Video</p>
@@ -289,7 +289,7 @@ get_header();
                 <div class="mcs__video-card" data-mcs-reveal data-mcs-delay="120">
                     <h4>Products Adding &amp; Editing</h4>
                     <a href="https://www.youtube.com/watch?v=KJGuiAH6qoc" target="_blank" class="mcs__video-thumb">
-                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard2.png')); ?>" alt="Product management demo thumbnail" loading="lazy" />
+                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.jpg')); ?>" alt="Product management demo thumbnail" loading="lazy" />
                         <div class="mcs__video-overlay">
                             <span class="material-symbols-outlined">play_circle</span>
                             <p>Watch Video</p>
@@ -300,9 +300,9 @@ get_header();
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         07 · ADMIN OVERSIGHT
-    ═══════════════════════════════════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         07 Â· ADMIN OVERSIGHT
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="mcs__admin">
         <div class="mcs__container mcs__admin-grid">
 
@@ -331,16 +331,16 @@ get_header();
             <div class="mcs__admin-visual" data-mcs-reveal data-mcs-delay="150">
                 <div class="mcs__admin-glow" aria-hidden="true"></div>
                 <div class="mcs__admin-frame">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard2.png')); ?>" alt="Admin dashboard with global merchant map" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.jpg')); ?>" alt="Admin dashboard with global merchant map" loading="lazy" />
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         08 · ONBOARDING LIFECYCLE
-    ═══════════════════════════════════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         08 Â· ONBOARDING LIFECYCLE
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="mcs__onboarding">
         <div class="mcs__container">
             <div class="mcs__onboarding-head" data-mcs-reveal>
@@ -375,9 +375,9 @@ get_header();
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         09 · PAYMENTS & DELIVERY
-    ═══════════════════════════════════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         09 Â· PAYMENTS & DELIVERY
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="mcs__pay-delivery">
         <div class="mcs__container mcs__pay-grid" data-mcs-reveal-group>
 
@@ -412,9 +412,9 @@ get_header();
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         10 · PERFORMANCE FOUNDATION (tech stack)
-    ═══════════════════════════════════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         10 Â· PERFORMANCE FOUNDATION (tech stack)
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="mcs__stack">
         <div class="mcs__container mcs__stack-inner" data-mcs-reveal>
             <h2 class="mcs__stack-eyebrow">Performance Foundation</h2>
@@ -428,37 +428,37 @@ get_header();
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         11 · VISUAL SHOWCASE
-    ═══════════════════════════════════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         11 Â· VISUAL SHOWCASE
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="mcs__showcase">
         <div class="mcs__container">
             <div class="mcs__premium-card" data-mcs-reveal>
                 <div class="mcs__premium-card-inner">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/card-veo.png')); ?>" alt="Merchant brand identity and project overview" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/card-veo.jpg')); ?>" alt="Merchant brand identity and project overview" loading="lazy" />
                 </div>
             </div>
 
             <div class="mcs__showcase-grid" data-mcs-reveal-group>
                 <div class="mcs__showcase-item" data-mcs-reveal data-mcs-delay="80">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Home.png')); ?>" alt="Customer home screen" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Home.jpg')); ?>" alt="Customer home screen" loading="lazy" />
                 </div>
                 <div class="mcs__showcase-item" data-mcs-reveal data-mcs-delay="160">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Welcome.png')); ?>" alt="Welcome screen" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Welcome.jpg')); ?>" alt="Welcome screen" loading="lazy" />
                 </div>
                 <div class="mcs__showcase-item" data-mcs-reveal data-mcs-delay="240">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.png')); ?>" alt="Wishlist screen montage" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.jpg')); ?>" alt="Wishlist screen montage" loading="lazy" />
                 </div>
                 <div class="mcs__showcase-item" data-mcs-reveal data-mcs-delay="320">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard.png')); ?>" alt="Dashboard responsive views" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.jpg')); ?>" alt="Dashboard responsive views" loading="lazy" />
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         12 · WATCH IT IN ACTION
-    ═══════════════════════════════════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         12 Â· WATCH IT IN ACTION
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="mcs__demos">
         <div class="mcs__container">
             <h2 class="mcs__h2 mcs__h2--center" data-mcs-reveal>Watch it in Action</h2>
@@ -466,7 +466,7 @@ get_header();
             <div class="mcs__demos-grid" data-mcs-reveal-group>
                 <div class="mcs__demo" data-mcs-reveal>
                     <a href="https://www.youtube.com/watch?v=OvxffxGhQ9E" target="_blank" class="mcs__demo-thumb mcs__demo-thumb--primary">
-                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard.png')); ?>" alt="Merchant login workflow thumbnail" loading="lazy" />
+                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.jpg')); ?>" alt="Merchant login workflow thumbnail" loading="lazy" />
                         <div class="mcs__demo-overlay">
                             <span class="material-symbols-outlined">play_arrow</span>
                         </div>
@@ -477,7 +477,7 @@ get_header();
 
                 <div class="mcs__demo" data-mcs-reveal data-mcs-delay="120">
                     <a href="https://www.youtube.com/watch?v=KJGuiAH6qoc" target="_blank" class="mcs__demo-thumb mcs__demo-thumb--gold">
-                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard2.png')); ?>" alt="Product management demo thumbnail" loading="lazy" />
+                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.jpg')); ?>" alt="Product management demo thumbnail" loading="lazy" />
                         <div class="mcs__demo-overlay">
                             <span class="material-symbols-outlined">play_arrow</span>
                         </div>
@@ -489,9 +489,9 @@ get_header();
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         13 · READY FOR MARKET (results)
-    ═══════════════════════════════════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         13 Â· READY FOR MARKET (results)
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="mcs__results" id="results">
         <div class="mcs__container mcs__results-grid">
 
@@ -509,25 +509,25 @@ get_header();
 
             <div class="mcs__results-gallery" data-mcs-reveal data-mcs-delay="150">
                 <div class="mcs__results-img">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Home.png')); ?>" alt="Customer home screen" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Home.jpg')); ?>" alt="Customer home screen" loading="lazy" />
                 </div>
                 <div class="mcs__results-img mcs__results-img--down">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Item+Details.png')); ?>" alt="Product details screen" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Item+Details.jpg')); ?>" alt="Product details screen" loading="lazy" />
                 </div>
                 <div class="mcs__results-img mcs__results-img--up">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard2.png')); ?>" alt="Admin merchant listing table" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.jpg')); ?>" alt="Admin merchant listing table" loading="lazy" />
                 </div>
                 <div class="mcs__results-img">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard.png')); ?>" alt="Merchant using dashboard in-store" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.jpg')); ?>" alt="Merchant using dashboard in-store" loading="lazy" />
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         14 · FINAL CTA
-    ═══════════════════════════════════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         14 Â· FINAL CTA
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="mcs__final-cta">
         <div class="mcs__container">
             <div class="mcs__final-cta-card" data-mcs-reveal>
