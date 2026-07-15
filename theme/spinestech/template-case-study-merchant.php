@@ -78,13 +78,13 @@ get_header();
 
             <div class="mcs__hero-visual" data-mcs-reveal data-mcs-delay="150">
                 <div class="mcs__phone mcs__phone--left">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Welcome.png')); ?>" alt="Merchant app welcome screen" loading="eager" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Welcome.png')); ?>" alt="Merchant app welcome screen" loading="eager" fetchpriority="high" decoding="async" width="195" height="415" />
                 </div>
                 <div class="mcs__phone mcs__phone--center">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Item+Details.png')); ?>" alt="Merchant product detail screen" loading="eager" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Item+Details.png')); ?>" alt="Merchant product detail screen" loading="eager" fetchpriority="high" decoding="async" width="195" height="415" />
                 </div>
                 <div class="mcs__phone mcs__phone--right">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.png')); ?>" alt="Merchant wishlist screen" loading="eager" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.png')); ?>" alt="Merchant wishlist screen" loading="eager" fetchpriority="low" decoding="async" width="195" height="415" />
                 </div>
             </div>
 
@@ -227,13 +227,13 @@ get_header();
 
             <div class="mcs__shopping-phones" data-mcs-reveal>
                 <div class="mcs__mini-phone mcs__mini-phone--up">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Home.png')); ?>" alt="Home screen" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Home.png')); ?>" alt="Home screen" loading="lazy" decoding="async" width="195" height="415" />
                 </div>
                 <div class="mcs__mini-phone">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Item+Details.png')); ?>" alt="Product details" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Item+Details.png')); ?>" alt="Product details" loading="lazy" decoding="async" width="195" height="415" />
                 </div>
                 <div class="mcs__mini-phone mcs__mini-phone--up">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.png')); ?>" alt="Wishlist" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.png')); ?>" alt="Wishlist" loading="lazy" decoding="async" width="195" height="415" />
                 </div>
             </div>
 
@@ -271,7 +271,7 @@ get_header();
                     <span class="mcs__browser-url">dashboard.merchant.spines.tech</span>
                 </div>
                 <div class="mcs__browser-body">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard.png')); ?>" alt="Merchant dashboard analytics overview" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Deshboard.png')); ?>" alt="Merchant dashboard analytics overview" loading="lazy" decoding="async" width="1280" height="720" />
                 </div>
             </div>
 

@@ -120,8 +120,8 @@
 .mcs__hero {
     position: relative;
     overflow: hidden;
-    padding-block: calc(var(--navbar-height, 5rem) + 3rem) 4.5rem;
-    min-height: 88vh;
+    padding-block: calc(var(--navbar-height, 5rem) + 2.5rem) 4rem;
+    min-height: 78vh;
     display: flex;
     align-items: center;
 }
@@ -145,10 +145,10 @@
     position: relative; z-index: 1;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
     align-items: center;
 }
-@media (min-width: 1024px) { .mcs__hero-inner { grid-template-columns: 1.05fr 0.95fr; } }
+@media (min-width: 1024px) { .mcs__hero-inner { grid-template-columns: 1.1fr 0.9fr; gap: 3rem; } }
 
 .mcs__badge {
     display: inline-flex;
@@ -194,11 +194,11 @@
 }
 
 .mcs__hero-copy {
-    font-size: 1.05rem;
+    font-size: 1rem;
     line-height: 1.7;
     color: var(--mcs-ink-soft);
     max-width: 34rem;
-    margin-block-end: 2.5rem;
+    margin-block-end: 2rem;
 }
 
 .mcs__hero-stats {
@@ -223,7 +223,7 @@
 /* Phones stack */
 .mcs__hero-visual {
     position: relative;
-    height: 460px;
+    height: 420px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -231,36 +231,38 @@
 
 .mcs__phone {
     position: absolute;
-    width: 220px; height: 460px;
+    width: 195px; height: 415px;
     border-radius: 2rem;
-    border: 6px solid var(--mcs-ink);
-    box-shadow: 0 24px 60px rgba(10,29,47,0.25);
+    border: 5px solid var(--mcs-ink);
+    box-shadow: 0 20px 50px rgba(10,29,47,0.22);
     overflow: hidden;
     background: #fff;
 }
 .mcs__phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.mcs__phone--left img,
+.mcs__phone--right img { object-position: center; transform: scale(1.08); }
 
-.mcs__phone--left   { transform: rotate(-12deg) translateX(-110px); z-index: 1; animation: mcs-phone-float-a 6s ease-in-out infinite; }
+.mcs__phone--left   { transform: rotate(-11deg) translateX(-100px); z-index: 1; animation: mcs-phone-float-a 6s ease-in-out infinite; }
 .mcs__phone--center { z-index: 2; animation: mcs-phone-float-b 6.5s ease-in-out infinite; }
-.mcs__phone--right  { transform: rotate(12deg) translateX(110px); z-index: 1; animation: mcs-phone-float-c 5.5s ease-in-out infinite; }
+.mcs__phone--right  { transform: rotate(11deg) translateX(100px); z-index: 1; animation: mcs-phone-float-c 5.5s ease-in-out infinite; }
 
-@keyframes mcs-phone-float-a { 0%,100% { transform: rotate(-12deg) translateX(-110px) translateY(0); } 50% { transform: rotate(-12deg) translateX(-110px) translateY(-10px); } }
+@keyframes mcs-phone-float-a { 0%,100% { transform: rotate(-11deg) translateX(-100px) translateY(0); } 50% { transform: rotate(-11deg) translateX(-100px) translateY(-10px); } }
 @keyframes mcs-phone-float-b { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
-@keyframes mcs-phone-float-c { 0%,100% { transform: rotate(12deg) translateX(110px) translateY(0); } 50% { transform: rotate(12deg) translateX(110px) translateY(-8px); } }
+@keyframes mcs-phone-float-c { 0%,100% { transform: rotate(11deg) translateX(100px) translateY(0); } 50% { transform: rotate(11deg) translateX(100px) translateY(-8px); } }
 
 @media (max-width: 640px) {
-    .mcs__hero-visual { height: 340px; }
-    .mcs__phone { width: 150px; height: 320px; }
-    .mcs__phone--left  { transform: rotate(-10deg) translateX(-70px); }
-    .mcs__phone--right { transform: rotate(10deg) translateX(70px); }
+    .mcs__hero-visual { height: 300px; }
+    .mcs__phone { width: 140px; height: 290px; }
+    .mcs__phone--left  { transform: rotate(-10deg) translateX(-65px); }
+    .mcs__phone--right { transform: rotate(10deg) translateX(65px); }
 }
 
 /* =============================================================
    02 · THE DIGITAL ECOSYSTEM
    ============================================================= */
-.mcs__overview { padding-block: 5.5rem; background: var(--mcs-surface); }
-.mcs__overview-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
-@media (min-width: 768px) { .mcs__overview-grid { grid-template-columns: 1fr 1fr; } }
+.mcs__overview { padding-block: var(--space-xl, 4.5rem); background: var(--mcs-surface); }
+.mcs__overview-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+@media (min-width: 768px) { .mcs__overview-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
 
 .mcs__feature-stack { display: flex; flex-direction: column; gap: 1rem; }
 .mcs__feature-row {
@@ -294,7 +296,7 @@
     overflow: hidden;
     background: var(--mcs-navy);
     color: #fff;
-    padding-block: 5.5rem;
+    padding-block: var(--space-xl, 4.5rem);
 }
 .mcs__challenge-glow {
     position: absolute; width: 460px; height: 460px; border-radius: 50%;
@@ -325,7 +327,7 @@
 /* =============================================================
    04 · THE INTEGRATED SOLUTION
    ============================================================= */
-.mcs__solution { padding-block: 5.5rem; background: var(--mcs-bg); }
+.mcs__solution { padding-block: var(--space-xl, 4.5rem); background: var(--mcs-bg); }
 .mcs__solution-head { text-align: center; max-width: 620px; margin-inline: auto; margin-block-end: 3rem; }
 .mcs__solution-sub { color: var(--mcs-ink-soft); }
 
@@ -339,7 +341,7 @@
 @media (min-width: 768px) { .mcs__solution-panel { grid-template-columns: repeat(3, 1fr); } }
 
 .mcs__solution-col {
-    padding: 3rem 2.5rem;
+    padding: 2.5rem 2rem;
     background: var(--mcs-surface);
     border-block-end: 1px solid var(--mcs-outline);
     transition: background-color 0.3s ease;
@@ -365,22 +367,23 @@
 /* =============================================================
    05 · THE SHOPPING EXPERIENCE
    ============================================================= */
-.mcs__shopping { padding-block: 5.5rem; background: var(--mcs-surface-tint); overflow: hidden; }
-.mcs__shopping-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; }
-@media (min-width: 1024px) { .mcs__shopping-grid { grid-template-columns: 1fr 1fr; } }
+.mcs__shopping { padding-block: var(--space-xl, 4.5rem); background: var(--mcs-surface-tint); overflow: hidden; }
+.mcs__shopping-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+@media (min-width: 1024px) { .mcs__shopping-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
 
-.mcs__shopping-phones { display: flex; justify-content: center; gap: 1rem; }
+.mcs__shopping-phones { display: flex; justify-content: center; gap: 0.85rem; }
 .mcs__mini-phone {
     width: 30%;
     aspect-ratio: 9/19;
-    border-radius: 1.5rem;
+    border-radius: 1.25rem;
     border: 4px solid var(--mcs-ink);
     overflow: hidden;
-    box-shadow: 0 18px 40px rgba(10,29,47,0.18);
+    box-shadow: 0 14px 34px rgba(10,29,47,0.16);
     animation: mcs-mini-float 5s ease-in-out infinite;
 }
-.mcs__mini-phone--up { padding-block-start: 2rem; animation-delay: -2s; }
+.mcs__mini-phone--up { animation-delay: -2s; }
 .mcs__mini-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.mcs__mini-phone:nth-child(odd) img { object-position: center; transform: scale(1.08); }
 @keyframes mcs-mini-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
 .mcs__dots-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-block-start: 2rem; }
@@ -390,8 +393,8 @@
 /* =============================================================
    06 · MERCHANT DASHBOARD
    ============================================================= */
-.mcs__dashboard { padding-block: 5.5rem; background: var(--mcs-bg); }
-.mcs__dashboard-head { margin-block-end: 3rem; }
+.mcs__dashboard { padding-block: var(--space-xl, 4.5rem); background: var(--mcs-bg); }
+.mcs__dashboard-head { margin-block-end: 2.5rem; }
 .mcs__dashboard-sub { color: var(--mcs-ink-soft); max-width: 44rem; }
 
 .mcs__browser-frame {
@@ -452,9 +455,9 @@
 /* =============================================================
    07 · ADMIN OVERSIGHT
    ============================================================= */
-.mcs__admin { padding-block: 5.5rem; background: var(--mcs-navy); color: #fff; overflow: hidden; }
-.mcs__admin-grid { display: grid; grid-template-columns: 1fr; gap: 3.5rem; align-items: center; }
-@media (min-width: 1024px) { .mcs__admin-grid { grid-template-columns: 1fr 1fr; } }
+.mcs__admin { padding-block: var(--space-xl, 4.5rem); background: var(--mcs-navy); color: #fff; overflow: hidden; }
+.mcs__admin-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+@media (min-width: 1024px) { .mcs__admin-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
 
 .mcs__admin-copy { color: rgba(255,255,255,0.68); font-size: 1rem; line-height: 1.75; margin-block-end: 2rem; }
 
@@ -492,8 +495,8 @@
 /* =============================================================
    08 · ONBOARDING LIFECYCLE
    ============================================================= */
-.mcs__onboarding { padding-block: 5.5rem; background: var(--mcs-surface); }
-.mcs__onboarding-head { text-align: center; margin-block-end: 3rem; }
+.mcs__onboarding { padding-block: var(--space-xl, 4.5rem); background: var(--mcs-surface); }
+.mcs__onboarding-head { text-align: center; margin-block-end: 2.5rem; }
 .mcs__onboarding-sub { color: var(--mcs-ink-soft); }
 
 .mcs__steps { position: relative; display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
@@ -541,7 +544,7 @@
 /* =============================================================
    09 · PAYMENTS & DELIVERY
    ============================================================= */
-.mcs__pay-delivery { padding-block: 5.5rem; background: var(--mcs-surface-tint); }
+.mcs__pay-delivery { padding-block: var(--space-xl, 4.5rem); background: var(--mcs-surface-tint); }
 .mcs__pay-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
 @media (min-width: 768px) { .mcs__pay-grid { grid-template-columns: 1fr 1fr; } }
 
@@ -610,7 +613,7 @@
 /* =============================================================
    11 · VISUAL SHOWCASE
    ============================================================= */
-.mcs__showcase { padding-block: 5.5rem; background: var(--mcs-surface); }
+.mcs__showcase { padding-block: var(--space-xl, 4.5rem); background: var(--mcs-surface); }
 
 .mcs__premium-card {
     position: relative;
@@ -682,8 +685,8 @@
 /* =============================================================
    12 · WATCH IT IN ACTION
    ============================================================= */
-.mcs__demos { padding-block: 5.5rem; background: var(--mcs-surface-tint); }
-.mcs__demos-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-block-start: 3rem; }
+.mcs__demos { padding-block: var(--space-xl, 4.5rem); background: var(--mcs-surface-tint); }
+.mcs__demos-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; margin-block-start: 2.5rem; }
 @media (min-width: 768px) { .mcs__demos-grid { grid-template-columns: 1fr 1fr; } }
 
 .mcs__demo-thumb { position: relative; aspect-ratio: 16/9; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 20px 44px rgba(10,29,47,0.14); cursor: pointer; margin-block-end: 1.5rem; }
@@ -704,9 +707,9 @@
 /* =============================================================
    13 · READY FOR MARKET
    ============================================================= */
-.mcs__results { padding-block: 5.5rem; background: var(--mcs-bg); }
-.mcs__results-grid { display: grid; grid-template-columns: 1fr; gap: 3.5rem; align-items: center; }
-@media (min-width: 1024px) { .mcs__results-grid { grid-template-columns: 1fr 1fr; } }
+.mcs__results { padding-block: var(--space-xl, 4.5rem); background: var(--mcs-bg); }
+.mcs__results-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+@media (min-width: 1024px) { .mcs__results-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
 
 .mcs__stars-list { display: flex; flex-direction: column; gap: 0.75rem; margin-block-start: 1rem; }
 .mcs__stars-item {
