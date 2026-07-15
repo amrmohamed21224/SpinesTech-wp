@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template Name: Case Study â€” Merchant
  * Template Post Type: st_case_study
@@ -433,9 +433,16 @@ get_header();
     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="mcs__showcase">
         <div class="mcs__container">
-            <div class="mcs__premium-card" data-mcs-reveal>
-                <div class="mcs__premium-card-inner">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/card-veo.jpg')); ?>" alt="Merchant brand identity and project overview" loading="lazy" />
+            
+            <div class="mcs__browser-frame mcs__showcase-desktop" data-mcs-reveal>
+                <div class="mcs__browser-chrome">
+                    <span class="mcs__browser-dot mcs__browser-dot--red"></span>
+                    <span class="mcs__browser-dot mcs__browser-dot--gold"></span>
+                    <span class="mcs__browser-dot mcs__browser-dot--green"></span>
+                    <span class="mcs__browser-url">dashboard.merchant.spines.tech</span>
+                </div>
+                <div class="mcs__browser-body">
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.jpg')); ?>" alt="Dashboard responsive views" loading="lazy" />
                 </div>
             </div>
 
@@ -450,18 +457,7 @@ get_header();
                     <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.jpg')); ?>" alt="Wishlist screen montage" loading="lazy" />
                 </div>
             </div>
-            
-            <div class="mcs__browser-frame mcs__showcase-desktop" data-mcs-reveal>
-                <div class="mcs__browser-chrome">
-                    <span class="mcs__browser-dot mcs__browser-dot--red"></span>
-                    <span class="mcs__browser-dot mcs__browser-dot--gold"></span>
-                    <span class="mcs__browser-dot mcs__browser-dot--green"></span>
-                    <span class="mcs__browser-url">dashboard.merchant.spines.tech</span>
-                </div>
-                <div class="mcs__browser-body">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.jpg')); ?>" alt="Dashboard responsive views" loading="lazy" />
-                </div>
-            </div>
+
         </div>
     </section>
 
@@ -556,3 +552,4 @@ get_header();
 </div><!-- /.mcs -->
 
 <?php get_footer(); ?>
+
