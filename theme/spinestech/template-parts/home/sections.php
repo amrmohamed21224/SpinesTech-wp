@@ -20,92 +20,113 @@ if ($plans) {
 }
 
 $capabilities = [
-    ['smartphone',         $is_rtl ? 'تطوير الجوال'                : 'Mobile Development',    $is_rtl ? 'تطبيقات native و cross-platform بأداء عالي وتجربة مستخدم سلسة.' : 'Native and cross-platform apps with high performance.'],
-    ['data_object',        $is_rtl ? 'الخلفيات البرمجية و APIs'    : 'Backend & APIs',        $is_rtl ? 'بنية تحتية قوية قابلة للتوسع وتكامل آمن مع الأنظمة الخارجية.' : 'Scalable infrastructure with secure external integrations.'],
-    ['dashboard_customize',$is_rtl ? 'لوحات التحكم والتشغيل'       : 'Dashboards & Ops',     $is_rtl ? 'أدوات إدارية ذكية تمنحك سيطرة كاملة على العمليات والبيانات.' : 'Smart admin tools for full operational control.'],
-    ['hub',                $is_rtl ? 'خصائص الأعمال'               : 'Business Features',    $is_rtl ? 'أتمتة الفوترة، إدارة المحافظ، الصلاحيات، والذكاء الاصطناعي التشغيلي.' : 'Billing automation, wallets, permissions and operational AI.'],
+    ['smartphone',         $is_rtl ? "\u{062A}\u{0637}\u{0648}\u{064A}\u{0631}\u{0020}\u{0627}\u{0644}\u{062C}\u{0648}\u{0627}\u{0644}"                : 'Mobile Development',    $is_rtl ? "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0627}\u{062A}\u{0020}\u{006E}\u{0061}\u{0074}\u{0069}\u{0076}\u{0065}\u{0020}\u{0648}\u{0020}\u{0063}\u{0072}\u{006F}\u{0073}\u{0073}\u{002D}\u{0070}\u{006C}\u{0061}\u{0074}\u{0066}\u{006F}\u{0072}\u{006D}\u{0020}\u{0628}\u{0623}\u{062F}\u{0627}\u{0621}\u{0020}\u{0639}\u{0627}\u{0644}\u{064A}\u{0020}\u{0648}\u{062A}\u{062C}\u{0631}\u{0628}\u{0629}\u{0020}\u{0645}\u{0633}\u{062A}\u{062E}\u{062F}\u{0645}\u{0020}\u{0633}\u{0644}\u{0633}\u{0629}\u{002E}" : 'Native and cross-platform apps with high performance.'],
+    ['data_object',        $is_rtl ? "\u{0627}\u{0644}\u{062E}\u{0644}\u{0641}\u{064A}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0628}\u{0631}\u{0645}\u{062C}\u{064A}\u{0629}\u{0020}\u{0648}\u{0020}\u{0041}\u{0050}\u{0049}\u{0073}"    : 'Backend & APIs',        $is_rtl ? "\u{0628}\u{0646}\u{064A}\u{0629}\u{0020}\u{062A}\u{062D}\u{062A}\u{064A}\u{0629}\u{0020}\u{0642}\u{0648}\u{064A}\u{0629}\u{0020}\u{0642}\u{0627}\u{0628}\u{0644}\u{0629}\u{0020}\u{0644}\u{0644}\u{062A}\u{0648}\u{0633}\u{0639}\u{0020}\u{0648}\u{062A}\u{0643}\u{0627}\u{0645}\u{0644}\u{0020}\u{0622}\u{0645}\u{0646}\u{0020}\u{0645}\u{0639}\u{0020}\u{0627}\u{0644}\u{0623}\u{0646}\u{0638}\u{0645}\u{0629}\u{0020}\u{0627}\u{0644}\u{062E}\u{0627}\u{0631}\u{062C}\u{064A}\u{0629}\u{002E}" : 'Scalable infrastructure with secure external integrations.'],
+    ['dashboard_customize',$is_rtl ? "\u{0644}\u{0648}\u{062D}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062A}\u{062D}\u{0643}\u{0645}\u{0020}\u{0648}\u{0627}\u{0644}\u{062A}\u{0634}\u{063A}\u{064A}\u{0644}"       : 'Dashboards & Ops',     $is_rtl ? "\u{0623}\u{062F}\u{0648}\u{0627}\u{062A}\u{0020}\u{0625}\u{062F}\u{0627}\u{0631}\u{064A}\u{0629}\u{0020}\u{0630}\u{0643}\u{064A}\u{0629}\u{0020}\u{062A}\u{0645}\u{0646}\u{062D}\u{0643}\u{0020}\u{0633}\u{064A}\u{0637}\u{0631}\u{0629}\u{0020}\u{0643}\u{0627}\u{0645}\u{0644}\u{0629}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{0644}\u{064A}\u{0627}\u{062A}\u{0020}\u{0648}\u{0627}\u{0644}\u{0628}\u{064A}\u{0627}\u{0646}\u{0627}\u{062A}\u{002E}" : 'Smart admin tools for full operational control.'],
+    ['hub',                $is_rtl ? "\u{062E}\u{0635}\u{0627}\u{0626}\u{0635}\u{0020}\u{0627}\u{0644}\u{0623}\u{0639}\u{0645}\u{0627}\u{0644}"               : 'Business Features',    $is_rtl ? "\u{0623}\u{062A}\u{0645}\u{062A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0641}\u{0648}\u{062A}\u{0631}\u{0629}\u{060C}\u{0020}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{062D}\u{0627}\u{0641}\u{0638}\u{060C}\u{0020}\u{0627}\u{0644}\u{0635}\u{0644}\u{0627}\u{062D}\u{064A}\u{0627}\u{062A}\u{060C}\u{0020}\u{0648}\u{0627}\u{0644}\u{0630}\u{0643}\u{0627}\u{0621}\u{0020}\u{0627}\u{0644}\u{0627}\u{0635}\u{0637}\u{0646}\u{0627}\u{0639}\u{064A}\u{0020}\u{0627}\u{0644}\u{062A}\u{0634}\u{063A}\u{064A}\u{0644}\u{064A}\u{002E}" : 'Billing automation, wallets, permissions and operational AI.'],
 ];
 
 $case_studies = [
     [
         'sector'  => 'LOGISTICS & SUPPLY CHAIN',
-        'title'   => $is_rtl ? 'Backway: هندسة سلاسل الإمداد الرقمية' : 'Backway: Digital Supply Chain Engineering',
-        'desc'    => $is_rtl ? 'بنينا نظاماً متكاملاً لإدارة عمليات الميل الأخير، يربط السائقين بمركز العمليات عبر تطبيق جوال ذكي ولوحة تحكم مركزية متقدمة تدعم التتبع الفوري والأتمتة المالية.' : 'We built an integrated last-mile operations system connecting drivers to operations via a smart mobile app and advanced dashboard.',
-        'tags'    => $is_rtl ? ['تطبيق السائقين (iOS/Android)', 'لوحة تحكم المشرفين', 'نظام تتبع GPS لحظي', 'محرك أتمتة الفوترة'] : ['Driver App (iOS/Android)', 'Admin Dashboard', 'Real-time GPS', 'Billing Automation'],
-        'img'     => 'https://lh3.googleusercontent.com/aida-public/AB6AXuB33hL_JB4-mI6kBtgDKl0VuZ_AEUnqmSJ8vNE8fRCkFKfa8XDECq3bxENOihEM_prYUUELP2fDu-qXlxFHyEpa3NBGI_hJDgC0UpI9koAqHq1iizs3ci2x259tNLWm9MmrC9F2dLAqTgNazkfMfckWGa-VPeKkskYDdJqQtKcGZBRNmRUB7BRO_BYHp-8_UiQF6j1cPWDVSXivqU1EsnJzapsn_4zKBQ88OGRrrT2NvqSfbawo7zHqygbKW0DBERqYmaRcEypLo-G-',
+        'title'   => $is_rtl ? "\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{003A}\u{0020}\u{0647}\u{0646}\u{062F}\u{0633}\u{0629}\u{0020}\u{0633}\u{0644}\u{0627}\u{0633}\u{0644}\u{0020}\u{0627}\u{0644}\u{0625}\u{0645}\u{062F}\u{0627}\u{062F}\u{0020}\u{0627}\u{0644}\u{0631}\u{0642}\u{0645}\u{064A}\u{0629}" : 'Backway: Digital Supply Chain Engineering',
+        'desc'    => $is_rtl ? "\u{0628}\u{0646}\u{064A}\u{0646}\u{0627}\u{0020}\u{0646}\u{0638}\u{0627}\u{0645}\u{0627}\u{064B}\u{0020}\u{0645}\u{062A}\u{0643}\u{0627}\u{0645}\u{0644}\u{0627}\u{064B}\u{0020}\u{0644}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0639}\u{0645}\u{0644}\u{064A}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{064A}\u{0644}\u{0020}\u{0627}\u{0644}\u{0623}\u{062E}\u{064A}\u{0631}\u{060C}\u{0020}\u{064A}\u{0631}\u{0628}\u{0637}\u{0020}\u{0627}\u{0644}\u{0633}\u{0627}\u{0626}\u{0642}\u{064A}\u{0646}\u{0020}\u{0628}\u{0645}\u{0631}\u{0643}\u{0632}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{0644}\u{064A}\u{0627}\u{062A}\u{0020}\u{0639}\u{0628}\u{0631}\u{0020}\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{062C}\u{0648}\u{0627}\u{0644}\u{0020}\u{0630}\u{0643}\u{064A}\u{0020}\u{0648}\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{062A}\u{062D}\u{0643}\u{0645}\u{0020}\u{0645}\u{0631}\u{0643}\u{0632}\u{064A}\u{0629}\u{0020}\u{0645}\u{062A}\u{0642}\u{062F}\u{0645}\u{0629}\u{0020}\u{062A}\u{062F}\u{0639}\u{0645}\u{0020}\u{0627}\u{0644}\u{062A}\u{062A}\u{0628}\u{0639}\u{0020}\u{0627}\u{0644}\u{0641}\u{0648}\u{0631}\u{064A}\u{0020}\u{0648}\u{0627}\u{0644}\u{0623}\u{062A}\u{0645}\u{062A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0627}\u{0644}\u{064A}\u{0629}\u{002E}" : 'We built an integrated last-mile operations system connecting drivers to operations via a smart mobile app and advanced dashboard.',
+        'tags'    => $is_rtl ? ["\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0627}\u{0644}\u{0633}\u{0627}\u{0626}\u{0642}\u{064A}\u{0646}\u{0020}\u{0028}\u{0069}\u{004F}\u{0053}\u{002F}\u{0041}\u{006E}\u{0064}\u{0072}\u{006F}\u{0069}\u{0064}\u{0029}", "\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{062A}\u{062D}\u{0643}\u{0645}\u{0020}\u{0627}\u{0644}\u{0645}\u{0634}\u{0631}\u{0641}\u{064A}\u{0646}", "\u{0646}\u{0638}\u{0627}\u{0645}\u{0020}\u{062A}\u{062A}\u{0628}\u{0639}\u{0020}\u{0047}\u{0050}\u{0053}\u{0020}\u{0644}\u{062D}\u{0638}\u{064A}", "\u{0645}\u{062D}\u{0631}\u{0643}\u{0020}\u{0623}\u{062A}\u{0645}\u{062A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0641}\u{0648}\u{062A}\u{0631}\u{0629}"] : ['Driver App (iOS/Android)', 'Admin Dashboard', 'Real-time GPS', 'Billing Automation'],
+        'img'     => get_template_directory_uri() . '/assets/images/case-studies/backway/card-opt.jpg',
+        'img_webp'=> get_template_directory_uri() . '/assets/images/case-studies/backway/card-opt.webp',
         'img_pos' => 'start',
+        'img_focus'=> 'center top',
         'color'   => '#ea580c',
+        'link'    => function_exists('st_case_study_url_by_slug') ? st_case_study_url_by_slug('backway') : trailingslashit((string) get_post_type_archive_link('st_case_study')) . 'backway/',
+    ],
+    [
+        'sector'  => 'PROPERTY & FACILITY MANAGEMENT',
+        'title'   => $is_rtl ? "\u{0050}\u{0072}\u{006F}\u{0070}\u{0043}\u{0061}\u{0072}\u{0065}\u{0020}\u{0033}\u{0036}\u{0030}\u{003A}\u{0020}\u{0645}\u{0646}\u{0635}\u{0629}\u{0020}\u{0631}\u{0642}\u{0645}\u{064A}\u{0629}\u{0020}\u{0644}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{0623}\u{0645}\u{0644}\u{0627}\u{0643}\u{0020}\u{0648}\u{0627}\u{0644}\u{0635}\u{064A}\u{0627}\u{0646}\u{0629}" : 'PropCare 360: Digital Property Services Platform',
+        'tags'    => $is_rtl ? ["\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{0644}\u{0627}\u{0621}", "\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{062A}\u{062D}\u{0643}\u{0645}\u{0020}\u{0645}\u{0631}\u{0643}\u{0632}\u{064A}\u{0629}", "\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{0639}\u{0642}\u{0648}\u{062F}\u{0020}\u{0627}\u{0644}\u{0633}\u{0646}\u{0648}\u{064A}\u{0629}", "\u{0645}\u{062A}\u{0627}\u{0628}\u{0639}\u{0629}\u{0020}\u{0627}\u{0644}\u{0637}\u{0644}\u{0628}\u{0627}\u{062A}"] : ['Customer App', 'Admin Dashboard', 'Annual Contracts', 'Request Tracking'],
+        'img'     => get_template_directory_uri() . '/assets/images/case-studies/propcare/screen-card.png',
+        'img_webp'=> '',
+        'img_pos' => 'start',
+        'img_focus'=> 'center',
+        'color'   => '#00668a',
+        'link'    => function_exists('st_case_study_url_by_slug') ? st_case_study_url_by_slug('propcare') : trailingslashit((string) get_post_type_archive_link('st_case_study')) . 'propcare/',
     ],
     [
         'sector'  => 'EVENTS & BOOKINGS',
-        'title'   => $is_rtl ? 'Lahza: السوق الرقمي الأول للقاعات' : 'Lahza: First Digital Venue Marketplace',
-        'desc'    => $is_rtl ? 'تحويل تجربة حجز القاعات التقليدية إلى منصة رقمية سلسة. مكنّا ملاك القاعات من إدارة حجوزاتهم ومدفوعاتهم، ووفرنا للعملاء تجربة بحث وحجز فورية وموثوقة.' : 'Transforming traditional venue booking into a seamless digital platform for owners and customers.',
-        'tags'    => $is_rtl ? ['منصة حجز العملاء', 'تطبيق ملاك القاعات', 'نظام دفع وسداد إلكتروني', 'تقويم حجوزات ذكي'] : ['Customer Booking Platform', 'Venue Owner App', 'Payment System', 'Smart Calendar'],
-        'img'     => 'https://lh3.googleusercontent.com/aida-public/AB6AXuAmy3r27P06-PxVLObbNcP0FqUVBzS8MrQZOKrM02ebrL6TPcIGhTFaxocrHTUzy9JG9UAPMr_4irP8nTp342HxsekxL_rTkEcUzQON9jGLU9BNN4LhEWuHrMdxibNjZAK8KHSCceAT-Oke8RpME_lfd89S1dfDbuhdBvHR0_DVSZ9hPV2nCy8Rd-o2icFDnvspVoSmkxqGYXceBOVrWatzUYVEbOrHDLCDtcXsTGHfLEESxbCj31NUVY71DamGCHBzVSh8iu34MjGy',
+        'title'   => $is_rtl ? "\u{004C}\u{0061}\u{0068}\u{007A}\u{0061}\u{003A}\u{0020}\u{0627}\u{0644}\u{0633}\u{0648}\u{0642}\u{0020}\u{0627}\u{0644}\u{0631}\u{0642}\u{0645}\u{064A}\u{0020}\u{0627}\u{0644}\u{0623}\u{0648}\u{0644}\u{0020}\u{0644}\u{0644}\u{0642}\u{0627}\u{0639}\u{0627}\u{062A}" : 'Lahza: First Digital Venue Marketplace',
+        'desc'    => $is_rtl ? "\u{062A}\u{062D}\u{0648}\u{064A}\u{0644}\u{0020}\u{062A}\u{062C}\u{0631}\u{0628}\u{0629}\u{0020}\u{062D}\u{062C}\u{0632}\u{0020}\u{0627}\u{0644}\u{0642}\u{0627}\u{0639}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0644}\u{064A}\u{062F}\u{064A}\u{0629}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0645}\u{0646}\u{0635}\u{0629}\u{0020}\u{0631}\u{0642}\u{0645}\u{064A}\u{0629}\u{0020}\u{0633}\u{0644}\u{0633}\u{0629}\u{002E}\u{0020}\u{0645}\u{0643}\u{0646}\u{0651}\u{0627}\u{0020}\u{0645}\u{0644}\u{0627}\u{0643}\u{0020}\u{0627}\u{0644}\u{0642}\u{0627}\u{0639}\u{0627}\u{062A}\u{0020}\u{0645}\u{0646}\u{0020}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{062D}\u{062C}\u{0648}\u{0632}\u{0627}\u{062A}\u{0647}\u{0645}\u{0020}\u{0648}\u{0645}\u{062F}\u{0641}\u{0648}\u{0639}\u{0627}\u{062A}\u{0647}\u{0645}\u{060C}\u{0020}\u{0648}\u{0648}\u{0641}\u{0631}\u{0646}\u{0627}\u{0020}\u{0644}\u{0644}\u{0639}\u{0645}\u{0644}\u{0627}\u{0621}\u{0020}\u{062A}\u{062C}\u{0631}\u{0628}\u{0629}\u{0020}\u{0628}\u{062D}\u{062B}\u{0020}\u{0648}\u{062D}\u{062C}\u{0632}\u{0020}\u{0641}\u{0648}\u{0631}\u{064A}\u{0629}\u{0020}\u{0648}\u{0645}\u{0648}\u{062B}\u{0648}\u{0642}\u{0629}\u{002E}" : 'Transforming traditional venue booking into a seamless digital platform for owners and customers.',
+        'tags'    => $is_rtl ? ["\u{0645}\u{0646}\u{0635}\u{0629}\u{0020}\u{062D}\u{062C}\u{0632}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{0644}\u{0627}\u{0621}", "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0645}\u{0644}\u{0627}\u{0643}\u{0020}\u{0627}\u{0644}\u{0642}\u{0627}\u{0639}\u{0627}\u{062A}", "\u{0646}\u{0638}\u{0627}\u{0645}\u{0020}\u{062F}\u{0641}\u{0639}\u{0020}\u{0648}\u{0633}\u{062F}\u{0627}\u{062F}\u{0020}\u{0625}\u{0644}\u{0643}\u{062A}\u{0631}\u{0648}\u{0646}\u{064A}", "\u{062A}\u{0642}\u{0648}\u{064A}\u{0645}\u{0020}\u{062D}\u{062C}\u{0648}\u{0632}\u{0627}\u{062A}\u{0020}\u{0630}\u{0643}\u{064A}"] : ['Customer Booking Platform', 'Venue Owner App', 'Payment System', 'Smart Calendar'],
+        'img'     => get_template_directory_uri() . '/assets/images/case-studies/lahza/card-opt.jpg',
+        'img_webp'=> get_template_directory_uri() . '/assets/images/case-studies/lahza/card-opt.webp',
         'img_pos' => 'end',
+        'img_focus'=> '72% center',
         'color'   => '#2563eb',
+        'link'    => function_exists('st_case_study_url_by_slug') ? st_case_study_url_by_slug('lahza') : trailingslashit((string) get_post_type_archive_link('st_case_study')) . 'lahza/',
     ],
     [
-        'sector'  => 'PROP-TECH & MAINTENANCE',
-        'title'   => $is_rtl ? 'EstateCare: رقمنة الصيانة العقارية' : 'EstateCare: Digitizing Property Maintenance',
-        'desc'    => $is_rtl ? 'نظام تشغيل عقاري يربط ملاك المجمعات السكنية بفرق الصيانة والمستأجرين. أتمتنا دورة الصيانة بالكامل، من فتح التذكرة حتى التقييم الفني النهائي، مع إدارة كاملة للعقود والمستندات.' : 'A property operations system connecting complex owners with maintenance teams and tenants.',
-        'tags'    => $is_rtl ? ['تطبيق المستأجرين', 'تطبيق الفنيين الميدانيين', 'نظام إدارة التذاكر', 'لوحة تحكم إدارة الأملاك'] : ['Tenant App', 'Field Technician App', 'Ticketing System', 'Property Management Dashboard'],
-        'img'     => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDTg4mAz8ORW8UanYP8_9n9oeOgbdI0AUvRG_MMutTHYSTx0OZAYIsCLJsqPjAhkMrGqcpzH2pI25T8QFUu2XOQusybmCgBo5Hhr-VIQjBCK_egqUR9ayoKdFzCgQsbFumCaObBvGSVG99WIH7rWK-SaBwHr0ChwISZUpD_UHBYFhytQHciFXGyKD2EPMxBd-PDxr1UoUsMLyNbavb12eJRodIHsA4znfm_ghwhE_dCNetq5UX4zx7LCGE4qBbuFlqBZksznAMUp-YC',
+        'sector'  => 'E-COMMERCE & MERCHANT OPS',
+        'title'   => $is_rtl ? "\u{004D}\u{0065}\u{0072}\u{0063}\u{0068}\u{0061}\u{006E}\u{0074}\u{003A}\u{0020}\u{0645}\u{0646}\u{0635}\u{0629}\u{0020}\u{062A}\u{0634}\u{063A}\u{064A}\u{0644}\u{0020}\u{0645}\u{0648}\u{062D}\u{062F}\u{0629}\u{0020}\u{0644}\u{0644}\u{062A}\u{062C}\u{0627}\u{0631}\u{0020}\u{0648}\u{0646}\u{0642}\u{0627}\u{0637}\u{0020}\u{0627}\u{0644}\u{0628}\u{064A}\u{0639}" : 'Merchant: Unified Operations Platform for Retailers & POS',
+        'desc'    => $is_rtl ? "\u{0635}\u{0645}\u{0645}\u{0646}\u{0627}\u{0020}\u{0645}\u{0646}\u{0635}\u{0629}\u{0020}\u{062A}\u{0634}\u{063A}\u{064A}\u{0644}\u{0020}\u{062A}\u{062C}\u{0645}\u{0639}\u{0020}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{062C}\u{0631}\u{060C}\u{0020}\u{0627}\u{0644}\u{0645}\u{062E}\u{0632}\u{0648}\u{0646}\u{060C}\u{0020}\u{0648}\u{0646}\u{0642}\u{0627}\u{0637}\u{0020}\u{0627}\u{0644}\u{0628}\u{064A}\u{0639}\u{0020}\u{0641}\u{064A}\u{0020}\u{0645}\u{0643}\u{0627}\u{0646}\u{0020}\u{0648}\u{0627}\u{062D}\u{062F}\u{002E}\u{0020}\u{0645}\u{0643}\u{0651}\u{0646}\u{0627}\u{0020}\u{0627}\u{0644}\u{062A}\u{062C}\u{0627}\u{0631}\u{0020}\u{0645}\u{0646}\u{0020}\u{0645}\u{062A}\u{0627}\u{0628}\u{0639}\u{0629}\u{0020}\u{0627}\u{0644}\u{0637}\u{0644}\u{0628}\u{0627}\u{062A}\u{0020}\u{0648}\u{0627}\u{0644}\u{0645}\u{0628}\u{064A}\u{0639}\u{0627}\u{062A}\u{0020}\u{0644}\u{062D}\u{0638}\u{064A}\u{0627}\u{064B}\u{0020}\u{0639}\u{0628}\u{0631}\u{0020}\u{0641}\u{0631}\u{0648}\u{0639}\u{0647}\u{0645}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{0639}\u{062F}\u{062F}\u{0629}\u{0020}\u{0645}\u{0646}\u{0020}\u{062E}\u{0644}\u{0627}\u{0644}\u{0020}\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{062A}\u{062D}\u{0643}\u{0645}\u{0020}\u{0645}\u{0631}\u{0643}\u{0632}\u{064A}\u{0629}\u{0020}\u{0645}\u{0648}\u{062D}\u{062F}\u{0629}\u{002E}" : 'We designed an operations platform unifying store management, inventory and POS in one place, giving merchants real-time visibility across branches.',
+        'tags'    => $is_rtl ? ["\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{062A}\u{062D}\u{0643}\u{0645}\u{0020}\u{0627}\u{0644}\u{062A}\u{0627}\u{062C}\u{0631}", "\u{0646}\u{0638}\u{0627}\u{0645}\u{0020}\u{0646}\u{0642}\u{0627}\u{0637}\u{0020}\u{0628}\u{064A}\u{0639}\u{0020}\u{0028}\u{0050}\u{004F}\u{0053}\u{0029}", "\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{062E}\u{0632}\u{0648}\u{0646}\u{0020}\u{0648}\u{0627}\u{0644}\u{0641}\u{0631}\u{0648}\u{0639}", "\u{062A}\u{0642}\u{0627}\u{0631}\u{064A}\u{0631}\u{0020}\u{0645}\u{0628}\u{064A}\u{0639}\u{0627}\u{062A}\u{0020}\u{0644}\u{062D}\u{0638}\u{064A}\u{0629}"] : ['Merchant Dashboard', 'POS System', 'Multi-branch Inventory', 'Real-time Sales Reports'],
+        'img'     => get_template_directory_uri() . '/assets/images/case-studies/merchant/card-opt.jpg',
+        'img_webp'=> get_template_directory_uri() . '/assets/images/case-studies/merchant/card-opt.webp',
         'img_pos' => 'start',
+        'img_focus'=> 'left center',
         'color'   => '#059669',
+        'link'    => function_exists('st_case_study_url_by_slug') ? st_case_study_url_by_slug('merchant') : trailingslashit((string) get_post_type_archive_link('st_case_study')) . 'merchant/',
     ],
 ];
 
 $mobile_apps = [
-    ['restaurant',      $is_rtl ? 'تطبيقات المطاعم والـ POS'    : 'Restaurant & POS Apps',     $is_rtl ? 'تطوير واجهات الطلب السريع ونظام نقاط البيع السحابي المتكامل.' : 'Fast-order interfaces and cloud POS systems.',        'منشور',      'badge--green'],
-    ['shopping_bag',    $is_rtl ? 'متاجر إلكترونية متعددة'      : 'Multi-store E-commerce',    $is_rtl ? 'بناء محرك المتاجر المتعددة وتكامل بوابات الدفع العالمية.' : 'Multi-store engine with global payment gateways.',    'تم التسليم', 'badge--orange'],
-    ['health_and_safety',$is_rtl ? 'تطبيقات الرعاية الصحية'    : 'Healthcare Apps',            $is_rtl ? 'بناء نظام جدولة المواعيد الآمن وتشفير بيانات المرضى الحساسة.' : 'Secure appointment scheduling and patient data encryption.', 'منشور', 'badge--green'],
-    ['local_shipping',  $is_rtl ? 'أنظمة التوصيل السريع'        : 'Fast Delivery Systems',     $is_rtl ? 'تحسين مسارات التوصيل وتتبع الشحنات في الوقت الفعلي.' : 'Route optimization and real-time shipment tracking.',  'مؤرشف',      'badge--gray'],
-    ['payments',        $is_rtl ? 'تطبيقات المحافظ الرقمية'     : 'Digital Wallet Apps',       $is_rtl ? 'تطوير واجهات الدفع السريع وإدارة الرصيد والمكافآت.' : 'Fast payment interfaces and balance/rewards management.', 'منشور',   'badge--green'],
-    ['fitness_center',  $is_rtl ? 'تطبيقات اللياقة البدنية'     : 'Fitness Apps',              $is_rtl ? 'بناء أنظمة تتبع التمارين والاشتراكات الشهرية للمدربين.' : 'Workout tracking and subscription management for coaches.', 'تم التسليم', 'badge--orange'],
+    ['restaurant',      $is_rtl ? "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{0637}\u{0627}\u{0639}\u{0645}\u{0020}\u{0648}\u{0627}\u{0644}\u{0640}\u{0020}\u{0050}\u{004F}\u{0053}"    : 'Restaurant & POS Apps',     $is_rtl ? "\u{062A}\u{0637}\u{0648}\u{064A}\u{0631}\u{0020}\u{0648}\u{0627}\u{062C}\u{0647}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0637}\u{0644}\u{0628}\u{0020}\u{0627}\u{0644}\u{0633}\u{0631}\u{064A}\u{0639}\u{0020}\u{0648}\u{0646}\u{0638}\u{0627}\u{0645}\u{0020}\u{0646}\u{0642}\u{0627}\u{0637}\u{0020}\u{0627}\u{0644}\u{0628}\u{064A}\u{0639}\u{0020}\u{0627}\u{0644}\u{0633}\u{062D}\u{0627}\u{0628}\u{064A}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{0643}\u{0627}\u{0645}\u{0644}\u{002E}" : 'Fast-order interfaces and cloud POS systems.',        "\u{0645}\u{0646}\u{0634}\u{0648}\u{0631}",      'badge--green'],
+    ['shopping_bag',    $is_rtl ? "\u{0645}\u{062A}\u{0627}\u{062C}\u{0631}\u{0020}\u{0625}\u{0644}\u{0643}\u{062A}\u{0631}\u{0648}\u{0646}\u{064A}\u{0629}\u{0020}\u{0645}\u{062A}\u{0639}\u{062F}\u{062F}\u{0629}"      : 'Multi-store E-commerce',    $is_rtl ? "\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0645}\u{062D}\u{0631}\u{0643}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{0627}\u{062C}\u{0631}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{0639}\u{062F}\u{062F}\u{0629}\u{0020}\u{0648}\u{062A}\u{0643}\u{0627}\u{0645}\u{0644}\u{0020}\u{0628}\u{0648}\u{0627}\u{0628}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062F}\u{0641}\u{0639}\u{0020}\u{0627}\u{0644}\u{0639}\u{0627}\u{0644}\u{0645}\u{064A}\u{0629}\u{002E}" : 'Multi-store engine with global payment gateways.',    "\u{062A}\u{0645}\u{0020}\u{0627}\u{0644}\u{062A}\u{0633}\u{0644}\u{064A}\u{0645}", 'badge--orange'],
+    ['health_and_safety',$is_rtl ? "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0631}\u{0639}\u{0627}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0635}\u{062D}\u{064A}\u{0629}"    : 'Healthcare Apps',            $is_rtl ? "\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0646}\u{0638}\u{0627}\u{0645}\u{0020}\u{062C}\u{062F}\u{0648}\u{0644}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0648}\u{0627}\u{0639}\u{064A}\u{062F}\u{0020}\u{0627}\u{0644}\u{0622}\u{0645}\u{0646}\u{0020}\u{0648}\u{062A}\u{0634}\u{0641}\u{064A}\u{0631}\u{0020}\u{0628}\u{064A}\u{0627}\u{0646}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{0631}\u{0636}\u{0649}\u{0020}\u{0627}\u{0644}\u{062D}\u{0633}\u{0627}\u{0633}\u{0629}\u{002E}" : 'Secure appointment scheduling and patient data encryption.', "\u{0645}\u{0646}\u{0634}\u{0648}\u{0631}", 'badge--green'],
+    ['local_shipping',  $is_rtl ? "\u{0623}\u{0646}\u{0638}\u{0645}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{0648}\u{0635}\u{064A}\u{0644}\u{0020}\u{0627}\u{0644}\u{0633}\u{0631}\u{064A}\u{0639}"        : 'Fast Delivery Systems',     $is_rtl ? "\u{062A}\u{062D}\u{0633}\u{064A}\u{0646}\u{0020}\u{0645}\u{0633}\u{0627}\u{0631}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062A}\u{0648}\u{0635}\u{064A}\u{0644}\u{0020}\u{0648}\u{062A}\u{062A}\u{0628}\u{0639}\u{0020}\u{0627}\u{0644}\u{0634}\u{062D}\u{0646}\u{0627}\u{062A}\u{0020}\u{0641}\u{064A}\u{0020}\u{0627}\u{0644}\u{0648}\u{0642}\u{062A}\u{0020}\u{0627}\u{0644}\u{0641}\u{0639}\u{0644}\u{064A}\u{002E}" : 'Route optimization and real-time shipment tracking.',  "\u{0645}\u{0624}\u{0631}\u{0634}\u{0641}",      'badge--gray'],
+    ['payments',        $is_rtl ? "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{062D}\u{0627}\u{0641}\u{0638}\u{0020}\u{0627}\u{0644}\u{0631}\u{0642}\u{0645}\u{064A}\u{0629}"     : 'Digital Wallet Apps',       $is_rtl ? "\u{062A}\u{0637}\u{0648}\u{064A}\u{0631}\u{0020}\u{0648}\u{0627}\u{062C}\u{0647}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062F}\u{0641}\u{0639}\u{0020}\u{0627}\u{0644}\u{0633}\u{0631}\u{064A}\u{0639}\u{0020}\u{0648}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{0631}\u{0635}\u{064A}\u{062F}\u{0020}\u{0648}\u{0627}\u{0644}\u{0645}\u{0643}\u{0627}\u{0641}\u{0622}\u{062A}\u{002E}" : 'Fast payment interfaces and balance/rewards management.', "\u{0645}\u{0646}\u{0634}\u{0648}\u{0631}",   'badge--green'],
+    ['fitness_center',  $is_rtl ? "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0644}\u{064A}\u{0627}\u{0642}\u{0629}\u{0020}\u{0627}\u{0644}\u{0628}\u{062F}\u{0646}\u{064A}\u{0629}"     : 'Fitness Apps',              $is_rtl ? "\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0623}\u{0646}\u{0638}\u{0645}\u{0629}\u{0020}\u{062A}\u{062A}\u{0628}\u{0639}\u{0020}\u{0627}\u{0644}\u{062A}\u{0645}\u{0627}\u{0631}\u{064A}\u{0646}\u{0020}\u{0648}\u{0627}\u{0644}\u{0627}\u{0634}\u{062A}\u{0631}\u{0627}\u{0643}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0634}\u{0647}\u{0631}\u{064A}\u{0629}\u{0020}\u{0644}\u{0644}\u{0645}\u{062F}\u{0631}\u{0628}\u{064A}\u{0646}\u{002E}" : 'Workout tracking and subscription management for coaches.', "\u{062A}\u{0645}\u{0020}\u{0627}\u{0644}\u{062A}\u{0633}\u{0644}\u{064A}\u{0645}", 'badge--orange'],
 ];
 
 $industries = [
-    ['local_shipping', $is_rtl ? 'اللوجستيات والنقل'   : 'Logistics & Transport', $is_rtl ? 'تتبع الأساطيل، إدارة المناديب، وتحسين المسارات الذكي للطلبات.' : 'Fleet tracking, courier management and smart route optimization.'],
-    ['event_seat',     $is_rtl ? 'المناسبات والفعاليات' : 'Events & Venues',       $is_rtl ? 'منصات حجز القاعات، التذاكر الرقمية، وإدارة الموردين والمدفوعات.' : 'Venue booking platforms, digital tickets and vendor management.'],
-    ['real_estate_agent',$is_rtl ? 'الخدمات العقارية'  : 'Real Estate Services',  $is_rtl ? 'إدارة المجمعات، تذاكر الصيانة، وعقود الإيجار الرقمية الموثقة.' : 'Complex management, maintenance tickets and digital lease contracts.'],
-    ['storefront',     $is_rtl ? 'الأسواق الرقمية'     : 'Digital Marketplaces',  $is_rtl ? 'منصات (Marketplaces) معقدة تدعم تعدد التجار وأنظمة العمولات.' : 'Complex marketplaces supporting multiple vendors and commission systems.'],
+    ['local_shipping', $is_rtl ? "\u{0627}\u{0644}\u{0644}\u{0648}\u{062C}\u{0633}\u{062A}\u{064A}\u{0627}\u{062A}\u{0020}\u{0648}\u{0627}\u{0644}\u{0646}\u{0642}\u{0644}"   : 'Logistics & Transport', $is_rtl ? "\u{062A}\u{062A}\u{0628}\u{0639}\u{0020}\u{0627}\u{0644}\u{0623}\u{0633}\u{0627}\u{0637}\u{064A}\u{0644}\u{060C}\u{0020}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{0627}\u{062F}\u{064A}\u{0628}\u{060C}\u{0020}\u{0648}\u{062A}\u{062D}\u{0633}\u{064A}\u{0646}\u{0020}\u{0627}\u{0644}\u{0645}\u{0633}\u{0627}\u{0631}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0630}\u{0643}\u{064A}\u{0020}\u{0644}\u{0644}\u{0637}\u{0644}\u{0628}\u{0627}\u{062A}\u{002E}" : 'Fleet tracking, courier management and smart route optimization.'],
+    ['event_seat',     $is_rtl ? "\u{0627}\u{0644}\u{0645}\u{0646}\u{0627}\u{0633}\u{0628}\u{0627}\u{062A}\u{0020}\u{0648}\u{0627}\u{0644}\u{0641}\u{0639}\u{0627}\u{0644}\u{064A}\u{0627}\u{062A}" : 'Events & Venues',       $is_rtl ? "\u{0645}\u{0646}\u{0635}\u{0627}\u{062A}\u{0020}\u{062D}\u{062C}\u{0632}\u{0020}\u{0627}\u{0644}\u{0642}\u{0627}\u{0639}\u{0627}\u{062A}\u{060C}\u{0020}\u{0627}\u{0644}\u{062A}\u{0630}\u{0627}\u{0643}\u{0631}\u{0020}\u{0627}\u{0644}\u{0631}\u{0642}\u{0645}\u{064A}\u{0629}\u{060C}\u{0020}\u{0648}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0648}\u{0631}\u{062F}\u{064A}\u{0646}\u{0020}\u{0648}\u{0627}\u{0644}\u{0645}\u{062F}\u{0641}\u{0648}\u{0639}\u{0627}\u{062A}\u{002E}" : 'Venue booking platforms, digital tickets and vendor management.'],
+    ['real_estate_agent',$is_rtl ? "\u{0627}\u{0644}\u{062E}\u{062F}\u{0645}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0639}\u{0642}\u{0627}\u{0631}\u{064A}\u{0629}"  : 'Real Estate Services',  $is_rtl ? "\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{062C}\u{0645}\u{0639}\u{0627}\u{062A}\u{060C}\u{0020}\u{062A}\u{0630}\u{0627}\u{0643}\u{0631}\u{0020}\u{0627}\u{0644}\u{0635}\u{064A}\u{0627}\u{0646}\u{0629}\u{060C}\u{0020}\u{0648}\u{0639}\u{0642}\u{0648}\u{062F}\u{0020}\u{0627}\u{0644}\u{0625}\u{064A}\u{062C}\u{0627}\u{0631}\u{0020}\u{0627}\u{0644}\u{0631}\u{0642}\u{0645}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0648}\u{062B}\u{0642}\u{0629}\u{002E}" : 'Complex management, maintenance tickets and digital lease contracts.'],
+    ['storefront',     $is_rtl ? "\u{0627}\u{0644}\u{0623}\u{0633}\u{0648}\u{0627}\u{0642}\u{0020}\u{0627}\u{0644}\u{0631}\u{0642}\u{0645}\u{064A}\u{0629}"     : 'Digital Marketplaces',  $is_rtl ? "\u{0645}\u{0646}\u{0635}\u{0627}\u{062A}\u{0020}\u{0028}\u{004D}\u{0061}\u{0072}\u{006B}\u{0065}\u{0074}\u{0070}\u{006C}\u{0061}\u{0063}\u{0065}\u{0073}\u{0029}\u{0020}\u{0645}\u{0639}\u{0642}\u{062F}\u{0629}\u{0020}\u{062A}\u{062F}\u{0639}\u{0645}\u{0020}\u{062A}\u{0639}\u{062F}\u{062F}\u{0020}\u{0627}\u{0644}\u{062A}\u{062C}\u{0627}\u{0631}\u{0020}\u{0648}\u{0623}\u{0646}\u{0638}\u{0645}\u{0629}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{0648}\u{0644}\u{0627}\u{062A}\u{002E}" : 'Complex marketplaces supporting multiple vendors and commission systems.'],
 ];
 
 $why_us = [
-    ['business_center',  $is_rtl ? 'تفكير منطق الأعمال أولاً'   : 'Business Logic First',       $is_rtl ? 'لا نبدأ بالبرمجة حتى نفهم نموذج عملك وكيف سيحقق المنتج أهدافه التجارية فعلياً.' : 'We start with your business model before writing a single line of code.', false],
-    ['hub',              $is_rtl ? 'منصات متعددة الأدوار'        : 'Multi-Role Platforms',       $is_rtl ? 'خبرة في بناء أنظمة تربط العميل، الموظف، السائق، والمدير في منصة واحدة متكاملة.' : 'Experience building systems that connect customers, employees and managers.', false],
-    ['devices',          $is_rtl ? 'App + Web + Admin'            : 'App + Web + Admin',           $is_rtl ? 'نغطي كافة الجوانب التقنية للمشروع، مما يضمن تناغم البيانات وسهولة التشغيل.' : 'Full-stack coverage ensuring data harmony and operational ease.', false],
-    ['verified',         $is_rtl ? 'جاهزية الإطلاق الفوري'      : 'Launch-Ready Products',      $is_rtl ? 'نسلم منتجات مختبرة بدقة ومستوفية لكافة المعايير الأمنية والتشغيلية المطلوبة.' : 'Rigorously tested products meeting all security and operational standards.', false],
-    ['handshake',        $is_rtl ? 'شريك تقني حقيقي'            : 'True Tech Partner',          $is_rtl ? 'نعمل كفريقك التقني الداخلي، نقدم المشورة والحلول المستدامة وليس فقط تنفيذ الطلبات.' : 'We work as your internal tech team, offering advice and sustainable solutions.', false],
-    ['speed',            $is_rtl ? 'سرعة في التنفيذ المرن'       : 'Agile Execution Speed',      $is_rtl ? 'نعتمد منهجيات Agile لضمان تسليم سريع وفعال بجودة تضاهي المعايير العالمية.' : 'Agile methodologies ensuring fast, quality delivery.', false],
-    ['architecture',     $is_rtl ? 'هندسة برمجية مستدامة'       : 'Sustainable Engineering',    $is_rtl ? 'بناء كود نظيف، موثق، وقابل للتوسع من قبل أي فريق تقني مستقبلاً دون الحاجة لإعادة البناء.' : 'Clean, documented, scalable code any future team can maintain.', true],
+    ['business_center',  $is_rtl ? "\u{062A}\u{0641}\u{0643}\u{064A}\u{0631}\u{0020}\u{0645}\u{0646}\u{0637}\u{0642}\u{0020}\u{0627}\u{0644}\u{0623}\u{0639}\u{0645}\u{0627}\u{0644}\u{0020}\u{0623}\u{0648}\u{0644}\u{0627}\u{064B}"   : 'Business Logic First',       $is_rtl ? "\u{0644}\u{0627}\u{0020}\u{0646}\u{0628}\u{062F}\u{0623}\u{0020}\u{0628}\u{0627}\u{0644}\u{0628}\u{0631}\u{0645}\u{062C}\u{0629}\u{0020}\u{062D}\u{062A}\u{0649}\u{0020}\u{0646}\u{0641}\u{0647}\u{0645}\u{0020}\u{0646}\u{0645}\u{0648}\u{0630}\u{062C}\u{0020}\u{0639}\u{0645}\u{0644}\u{0643}\u{0020}\u{0648}\u{0643}\u{064A}\u{0641}\u{0020}\u{0633}\u{064A}\u{062D}\u{0642}\u{0642}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{062A}\u{062C}\u{0020}\u{0623}\u{0647}\u{062F}\u{0627}\u{0641}\u{0647}\u{0020}\u{0627}\u{0644}\u{062A}\u{062C}\u{0627}\u{0631}\u{064A}\u{0629}\u{0020}\u{0641}\u{0639}\u{0644}\u{064A}\u{0627}\u{064B}\u{002E}" : 'We start with your business model before writing a single line of code.', false],
+    ['hub',              $is_rtl ? "\u{0645}\u{0646}\u{0635}\u{0627}\u{062A}\u{0020}\u{0645}\u{062A}\u{0639}\u{062F}\u{062F}\u{0629}\u{0020}\u{0627}\u{0644}\u{0623}\u{062F}\u{0648}\u{0627}\u{0631}"        : 'Multi-Role Platforms',       $is_rtl ? "\u{062E}\u{0628}\u{0631}\u{0629}\u{0020}\u{0641}\u{064A}\u{0020}\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0623}\u{0646}\u{0638}\u{0645}\u{0629}\u{0020}\u{062A}\u{0631}\u{0628}\u{0637}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{064A}\u{0644}\u{060C}\u{0020}\u{0627}\u{0644}\u{0645}\u{0648}\u{0638}\u{0641}\u{060C}\u{0020}\u{0627}\u{0644}\u{0633}\u{0627}\u{0626}\u{0642}\u{060C}\u{0020}\u{0648}\u{0627}\u{0644}\u{0645}\u{062F}\u{064A}\u{0631}\u{0020}\u{0641}\u{064A}\u{0020}\u{0645}\u{0646}\u{0635}\u{0629}\u{0020}\u{0648}\u{0627}\u{062D}\u{062F}\u{0629}\u{0020}\u{0645}\u{062A}\u{0643}\u{0627}\u{0645}\u{0644}\u{0629}\u{002E}" : 'Experience building systems that connect customers, employees and managers.', false],
+    ['devices',          $is_rtl ? 'App + Web + Admin'            : 'App + Web + Admin',           $is_rtl ? "\u{0646}\u{063A}\u{0637}\u{064A}\u{0020}\u{0643}\u{0627}\u{0641}\u{0629}\u{0020}\u{0627}\u{0644}\u{062C}\u{0648}\u{0627}\u{0646}\u{0628}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0646}\u{064A}\u{0629}\u{0020}\u{0644}\u{0644}\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}\u{060C}\u{0020}\u{0645}\u{0645}\u{0627}\u{0020}\u{064A}\u{0636}\u{0645}\u{0646}\u{0020}\u{062A}\u{0646}\u{0627}\u{063A}\u{0645}\u{0020}\u{0627}\u{0644}\u{0628}\u{064A}\u{0627}\u{0646}\u{0627}\u{062A}\u{0020}\u{0648}\u{0633}\u{0647}\u{0648}\u{0644}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{0634}\u{063A}\u{064A}\u{0644}\u{002E}" : 'Full-stack coverage ensuring data harmony and operational ease.', false],
+    ['verified',         $is_rtl ? "\u{062C}\u{0627}\u{0647}\u{0632}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0625}\u{0637}\u{0644}\u{0627}\u{0642}\u{0020}\u{0627}\u{0644}\u{0641}\u{0648}\u{0631}\u{064A}"      : 'Launch-Ready Products',      $is_rtl ? "\u{0646}\u{0633}\u{0644}\u{0645}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}\u{0627}\u{062A}\u{0020}\u{0645}\u{062E}\u{062A}\u{0628}\u{0631}\u{0629}\u{0020}\u{0628}\u{062F}\u{0642}\u{0629}\u{0020}\u{0648}\u{0645}\u{0633}\u{062A}\u{0648}\u{0641}\u{064A}\u{0629}\u{0020}\u{0644}\u{0643}\u{0627}\u{0641}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0639}\u{0627}\u{064A}\u{064A}\u{0631}\u{0020}\u{0627}\u{0644}\u{0623}\u{0645}\u{0646}\u{064A}\u{0629}\u{0020}\u{0648}\u{0627}\u{0644}\u{062A}\u{0634}\u{063A}\u{064A}\u{0644}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0637}\u{0644}\u{0648}\u{0628}\u{0629}\u{002E}" : 'Rigorously tested products meeting all security and operational standards.', false],
+    ['handshake',        $is_rtl ? "\u{0634}\u{0631}\u{064A}\u{0643}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{0020}\u{062D}\u{0642}\u{064A}\u{0642}\u{064A}"            : 'True Tech Partner',          $is_rtl ? "\u{0646}\u{0639}\u{0645}\u{0644}\u{0020}\u{0643}\u{0641}\u{0631}\u{064A}\u{0642}\u{0643}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0646}\u{064A}\u{0020}\u{0627}\u{0644}\u{062F}\u{0627}\u{062E}\u{0644}\u{064A}\u{060C}\u{0020}\u{0646}\u{0642}\u{062F}\u{0645}\u{0020}\u{0627}\u{0644}\u{0645}\u{0634}\u{0648}\u{0631}\u{0629}\u{0020}\u{0648}\u{0627}\u{0644}\u{062D}\u{0644}\u{0648}\u{0644}\u{0020}\u{0627}\u{0644}\u{0645}\u{0633}\u{062A}\u{062F}\u{0627}\u{0645}\u{0629}\u{0020}\u{0648}\u{0644}\u{064A}\u{0633}\u{0020}\u{0641}\u{0642}\u{0637}\u{0020}\u{062A}\u{0646}\u{0641}\u{064A}\u{0630}\u{0020}\u{0627}\u{0644}\u{0637}\u{0644}\u{0628}\u{0627}\u{062A}\u{002E}" : 'We work as your internal tech team, offering advice and sustainable solutions.', false],
+    ['speed',            $is_rtl ? "\u{0633}\u{0631}\u{0639}\u{0629}\u{0020}\u{0641}\u{064A}\u{0020}\u{0627}\u{0644}\u{062A}\u{0646}\u{0641}\u{064A}\u{0630}\u{0020}\u{0627}\u{0644}\u{0645}\u{0631}\u{0646}"       : 'Agile Execution Speed',      $is_rtl ? "\u{0646}\u{0639}\u{062A}\u{0645}\u{062F}\u{0020}\u{0645}\u{0646}\u{0647}\u{062C}\u{064A}\u{0627}\u{062A}\u{0020}\u{0041}\u{0067}\u{0069}\u{006C}\u{0065}\u{0020}\u{0644}\u{0636}\u{0645}\u{0627}\u{0646}\u{0020}\u{062A}\u{0633}\u{0644}\u{064A}\u{0645}\u{0020}\u{0633}\u{0631}\u{064A}\u{0639}\u{0020}\u{0648}\u{0641}\u{0639}\u{0627}\u{0644}\u{0020}\u{0628}\u{062C}\u{0648}\u{062F}\u{0629}\u{0020}\u{062A}\u{0636}\u{0627}\u{0647}\u{064A}\u{0020}\u{0627}\u{0644}\u{0645}\u{0639}\u{0627}\u{064A}\u{064A}\u{0631}\u{0020}\u{0627}\u{0644}\u{0639}\u{0627}\u{0644}\u{0645}\u{064A}\u{0629}\u{002E}" : 'Agile methodologies ensuring fast, quality delivery.', false],
+    ['architecture',     $is_rtl ? "\u{0647}\u{0646}\u{062F}\u{0633}\u{0629}\u{0020}\u{0628}\u{0631}\u{0645}\u{062C}\u{064A}\u{0629}\u{0020}\u{0645}\u{0633}\u{062A}\u{062F}\u{0627}\u{0645}\u{0629}"       : 'Sustainable Engineering',    $is_rtl ? "\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0643}\u{0648}\u{062F}\u{0020}\u{0646}\u{0638}\u{064A}\u{0641}\u{060C}\u{0020}\u{0645}\u{0648}\u{062B}\u{0642}\u{060C}\u{0020}\u{0648}\u{0642}\u{0627}\u{0628}\u{0644}\u{0020}\u{0644}\u{0644}\u{062A}\u{0648}\u{0633}\u{0639}\u{0020}\u{0645}\u{0646}\u{0020}\u{0642}\u{0628}\u{0644}\u{0020}\u{0623}\u{064A}\u{0020}\u{0641}\u{0631}\u{064A}\u{0642}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{0020}\u{0645}\u{0633}\u{062A}\u{0642}\u{0628}\u{0644}\u{0627}\u{064B}\u{0020}\u{062F}\u{0648}\u{0646}\u{0020}\u{0627}\u{0644}\u{062D}\u{0627}\u{062C}\u{0629}\u{0020}\u{0644}\u{0625}\u{0639}\u{0627}\u{062F}\u{0629}\u{0020}\u{0627}\u{0644}\u{0628}\u{0646}\u{0627}\u{0621}\u{002E}" : 'Clean, documented, scalable code any future team can maintain.', true],
 ];
 
 $engineering = [
-    ['01', $is_rtl ? 'البنية التحتية السحابية'    : 'Cloud Infrastructure',       $is_rtl ? 'نستخدم أفضل ممارسات AWS و Azure لضمان استقرار النظام تحت أي ضغط مستخدمين مع توفير تكاليف التشغيل.' : 'AWS and Azure best practices for stability under any user load.'],
-    ['02', $is_rtl ? 'أمن البيانات والخصوصية'    : 'Security & Privacy',          $is_rtl ? 'تشفير كامل للبيانات الحساسة والتزام صارم بمعايير الأمن السيبراني السعودية والعالمية.' : 'Full encryption and strict cybersecurity compliance.'],
-    ['03', $is_rtl ? 'واجهات API متينة'           : 'Robust APIs',                $is_rtl ? 'تطوير Backend قوي يسهل التكامل مع أي خدمات خارجية، بوابات دفع، أو أنظمة ERP.' : 'Powerful backend enabling integration with any external service or ERP.'],
-    ['04', $is_rtl ? 'اختبارات جودة آلية'        : 'Automated QA',               $is_rtl ? 'لا نعتمد فقط على الفحص اليدوي، بل نجري اختبارات برمجية شاملة لضمان استقرار كل تحديث جديد.' : 'Automated testing suites ensuring every update is stable.'],
-    ['05', $is_rtl ? 'تجربة مستخدم موجهة بالأرقام' : 'Data-Driven UX',           $is_rtl ? 'قرارات التصميم لدينا مبنية على دراسة سلوك المستخدم لزيادة معدلات التحويل والولاء.' : 'Design decisions driven by user behavior analytics.'],
-    ['06', $is_rtl ? 'توثيق تقني شامل'            : 'Full Documentation',         $is_rtl ? 'نسلمك المشروع مع توثيق كامل للكود، وقواعد البيانات، وسير العمل التشغيلي لضمان ملكيتك الكاملة.' : 'Complete code, database and workflow documentation for full ownership.'],
+    ['01', $is_rtl ? "\u{0627}\u{0644}\u{0628}\u{0646}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{062D}\u{062A}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0633}\u{062D}\u{0627}\u{0628}\u{064A}\u{0629}"    : 'Cloud Infrastructure',       $is_rtl ? "\u{0646}\u{0633}\u{062A}\u{062E}\u{062F}\u{0645}\u{0020}\u{0623}\u{0641}\u{0636}\u{0644}\u{0020}\u{0645}\u{0645}\u{0627}\u{0631}\u{0633}\u{0627}\u{062A}\u{0020}\u{0041}\u{0057}\u{0053}\u{0020}\u{0648}\u{0020}\u{0041}\u{007A}\u{0075}\u{0072}\u{0065}\u{0020}\u{0644}\u{0636}\u{0645}\u{0627}\u{0646}\u{0020}\u{0627}\u{0633}\u{062A}\u{0642}\u{0631}\u{0627}\u{0631}\u{0020}\u{0627}\u{0644}\u{0646}\u{0638}\u{0627}\u{0645}\u{0020}\u{062A}\u{062D}\u{062A}\u{0020}\u{0623}\u{064A}\u{0020}\u{0636}\u{063A}\u{0637}\u{0020}\u{0645}\u{0633}\u{062A}\u{062E}\u{062F}\u{0645}\u{064A}\u{0646}\u{0020}\u{0645}\u{0639}\u{0020}\u{062A}\u{0648}\u{0641}\u{064A}\u{0631}\u{0020}\u{062A}\u{0643}\u{0627}\u{0644}\u{064A}\u{0641}\u{0020}\u{0627}\u{0644}\u{062A}\u{0634}\u{063A}\u{064A}\u{0644}\u{002E}" : 'AWS and Azure best practices for stability under any user load.'],
+    ['02', $is_rtl ? "\u{0623}\u{0645}\u{0646}\u{0020}\u{0627}\u{0644}\u{0628}\u{064A}\u{0627}\u{0646}\u{0627}\u{062A}\u{0020}\u{0648}\u{0627}\u{0644}\u{062E}\u{0635}\u{0648}\u{0635}\u{064A}\u{0629}"    : 'Security & Privacy',          $is_rtl ? "\u{062A}\u{0634}\u{0641}\u{064A}\u{0631}\u{0020}\u{0643}\u{0627}\u{0645}\u{0644}\u{0020}\u{0644}\u{0644}\u{0628}\u{064A}\u{0627}\u{0646}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062D}\u{0633}\u{0627}\u{0633}\u{0629}\u{0020}\u{0648}\u{0627}\u{0644}\u{062A}\u{0632}\u{0627}\u{0645}\u{0020}\u{0635}\u{0627}\u{0631}\u{0645}\u{0020}\u{0628}\u{0645}\u{0639}\u{0627}\u{064A}\u{064A}\u{0631}\u{0020}\u{0627}\u{0644}\u{0623}\u{0645}\u{0646}\u{0020}\u{0627}\u{0644}\u{0633}\u{064A}\u{0628}\u{0631}\u{0627}\u{0646}\u{064A}\u{0020}\u{0627}\u{0644}\u{0633}\u{0639}\u{0648}\u{062F}\u{064A}\u{0629}\u{0020}\u{0648}\u{0627}\u{0644}\u{0639}\u{0627}\u{0644}\u{0645}\u{064A}\u{0629}\u{002E}" : 'Full encryption and strict cybersecurity compliance.'],
+    ['03', $is_rtl ? "\u{0648}\u{0627}\u{062C}\u{0647}\u{0627}\u{062A}\u{0020}\u{0041}\u{0050}\u{0049}\u{0020}\u{0645}\u{062A}\u{064A}\u{0646}\u{0629}"           : 'Robust APIs',                $is_rtl ? "\u{062A}\u{0637}\u{0648}\u{064A}\u{0631}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0065}\u{006E}\u{0064}\u{0020}\u{0642}\u{0648}\u{064A}\u{0020}\u{064A}\u{0633}\u{0647}\u{0644}\u{0020}\u{0627}\u{0644}\u{062A}\u{0643}\u{0627}\u{0645}\u{0644}\u{0020}\u{0645}\u{0639}\u{0020}\u{0623}\u{064A}\u{0020}\u{062E}\u{062F}\u{0645}\u{0627}\u{062A}\u{0020}\u{062E}\u{0627}\u{0631}\u{062C}\u{064A}\u{0629}\u{060C}\u{0020}\u{0628}\u{0648}\u{0627}\u{0628}\u{0627}\u{062A}\u{0020}\u{062F}\u{0641}\u{0639}\u{060C}\u{0020}\u{0623}\u{0648}\u{0020}\u{0623}\u{0646}\u{0638}\u{0645}\u{0629}\u{0020}\u{0045}\u{0052}\u{0050}\u{002E}" : 'Powerful backend enabling integration with any external service or ERP.'],
+    ['04', $is_rtl ? "\u{0627}\u{062E}\u{062A}\u{0628}\u{0627}\u{0631}\u{0627}\u{062A}\u{0020}\u{062C}\u{0648}\u{062F}\u{0629}\u{0020}\u{0622}\u{0644}\u{064A}\u{0629}"        : 'Automated QA',               $is_rtl ? "\u{0644}\u{0627}\u{0020}\u{0646}\u{0639}\u{062A}\u{0645}\u{062F}\u{0020}\u{0641}\u{0642}\u{0637}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{0627}\u{0644}\u{0641}\u{062D}\u{0635}\u{0020}\u{0627}\u{0644}\u{064A}\u{062F}\u{0648}\u{064A}\u{060C}\u{0020}\u{0628}\u{0644}\u{0020}\u{0646}\u{062C}\u{0631}\u{064A}\u{0020}\u{0627}\u{062E}\u{062A}\u{0628}\u{0627}\u{0631}\u{0627}\u{062A}\u{0020}\u{0628}\u{0631}\u{0645}\u{062C}\u{064A}\u{0629}\u{0020}\u{0634}\u{0627}\u{0645}\u{0644}\u{0629}\u{0020}\u{0644}\u{0636}\u{0645}\u{0627}\u{0646}\u{0020}\u{0627}\u{0633}\u{062A}\u{0642}\u{0631}\u{0627}\u{0631}\u{0020}\u{0643}\u{0644}\u{0020}\u{062A}\u{062D}\u{062F}\u{064A}\u{062B}\u{0020}\u{062C}\u{062F}\u{064A}\u{062F}\u{002E}" : 'Automated testing suites ensuring every update is stable.'],
+    ['05', $is_rtl ? "\u{062A}\u{062C}\u{0631}\u{0628}\u{0629}\u{0020}\u{0645}\u{0633}\u{062A}\u{062E}\u{062F}\u{0645}\u{0020}\u{0645}\u{0648}\u{062C}\u{0647}\u{0629}\u{0020}\u{0628}\u{0627}\u{0644}\u{0623}\u{0631}\u{0642}\u{0627}\u{0645}" : 'Data-Driven UX',           $is_rtl ? "\u{0642}\u{0631}\u{0627}\u{0631}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062A}\u{0635}\u{0645}\u{064A}\u{0645}\u{0020}\u{0644}\u{062F}\u{064A}\u{0646}\u{0627}\u{0020}\u{0645}\u{0628}\u{0646}\u{064A}\u{0629}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{062F}\u{0631}\u{0627}\u{0633}\u{0629}\u{0020}\u{0633}\u{0644}\u{0648}\u{0643}\u{0020}\u{0627}\u{0644}\u{0645}\u{0633}\u{062A}\u{062E}\u{062F}\u{0645}\u{0020}\u{0644}\u{0632}\u{064A}\u{0627}\u{062F}\u{0629}\u{0020}\u{0645}\u{0639}\u{062F}\u{0644}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062A}\u{062D}\u{0648}\u{064A}\u{0644}\u{0020}\u{0648}\u{0627}\u{0644}\u{0648}\u{0644}\u{0627}\u{0621}\u{002E}" : 'Design decisions driven by user behavior analytics.'],
+    ['06', $is_rtl ? "\u{062A}\u{0648}\u{062B}\u{064A}\u{0642}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{0020}\u{0634}\u{0627}\u{0645}\u{0644}"            : 'Full Documentation',         $is_rtl ? "\u{0646}\u{0633}\u{0644}\u{0645}\u{0643}\u{0020}\u{0627}\u{0644}\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}\u{0020}\u{0645}\u{0639}\u{0020}\u{062A}\u{0648}\u{062B}\u{064A}\u{0642}\u{0020}\u{0643}\u{0627}\u{0645}\u{0644}\u{0020}\u{0644}\u{0644}\u{0643}\u{0648}\u{062F}\u{060C}\u{0020}\u{0648}\u{0642}\u{0648}\u{0627}\u{0639}\u{062F}\u{0020}\u{0627}\u{0644}\u{0628}\u{064A}\u{0627}\u{0646}\u{0627}\u{062A}\u{060C}\u{0020}\u{0648}\u{0633}\u{064A}\u{0631}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{0644}\u{0020}\u{0627}\u{0644}\u{062A}\u{0634}\u{063A}\u{064A}\u{0644}\u{064A}\u{0020}\u{0644}\u{0636}\u{0645}\u{0627}\u{0646}\u{0020}\u{0645}\u{0644}\u{0643}\u{064A}\u{062A}\u{0643}\u{0020}\u{0627}\u{0644}\u{0643}\u{0627}\u{0645}\u{0644}\u{0629}\u{002E}" : 'Complete code, database and workflow documentation for full ownership.'],
 ];
 
 $process_steps = [
-    ['١', $is_rtl ? 'الاستكشاف'          : 'Discovery',       $is_rtl ? 'فهم احتياجاتك، السوق، وتحديد نطاق العمل الهندسي.' : 'Understanding needs, market and engineering scope.'],
-    ['٢', $is_rtl ? 'رسم المنتج'         : 'Product Mapping', $is_rtl ? 'بناء خارطة الطريق وتحديد الميزات التشغيلية والتقنية.' : 'Building the roadmap and defining operational features.'],
-    ['٣', $is_rtl ? 'تصميم التجربة'      : 'UX Design',       $is_rtl ? 'تصميم واجهات احترافية تركز على سهولة الاستخدام والكفاءة.' : 'Professional UI/UX focused on usability and efficiency.'],
-    ['٤', $is_rtl ? 'التطوير'            : 'Development',     $is_rtl ? 'تحويل التصاميم إلى كود برمجي متين باستخدام أحدث التقنيات.' : 'Turning designs into solid code with latest technologies.'],
-    ['٥', $is_rtl ? 'الاختبار والتسليم' : 'QA & Delivery',   $is_rtl ? 'فحص دقيق لكافة أجزاء النظام وضمان خلوه من الأخطاء.' : 'Thorough testing of all system components.'],
-    ['٦', $is_rtl ? 'الإطلاق والدعم'    : 'Launch & Support', $is_rtl ? 'نرافقك في مرحلة الإطلاق ونوفر الدعم التقني المستمر.' : 'We accompany your launch and provide continuous technical support.'],
+    ["\u{0661}", $is_rtl ? "\u{0627}\u{0644}\u{0627}\u{0633}\u{062A}\u{0643}\u{0634}\u{0627}\u{0641}"          : 'Discovery',       $is_rtl ? "\u{0641}\u{0647}\u{0645}\u{0020}\u{0627}\u{062D}\u{062A}\u{064A}\u{0627}\u{062C}\u{0627}\u{062A}\u{0643}\u{060C}\u{0020}\u{0627}\u{0644}\u{0633}\u{0648}\u{0642}\u{060C}\u{0020}\u{0648}\u{062A}\u{062D}\u{062F}\u{064A}\u{062F}\u{0020}\u{0646}\u{0637}\u{0627}\u{0642}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{0644}\u{0020}\u{0627}\u{0644}\u{0647}\u{0646}\u{062F}\u{0633}\u{064A}\u{002E}" : 'Understanding needs, market and engineering scope.'],
+    ["\u{0662}", $is_rtl ? "\u{0631}\u{0633}\u{0645}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{062A}\u{062C}"         : 'Product Mapping', $is_rtl ? "\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{062E}\u{0627}\u{0631}\u{0637}\u{0629}\u{0020}\u{0627}\u{0644}\u{0637}\u{0631}\u{064A}\u{0642}\u{0020}\u{0648}\u{062A}\u{062D}\u{062F}\u{064A}\u{062F}\u{0020}\u{0627}\u{0644}\u{0645}\u{064A}\u{0632}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062A}\u{0634}\u{063A}\u{064A}\u{0644}\u{064A}\u{0629}\u{0020}\u{0648}\u{0627}\u{0644}\u{062A}\u{0642}\u{0646}\u{064A}\u{0629}\u{002E}" : 'Building the roadmap and defining operational features.'],
+    ["\u{0663}", $is_rtl ? "\u{062A}\u{0635}\u{0645}\u{064A}\u{0645}\u{0020}\u{0627}\u{0644}\u{062A}\u{062C}\u{0631}\u{0628}\u{0629}"      : 'UX Design',       $is_rtl ? "\u{062A}\u{0635}\u{0645}\u{064A}\u{0645}\u{0020}\u{0648}\u{0627}\u{062C}\u{0647}\u{0627}\u{062A}\u{0020}\u{0627}\u{062D}\u{062A}\u{0631}\u{0627}\u{0641}\u{064A}\u{0629}\u{0020}\u{062A}\u{0631}\u{0643}\u{0632}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{0633}\u{0647}\u{0648}\u{0644}\u{0629}\u{0020}\u{0627}\u{0644}\u{0627}\u{0633}\u{062A}\u{062E}\u{062F}\u{0627}\u{0645}\u{0020}\u{0648}\u{0627}\u{0644}\u{0643}\u{0641}\u{0627}\u{0621}\u{0629}\u{002E}" : 'Professional UI/UX focused on usability and efficiency.'],
+    ["\u{0664}", $is_rtl ? "\u{0627}\u{0644}\u{062A}\u{0637}\u{0648}\u{064A}\u{0631}"            : 'Development',     $is_rtl ? "\u{062A}\u{062D}\u{0648}\u{064A}\u{0644}\u{0020}\u{0627}\u{0644}\u{062A}\u{0635}\u{0627}\u{0645}\u{064A}\u{0645}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0643}\u{0648}\u{062F}\u{0020}\u{0628}\u{0631}\u{0645}\u{062C}\u{064A}\u{0020}\u{0645}\u{062A}\u{064A}\u{0646}\u{0020}\u{0628}\u{0627}\u{0633}\u{062A}\u{062E}\u{062F}\u{0627}\u{0645}\u{0020}\u{0623}\u{062D}\u{062F}\u{062B}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0646}\u{064A}\u{0627}\u{062A}\u{002E}" : 'Turning designs into solid code with latest technologies.'],
+    ["\u{0665}", $is_rtl ? "\u{0627}\u{0644}\u{0627}\u{062E}\u{062A}\u{0628}\u{0627}\u{0631}\u{0020}\u{0648}\u{0627}\u{0644}\u{062A}\u{0633}\u{0644}\u{064A}\u{0645}" : 'QA & Delivery',   $is_rtl ? "\u{0641}\u{062D}\u{0635}\u{0020}\u{062F}\u{0642}\u{064A}\u{0642}\u{0020}\u{0644}\u{0643}\u{0627}\u{0641}\u{0629}\u{0020}\u{0623}\u{062C}\u{0632}\u{0627}\u{0621}\u{0020}\u{0627}\u{0644}\u{0646}\u{0638}\u{0627}\u{0645}\u{0020}\u{0648}\u{0636}\u{0645}\u{0627}\u{0646}\u{0020}\u{062E}\u{0644}\u{0648}\u{0647}\u{0020}\u{0645}\u{0646}\u{0020}\u{0627}\u{0644}\u{0623}\u{062E}\u{0637}\u{0627}\u{0621}\u{002E}" : 'Thorough testing of all system components.'],
+    ["\u{0666}", $is_rtl ? "\u{0627}\u{0644}\u{0625}\u{0637}\u{0644}\u{0627}\u{0642}\u{0020}\u{0648}\u{0627}\u{0644}\u{062F}\u{0639}\u{0645}"    : 'Launch & Support', $is_rtl ? "\u{0646}\u{0631}\u{0627}\u{0641}\u{0642}\u{0643}\u{0020}\u{0641}\u{064A}\u{0020}\u{0645}\u{0631}\u{062D}\u{0644}\u{0629}\u{0020}\u{0627}\u{0644}\u{0625}\u{0637}\u{0644}\u{0627}\u{0642}\u{0020}\u{0648}\u{0646}\u{0648}\u{0641}\u{0631}\u{0020}\u{0627}\u{0644}\u{062F}\u{0639}\u{0645}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0646}\u{064A}\u{0020}\u{0627}\u{0644}\u{0645}\u{0633}\u{062A}\u{0645}\u{0631}\u{002E}" : 'We accompany your launch and provide continuous technical support.'],
 ];
 
-$partnerships = [
-    ['rocket',                   $is_rtl ? 'تمكين الشركات الناشئة (MVPs)' : 'Startup Enablement (MVPs)'],
-    ['settings_suggest',         $is_rtl ? 'التحول الرقمي للمؤسسات'       : 'Enterprise Digital Transformation'],
-    ['integration_instructions', $is_rtl ? 'شريك تنفيذ تقني استراتيجي'    : 'Strategic Tech Execution Partner'],
-    ['design_services',          $is_rtl ? 'تطوير المنتجات (White-Label)'  : 'White-Label Product Development'],
-    ['support_agent',            $is_rtl ? 'دعم تقني وتشغيل مستمر'         : 'Ongoing Technical Support & Operations'],
+$tech_stack = [
+    ['widgets',           $is_rtl ? 'Flutter' : 'Flutter',                 $is_rtl ? 'تطبيقات iOS و Android من كود واحد' : 'iOS & Android from one codebase'],
+    ['smartphone',        $is_rtl ? 'iOS / Android' : 'iOS / Android',     $is_rtl ? 'Native عند الحاجة لأقصى أداء' : 'Native when peak performance matters'],
+    ['code_blocks',       $is_rtl ? 'React / Next.js' : 'React / Next.js', $is_rtl ? 'واجهات ويب حديثة وسريعة' : 'Modern, fast web interfaces'],
+    ['database',          $is_rtl ? 'PostgreSQL / MySQL' : 'PostgreSQL / MySQL', $is_rtl ? 'قواعد بيانات موثوقة للإنتاج' : 'Production-grade databases'],
+    ['cloud_sync',        $is_rtl ? 'AWS / Azure' : 'AWS / Azure',         $is_rtl ? 'بنية سحابية قابلة للتوسع' : 'Scalable cloud infrastructure'],
+    ['partner_exchange',  $is_rtl ? 'White-Label Delivery' : 'White-Label Delivery', $is_rtl ? 'تنفيذ تحت علامتك التجارية' : 'Delivery under your brand'],
 ];
 ?>
 
@@ -115,8 +136,8 @@ $partnerships = [
     <section class="hs-section hs-section--white">
         <div class="container">
             <div class="hs-header hs-header--center">
-                <h2 class="hs-title"><?php echo esc_html($is_rtl ? 'قدرات تقنية لبناء منتجات حقيقية' : 'Technical capabilities for building real products'); ?></h2>
-                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? 'نمتلك الأدوات الهندسية اللازمة لتحويل الأفكار المعقدة إلى واقع تشغيلي ملموس.' : 'We have the engineering tools to turn complex ideas into real operational solutions.'); ?></p>
+                <h2 class="hs-title"><?php echo esc_html($is_rtl ? "\u{0642}\u{062F}\u{0631}\u{0627}\u{062A}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{0629}\u{0020}\u{0644}\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}\u{0627}\u{062A}\u{0020}\u{062D}\u{0642}\u{064A}\u{0642}\u{064A}\u{0629}" : 'Technical capabilities for building real products'); ?></h2>
+                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? "\u{0646}\u{0645}\u{062A}\u{0644}\u{0643}\u{0020}\u{0627}\u{0644}\u{0623}\u{062F}\u{0648}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0647}\u{0646}\u{062F}\u{0633}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0644}\u{0627}\u{0632}\u{0645}\u{0629}\u{0020}\u{0644}\u{062A}\u{062D}\u{0648}\u{064A}\u{0644}\u{0020}\u{0627}\u{0644}\u{0623}\u{0641}\u{0643}\u{0627}\u{0631}\u{0020}\u{0627}\u{0644}\u{0645}\u{0639}\u{0642}\u{062F}\u{0629}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0648}\u{0627}\u{0642}\u{0639}\u{0020}\u{062A}\u{0634}\u{063A}\u{064A}\u{0644}\u{064A}\u{0020}\u{0645}\u{0644}\u{0645}\u{0648}\u{0633}\u{002E}" : 'We have the engineering tools to turn complex ideas into real operational solutions.'); ?></p>
             </div>
             <div class="hs-grid hs-grid--4">
                 <?php foreach ($capabilities as [$icon, $title, $desc]) : ?>
@@ -131,42 +152,149 @@ $partnerships = [
     </section>
 
     <!-- ═══════════════════════════════
-         3. CASE STUDIES
+         2b. SERVICES PREVIEW
     ═══════════════════════════════ -->
+    <?php $home_services = function_exists('st_home_service_preview_cards') ? st_home_service_preview_cards() : []; ?>
+    <?php if (!empty($home_services)) : ?>
     <section class="hs-section hs-section--light">
         <div class="container">
-            <div class="hs-header">
-                <h2 class="hs-title"><?php echo esc_html($is_rtl ? 'دراسات حالة مختارة' : 'Featured Case Studies'); ?></h2>
-                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? 'تحويل التحديات التشغيلية الصعبة إلى منتجات رقمية ناجحة ومربحة.' : 'Turning tough operational challenges into successful digital products.'); ?></p>
+            <div class="hs-header hs-header--center">
+                <h2 class="hs-title"><?php echo esc_html($is_rtl ? 'خدماتنا الرئيسية' : 'Core services'); ?></h2>
+                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? 'صفحات خدمات مفصّلة تشرح المشكلة، النطاق، والمنهجية — مع روابط مباشرة لمشاريعنا ومقالاتنا.' : 'Dedicated service pages covering problems, scope, process, and related case studies.'); ?></p>
             </div>
-            <div class="hs-cases">
-                <?php foreach ($case_studies as $cs) : ?>
-                    <div class="hs-case hs-case--<?php echo esc_attr($cs['img_pos']); ?>">
-                        <div class="hs-case__media">
-                            <img src="<?php echo esc_url($cs['img']); ?>" alt="<?php echo esc_attr($cs['title']); ?>" loading="lazy">
-                            <div class="hs-case__media-overlay"></div>
-                            <span class="hs-case__media-badge"><?php echo esc_html($is_rtl ? 'دراسة حالة لمنصة كاملة' : 'Full Platform Case Study'); ?></span>
-                        </div>
-                        <div class="hs-case__body">
-                            <div class="hs-case__sector" style="color:<?php echo esc_attr($cs['color']); ?>"><?php echo esc_html($cs['sector']); ?></div>
-                            <h3 class="hs-case__title"><?php echo esc_html($cs['title']); ?></h3>
-                            <p class="hs-case__desc"><?php echo esc_html($cs['desc']); ?></p>
-                            <div class="hs-case__tags-label"><?php echo esc_html($is_rtl ? 'الوحدات التي تم تسليمها:' : 'Delivered modules:'); ?></div>
-                            <div class="hs-case__tags">
-                                <?php foreach ($cs['tags'] as $tag) : ?>
-                                    <span class="hs-case__tag"><?php echo esc_html($tag); ?></span>
-                                <?php endforeach; ?>
-                            </div>
-                            <a href="<?php echo esc_url(home_url('/case-studies/')); ?>" class="hs-case__btn">
-                                <?php echo esc_html($is_rtl ? 'استعراض تفاصيل المشروع' : 'View project details'); ?>
-                                <span class="material-symbols-outlined">arrow_back</span>
-                            </a>
-                        </div>
-                    </div>
+            <div class="hs-grid hs-grid--services">
+                <?php foreach ($home_services as $svc) : ?>
+                    <a class="hs-service-card" href="<?php echo esc_url($svc['url']); ?>">
+                        <span class="material-symbols-outlined hs-service-card__icon"><?php echo esc_html($svc['icon']); ?></span>
+                        <h3 class="hs-service-card__title"><?php echo esc_html($svc['title']); ?></h3>
+                        <p class="hs-service-card__desc"><?php echo esc_html(wp_trim_words($svc['desc'], 22)); ?></p>
+                    </a>
                 <?php endforeach; ?>
+            </div>
+            <div class="hs-cases-foot" style="margin-top:1.5rem;">
+                <a class="hs-cases-all" href="<?php echo esc_url(st_url('services')); ?>">
+                    <?php echo esc_html($is_rtl ? 'عرض كل الخدمات' : 'View all services'); ?>
+                    <span class="material-symbols-outlined" aria-hidden="true"><?php echo esc_html($arrow); ?></span>
+                </a>
             </div>
         </div>
     </section>
+    <?php endif; ?>
+
+    <?php $featured_articles = function_exists('st_home_featured_articles') ? st_home_featured_articles(4) : []; ?>
+    <?php if (!empty($featured_articles)) : ?>
+    <section class="hs-section hs-section--white hs-articles-section" aria-labelledby="hs-articles-title">
+        <div class="container">
+            <div class="hs-header hs-header--center">
+                <span class="hs-articles-kicker"><?php echo esc_html($is_rtl ? 'معرفة قبل القرار' : 'Knowledge before you build'); ?></span>
+                <h2 id="hs-articles-title" class="hs-title"><?php echo esc_html($is_rtl ? 'أهم المقالات' : 'Featured articles'); ?></h2>
+                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? 'إجابات عملية لأسئلة شائعة قبل بدء مشروعك الرقمي.' : 'Practical answers to common questions before you start your digital project.'); ?></p>
+            </div>
+            <div class="hs-grid hs-grid--2 hs-articles-grid">
+                <?php foreach ($featured_articles as $article) : ?>
+                    <a class="hs-article-card" href="<?php echo esc_url($article['url']); ?>">
+                        <div class="hs-article-card__top">
+                            <span class="material-symbols-outlined hs-article-card__icon" aria-hidden="true">menu_book</span>
+                            <span class="hs-article-card__badge"><?php echo esc_html($is_rtl ? 'دليل عملي' : 'Buyer guide'); ?></span>
+                        </div>
+                        <h3 class="hs-article-card__title"><?php echo esc_html($article['title']); ?></h3>
+                        <p class="hs-article-card__excerpt"><?php echo esc_html(wp_trim_words($article['excerpt'], 22)); ?></p>
+                        <span class="hs-article-card__link">
+                            <?php echo esc_html($is_rtl ? 'اقرأ المقال' : 'Read article'); ?>
+                            <span class="material-symbols-outlined" aria-hidden="true"><?php echo esc_html($arrow); ?></span>
+                        </span>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+            <div class="hs-cases-foot">
+                <a class="hs-cases-all" href="<?php echo esc_url(function_exists('st_url') ? st_url('articles') : home_url('/articles/')); ?>">
+                    <?php echo esc_html($is_rtl ? 'عرض كل المقالات' : 'View all articles'); ?>
+                    <span class="material-symbols-outlined" aria-hidden="true"><?php echo esc_html($arrow); ?></span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <?php endif; ?>
+
+    <!-- ═══════════════════════════════
+         3. CASE STUDIES — full-width smooth marquee
+    ═══════════════════════════════ -->
+    <?php $cases_archive = (string) get_post_type_archive_link( 'st_case_study' ); ?>
+    <section class="hs-section hs-section--light hs-cases-section" aria-labelledby="hs-cases-title">
+        <div class="container">
+            <div class="hs-cases-head">
+                <span class="hs-cases-kicker"><?php echo esc_html( $is_rtl ? "\u{0623}\u{0639}\u{0645}\u{0627}\u{0644}\u{0020}\u{0645}\u{0646}\u{0641}\u{0630}\u{0629}" : 'Selected Work' ); ?></span>
+                <h2 id="hs-cases-title" class="hs-title"><?php echo esc_html($is_rtl ? "\u{062F}\u{0631}\u{0627}\u{0633}\u{0627}\u{062A}\u{0020}\u{062D}\u{0627}\u{0644}\u{0629}\u{0020}\u{0645}\u{062E}\u{062A}\u{0627}\u{0631}\u{0629}" : 'Featured Case Studies'); ?></h2>
+                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? "\u{0645}\u{0634}\u{0627}\u{0631}\u{064A}\u{0639}\u{0020}\u{062D}\u{0642}\u{064A}\u{0642}\u{064A}\u{0629}\u{0020}\u{062D}\u{0648}\u{0651}\u{0644}\u{0646}\u{0627}\u{0647}\u{0627}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}\u{0627}\u{062A}\u{0020}\u{0631}\u{0642}\u{0645}\u{064A}\u{0629}\u{0020}\u{0646}\u{0627}\u{062C}\u{062D}\u{0629}\u{002E}" : 'Real projects we turned into successful digital products.'); ?></p>
+            </div>
+        </div>
+
+        <div class="hs-cases-marquee" aria-label="<?php echo esc_attr($is_rtl ? "\u{0639}\u{0631}\u{0636}\u{0020}\u{062F}\u{0631}\u{0627}\u{0633}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062D}\u{0627}\u{0644}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0645}\u{064A}\u{0632}\u{0629}" : 'Featured case studies showcase'); ?>">
+            <div class="hs-cases-marquee__track">
+                <div class="hs-cases-marquee__group">
+                <?php
+                $render_case_card = static function ( array $cs, bool $lazy ) use ( $arrow, $is_rtl ) {
+                    $img_focus = $cs['img_focus'] ?? 'center';
+                    ?>
+                    <a
+                        class="hs-case-card"
+                        href="<?php echo esc_url( $cs['link'] ); ?>"
+                        style="--hs-case-accent: <?php echo esc_attr( $cs['color'] ); ?>; --hs-img-focus: <?php echo esc_attr( $img_focus ); ?>;"
+                    >
+                        <div class="hs-case-card__media">
+                            <picture>
+                                <?php if ( ! empty( $cs['img_webp'] ) ) : ?>
+                                    <source srcset="<?php echo esc_url( $cs['img_webp'] ); ?>" type="image/webp">
+                                <?php endif; ?>
+                                <img
+                                    src="<?php echo esc_url( $cs['img'] ); ?>"
+                                    alt="<?php echo esc_attr( $cs['title'] ); ?>"
+                                    loading="<?php echo $lazy ? 'lazy' : 'eager'; ?>"
+                                    decoding="async"
+                                    width="640"
+                                    height="400"
+                                >
+                            </picture>
+                        </div>
+                        <div class="hs-case-card__shade" aria-hidden="true"></div>
+                        <div class="hs-case-card__meta">
+                            <span class="hs-case-card__sector"><?php echo esc_html( $cs['sector'] ); ?></span>
+                            <h3 class="hs-case-card__title"><?php echo esc_html( $cs['title'] ); ?></h3>
+                            <span class="hs-case-card__cta">
+                                <?php echo esc_html( $is_rtl ? "\u{0627}\u{0633}\u{062A}\u{0639}\u{0631}\u{0636}\u{0020}\u{0627}\u{0644}\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}" : 'View project' ); ?>
+                                <span class="material-symbols-outlined" aria-hidden="true"><?php echo esc_html( $arrow ); ?></span>
+                            </span>
+                        </div>
+                    </a>
+                    <?php
+                };
+                foreach ( $case_studies as $i => $cs ) {
+                    $render_case_card( $cs, $i > 0 );
+                }
+                ?>
+                </div>
+                <div class="hs-cases-marquee__group" aria-hidden="true">
+                <?php
+                foreach ( $case_studies as $cs ) {
+                    $render_case_card( $cs, true );
+                }
+                ?>
+                </div>
+            </div>
+        </div>
+
+        <?php if ( $cases_archive ) : ?>
+        <div class="container">
+            <div class="hs-cases-foot">
+                <a class="hs-cases-all" href="<?php echo esc_url( $cases_archive ); ?>">
+                    <?php echo esc_html( $is_rtl ? "\u{0639}\u{0631}\u{0636}\u{0020}\u{0643}\u{0644}\u{0020}\u{062F}\u{0631}\u{0627}\u{0633}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062D}\u{0627}\u{0644}\u{0629}" : 'View all case studies' ); ?>
+                    <span class="material-symbols-outlined" aria-hidden="true"><?php echo esc_html( $arrow ); ?></span>
+                </a>
+            </div>
+        </div>
+        <?php endif; ?>
+    </section>
+
 
     <!-- ═══════════════════════════════
          4. MOBILE APP CONTRIBUTIONS
@@ -174,8 +302,8 @@ $partnerships = [
     <section class="hs-section hs-section--white">
         <div class="container">
             <div class="hs-header hs-header--center">
-                <h2 class="hs-title"><?php echo esc_html($is_rtl ? 'مشاركات في تطبيقات الجوال' : 'Mobile App Contributions'); ?></h2>
-                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? 'نفخر بمشاركتنا الهندسية في بناء وتطوير تطبيقات ناجحة في قطاعات حيوية.' : 'We are proud of our engineering contributions to successful apps in vital sectors.'); ?></p>
+                <h2 class="hs-title"><?php echo esc_html($is_rtl ? "\u{0645}\u{0634}\u{0627}\u{0631}\u{0643}\u{0627}\u{062A}\u{0020}\u{0641}\u{064A}\u{0020}\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062C}\u{0648}\u{0627}\u{0644}" : 'Mobile App Contributions'); ?></h2>
+                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? "\u{0646}\u{0641}\u{062E}\u{0631}\u{0020}\u{0628}\u{0645}\u{0634}\u{0627}\u{0631}\u{0643}\u{062A}\u{0646}\u{0627}\u{0020}\u{0627}\u{0644}\u{0647}\u{0646}\u{062F}\u{0633}\u{064A}\u{0629}\u{0020}\u{0641}\u{064A}\u{0020}\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0648}\u{062A}\u{0637}\u{0648}\u{064A}\u{0631}\u{0020}\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0627}\u{062A}\u{0020}\u{0646}\u{0627}\u{062C}\u{062D}\u{0629}\u{0020}\u{0641}\u{064A}\u{0020}\u{0642}\u{0637}\u{0627}\u{0639}\u{0627}\u{062A}\u{0020}\u{062D}\u{064A}\u{0648}\u{064A}\u{0629}\u{002E}" : 'We are proud of our engineering contributions to successful apps in vital sectors.'); ?></p>
             </div>
             <div class="hs-grid hs-grid--3">
                 <?php foreach ($mobile_apps as [$icon, $title, $desc, $badge_text, $badge_cls]) : ?>
@@ -187,11 +315,11 @@ $partnerships = [
                             <span class="hs-app-card__badge <?php echo esc_attr($badge_cls); ?>"><?php echo esc_html($badge_text); ?></span>
                         </div>
                         <h4 class="hs-app-card__title"><?php echo esc_html($title); ?></h4>
-                        <div class="hs-app-card__role"><?php echo esc_html($is_rtl ? 'تطوير تطبيق الجوال' : 'Mobile App Development'); ?></div>
+                        <div class="hs-app-card__role"><?php echo esc_html($is_rtl ? "\u{062A}\u{0637}\u{0648}\u{064A}\u{0631}\u{0020}\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0627}\u{0644}\u{062C}\u{0648}\u{0627}\u{0644}" : 'Mobile App Development'); ?></div>
                         <p class="hs-app-card__desc"><?php echo esc_html($desc); ?></p>
                         <div class="hs-app-card__footer">
                             <span class="material-symbols-outlined">check_circle</span>
-                            <?php echo esc_html($is_rtl ? 'تم التسليم بنجاح' : 'Successfully delivered'); ?>
+                            <?php echo esc_html($is_rtl ? "\u{062A}\u{0645}\u{0020}\u{0627}\u{0644}\u{062A}\u{0633}\u{0644}\u{064A}\u{0645}\u{0020}\u{0628}\u{0646}\u{062C}\u{0627}\u{062D}" : 'Successfully delivered'); ?>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -205,8 +333,8 @@ $partnerships = [
     <section class="hs-section hs-section--muted">
         <div class="container">
             <div class="hs-header">
-                <h2 class="hs-title"><?php echo esc_html($is_rtl ? 'قطاعات نتخصص في حلولها' : 'Industries we specialize in'); ?></h2>
-                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? 'خبرة عميقة في قطاعات تتطلب دقة هندسية عالية وفهماً عميقاً لسير العمل.' : 'Deep expertise in sectors requiring high engineering precision.'); ?></p>
+                <h2 class="hs-title"><?php echo esc_html($is_rtl ? "\u{0642}\u{0637}\u{0627}\u{0639}\u{0627}\u{062A}\u{0020}\u{0646}\u{062A}\u{062E}\u{0635}\u{0635}\u{0020}\u{0641}\u{064A}\u{0020}\u{062D}\u{0644}\u{0648}\u{0644}\u{0647}\u{0627}" : 'Industries we specialize in'); ?></h2>
+                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? "\u{062E}\u{0628}\u{0631}\u{0629}\u{0020}\u{0639}\u{0645}\u{064A}\u{0642}\u{0629}\u{0020}\u{0641}\u{064A}\u{0020}\u{0642}\u{0637}\u{0627}\u{0639}\u{0627}\u{062A}\u{0020}\u{062A}\u{062A}\u{0637}\u{0644}\u{0628}\u{0020}\u{062F}\u{0642}\u{0629}\u{0020}\u{0647}\u{0646}\u{062F}\u{0633}\u{064A}\u{0629}\u{0020}\u{0639}\u{0627}\u{0644}\u{064A}\u{0629}\u{0020}\u{0648}\u{0641}\u{0647}\u{0645}\u{0627}\u{064B}\u{0020}\u{0639}\u{0645}\u{064A}\u{0642}\u{0627}\u{064B}\u{0020}\u{0644}\u{0633}\u{064A}\u{0631}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{0644}\u{002E}" : 'Deep expertise in sectors requiring high engineering precision.'); ?></p>
             </div>
             <div class="hs-grid hs-grid--4">
                 <?php foreach ($industries as [$icon, $title, $desc]) : ?>
@@ -228,7 +356,7 @@ $partnerships = [
     <section class="hs-section hs-section--white">
         <div class="container">
             <div class="hs-header hs-header--center">
-                <h2 class="hs-title"><?php echo esc_html($is_rtl ? 'لماذا تختار SpinesTech كشريك تقني؟' : 'Why choose SpinesTech as your tech partner?'); ?></h2>
+                <h2 class="hs-title"><?php echo esc_html($is_rtl ? "\u{0644}\u{0645}\u{0627}\u{0630}\u{0627}\u{0020}\u{062A}\u{062E}\u{062A}\u{0627}\u{0631}\u{0020}\u{0053}\u{0070}\u{0069}\u{006E}\u{0065}\u{0073}\u{0054}\u{0065}\u{0063}\u{0068}\u{0020}\u{0643}\u{0634}\u{0631}\u{064A}\u{0643}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{061F}" : 'Why choose SpinesTech as your tech partner?'); ?></h2>
             </div>
             <div class="hs-why-grid">
                 <?php foreach ($why_us as [$icon, $title, $desc, $wide]) : ?>
@@ -248,8 +376,8 @@ $partnerships = [
     <section class="hs-section hs-section--dark">
         <div class="container">
             <div class="hs-header hs-header--center">
-                <h2 class="hs-title hs-title--light"><?php echo esc_html($is_rtl ? 'عمق هندسي خلف كل منتج' : 'Engineering depth behind every product'); ?></h2>
-                <p class="hs-subtitle hs-subtitle--light"><?php echo esc_html($is_rtl ? 'الجودة الحقيقية تكمن في البنية التحتية الصلبة التي لا يراها المستخدم.' : 'True quality lies in the solid infrastructure users never see.'); ?></p>
+                <h2 class="hs-title hs-title--light"><?php echo esc_html($is_rtl ? "\u{0639}\u{0645}\u{0642}\u{0020}\u{0647}\u{0646}\u{062F}\u{0633}\u{064A}\u{0020}\u{062E}\u{0644}\u{0641}\u{0020}\u{0643}\u{0644}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}" : 'Engineering depth behind every product'); ?></h2>
+                <p class="hs-subtitle hs-subtitle--light"><?php echo esc_html($is_rtl ? "\u{0627}\u{0644}\u{062C}\u{0648}\u{062F}\u{0629}\u{0020}\u{0627}\u{0644}\u{062D}\u{0642}\u{064A}\u{0642}\u{064A}\u{0629}\u{0020}\u{062A}\u{0643}\u{0645}\u{0646}\u{0020}\u{0641}\u{064A}\u{0020}\u{0627}\u{0644}\u{0628}\u{0646}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{062D}\u{062A}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0635}\u{0644}\u{0628}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{064A}\u{0020}\u{0644}\u{0627}\u{0020}\u{064A}\u{0631}\u{0627}\u{0647}\u{0627}\u{0020}\u{0627}\u{0644}\u{0645}\u{0633}\u{062A}\u{062E}\u{062F}\u{002E}" : 'True quality lies in the solid infrastructure users never see.'); ?></p>
             </div>
             <div class="hs-grid hs-grid--3">
                 <?php foreach ($engineering as [$num, $title, $desc]) : ?>
@@ -269,8 +397,8 @@ $partnerships = [
     <section class="hs-section hs-section--light">
         <div class="container">
             <div class="hs-header hs-header--center">
-                <h2 class="hs-title"><?php echo esc_html($is_rtl ? 'من الفكرة إلى الإطلاق' : 'From idea to launch'); ?></h2>
-                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? 'رحلتنا المنهجية لبناء منتجك الرقمي بمعايير عالمية.' : 'Our systematic journey to build your digital product to world standards.'); ?></p>
+                <h2 class="hs-title"><?php echo esc_html($is_rtl ? "\u{0645}\u{0646}\u{0020}\u{0627}\u{0644}\u{0641}\u{0643}\u{0631}\u{0629}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0627}\u{0644}\u{0625}\u{0637}\u{0644}\u{0627}\u{0642}" : 'From idea to launch'); ?></h2>
+                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? "\u{0631}\u{062D}\u{0644}\u{062A}\u{0646}\u{0627}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{0647}\u{062C}\u{064A}\u{0629}\u{0020}\u{0644}\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}\u{0643}\u{0020}\u{0627}\u{0644}\u{0631}\u{0642}\u{0645}\u{064A}\u{0020}\u{0628}\u{0645}\u{0639}\u{0627}\u{064A}\u{064A}\u{0631}\u{0020}\u{0639}\u{0627}\u{0644}\u{0645}\u{064A}\u{0629}\u{002E}" : 'Our systematic journey to build your digital product to world standards.'); ?></p>
             </div>
             <div class="hs-process">
                 <?php foreach ($process_steps as [$num, $title, $desc]) : ?>
@@ -285,35 +413,33 @@ $partnerships = [
     </section>
 
     <!-- ═══════════════════════════════
-         9. PARTNERSHIP MODELS
+         9. TECH STACK
     ═══════════════════════════════ -->
-    <section class="hs-section hs-section--muted">
+    <section class="hs-section hs-section--muted hs-tech-stack-section" aria-labelledby="hs-tech-stack-title">
         <div class="container">
             <div class="hs-header hs-header--center">
-                <h2 class="hs-title"><?php echo esc_html($is_rtl ? 'نماذج شراكة مرنة وموثوقة' : 'Flexible and reliable partnership models'); ?></h2>
+                <span class="hs-tech-stack-kicker"><?php echo esc_html($is_rtl ? 'التقنيات والمنصات' : 'Tech stack'); ?></span>
+                <h2 id="hs-tech-stack-title" class="hs-title"><?php echo esc_html($is_rtl ? 'التقنيات والمنصات التي نعمل معها' : 'Technologies and platforms we work with'); ?></h2>
+                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? 'نختار التقنية حسب متطلبات المنتج — وليس العكس.' : 'We choose technology based on product requirements — not the other way around.'); ?></p>
             </div>
-            <div class="hs-partners">
-                <?php foreach ($partnerships as [$icon, $label]) : ?>
-                    <div class="hs-partner-card">
-                        <span class="material-symbols-outlined"><?php echo esc_html($icon); ?></span>
-                        <div class="hs-partner-card__label"><?php echo esc_html($label); ?></div>
+            <div class="hs-grid hs-grid--tech-stack">
+                <?php foreach ($tech_stack as [$icon, $label, $hint]) : ?>
+                    <div class="hs-tech-card">
+                        <div class="hs-tech-card__icon-wrap" aria-hidden="true">
+                            <span class="material-symbols-outlined"><?php echo esc_html($icon); ?></span>
+                        </div>
+                        <h3 class="hs-tech-card__title"><?php echo esc_html($label); ?></h3>
+                        <p class="hs-tech-card__hint"><?php echo esc_html($hint); ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════
-         DISCLAIMER
-    ═══════════════════════════════ -->
-    <div class="hs-disclaimer">
-        <div class="container">
-            <p><?php echo esc_html($is_rtl
-                ? 'بعض المشاريع تم تنفيذها مباشرة من خلال SpinesTech، بينما تعكس مشاريع أخرى مساهمات فريقنا في تطوير تطبيقات جوال ضمن مشاريع قادها شركاء تقنيون. يتم توضيح دورنا ونطاق عملنا داخل كل مشروع.'
-                : 'Some projects were executed directly by SpinesTech; others reflect our team\'s contributions within projects led by technology partners. Our role and scope are clarified inside each project.'); ?>
+            <p class="hs-tech-stack-note">
+                <?php echo esc_html($is_rtl
+                    ? 'بعض المشاريع تُنفَّذ مباشرة من SpinesTech، بينما تعكس أخرى مساهمات فريقنا ضمن مشاريع يقودها شركاء تقنيون. يُوضَّح دورنا ونطاق عملنا داخل كل مشروع.'
+                    : 'Some projects were executed directly by SpinesTech; others reflect our team\'s contributions within projects led by technology partners. Our role and scope are clarified inside each project.'); ?>
             </p>
         </div>
-    </div>
+    </section>
 
     <!-- ═══════════════════════════════
          10. FINAL CTA
@@ -322,26 +448,26 @@ $partnerships = [
         <div class="hs-cta__glow hs-cta__glow--1"></div>
         <div class="hs-cta__glow hs-cta__glow--2"></div>
         <div class="container hs-cta__inner">
-            <h2 class="hs-cta__title"><?php echo esc_html($is_rtl ? 'هل فكرتك القادمة تحتاج إلى أكثر من مجرد كود؟' : 'Does your next idea need more than just code?'); ?></h2>
+            <h2 class="hs-cta__title"><?php echo esc_html($is_rtl ? "\u{0647}\u{0644}\u{0020}\u{0641}\u{0643}\u{0631}\u{062A}\u{0643}\u{0020}\u{0627}\u{0644}\u{0642}\u{0627}\u{062F}\u{0645}\u{0629}\u{0020}\u{062A}\u{062D}\u{062A}\u{0627}\u{062C}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0623}\u{0643}\u{062B}\u{0631}\u{0020}\u{0645}\u{0646}\u{0020}\u{0645}\u{062C}\u{0631}\u{062F}\u{0020}\u{0643}\u{0648}\u{062F}\u{061F}" : 'Does your next idea need more than just code?'); ?></h2>
             <p class="hs-cta__desc"><?php echo esc_html($is_rtl
-                ? 'نحن هنا لنحول رؤيتك إلى واقع هندسي قابل للتوسع. سواء كنت تبني منصة لوجستية، سوقاً رقمياً، أو نظام تشغيل لعملك، SpinesTech هي شريكك الأمثل.'
+                ? "\u{0646}\u{062D}\u{0646}\u{0020}\u{0647}\u{0646}\u{0627}\u{0020}\u{0644}\u{0646}\u{062D}\u{0648}\u{0644}\u{0020}\u{0631}\u{0624}\u{064A}\u{062A}\u{0643}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0648}\u{0627}\u{0642}\u{0639}\u{0020}\u{0647}\u{0646}\u{062F}\u{0633}\u{064A}\u{0020}\u{0642}\u{0627}\u{0628}\u{0644}\u{0020}\u{0644}\u{0644}\u{062A}\u{0648}\u{0633}\u{0639}\u{002E}\u{0020}\u{0633}\u{0648}\u{0627}\u{0621}\u{0020}\u{0643}\u{0646}\u{062A}\u{0020}\u{062A}\u{0628}\u{0646}\u{064A}\u{0020}\u{0645}\u{0646}\u{0635}\u{0629}\u{0020}\u{0644}\u{0648}\u{062C}\u{0633}\u{062A}\u{064A}\u{0629}\u{060C}\u{0020}\u{0633}\u{0648}\u{0642}\u{0627}\u{064B}\u{0020}\u{0631}\u{0642}\u{0645}\u{064A}\u{0627}\u{064B}\u{060C}\u{0020}\u{0623}\u{0648}\u{0020}\u{0646}\u{0638}\u{0627}\u{0645}\u{0020}\u{062A}\u{0634}\u{063A}\u{064A}\u{0644}\u{0020}\u{0644}\u{0639}\u{0645}\u{0644}\u{0643}\u{060C}\u{0020}\u{0053}\u{0070}\u{0069}\u{006E}\u{0065}\u{0073}\u{0054}\u{0065}\u{0063}\u{0068}\u{0020}\u{0647}\u{064A}\u{0020}\u{0634}\u{0631}\u{064A}\u{0643}\u{0643}\u{0020}\u{0627}\u{0644}\u{0623}\u{0645}\u{062B}\u{0644}\u{002E}"
                 : 'We are here to turn your vision into scalable engineering reality. Whether logistics, marketplace or operations system, SpinesTech is your ideal partner.'); ?>
             </p>
             <div class="hs-cta__actions">
                 <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="hs-cta__btn hs-cta__btn--primary">
-                    <?php echo esc_html($is_rtl ? 'تواصل معنا لبدء مشروعك' : 'Contact us to start your project'); ?>
+                    <?php echo esc_html($is_rtl ? "\u{062A}\u{0648}\u{0627}\u{0635}\u{0644}\u{0020}\u{0645}\u{0639}\u{0646}\u{0627}\u{0020}\u{0644}\u{0628}\u{062F}\u{0621}\u{0020}\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}\u{0643}" : 'Contact us to start your project'); ?>
                     <span class="material-symbols-outlined">send</span>
                 </a>
                 <a href="<?php echo esc_url(home_url('/consultation/')); ?>" class="hs-cta__btn hs-cta__btn--ghost">
-                    <?php echo esc_html($is_rtl ? 'تحدث مع مستشار تقني' : 'Talk to a tech advisor'); ?>
+                    <?php echo esc_html($is_rtl ? "\u{062A}\u{062D}\u{062F}\u{062B}\u{0020}\u{0645}\u{0639}\u{0020}\u{0645}\u{0633}\u{062A}\u{0634}\u{0627}\u{0631}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}" : 'Talk to a tech advisor'); ?>
                 </a>
             </div>
             <div class="hs-cta__proof">
-                <p class="hs-cta__proof-title"><?php echo esc_html($is_rtl ? 'التزامنا تجاه كل شريك: شفافية، احترافية، وملكية كاملة' : 'Our commitment: transparency, professionalism and full ownership'); ?></p>
+                <p class="hs-cta__proof-title"><?php echo esc_html($is_rtl ? "\u{0627}\u{0644}\u{062A}\u{0632}\u{0627}\u{0645}\u{0646}\u{0627}\u{0020}\u{062A}\u{062C}\u{0627}\u{0647}\u{0020}\u{0643}\u{0644}\u{0020}\u{0634}\u{0631}\u{064A}\u{0643}\u{003A}\u{0020}\u{0634}\u{0641}\u{0627}\u{0641}\u{064A}\u{0629}\u{060C}\u{0020}\u{0627}\u{062D}\u{062A}\u{0631}\u{0627}\u{0641}\u{064A}\u{0629}\u{060C}\u{0020}\u{0648}\u{0645}\u{0644}\u{0643}\u{064A}\u{0629}\u{0020}\u{0643}\u{0627}\u{0645}\u{0644}\u{0629}" : 'Our commitment: transparency, professionalism and full ownership'); ?></p>
                 <div class="hs-cta__proof-grid">
                     <?php
                     $proofs = $is_rtl
-                        ? ['كود مصدر كامل (Source)', 'توثيق تقني شامل', 'نقل الملكية القانوني', 'دعم فني بعد الإطلاق', 'تدريب فريق العمل', 'ضمان استقرار النظام']
+                        ? ["\u{0643}\u{0648}\u{062F}\u{0020}\u{0645}\u{0635}\u{062F}\u{0631}\u{0020}\u{0643}\u{0627}\u{0645}\u{0644}\u{0020}\u{0028}\u{0053}\u{006F}\u{0075}\u{0072}\u{0063}\u{0065}\u{0029}", "\u{062A}\u{0648}\u{062B}\u{064A}\u{0642}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{0020}\u{0634}\u{0627}\u{0645}\u{0644}", "\u{0646}\u{0642}\u{0644}\u{0020}\u{0627}\u{0644}\u{0645}\u{0644}\u{0643}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0642}\u{0627}\u{0646}\u{0648}\u{0646}\u{064A}", "\u{062F}\u{0639}\u{0645}\u{0020}\u{0641}\u{0646}\u{064A}\u{0020}\u{0628}\u{0639}\u{062F}\u{0020}\u{0627}\u{0644}\u{0625}\u{0637}\u{0644}\u{0627}\u{0642}", "\u{062A}\u{062F}\u{0631}\u{064A}\u{0628}\u{0020}\u{0641}\u{0631}\u{064A}\u{0642}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{0644}", "\u{0636}\u{0645}\u{0627}\u{0646}\u{0020}\u{0627}\u{0633}\u{062A}\u{0642}\u{0631}\u{0627}\u{0631}\u{0020}\u{0627}\u{0644}\u{0646}\u{0638}\u{0627}\u{0645}"]
                         : ['Full Source Code', 'Technical Documentation', 'Legal IP Transfer', 'Post-Launch Support', 'Team Training', 'System Stability Guarantee'];
                     foreach ($proofs as $p) : ?>
                         <div class="hs-cta__proof-item"><?php echo esc_html($p); ?></div>

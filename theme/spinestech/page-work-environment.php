@@ -5,16 +5,16 @@
 get_header();
 $locale = st_locale();
 $cards = [
-    ['groups', $locale === 'ar' ? 'فريق متعاون' : 'Collaborative team', $locale === 'ar' ? 'ثقافة مبنية على الثقة والابتكار.' : 'Culture built on trust and innovation.'],
-    ['school', $locale === 'ar' ? 'تعلم مستمر' : 'Continuous learning', $locale === 'ar' ? 'ميزانية تدريب وشهادات.' : 'Training budget and certifications.'],
-    ['home_work', $locale === 'ar' ? 'مرونة' : 'Flexibility', $locale === 'ar' ? 'عمل هجين ومرونة في الوقت.' : 'Hybrid work and flexible hours.'],
-    ['rocket_launch', $locale === 'ar' ? 'تأثير حقيقي' : 'Real impact', $locale === 'ar' ? 'مشاريع تُحدث فرقاً في السوق.' : 'Projects that move the market.'],
+    ['groups', $locale === 'ar' ? 'ÙØ±ÙŠÙ‚ Ù…ØªØ¹Ø§ÙˆÙ†' : 'Collaborative team', $locale === 'ar' ? 'Ø«Ù‚Ø§ÙØ© Ù…Ø¨Ù†ÙŠØ© Ø¹Ù„Ù‰ Ø§Ù„Ø«Ù‚Ø© ÙˆØ§Ù„Ø§Ø¨ØªÙƒØ§Ø±.' : 'Culture built on trust and innovation.'],
+    ['school', $locale === 'ar' ? 'ØªØ¹Ù„Ù… Ù…Ø³ØªÙ…Ø±' : 'Continuous learning', $locale === 'ar' ? 'Ù…ÙŠØ²Ø§Ù†ÙŠØ© ØªØ¯Ø±ÙŠØ¨ ÙˆØ´Ù‡Ø§Ø¯Ø§Øª.' : 'Training budget and certifications.'],
+    ['home_work', $locale === 'ar' ? 'Ù…Ø±ÙˆÙ†Ø©' : 'Flexibility', $locale === 'ar' ? 'Ø¹Ù…Ù„ Ù‡Ø¬ÙŠÙ† ÙˆÙ…Ø±ÙˆÙ†Ø© ÙÙŠ Ø§Ù„ÙˆÙ‚Øª.' : 'Hybrid work and flexible hours.'],
+    ['rocket_launch', $locale === 'ar' ? 'ØªØ£Ø«ÙŠØ± Ø­Ù‚ÙŠÙ‚ÙŠ' : 'Real impact', $locale === 'ar' ? 'Ù…Ø´Ø§Ø±ÙŠØ¹ ØªÙØ­Ø¯Ø« ÙØ±Ù‚Ø§Ù‹ ÙÙŠ Ø§Ù„Ø³ÙˆÙ‚.' : 'Projects that move the market.'],
 ];
 ?>
 <main class="page-work-env">
     <div class="container">
         <a href="<?php echo esc_url(st_url('/careers/')); ?>" class="page-work-env__back-link">
-            <span class="material-symbols-outlined">arrow_back</span>
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
             <?php echo esc_html(st_t('careers.workEnvironmentButton')); ?>
         </a>
         <h1 class="page-work-env__title"><?php echo esc_html(st_t('careers.workEnvironmentButton')); ?></h1>

@@ -1,6 +1,6 @@
 <?php
 /**
- * SpinesTech — Premium Site Loader
+ * SpinesTech â€” Premium Site Loader
  *
  * This template part is included ONCE, as the very first thing inside
  * <body>, before any other markup. All CSS and the minimal bootstrap
@@ -10,7 +10,7 @@
  * single external stylesheet has finished downloading, or the page
  * underneath will flash for a frame before the loader covers it
  * (FOUC). Inlining removes that network round-trip from the critical
- * path entirely. This is deliberate, not an oversight — the same
+ * path entirely. This is deliberate, not an oversight â€” the same
  * technique used by Stripe, Linear, and Vercel for their loaders.
  *
  * The exit ANIMATION LOGIC (non-critical, can load a beat later
@@ -212,7 +212,7 @@
   @keyframes stLoaderContentExitReduced { from { opacity: 1; } to { opacity: 0; } }
 </style>
 
-<div id="st-loader" role="status" aria-live="polite" aria-label="<?php echo esc_attr(st_locale() === 'ar' ? 'جارِ تحميل الموقع' : 'Loading site'); ?>">
+<div id="st-loader" role="status" aria-live="polite" aria-label="<?php echo esc_attr(st_locale() === 'ar' ? 'Ø¬Ø§Ø±Ù ØªØ­Ù…ÙŠÙ„ Ø§Ù„Ù…ÙˆÙ‚Ø¹' : 'Loading site'); ?>">
     <div class="st-loader__bg" aria-hidden="true">
         <div class="st-loader__glow st-loader__glow--1"></div>
         <div class="st-loader__glow st-loader__glow--2"></div>

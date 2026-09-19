@@ -49,4 +49,37 @@
       closeModal();
     }
   });
+
+  /* ── Glowing Scroll Progress Line ───────────────────────────────
+     Creates a fixed 3px line on the right edge of the viewport.
+     A glowing dot rides the tip of the fill as you scroll.
+  ─────────────────────────────────────────────────────────────── */
+  (function initScrollLine() {
+    const line = document.createElement('div');
+    line.className = 'st-scroll-line';
+    line.setAttribute('aria-hidden', 'true');
+    line.innerHTML =
+      '<div class="st-scroll-line__track"></div>' +
+      '<div class="st-scroll-line__fill"></div>' +
+      '<div class="st-scroll-line__dot"></div>';
+    document.body.appendChild(line);
+
+    let ticking = false;
+
+    function updateLine() {
+      ticking = false;
+      const scrolled = window.scrollY || window.pageYOffset;
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docH > 0 ? Math.min(scrolled / docH, 1) : 0;
+      line.style.setProperty('--st-scroll-pct', pct.toFixed(4));
+    }
+
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateLine);
+    }, { passive: true });
+
+    updateLine();
+  })();
 })();

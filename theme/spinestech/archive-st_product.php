@@ -7,7 +7,7 @@
                 <span class="inline-block px-3 py-1 bg-secondary/10 text-secondary text-caption font-bold rounded-full mb-4"><?php echo esc_html($p['badge'] ?? ''); ?></span>
                 <h2 class="text-headline-sm mb-4 font-bold text-primary"><?php echo esc_html($p['title']); ?></h2>
                 <p class="text-on-surface-variant mb-6"><?php echo esc_html($p['description']); ?></p>
-                <span class="text-secondary font-bold inline-flex items-center gap-2"><?php echo esc_html(st_t('common.learnMore')); ?><span class="material-symbols-outlined"><?php echo esc_html($arrow); ?></span></span>
+                <span class="text-secondary font-bold inline-flex items-center gap-2"><?php echo esc_html(st_t('common.learnMore')); ?><span class="material-symbols-outlined" aria-hidden="true"><?php echo esc_html($arrow); ?></span></span>
             </a>
         <?php endforeach; ?>
     </div>

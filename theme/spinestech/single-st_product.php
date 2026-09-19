@@ -22,7 +22,7 @@ while (have_posts()) :
         <div class="absolute inset-0 islamic-pattern opacity-[0.04]"></div>
         <div class="absolute top-20 right-10 w-72 h-72 bg-secondary/20 rounded-full blur-3xl"></div>
         <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-32 relative z-10 w-full">
-            <a href="<?php echo esc_url(st_url('/products/')); ?>" class="inline-flex items-center gap-2 text-secondary-fixed font-bold mb-8"><span class="material-symbols-outlined">arrow_back</span><?php echo esc_html(st_t('nav.products')); ?></a>
+            <a href="<?php echo esc_url(st_url('/products/')); ?>" class="inline-flex items-center gap-2 text-secondary-fixed font-bold mb-8"><span class="material-symbols-outlined" aria-hidden="true">arrow_back</span><?php echo esc_html(st_t('nav.products')); ?></a>
             <?php if ($badge) : ?><span class="inline-block px-4 py-1 bg-secondary/20 text-secondary-fixed rounded-full text-caption font-bold mb-4"><?php echo esc_html($badge); ?></span><?php endif; ?>
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
@@ -41,7 +41,7 @@ while (have_posts()) :
                 <div class="hidden lg:grid grid-cols-2 gap-4">
                     <div class="p-6 bg-white/10 rounded-2xl backdrop-blur border border-white/10 text-center"><div class="text-3xl font-bold text-secondary-fixed" data-st-counter="150">0</div><div class="text-sm opacity-70 mt-1"><?php echo esc_html(st_t('home.projects')); ?></div></div>
                     <div class="p-6 bg-white/10 rounded-2xl backdrop-blur border border-white/10 text-center"><div class="text-3xl font-bold text-secondary-fixed" data-st-counter="99">0</div><div class="text-sm opacity-70 mt-1">SLA %</div></div>
-                    <div class="p-6 bg-white/10 rounded-2xl backdrop-blur border border-white/10 text-center col-span-2"><div class="text-3xl font-bold text-secondary-fixed">24/7</div><div class="text-sm opacity-70 mt-1"><?php echo st_locale() === 'ar' ? 'دعم فني' : 'Support'; ?></div></div>
+                    <div class="p-6 bg-white/10 rounded-2xl backdrop-blur border border-white/10 text-center col-span-2"><div class="text-3xl font-bold text-secondary-fixed">24/7</div><div class="text-sm opacity-70 mt-1"><?php echo st_locale() === 'ar' ? 'Ø¯Ø¹Ù… ÙÙ†ÙŠ' : 'Support'; ?></div></div>
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@ while (have_posts()) :
     <?php if ($modules) : ?>
     <section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low" data-st-product-modules>
         <div class="max-w-container-max mx-auto">
-            <h2 class="text-headline-xl font-bold text-primary mb-8 text-center"><?php echo st_locale() === 'ar' ? 'الوحدات' : 'Modules'; ?></h2>
+            <h2 class="text-headline-xl font-bold text-primary mb-8 text-center"><?php echo st_locale() === 'ar' ? 'Ø§Ù„ÙˆØ­Ø¯Ø§Øª' : 'Modules'; ?></h2>
             <div class="flex flex-wrap gap-2 mb-8 justify-center">
                 <?php foreach ($modules as $i => $m) : ?>
                     <button type="button" data-module="<?php echo (int) $i; ?>" class="st-module-tab px-5 py-2.5 rounded-full border font-bold text-sm transition-all <?php echo $i === 0 ? 'bg-secondary text-on-secondary border-secondary' : 'border-outline-variant/40 text-on-surface-variant hover:border-secondary'; ?>"><?php echo esc_html($m['title']); ?></button>
@@ -84,10 +84,10 @@ while (have_posts()) :
     <section class="py-24 px-margin-mobile md:px-margin-desktop">
         <div class="max-w-container-max mx-auto grid lg:grid-cols-2 gap-12">
             <?php if ($use_cases) : ?>
-                <div><h2 class="text-headline-lg font-bold text-primary mb-6"><?php echo st_locale() === 'ar' ? 'حالات الاستخدام' : 'Use cases'; ?></h2><ul class="space-y-3"><?php foreach ($use_cases as $u) : ?><li class="flex gap-3"><span class="material-symbols-outlined text-secondary text-sm mt-1">check</span><?php echo esc_html($u); ?></li><?php endforeach; ?></ul></div>
+                <div><h2 class="text-headline-lg font-bold text-primary mb-6"><?php echo st_locale() === 'ar' ? 'Ø­Ø§Ù„Ø§Øª Ø§Ù„Ø§Ø³ØªØ®Ø¯Ø§Ù…' : 'Use cases'; ?></h2><ul class="space-y-3"><?php foreach ($use_cases as $u) : ?><li class="flex gap-3"><span class="material-symbols-outlined text-secondary text-sm mt-1">check</span><?php echo esc_html($u); ?></li><?php endforeach; ?></ul></div>
             <?php endif; ?>
             <?php if ($specs) : ?>
-                <div><h2 class="text-headline-lg font-bold text-primary mb-6"><?php echo st_locale() === 'ar' ? 'المواصفات' : 'Specs'; ?></h2><ul class="space-y-3"><?php foreach ($specs as $s) : ?><li class="flex gap-3"><span class="material-symbols-outlined text-secondary text-sm mt-1">settings</span><?php echo esc_html($s); ?></li><?php endforeach; ?></ul></div>
+                <div><h2 class="text-headline-lg font-bold text-primary mb-6"><?php echo st_locale() === 'ar' ? 'Ø§Ù„Ù…ÙˆØ§ØµÙØ§Øª' : 'Specs'; ?></h2><ul class="space-y-3"><?php foreach ($specs as $s) : ?><li class="flex gap-3"><span class="material-symbols-outlined text-secondary text-sm mt-1">settings</span><?php echo esc_html($s); ?></li><?php endforeach; ?></ul></div>
             <?php endif; ?>
         </div>
         <?php if (get_the_content()) : ?><div class="max-w-container-max mx-auto mt-16 prose max-w-none"><?php the_content(); ?></div><?php endif; ?>

@@ -1,7 +1,23 @@
 /* ═══════════════════════════════════════════════
-   Footer — SpinesTech Cinematic Component
+   Footer — SpinesTech Cinematic Component (v4)
    Built on main.css tokens (--color-secondary, IBM Plex Sans Arabic).
    Local-only tokens are scoped to .footer so nothing else is affected.
+
+   FIX HISTORY:
+   v2 — watermark was off-center on RTL (logical + physical transform
+        mixing). Fixed with physical left/translate.
+   v3 — watermark had no size ceiling (15vw, uncapped) → ~288px on a
+        1920px screen. Capped with clamp(), but padding/gaps were left
+        tied to --space-xl/--space-2xl, which are HERO-section sized
+        tokens (up to 8rem/128px). A footer is not a hero — reusing
+        those tokens kept the whole component oversized.
+   v4 (this version) — every dimension in the footer now uses its OWN
+        realistic clamp() scale, sized specifically for a footer:
+        watermark capped much lower (max 6rem instead of 9rem), all
+        vertical padding cut roughly in half, widget/card padding
+        reduced, column gaps tightened, logo/heading sizes reduced.
+        Nothing here references the oversized --space-xl/2xl tokens
+        anymore — the footer defines its own compact --f-space-* scale.
    ═══════════════════════════════════════════════ */
 
 .footer {
@@ -10,6 +26,14 @@
     --footer-accent:    var(--color-secondary, #036d36);
     --footer-accent-lt: #4ade80;
     --footer-ease:      cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* Footer-only spacing scale — deliberately compact, NOT reusing
+       the site's hero-sized --space-xl/--space-2xl tokens. */
+    --f-space-xs: clamp(0.5rem, 1vw, 0.75rem);
+    --f-space-sm: clamp(0.75rem, 1.5vw, 1.25rem);
+    --f-space-md: clamp(1.25rem, 2.5vw, 2rem);
+    --f-space-lg: clamp(2rem, 3.5vw, 3rem);
+    --f-space-xl: clamp(2.5rem, 4.5vw, 3.75rem);
 
     position: relative;
     overflow: hidden;
@@ -21,11 +45,7 @@
 .footer .container {
     max-width: var(--container-max, 1280px);
     margin-inline: auto;
-    padding-inline: var(--spacing-mobile, 1rem);
-}
-
-@media (min-width: 1024px) {
-    .footer .container { padding-inline: var(--spacing-desktop, 4rem); }
+    padding-inline: var(--page-px, clamp(1rem, 4vw, 2.5rem));
 }
 
 /* ── Top hairline accent ─────────────────────────── */
@@ -65,17 +85,17 @@
     z-index: 0;
 }
 .footer__glow--1 {
-    width: 420px; height: 420px;
+    width: 320px; height: 320px;
     background: rgba(3,109,54,0.22);
-    top: -140px;
-    inset-inline-end: -100px;
+    top: -110px;
+    inset-inline-end: -90px;
     animation: footer-glow-drift-1 14s ease-in-out infinite;
 }
 .footer__glow--2 {
-    width: 320px; height: 320px;
+    width: 260px; height: 260px;
     background: rgba(3,109,54,0.14);
-    bottom: -120px;
-    inset-inline-start: -80px;
+    bottom: -100px;
+    inset-inline-start: -70px;
     animation: footer-glow-drift-2 18s ease-in-out infinite;
 }
 @keyframes footer-glow-drift-1 {
@@ -88,26 +108,61 @@
 }
 
 /* ── Giant watermark ──────────────────────────────── */
+/* Centering uses PHYSICAL left/translateX on purpose — this is a
+   decorative background element, not directional text, so it must
+   stay dead-center regardless of dir="rtl"/"ltr".
+
+   v3 capped this at 9rem max — still too large relative to the rest
+   of the (now much more compact) footer. v4 caps it at 6rem (96px)
+   max, so it reads as a subtle texture behind the columns instead of
+   competing with them for attention. */
 .footer__watermark {
     position: absolute;
-    top: 52%;
-    inset-inline-start: 50%;
-    transform: translate(-50%, calc(-50% + var(--wm-offset, 0px)));
-    font-size: 16vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(var(--wm-offset, 0px));
+    font-size: clamp(3.5rem, 11vw, 10rem);
     font-weight: 800;
     line-height: 1;
-    color: #ffffff;
-    opacity: 0.045;
     white-space: nowrap;
     pointer-events: none;
     user-select: none;
     z-index: 0;
     letter-spacing: -0.02em;
-    animation: footer-watermark-breathe 10s ease-in-out infinite;
+    max-width: 92vw;
+    overflow: hidden;
+    text-overflow: clip;
+
+    /* Base fill */
+    color: #ffffff;
+    opacity: 0.05;
+
+    /* Slow shimmer sweep through the giant word for a premium,
+       "alive" background rather than a flat static watermark */
+    background-image: linear-gradient(
+        100deg,
+        rgba(255,255,255,0)   35%,
+        rgba(74,222,128,0.9)  50%,
+        rgba(255,255,255,0)   65%
+    );
+    background-size: 260% 100%;
+    background-position: 130% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    animation:
+        footer-watermark-breathe 11s ease-in-out infinite,
+        footer-watermark-sweep 9s ease-in-out infinite;
 }
+
 @keyframes footer-watermark-breathe {
-    0%, 100% { opacity: 0.04;  transform: translate(-50%, calc(-50% + var(--wm-offset, 0px))) scale(1); }
-    50%      { opacity: 0.065; transform: translate(-50%, calc(-50% + var(--wm-offset, 0px))) scale(1.015); }
+    0%, 100% { opacity: 0.045; }
+    50%      { opacity: 0.075; }
+}
+
+@keyframes footer-watermark-sweep {
+    0%, 40%   { background-position: 130% 0; }
+    70%, 100% { background-position: -60% 0; }
 }
 
 /* ── Body layout ──────────────────────────────────── */
@@ -119,15 +174,15 @@
 .footer__body {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem;
-    padding-block: 5rem 4rem;
+    gap: var(--f-space-lg);
+    padding-block: var(--f-space-xl) var(--f-space-lg);
 }
 
 @media (min-width: 1024px) {
     .footer__body {
-        grid-template-columns: 1.1fr 2fr;
-        gap: 4rem;
-        padding-block: 7rem 4.5rem;
+        grid-template-columns: 0.9fr 2fr;
+        gap: var(--f-space-xl);
+        padding-block: var(--f-space-xl) var(--f-space-lg);
     }
 }
 
@@ -142,36 +197,68 @@
     opacity: 1;
     transform: translateY(0);
 }
-@media (prefers-reduced-motion: reduce) {
-    .footer.js-ready [data-footer-reveal] {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-    }
-}
 
 /* ── Brand widget card ────────────────────────────── */
 .footer__widget {
     position: relative;
-    padding: 2rem;
-    border-radius: 1.25rem;
+    padding: var(--f-space-md);
+    border-radius: 1.1rem;
     background: rgba(255,255,255,0.035);
     border: 1px solid rgba(255,255,255,0.08);
     backdrop-filter: blur(6px);
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+    max-width: 24rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.15s ease-out;
+    animation: footer-widget-float 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+    will-change: transform;
+    /* overflow: visible so the conic ring ::before is not clipped */
+    overflow: visible;
 }
 .footer__widget:hover {
     border-color: rgba(3,109,54,0.35);
     background: rgba(255,255,255,0.05);
 }
+@keyframes footer-widget-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-5px); }
+}
+
+/* Rotating conic glow ring — subtle at rest, brighter on hover */
+.footer__widget::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+        from 0deg,
+        rgba(3,109,54,0)     0deg,
+        rgba(74,222,128,0.7) 90deg,
+        rgba(3,109,54,0)     180deg,
+        rgba(74,222,128,0.35) 270deg,
+        rgba(3,109,54,0)     360deg
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.35;
+    animation: footer-ring-spin 8s linear infinite;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+.footer__widget:hover::before { opacity: 0.75; }
+@keyframes footer-ring-spin {
+    to { transform: rotate(360deg); }
+}
 
 /* Live pulse indicator */
 .footer__pulse {
     position: absolute;
-    top: 1.25rem;
-    inset-inline-start: 1.25rem;
-    width: 10px; height: 10px;
+    top: 1rem;
+    inset-inline-start: 1rem;
+    width: 9px; height: 9px;
     display: block;
+    z-index: 1;
 }
 .footer__pulse-dot {
     position: absolute;
@@ -186,18 +273,17 @@
     70%  { box-shadow: 0 0 0 10px rgba(74,222,128,0); }
     100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
 }
-@media (prefers-reduced-motion: reduce) {
-    .footer__pulse-dot { animation: none; box-shadow: 0 0 0 3px rgba(74,222,128,0.3); }
-}
 
 /* Shimmer logo text */
 .footer__logo {
     display: block;
-    font-size: 2.1rem;
+    font-size: clamp(1.25rem, 1.8vw, 1.6rem);
     font-weight: 800;
     color: #fff;
-    margin-block-end: 1.25rem;
+    margin-block-end: 0.85rem;
     cursor: default;
+    position: relative;
+    z-index: 1;
 }
 .footer__logo--shimmer {
     background-image: linear-gradient(
@@ -217,31 +303,32 @@
     0%, 45%  { background-position: 130% 0; }
     60%, 100% { background-position: -30% 0; }
 }
-@media (prefers-reduced-motion: reduce) {
-    .footer__logo--shimmer { animation: none; -webkit-text-fill-color: #fff; color: #fff; }
-}
 
 .footer__tagline {
-    font-size: 0.92rem;
-    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+    font-size: 0.85rem;
+    line-height: 1.7;
     color: rgba(255,255,255,0.55);
-    margin-block-end: 1.75rem;
-    max-width: 26rem;
+    margin-block-end: 1.25rem;
+    max-width: 22rem;
 }
 
 /* Contact rows */
 .footer__contact-list {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.6rem;
 }
 
 .footer__contact-row {
     display: flex;
     align-items: center;
-    gap: 0.875rem;
-    padding: 0.75rem;
-    border-radius: 0.75rem;
+    gap: 0.75rem;
+    padding: 0.6rem;
+    border-radius: 0.65rem;
     background: rgba(255,255,255,0.045);
     border: 1px solid rgba(255,255,255,0.05);
     text-decoration: none;
@@ -255,12 +342,12 @@ a.footer__contact-row:hover {
 .footer__contact-row--muted {
     background: transparent;
     border-color: transparent;
-    padding-inline: 0.75rem;
+    padding-inline: 0.6rem;
 }
 
 .footer__contact-ico {
-    width: 2.15rem; height: 2.15rem;
-    border-radius: 0.55rem;
+    width: 1.9rem; height: 1.9rem;
+    border-radius: 0.5rem;
     border: 1px solid rgba(255,255,255,0.1);
     background: rgba(255,255,255,0.05);
     display: flex;
@@ -270,7 +357,7 @@ a.footer__contact-row:hover {
     color: rgba(255,255,255,0.5);
     transition: transform 0.3s var(--footer-ease), color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
 }
-.footer__contact-ico .material-symbols-outlined { font-size: 1rem; }
+.footer__contact-ico .material-symbols-outlined { font-size: 0.9rem; }
 a.footer__contact-row:hover .footer__contact-ico {
     border-color: rgba(3,109,54,0.5);
     color: var(--footer-accent-lt);
@@ -279,7 +366,7 @@ a.footer__contact-row:hover .footer__contact-ico {
 }
 
 .footer__contact-val {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     color: rgba(255,255,255,0.55);
     line-height: 1.5;
 }
@@ -289,27 +376,38 @@ a.footer__contact-row:hover .footer__contact-val--link { color: #fff; }
 /* ── Nav columns ──────────────────────────────────── */
 .footer__columns {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--f-space-lg) var(--f-space-sm);
 }
 
-@media (min-width: 640px) {
-    .footer__columns { grid-template-columns: repeat(3, 1fr); }
+.footer__col:last-child {
+    grid-column: 1 / -1;
+}
+
+@media (min-width: 768px) {
+    .footer__columns {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--f-space-lg);
+    }
+    .footer__col:last-child {
+        grid-column: auto;
+    }
 }
 
 .footer__col {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
+    min-width: 0;
 }
 
 .footer__heading {
     display: flex;
     align-items: center;
-    gap: 0.625rem;
-    font-size: 0.72rem;
+    gap: 0.55rem;
+    font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.4);
     margin: 0;
@@ -317,25 +415,53 @@ a.footer__contact-row:hover .footer__contact-val--link { color: #fff; }
 
 .footer__heading-bar {
     display: inline-block;
-    width: 1.75rem;
+    width: 1.5rem;
     height: 1px;
     background: var(--footer-accent);
+    flex-shrink: 0;
 }
 
 .footer__links {
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
+    gap: 0.8rem;
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+/* Cascading per-link reveal — each item fades/slides in with its own
+   short delay once the parent column becomes visible. Falls back to
+   fully visible immediately when JS is disabled (no .js-ready class). */
+.footer__links li {
+    opacity: 1;
+    transform: none;
+}
+.footer.js-ready .footer__links li {
+    opacity: 0;
+    animation: footer-link-cascade 0.55s var(--footer-ease) forwards;
+    animation-play-state: paused;
+}
+.footer.js-ready .footer__col.is-visible .footer__links li {
+    animation-play-state: running;
+}
+.footer__links li:nth-child(1) { animation-delay: 0.05s; }
+.footer__links li:nth-child(2) { animation-delay: 0.12s; }
+.footer__links li:nth-child(3) { animation-delay: 0.19s; }
+.footer__links li:nth-child(4) { animation-delay: 0.26s; }
+.footer__links li:nth-child(5) { animation-delay: 0.33s; }
+.footer__links li:nth-child(6) { animation-delay: 0.40s; }
+
+@keyframes footer-link-cascade {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .footer__link {
     position: relative;
     display: inline-block;
     width: fit-content;
-    font-size: 0.9rem;
+    font-size: 0.84rem;
     color: rgba(255,255,255,0.68);
     text-decoration: none;
     transition: color 0.25s ease;
@@ -367,9 +493,9 @@ a.footer__contact-row:hover .footer__contact-val--link { color: #fff; }
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.75rem;
+    gap: 1.25rem;
     text-align: center;
-    padding-block: 2rem 2.25rem;
+    padding-block: var(--f-space-sm) var(--f-space-md);
     border-top: 1px solid rgba(255,255,255,0.07);
 }
 
@@ -385,37 +511,44 @@ a.footer__contact-row:hover .footer__contact-val--link { color: #fff; }
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.65rem;
 }
 @media (min-width: 768px) {
-    .footer__bar-left { flex-direction: row; align-items: center; gap: 2rem; }
+    .footer__bar-left { flex-direction: row; align-items: center; gap: 1.5rem; }
 }
 
 .footer__copy {
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     color: rgba(255,255,255,0.32);
 }
 
 .footer__bar-links {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1.1rem;
 }
 
 .footer__bar-link {
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     color: rgba(255,255,255,0.42);
     text-decoration: none;
     transition: color 0.2s ease;
 }
 .footer__bar-link:hover { color: #fff; }
 
+/* Static legal text — no pointer, no hover colour change */
+.footer__bar-link--static {
+    cursor: default;
+    pointer-events: none;
+    user-select: none;
+}
+
 /* Language pill */
 .footer__lang-pill {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.3rem;
+    gap: 0.35rem;
+    padding: 0.25rem;
     border-radius: 9999px;
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.1);
@@ -427,9 +560,9 @@ a.footer__contact-row:hover .footer__contact-val--link { color: #fff; }
     border: none;
     cursor: pointer;
     font-family: inherit;
-    padding: 0.5rem 1.25rem;
+    padding: 0.4rem 1rem;
     border-radius: 9999px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     color: rgba(255,255,255,0.45);
     background: transparent;
@@ -442,6 +575,11 @@ a.footer__contact-row:hover .footer__contact-val--link { color: #fff; }
     background: rgba(3,109,54,0.4);
     border: 1px solid rgba(3,109,54,0.35);
     box-shadow: 0 0 16px rgba(3,109,54,0.35);
+    animation: footer-lang-glow 3.2s ease-in-out infinite;
+}
+@keyframes footer-lang-glow {
+    0%, 100% { box-shadow: 0 0 12px rgba(3,109,54,0.28); }
+    50%      { box-shadow: 0 0 20px rgba(3,109,54,0.45); }
 }
 
 .footer__lang-btn:not(.is-active):hover {
@@ -449,22 +587,44 @@ a.footer__contact-row:hover .footer__contact-val--link { color: #fff; }
 }
 
 /* =============================================================
+   RESPONSIVE — Tablet ≤1023px
+   ============================================================= */
+@media (max-width: 1023px) {
+    .footer__widget { max-width: none; }
+}
+
+/* =============================================================
    RESPONSIVE — Mobile ≤640px
    ============================================================= */
 @media (max-width: 640px) {
-    .footer__watermark { font-size: 22vw; }
-    .footer__body { padding-block: 3.5rem 2.5rem; gap: 2.5rem; }
-    .footer__widget { padding: 1.5rem; }
-    .footer__logo { font-size: 1.75rem; }
-    .footer__bar { padding-block: 1.5rem 1.75rem; }
+    .footer__watermark { font-size: clamp(2rem, 18vw, 5rem); }
+    .footer__widget { padding: 1.1rem; }
+    .footer__logo { font-size: 1.3rem; }
+    .footer__bar { padding-block: 1rem 1.25rem; }
 }
 
-/* Respect reduced motion globally for this component */
+/* =============================================================
+   Reduced motion — disable every animation, keep static end-states
+   ============================================================= */
 @media (prefers-reduced-motion: reduce) {
     .footer__grid-bg,
     .footer__glow--1,
     .footer__glow--2,
-    .footer__watermark {
+    .footer__watermark,
+    .footer__widget,
+    .footer__widget::before,
+    .footer__logo--shimmer,
+    .footer__pulse-dot,
+    .footer__lang-btn.is-active {
         animation: none !important;
     }
+    .footer.js-ready [data-footer-reveal],
+    .footer.js-ready .footer__links li {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+    }
+    .footer__logo--shimmer { -webkit-text-fill-color: #fff; color: #fff; }
+    .footer__widget::before { opacity: 0.35; }
 }

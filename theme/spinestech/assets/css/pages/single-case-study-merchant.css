@@ -1,4 +1,4 @@
-﻿/* =============================================================
+/* =============================================================
    single-case-study-merchant.css — SpinesTech
    "Merchant" case study — fully static, 1:1 section match.
    Built on theme tokens (--color-secondary, IBM Plex Sans Arabic).
@@ -7,19 +7,19 @@
    ============================================================= */
 
 .mcs {
-    --mcs-primary:      var(--color-secondary, #036d36);
-    --mcs-primary-dark: #024a25;
-    --mcs-primary-soft: rgba(3, 109, 54, 0.10);
-    --mcs-gold:         #f3bf4b;
-    --mcs-gold-soft:    rgba(243, 191, 75, 0.14);
+    --mcs-primary:      #006765;
+    --mcs-primary-dark: #004a49;
+    --mcs-primary-soft: rgba(0, 103, 101, 0.10);
+    --mcs-gold:         #ffca55;
+    --mcs-gold-soft:    rgba(255, 202, 85, 0.18);
     --mcs-tertiary:     #545c72;
-    --mcs-navy:         var(--color-primary-container, #0a1d2f);
+    --mcs-navy:         #0b1c30;
     --mcs-ink:          var(--color-on-surface, #1b1c19);
     --mcs-ink-soft:     var(--color-on-surface-variant, #44474c);
-    --mcs-bg:           var(--color-background, #fbf9f4);
+    --mcs-bg:           #f8f9ff;
     --mcs-surface:      #ffffff;
-    --mcs-surface-tint: #f3f1ea;
-    --mcs-outline:      var(--color-outline-variant, #c4c6cd);
+    --mcs-surface-tint: #eff4ff;
+    --mcs-outline:      #c9d6e4;
     --mcs-mono:         ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     --mcs-ease:         cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -58,7 +58,7 @@
     margin-block-end: 1.25rem;
 }
 .mcs__h2--light  { color: #fff; }
-.mcs__h2--gold   { color: var(--mcs-gold); }
+.mcs__h2--gold   { color: #8a6a10; }
 .mcs__h2--center { text-align: center; }
 
 .mcs__p {
@@ -111,7 +111,7 @@
 .mcs__dock-link.is-active {
     background: var(--mcs-primary);
     color: #fff;
-    box-shadow: 0 4px 14px rgba(3,109,54,0.35);
+    box-shadow: 0 4px 14px rgba(0,103,101,0.35);
 }
 
 /* =============================================================
@@ -120,8 +120,10 @@
 .mcs__hero {
     position: relative;
     overflow: hidden;
-    padding-block: calc(var(--navbar-height, 5rem) + 2.5rem) 4rem;
-    min-height: 78vh;
+    padding-block:
+        calc(var(--navbar-height, 5rem) + clamp(1.25rem, 3.5vw, 2.5rem))
+        clamp(2.5rem, 6vw, 4rem);
+    min-height: auto;
     display: flex;
     align-items: center;
 }
@@ -131,7 +133,7 @@
     inset: 0;
     pointer-events: none;
     background-image:
-        radial-gradient(circle, rgba(3,109,54,0.08) 1px, transparent 1px);
+        radial-gradient(circle, rgba(0,103,101,0.08) 1px, transparent 1px);
     background-size: 26px 26px;
     mask-image: radial-gradient(ellipse 75% 60% at 50% 20%, black 30%, transparent 100%);
     animation: mcs-dots-drift 30s linear infinite;
@@ -173,7 +175,7 @@
     line-height: 1.05;
     color: var(--mcs-primary);
     margin-block-end: 0.5rem;
-    background-image: linear-gradient(100deg, var(--mcs-primary) 30%, #4ade80 45%, var(--mcs-primary) 60%);
+    background-image: linear-gradient(100deg, var(--mcs-primary) 30%, #6ed7d3 45%, var(--mcs-primary) 60%);
     background-size: 220% 100%;
     background-position: 100% 0;
     -webkit-background-clip: text;
@@ -238,9 +240,7 @@
     overflow: hidden;
     background: #fff;
 }
-.mcs__phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-.mcs__phone--left img,
-.mcs__phone--right img { object-position: center; transform: scale(1.08); }
+.mcs__phone img { width: 100%; height: 100%; object-fit: contain; object-position: center; background: #fff; }
 
 .mcs__phone--left   { transform: rotate(-11deg) translateX(-100px); z-index: 1; animation: mcs-phone-float-a 6s ease-in-out infinite; }
 .mcs__phone--center { z-index: 2; animation: mcs-phone-float-b 6.5s ease-in-out infinite; }
@@ -300,7 +300,7 @@
 }
 .mcs__challenge-glow {
     position: absolute; width: 460px; height: 460px; border-radius: 50%;
-    background: rgba(3,109,54,0.18); filter: blur(90px);
+    background: rgba(0,103,101,0.22); filter: blur(90px);
     top: -160px; right: -100px; pointer-events: none;
     animation: mcs-glow-drift 12s ease-in-out infinite;
 }
@@ -319,7 +319,7 @@
     border: 1px solid rgba(255,255,255,0.08);
     transition: border-color 0.3s ease, transform 0.3s var(--mcs-ease);
 }
-.mcs__challenge-card:hover { border-color: rgba(3,109,54,0.5); transform: translateY(-6px); }
+.mcs__challenge-card:hover { border-color: rgba(0,103,101,0.5); transform: translateY(-6px); }
 .mcs__challenge-icon { font-size: 2.75rem; color: var(--mcs-gold); margin-block-end: 1.25rem; display: block; }
 .mcs__challenge-card h4 { font-size: 1.15rem; font-weight: 700; margin-block-end: 0.75rem; }
 .mcs__challenge-card p  { font-size: 0.9rem; line-height: 1.65; color: rgba(255,255,255,0.68); }
@@ -380,10 +380,10 @@
     overflow: hidden;
     box-shadow: 0 14px 34px rgba(10,29,47,0.16);
     animation: mcs-mini-float 5s ease-in-out infinite;
+    background: #fff;
 }
 .mcs__mini-phone--up { animation-delay: -2s; }
-.mcs__mini-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-.mcs__mini-phone:nth-child(odd) img { object-position: center; transform: scale(1.08); }
+.mcs__mini-phone img { width: 100%; height: 100%; object-fit: contain; object-position: center; background: #fff; }
 @keyframes mcs-mini-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
 .mcs__dots-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-block-start: 2rem; }
@@ -413,8 +413,8 @@
 }
 .mcs__browser-dot { width: 10px; height: 10px; border-radius: 50%; }
 .mcs__browser-dot--red   { background: rgba(186,26,26,0.4); }
-.mcs__browser-dot--gold  { background: rgba(243,191,75,0.6); }
-.mcs__browser-dot--green { background: rgba(3,109,54,0.5); }
+.mcs__browser-dot--gold  { background: rgba(255,202,85,0.7); }
+.mcs__browser-dot--green { background: rgba(0,103,101,0.5); }
 .mcs__browser-url {
     margin-inline: auto;
     background: var(--mcs-surface);
@@ -466,8 +466,8 @@
 .mcs__admin-icon {
     padding: 0.6rem;
     border-radius: 0.75rem;
-    background: rgba(3,109,54,0.2);
-    color: #4ade80;
+    background: rgba(0,103,101,0.22);
+    color: #6ed7d3;
     flex-shrink: 0;
 }
 .mcs__admin-item h4 { font-size: 0.98rem; font-weight: 700; margin-block-end: 0.25rem; }
@@ -476,7 +476,7 @@
 .mcs__admin-visual { position: relative; }
 .mcs__admin-glow {
     position: absolute; inset: -2.5rem;
-    background: rgba(3,109,54,0.22);
+    background: rgba(0,103,101,0.25);
     filter: blur(70px);
     border-radius: 50%;
     animation: mcs-glow-pulse 5s ease-in-out infinite;
@@ -615,13 +615,11 @@
    ============================================================= */
 .mcs__showcase { padding-block: var(--space-xl, 4.5rem); background: var(--mcs-surface); }
 
-
-
 .mcs__showcase-phones {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: clamp(0.5rem, 3vw, 1.5rem);
     margin-block-end: 4rem;
 }
 @media (min-width: 1024px) {
@@ -629,10 +627,10 @@
 }
 
 .mcs__showcase-phone {
-    width: 200px;
-    height: 425px;
-    border-radius: 2rem;
-    border: 5px solid var(--mcs-ink);
+    width: clamp(100px, 30vw, 200px);
+    aspect-ratio: 200 / 425;
+    border-radius: clamp(1rem, 3vw, 2rem);
+    border: clamp(2px, 0.8vw, 5px) solid var(--mcs-ink);
     box-shadow: 0 20px 50px rgba(10,29,47,0.15);
     overflow: hidden;
     background: #fff;
@@ -645,41 +643,19 @@
 .mcs__showcase-phone img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
-    transform: scale(1.08);
+    background: #fff;
     transition: transform 0.3s ease;
 }
 
 .mcs__showcase-desktop {
-    max-width: 1024px;
+    max-width: 640px; /* Capped at 640px to match source image density and prevent blurring */
     margin-inline: auto;
 }
 
 /* =============================================================
-   12 · WATCH IT IN ACTION
-   ============================================================= */
-.mcs__demos { padding-block: var(--space-xl, 4.5rem); background: var(--mcs-surface-tint); }
-.mcs__demos-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; margin-block-start: 2.5rem; }
-@media (min-width: 768px) { .mcs__demos-grid { grid-template-columns: 1fr 1fr; } }
-
-.mcs__demo-thumb { position: relative; aspect-ratio: 16/9; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 20px 44px rgba(10,29,47,0.14); cursor: pointer; margin-block-end: 1.5rem; }
-.mcs__demo-thumb img { width: 100%; height: 100%; object-fit: cover; }
-.mcs__demo-overlay {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; transition: opacity 0.3s ease;
-}
-.mcs__demo-thumb--primary .mcs__demo-overlay { background: rgba(3,109,54,0.25); }
-.mcs__demo-thumb--gold .mcs__demo-overlay    { background: rgba(243,191,75,0.25); }
-.mcs__demo-thumb:hover .mcs__demo-overlay { opacity: 1; }
-.mcs__demo-overlay .material-symbols-outlined { font-size: 4.5rem; color: #fff; }
-
-.mcs__demo h4 { font-size: 1.2rem; font-weight: 700; margin-block-end: 0.5rem; }
-.mcs__demo p  { font-size: 0.9rem; color: var(--mcs-ink-soft); }
-
-/* =============================================================
-   13 · READY FOR MARKET
+   12 · READY FOR MARKET
    ============================================================= */
 .mcs__results { padding-block: var(--space-xl, 4.5rem); background: var(--mcs-bg); }
 .mcs__results-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
@@ -709,7 +685,7 @@
 }
 
 /* =============================================================
-   14 · FINAL CTA
+   13 · FINAL CTA
    ============================================================= */
 .mcs__final-cta { padding-block: 5.5rem; }
 .mcs__final-cta-card {
@@ -750,7 +726,7 @@
 .mcs__btn--gold {
     background: var(--mcs-gold);
     color: #40300a;
-    box-shadow: 0 8px 24px rgba(243,191,75,0.35);
+    box-shadow: 0 8px 24px rgba(255,202,85,0.35);
 }
 .mcs__btn--outline {
     background: transparent;
@@ -763,14 +739,19 @@
    MOBILE OVERRIDES
    ============================================================= */
 @media (max-width: 640px) {
-    .mcs__hero { min-height: unset; padding-block-end: 3rem; }
+    .mcs__hero {
+        min-height: unset;
+        padding-block:
+            calc(var(--navbar-height, 5rem) + 1rem)
+            3rem;
+    }
     .mcs__hero-title { font-size: 2.25rem; }
     .mcs__hero-subtitle { font-size: 1.1rem; }
     .mcs__dots-grid { grid-template-columns: 1fr; }
 
     .mcs__overview, .mcs__challenge, .mcs__solution, .mcs__shopping,
     .mcs__dashboard, .mcs__admin, .mcs__onboarding, .mcs__pay-delivery,
-    .mcs__stack, .mcs__showcase, .mcs__demos, .mcs__results, .mcs__final-cta {
+    .mcs__stack, .mcs__showcase, .mcs__results, .mcs__final-cta {
         padding-block: 3.5rem;
     }
 }

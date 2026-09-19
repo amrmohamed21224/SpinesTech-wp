@@ -1,0 +1,207 @@
+/* ─────────────────────────────────────────────────────────────
+   Case Study — Proof Metadata Components
+   File: assets/css/components/cs-proof.css
+   ───────────────────────────────────────────────────────────── */
+
+/* ── Proof Header (Project Context strip) ────────────────────── */
+.cs-proof-header {
+    container-type: inline-size;
+    margin-block: 0;
+    background: #f8fafc;
+    border-block: 1px solid #e2e8f0;
+}
+
+[dir="rtl"] .cs-proof-header { direction: rtl; }
+
+.cs-proof-header__inner {
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-block: 1.5rem;
+    padding-inline: clamp(1rem, 4vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cs-proof-header__kicker {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #64748b;
+    margin: 0;
+}
+
+.cs-proof-header__kicker .material-symbols-outlined {
+    font-size: 1rem;
+    color: #036d36;
+}
+
+.cs-proof-header__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 2.5rem;
+    margin: 0;
+}
+
+.cs-proof-header__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 120px;
+}
+
+.cs-proof-header__item--wide {
+    flex: 1 1 300px;
+}
+
+.cs-proof-header__item dt {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #94a3b8;
+}
+
+.cs-proof-header__item dd {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #1e293b;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+/* Engagement Type badge */
+.cs-proof-header__badge {
+    display: inline-block;
+    padding: 0.2em 0.7em;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.cs-proof-header__badge--type {
+    background: #e8f5ee;
+    color: #036d36;
+    border: 1px solid #bbf7d0;
+}
+
+/* Platform tags */
+.cs-proof-header__tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+.cs-proof-header__tag {
+    display: inline-block;
+    padding: 0.15em 0.6em;
+    border-radius: 4px;
+    background: #1e293b;
+    color: #94a3b8;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* Status dot */
+.cs-proof-header__status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Disclosure note */
+.cs-proof-header__disclosure {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: #64748b;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: 6px;
+    padding: 0.6rem 0.8rem;
+    margin: 0;
+    max-width: 700px;
+}
+
+.cs-proof-header__disclosure .material-symbols-outlined {
+    font-size: 1rem;
+    flex-shrink: 0;
+    color: #f97316;
+    margin-top: 1px;
+}
+
+
+/* ── Outcome Block ────────────────────────────────────────────── */
+.cs-outcome-block {
+    background: linear-gradient(135deg, #0a1f14 0%, #082010 100%);
+    border-block-start: 2px solid #036d36;
+    padding-block: clamp(3rem, 6vw, 5rem);
+    padding-inline: clamp(1rem, 4vw, 3rem);
+}
+
+[dir="rtl"] .cs-outcome-block { direction: rtl; }
+
+.cs-outcome-block__inner {
+    max-width: 760px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cs-outcome-block__header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.cs-outcome-block__header .material-symbols-outlined {
+    font-size: 2rem;
+    color: #4ade80;
+}
+
+.cs-outcome-block__header h2 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    color: #f0fdf4;
+    margin: 0;
+}
+
+.cs-outcome-block__content {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #a7f3d0;
+    white-space: pre-line;
+}
+
+.cs-outcome-block__evidence {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: #6ee7b7;
+    border-block-start: 1px solid rgba(255, 255, 255, 0.1);
+    padding-block-start: 1rem;
+    margin: 0;
+}
+
+.cs-outcome-block__evidence .material-symbols-outlined {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: #34d399;
+}
+
+.cs-outcome-block__evidence strong {
+    color: #a7f3d0;
+    font-weight: 600;
+}

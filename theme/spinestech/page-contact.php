@@ -1,50 +1,66 @@
 <?php
 /**
- * Page Template: Contact ("تواصل معنا")
+ * Page Template: Contact ("\u{062A}\u{0648}\u{0627}\u{0635}\u{0644}\u{0020}\u{0645}\u{0639}\u{0646}\u{0627}")
  * File: page-contact.php
- *
- * 100% static Arabic content — no ACF, no custom fields.
- * Form posts to: POST /wp-json/spinestech/v1/submissions/contact
- * (handled generically by the theme's existing js/forms.js via the
- * data-st-form attribute + honeypot field "website" + #st-form-alert,
- * matching the same convention used by the consultation modal.)
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+// ── SEO INJECTION ──────────────────────────────────────────────────────────
+add_filter('pre_get_document_title', function($title) {
+    $is_rtl = function_exists('st_locale') ? st_locale() === 'ar' : false;
+    return $is_rtl 
+        ? "\u{062A}\u{0648}\u{0627}\u{0635}\u{0644}\u{0020}\u{0645}\u{0639}\u{0646}\u{0627}\u{0020}\u{007C}\u{0020}\u{0053}\u{0070}\u{0069}\u{006E}\u{0065}\u{0073}\u{0054}\u{0065}\u{0063}\u{0068}\u{0020}\u{002D}\u{0020}\u{0634}\u{0631}\u{064A}\u{0643}\u{0643}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0646}\u{064A}\u{0020}\u{0644}\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{0635}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0628}\u{0631}\u{0645}\u{062C}\u{064A}\u{0629}" 
+        : 'Contact Us | SpinesTech - Your Software & Product Engineering Partner';
+}, 999);
+
+add_action('wp_head', function() {
+    $is_rtl = function_exists('st_locale') ? st_locale() === 'ar' : false;
+    st_seo_set_description($is_rtl
+        ? 'تواصل مع فريق SpinesTech لبدء مشروعك التقني أو طلب استشارة مجانية لبناء تطبيقات الجوال، لوحات التحكم والأنظمة التشغيلية في السعودية والخليج.'
+        : 'Get in touch with the SpinesTech engineering team to launch your next mobile app, dashboard, or digital platform across Saudi Arabia and the GCC.');
+}, 3);
+// ───────────────────────────────────────────────────────────────────────────
+
 get_header();
+
+$dir    = function_exists( 'st_dir' ) ? st_dir() : 'rtl';
+$is_rtl = ( $dir === 'rtl' );
+$arrow  = $is_rtl ? 'arrow_back' : 'arrow_forward';
 ?>
 
-<div class="ct-page" dir="rtl">
+<div class="ct-page" dir="<?php echo esc_attr( $dir ); ?>">
 <main>
 
 <!-- ══════════════════════════════════════════
      HERO
 ══════════════════════════════════════════ -->
 <section class="ct-hero">
-    <canvas id="ct-hero-canvas" class="ct-hero__canvas"></canvas>
+    <canvas class="st-hero-canvas ct-hero__canvas"></canvas>
 
     <div class="ct-hero__labels" aria-hidden="true">
-        <span class="ct-float-pill ct-float-pill--1">مشروع جديد</span>
-        <span class="ct-float-pill ct-float-pill--2">تطبيق جوال</span>
-        <span class="ct-float-pill ct-float-pill--3">لوحة تحكم</span>
-        <span class="ct-float-pill ct-float-pill--4">شراكة تقنية</span>
-        <span class="ct-float-pill ct-float-pill--5">تحت هوية الشريك</span>
-        <span class="ct-float-pill ct-float-pill--6">تطوير منتج قائم</span>
+        <span class="ct-float-pill ct-float-pill--1"><?php echo esc_html($is_rtl ? "\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}\u{0020}\u{062C}\u{062F}\u{064A}\u{062F}" : 'New Project'); ?></span>
+        <span class="ct-float-pill ct-float-pill--2"><?php echo esc_html($is_rtl ? "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{062C}\u{0648}\u{0627}\u{0644}" : 'Mobile App'); ?></span>
+        <span class="ct-float-pill ct-float-pill--3"><?php echo esc_html($is_rtl ? "\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{062A}\u{062D}\u{0643}\u{0645}" : 'Admin Dashboard'); ?></span>
+        <span class="ct-float-pill ct-float-pill--4"><?php echo esc_html($is_rtl ? "\u{0634}\u{0631}\u{0627}\u{0643}\u{0629}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{0629}" : 'Tech Partnership'); ?></span>
+        <span class="ct-float-pill ct-float-pill--5"><?php echo esc_html($is_rtl ? "\u{062A}\u{062D}\u{062A}\u{0020}\u{0647}\u{0648}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0634}\u{0631}\u{064A}\u{0643}" : 'White Label'); ?></span>
+        <span class="ct-float-pill ct-float-pill--6"><?php echo esc_html($is_rtl ? "\u{062A}\u{0637}\u{0648}\u{064A}\u{0631}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}\u{0020}\u{0642}\u{0627}\u{0626}\u{0645}" : 'Product Refactoring'); ?></span>
     </div>
 
     <div class="container ct-hero__inner">
-        <span class="ct-reveal ct-badge" style="--ct-delay:0.05s">تواصل معنا</span>
+        <span class="ct-reveal ct-badge" style="--ct-delay:0.05s"><?php echo esc_html($is_rtl ? "\u{062A}\u{0648}\u{0627}\u{0635}\u{0644}\u{0020}\u{0645}\u{0639}\u{0646}\u{0627}" : 'Contact Us'); ?></span>
         <h1 class="ct-reveal ct-hero__title" style="--ct-delay:0.15s">
-            لنحوّل فكرتك إلى منتج رقمي قابل للتشغيل والنمو
+            <?php echo esc_html($is_rtl ? "\u{0644}\u{0646}\u{062D}\u{0648}\u{0651}\u{0644}\u{0020}\u{0641}\u{0643}\u{0631}\u{062A}\u{0643}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}\u{0020}\u{0631}\u{0642}\u{0645}\u{064A}\u{0020}\u{0642}\u{0627}\u{0628}\u{0644}\u{0020}\u{0644}\u{0644}\u{062A}\u{0634}\u{063A}\u{064A}\u{0644}\u{0020}\u{0648}\u{0627}\u{0644}\u{0646}\u{0645}\u{0648}" : 'Turn Your Vision Into a Scalable Digital Product'); ?>
         </h1>
         <p class="ct-reveal ct-hero__subtitle" style="--ct-delay:0.25s">
-            نحن شريكك التقني الموثوق في منطقة الخليج، نقدم حلولاً برمجية متكاملة تبدأ من الفكرة وتصل إلى الاستقرار التقني والتوسع البرمجي.
+            <?php echo esc_html($is_rtl 
+                ? "\u{0646}\u{062D}\u{0646}\u{0020}\u{0634}\u{0631}\u{064A}\u{0643}\u{0643}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0646}\u{064A}\u{0020}\u{0627}\u{0644}\u{0645}\u{0648}\u{062B}\u{0648}\u{0642}\u{0020}\u{0641}\u{064A}\u{0020}\u{0645}\u{0646}\u{0637}\u{0642}\u{0629}\u{0020}\u{0627}\u{0644}\u{062E}\u{0644}\u{064A}\u{062C}\u{060C}\u{0020}\u{0646}\u{0642}\u{062F}\u{0645}\u{0020}\u{062D}\u{0644}\u{0648}\u{0644}\u{0627}\u{064B}\u{0020}\u{0628}\u{0631}\u{0645}\u{062C}\u{064A}\u{0629}\u{0020}\u{0645}\u{062A}\u{0643}\u{0627}\u{0645}\u{0644}\u{0629}\u{0020}\u{062A}\u{0628}\u{062F}\u{0623}\u{0020}\u{0645}\u{0646}\u{0020}\u{0627}\u{0644}\u{0641}\u{0643}\u{0631}\u{0629}\u{0020}\u{0648}\u{062A}\u{0635}\u{0644}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0627}\u{0644}\u{0627}\u{0633}\u{062A}\u{0642}\u{0631}\u{0627}\u{0631}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0646}\u{064A}\u{0020}\u{0648}\u{0627}\u{0644}\u{062A}\u{0648}\u{0633}\u{0639}\u{0020}\u{0627}\u{0644}\u{0628}\u{0631}\u{0645}\u{062C}\u{064A}\u{002E}" 
+                : 'Your trusted engineering partner across Saudi Arabia & the GCC, delivering end-to-end software solutions from concept to full scale.'); ?>
         </p>
         <div class="ct-reveal ct-hero__trust" style="--ct-delay:0.35s">
-            <span><span class="material-symbols-outlined">check_circle</span> دعم فني مستمر</span>
-            <span><span class="material-symbols-outlined">check_circle</span> شراكة استراتيجية</span>
-            <span><span class="material-symbols-outlined">check_circle</span> تنفيذ بمعايير عالمية</span>
+            <span><span class="material-symbols-outlined">check_circle</span> <?php echo esc_html($is_rtl ? 'سرية تامة لمعلومات مشروعك' : 'Full project confidentiality'); ?></span>
+            <span><span class="material-symbols-outlined">check_circle</span> <?php echo esc_html($is_rtl ? 'رد خلال 24 ساعة عمل' : 'Reply within 24 business hours'); ?></span>
+            <span><span class="material-symbols-outlined">check_circle</span> <?php echo esc_html($is_rtl ? 'تطبيقات وأنظمة أعمال' : 'Apps & business systems'); ?></span>
         </div>
     </div>
 </section>
@@ -59,84 +75,113 @@ get_header();
         <!-- Form -->
         <div class="ct-reveal ct-form-col" style="--ct-delay:0.05s">
             <div class="ct-form-card">
-                <h3 class="ct-form-card__title">ابدأ المحادثة اليوم</h3>
+                <h3 class="ct-form-card__title"><?php echo esc_html($is_rtl ? 'ابدأ مناقشة مشروعك' : 'Start your project discussion'); ?></h3>
+
+                <p class="ct-form-trust-intro">
+                    <?php echo esc_html($is_rtl
+                        ? 'نستقبل طلبات تطوير تطبيقات الجوال، منصات الويب، لوحات التحكم، والأنظمة التشغيلية. معلوماتك سرية، ونرد عادة خلال 24 ساعة عمل.'
+                        : 'We handle mobile apps, web platforms, dashboards, and operational systems. Your details stay confidential — we typically reply within one business day.'); ?>
+                </p>
 
                 <div id="st-form-alert" class="alert alert--hidden" role="alert"></div>
+                <div id="st-form-thankyou" class="ct-thankyou ct-thankyou--hidden" role="status" aria-live="polite">
+                    <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+                    <div>
+                        <h4><?php echo esc_html($is_rtl ? 'شكراً — استلمنا طلبك' : 'Thank you — we received your request'); ?></h4>
+                        <p><?php echo esc_html($is_rtl ? 'سيتواصل معك فريق SpinesTech خلال 24 ساعة عمل لبدء مناقشة مشروعك.' : 'The SpinesTech team will reach out within one business day to discuss your project.'); ?></p>
+                    </div>
+                </div>
 
-                <form id="st-contact-form" class="ct-form" data-st-form="contact" novalidate>
+                <form id="st-contact-form" class="ct-form" data-st-contact-form novalidate>
                     <!-- honeypot -->
                     <input type="text" name="website" class="visually-hidden" tabindex="-1" autocomplete="off" />
 
                     <div class="ct-form-row">
                         <div class="form-group">
-                            <label for="ct-name">الاسم الكامل</label>
-                            <input class="form-control" type="text" id="ct-name" name="name" placeholder="مثال: عبد الله بن محمد" required />
+                            <label for="ct-name"><?php echo esc_html($is_rtl ? "\u{0627}\u{0644}\u{0627}\u{0633}\u{0645}\u{0020}\u{0627}\u{0644}\u{0643}\u{0627}\u{0645}\u{0644}" : 'Full Name'); ?></label>
+                            <input class="form-control" type="text" id="ct-name" name="name" placeholder="<?php echo esc_attr($is_rtl ? "\u{0645}\u{062B}\u{0627}\u{0644}\u{003A}\u{0020}\u{0639}\u{0628}\u{062F}\u{0020}\u{0627}\u{0644}\u{0644}\u{0647}\u{0020}\u{0628}\u{0646}\u{0020}\u{0645}\u{062D}\u{0645}\u{062F}" : 'e.g. John Smith'); ?>" required />
                         </div>
                         <div class="form-group">
-                            <label for="ct-email">البريد الإلكتروني</label>
+                            <label for="ct-email"><?php echo esc_html($is_rtl ? "\u{0627}\u{0644}\u{0628}\u{0631}\u{064A}\u{062F}\u{0020}\u{0627}\u{0644}\u{0625}\u{0644}\u{0643}\u{062A}\u{0631}\u{0648}\u{0646}\u{064A}" : 'Email Address'); ?></label>
                             <input class="form-control" type="email" id="ct-email" name="email" placeholder="example@domain.com" required />
                         </div>
                     </div>
 
                     <div class="ct-form-row">
                         <div class="form-group">
-                            <label for="ct-phone">رقم واتساب</label>
-                            <input class="form-control" type="tel" id="ct-phone" name="phone" placeholder="+966 000 000 000" />
+                            <label for="ct-company"><?php echo esc_html($is_rtl ? 'الشركة' : 'Company'); ?></label>
+                            <input class="form-control" type="text" id="ct-company" name="company" placeholder="<?php echo esc_attr($is_rtl ? 'اسم الشركة (اختياري)' : 'Company name (optional)'); ?>" />
                         </div>
                         <div class="form-group">
-                            <label for="ct-country">الدولة</label>
+                            <label for="ct-phone"><?php echo esc_html($is_rtl ? 'رقم واتساب / الهاتف' : 'WhatsApp / Phone'); ?></label>
+                            <input class="form-control" type="tel" id="ct-phone" name="phone" placeholder="+966 000 000 000" />
+                        </div>
+                    </div>
+
+                    <div class="ct-form-row">
+                        <div class="form-group">
+                            <label for="ct-country"><?php echo esc_html($is_rtl ? 'الدولة' : 'Country'); ?></label>
                             <select class="form-control" id="ct-country" name="country">
-                                <option>السعودية</option>
-                                <option>الإمارات</option>
-                                <option>الكويت</option>
-                                <option>قطر</option>
-                                <option>البحرين</option>
-                                <option>عمان</option>
-                                <option>مصر</option>
-                                <option>أخرى</option>
+                                <option value="" disabled selected><?php echo esc_html($is_rtl ? "\u{0623}\u{062E}\u{062A}\u{0631}\u{0020}\u{0627}\u{0644}\u{062F}\u{0648}\u{0644}\u{0629}" : 'Select Country'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0627}\u{0644}\u{0633}\u{0639}\u{0648}\u{062F}\u{064A}\u{0629}" : 'Saudi Arabia'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0627}\u{0644}\u{0625}\u{0645}\u{0627}\u{0631}\u{0627}\u{062A}" : 'UAE'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0627}\u{0644}\u{0643}\u{0648}\u{064A}\u{062A}" : 'Kuwait'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0642}\u{0637}\u{0631}" : 'Qatar'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0627}\u{0644}\u{0628}\u{062D}\u{0631}\u{064A}\u{0646}" : 'Bahrain'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0639}\u{0645}\u{0627}\u{0646}" : 'Oman'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0645}\u{0635}\u{0631}" : 'Egypt'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0623}\u{062E}\u{0631}\u{0649}" : 'Other'); ?></option>
                             </select>
                         </div>
                     </div>
 
                     <div class="ct-form-row">
                         <div class="form-group">
-                            <label for="ct-request-type">نوع الطلب</label>
+                            <label for="ct-request-type"><?php echo esc_html($is_rtl ? "\u{0646}\u{0648}\u{0639}\u{0020}\u{0627}\u{0644}\u{0637}\u{0644}\u{0628}" : 'Request Type'); ?></label>
                             <select class="form-control" id="ct-request-type" name="request_type">
-                                <option>مشروع جديد</option>
-                                <option>تطوير منتج قائم</option>
-                                <option>تطبيق جوال فقط</option>
-                                <option>لوحة تحكم / منصة ويب</option>
-                                <option>شراكة تنفيذ تقنية</option>
-                                <option>تنفيذ تحت هوية الشريك</option>
-                                <option>استشارة مبدئية</option>
+                                <option value="" disabled selected><?php echo esc_html($is_rtl ? "\u{0628}\u{0631}\u{062C}\u{0627}\u{0621}\u{0020}\u{062A}\u{062D}\u{062F}\u{064A}\u{062F}\u{0020}\u{0646}\u{0648}\u{0639}\u{0020}\u{0627}\u{0644}\u{0637}\u{0644}\u{0628}" : 'Please select request type'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}\u{0020}\u{062C}\u{062F}\u{064A}\u{062F}" : 'New Project'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{062A}\u{0637}\u{0648}\u{064A}\u{0631}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}\u{0020}\u{0642}\u{0627}\u{0626}\u{0645}" : 'Scale Existing Product'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{062C}\u{0648}\u{0627}\u{0644}\u{0020}\u{0641}\u{0642}\u{0637}" : 'Mobile App Only'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{062A}\u{062D}\u{0643}\u{0645}\u{0020}\u{002F}\u{0020}\u{0645}\u{0646}\u{0635}\u{0629}\u{0020}\u{0648}\u{064A}\u{0628}" : 'Web Platform / Dashboard'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0634}\u{0631}\u{0627}\u{0643}\u{0629}\u{0020}\u{062A}\u{0646}\u{0641}\u{064A}\u{0630}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{0629}" : 'Tech Execution Partnership'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{062A}\u{0646}\u{0641}\u{064A}\u{0630}\u{0020}\u{062A}\u{062D}\u{062A}\u{0020}\u{0647}\u{0648}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0634}\u{0631}\u{064A}\u{0643}" : 'White-Label Execution'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0627}\u{0633}\u{062A}\u{0634}\u{0627}\u{0631}\u{0629}\u{0020}\u{0645}\u{0628}\u{062F}\u{0626}\u{064A}\u{0629}" : 'Initial Advisory'); ?></option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="ct-stage">مرحلة المشروع</label>
+                            <label for="ct-stage"><?php echo esc_html($is_rtl ? "\u{0645}\u{0631}\u{062D}\u{0644}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}" : 'Project Stage'); ?></label>
                             <select class="form-control" id="ct-stage" name="stage">
-                                <option>فكرة فقط</option>
-                                <option>لدي تصميم</option>
-                                <option>لدي Backend أو API</option>
-                                <option>لدي منتج قائم</option>
-                                <option>أحتاج بناء كامل</option>
-                                <option>غير محدد بعد</option>
+                                <option value="" disabled selected><?php echo esc_html($is_rtl ? "\u{064A}\u{0631}\u{062C}\u{0649}\u{0020}\u{062A}\u{062D}\u{062F}\u{064A}\u{062F}\u{0020}\u{0645}\u{0631}\u{062D}\u{0644}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}\u{0020}\u{0627}\u{0644}\u{062D}\u{0627}\u{0644}\u{064A}\u{0629}" : 'Please select project stage'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0641}\u{0643}\u{0631}\u{0629}\u{0020}\u{0641}\u{0642}\u{0637}" : 'Idea Stage'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0644}\u{062F}\u{064A}\u{0020}\u{062A}\u{0635}\u{0645}\u{064A}\u{0645}" : 'UI/UX Design Ready'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0644}\u{062F}\u{064A}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0065}\u{006E}\u{0064}\u{0020}\u{0623}\u{0648}\u{0020}\u{0041}\u{0050}\u{0049}" : 'Backend/API Ready'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0644}\u{062F}\u{064A}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}\u{0020}\u{0642}\u{0627}\u{0626}\u{0645}" : 'Live Product'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{0623}\u{062D}\u{062A}\u{0627}\u{062C}\u{0020}\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0643}\u{0627}\u{0645}\u{0644}" : 'Full End-to-End Build'); ?></option>
+                                <option><?php echo esc_html($is_rtl ? "\u{063A}\u{064A}\u{0631}\u{0020}\u{0645}\u{062D}\u{062F}\u{062F}\u{0020}\u{0628}\u{0639}\u{062F}" : 'Not Specified Yet'); ?></option>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="ct-budget">الميزانية المتوقعة (اختياري)</label>
-                        <input class="form-control" type="text" id="ct-budget" name="budget" placeholder="نطاق الميزانية التقريبي" />
+                        <label for="ct-budget"><?php echo esc_html($is_rtl ? "\u{0627}\u{0644}\u{0645}\u{064A}\u{0632}\u{0627}\u{0646}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{0648}\u{0642}\u{0639}\u{0629}\u{0020}\u{0028}\u{0627}\u{062E}\u{062A}\u{064A}\u{0627}\u{0631}\u{064A}\u{0029}" : 'Estimated Budget (Optional)'); ?></label>
+                        <input class="form-control" type="text" id="ct-budget" name="budget" placeholder="<?php echo esc_attr($is_rtl ? "\u{0646}\u{0637}\u{0627}\u{0642}\u{0020}\u{0627}\u{0644}\u{0645}\u{064A}\u{0632}\u{0627}\u{0646}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0631}\u{064A}\u{0628}\u{064A}" : 'Approximate budget range'); ?>" />
                     </div>
 
                     <div class="form-group">
-                        <label for="ct-message">وصف مختصر للمشروع</label>
-                        <textarea class="form-control" id="ct-message" name="message" rows="4" placeholder="أخبرنا المزيد عن رؤيتك..."></textarea>
+                        <label for="ct-message"><?php echo esc_html($is_rtl ? "\u{0648}\u{0635}\u{0641}\u{0020}\u{0645}\u{062E}\u{062A}\u{0635}\u{0631}\u{0020}\u{0644}\u{0644}\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}" : 'Short Project Overview'); ?></label>
+                        <textarea class="form-control" id="ct-message" name="message" rows="4" placeholder="<?php echo esc_attr($is_rtl ? "\u{0623}\u{062E}\u{0628}\u{0631}\u{0646}\u{0627}\u{0020}\u{0627}\u{0644}\u{0645}\u{0632}\u{064A}\u{062F}\u{0020}\u{0639}\u{0646}\u{0020}\u{0631}\u{0624}\u{064A}\u{062A}\u{0643}\u{002E}\u{002E}\u{002E}" : 'Tell us more about your requirements...'); ?>"></textarea>
                     </div>
 
                     <button type="submit" class="ct-submit-btn">
-                        <span>إرسال الطلب</span>
+                        <span><?php echo esc_html($is_rtl ? 'ابدأ مناقشة مشروعك' : 'Start your project discussion'); ?></span>
                     </button>
+                    
+                    <p class="ct-form-privacy-note" style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.7; text-align: center;">
+                        <?php echo $is_rtl 
+                            ? "\u{0628}\u{0625}\u{0631}\u{0633}\u{0627}\u{0644}\u{0643}\u{0020}\u{0644}\u{0647}\u{0630}\u{0627}\u{0020}\u{0627}\u{0644}\u{0646}\u{0645}\u{0648}\u{0630}\u{062C}\u{060C}\u{0020}\u{0623}\u{0646}\u{062A}\u{0020}\u{062A}\u{0648}\u{0627}\u{0641}\u{0642}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{003C}\u{0061}\u{0020}\u{0068}\u{0072}\u{0065}\u{0066}\u{003D}\u{0022}" . esc_url( home_url( '/privacy-policy/' ) ) . "\u{0022}\u{0020}\u{0073}\u{0074}\u{0079}\u{006C}\u{0065}\u{003D}\u{0022}\u{0063}\u{006F}\u{006C}\u{006F}\u{0072}\u{003A}\u{0020}\u{0069}\u{006E}\u{0068}\u{0065}\u{0072}\u{0069}\u{0074}\u{003B}\u{0020}\u{0074}\u{0065}\u{0078}\u{0074}\u{002D}\u{0064}\u{0065}\u{0063}\u{006F}\u{0072}\u{0061}\u{0074}\u{0069}\u{006F}\u{006E}\u{003A}\u{0020}\u{0075}\u{006E}\u{0064}\u{0065}\u{0072}\u{006C}\u{0069}\u{006E}\u{0065}\u{003B}\u{0022}\u{003E}\u{0633}\u{064A}\u{0627}\u{0633}\u{0629}\u{0020}\u{0627}\u{0644}\u{062E}\u{0635}\u{0648}\u{0635}\u{064A}\u{0629}\u{003C}\u{002F}\u{0061}\u{003E}\u{0020}\u{0627}\u{0644}\u{062E}\u{0627}\u{0635}\u{0629}\u{0020}\u{0628}\u{0646}\u{0627}\u{002E}" 
+                            : 'By submitting this form, you agree to our <a href="' . esc_url( home_url( '/privacy-policy/' ) ) . '" style="color: inherit; text-decoration: underline;">Privacy Policy</a>.'; ?>
+                    </p>
                 </form>
             </div>
         </div>
@@ -147,36 +192,49 @@ get_header();
             <div class="ct-contact-panel">
                 <div class="ct-contact-panel__glow ct-contact-panel__glow--1" aria-hidden="true"></div>
                 <div class="ct-contact-panel__glow ct-contact-panel__glow--2" aria-hidden="true"></div>
-                <h3 class="ct-contact-panel__title">تواصل مباشر</h3>
+                <h3 class="ct-contact-panel__title"><?php echo esc_html($is_rtl ? "\u{062A}\u{0648}\u{0627}\u{0635}\u{0644}\u{0020}\u{0645}\u{0628}\u{0627}\u{0634}\u{0631}" : 'Direct Contact'); ?></h3>
 
                 <div class="ct-contact-item">
-                    <span class="material-symbols-outlined">chat</span>
+                    <span class="material-symbols-outlined">schedule</span>
                     <div>
-                        <p class="ct-contact-item__label">واتساب</p>
-                        <p class="ct-contact-item__value" dir="ltr">+20 1099293903</p>
+                        <p class="ct-contact-item__label"><?php echo esc_html($is_rtl ? "\u{0645}\u{062A}\u{0648}\u{0633}\u{0637}\u{0020}\u{0648}\u{0642}\u{062A}\u{0020}\u{0627}\u{0644}\u{0631}\u{062F}" : 'Avg. Response Time'); ?></p>
+                        <p class="ct-contact-item__value"><?php echo esc_html($is_rtl ? "\u{062E}\u{0644}\u{0627}\u{0644}\u{0020}\u{0032}\u{0034}\u{0020}\u{0633}\u{0627}\u{0639}\u{0629}\u{0020}\u{0639}\u{0645}\u{0644}" : 'Within 24 Business Hours'); ?></p>
                     </div>
                 </div>
                 <div class="ct-contact-item">
                     <span class="material-symbols-outlined">mail</span>
                     <div>
-                        <p class="ct-contact-item__label">البريد الإلكتروني</p>
-                        <p class="ct-contact-item__value">contact@spinestech.com</p>
+                        <p class="ct-contact-item__label"><?php echo esc_html($is_rtl ? 'البريد الإلكتروني' : 'Email'); ?></p>
+                        <p class="ct-contact-item__value"><a href="mailto:admin@spinestech.com" data-st-track="email" data-st-location="contact-page">admin@spinestech.com</a></p>
                     </div>
                 </div>
+                <?php if (function_exists('st_whatsapp_url')) : ?>
+                <div class="ct-contact-item">
+                    <span class="material-symbols-outlined">chat</span>
+                    <div>
+                        <p class="ct-contact-item__label">WhatsApp</p>
+                        <p class="ct-contact-item__value">
+                            <a href="<?php echo esc_url(st_whatsapp_url($is_rtl ? 'مرحباً SpinesTech، أود مناقشة مشروع.' : 'Hello SpinesTech, I would like to discuss a project.')); ?>" data-st-track="whatsapp" data-st-location="contact-page" target="_blank" rel="noopener noreferrer">
+                                <?php echo esc_html($is_rtl ? 'تواصل عبر واتساب' : 'Chat on WhatsApp'); ?>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <?php endif; ?>
                 <div class="ct-contact-item">
                     <span class="material-symbols-outlined">public</span>
                     <div>
-                        <p class="ct-contact-item__label">المنطقة</p>
-                        <p class="ct-contact-item__value">المملكة العربية السعودية &amp; الخليج العربي</p>
+                        <p class="ct-contact-item__label"><?php echo esc_html($is_rtl ? "\u{0627}\u{0644}\u{0645}\u{0646}\u{0637}\u{0642}\u{0629}" : 'Region'); ?></p>
+                        <p class="ct-contact-item__value"><?php echo esc_html($is_rtl ? "\u{0627}\u{0644}\u{0645}\u{0645}\u{0644}\u{0643}\u{0629}\u{0020}\u{0627}\u{0644}\u{0639}\u{0631}\u{0628}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0633}\u{0639}\u{0648}\u{062F}\u{064A}\u{0629}\u{0020}\u{0026}\u{0020}\u{0627}\u{0644}\u{062E}\u{0644}\u{064A}\u{062C}\u{0020}\u{0627}\u{0644}\u{0639}\u{0631}\u{0628}\u{064A}" : 'Saudi Arabia & GCC Region'); ?></p>
                     </div>
                 </div>
             </div>
 
             <?php
             $perks = array(
-                array( 'verified',     'رد واضح',                       'نلتزم بالرد على جميع الاستفسارات خلال أقل من 24 ساعة عمل.' ),
-                array( 'architecture', 'نطاق أوضح قبل التنفيذ',         'نقوم بتحليل المتطلبات تقنياً لنعطيك صورة دقيقة عن رحلة التطوير.' ),
-                array( 'groups',       'مناسب للشركات والشركاء',       'نماذج تعاون مرنة تناسب الشركات الناشئة والوكالات البرمجية.' ),
+                array( 'verified',     $is_rtl ? "\u{0631}\u{062F}\u{0020}\u{0648}\u{0627}\u{0636}\u{062D}" : 'Fast Response',                       $is_rtl ? "\u{0646}\u{0631}\u{0627}\u{062C}\u{0639}\u{0020}\u{062C}\u{0645}\u{064A}\u{0639}\u{0020}\u{0627}\u{0633}\u{062A}\u{0641}\u{0633}\u{0627}\u{0631}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{0634}\u{0627}\u{0631}\u{064A}\u{0639}\u{0020}\u{062E}\u{0644}\u{0627}\u{0644}\u{0020}\u{0633}\u{0627}\u{0639}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{0644}\u{0020}\u{0648}\u{0646}\u{0631}\u{062F}\u{0020}\u{062E}\u{0644}\u{0627}\u{0644}\u{0020}\u{0032}\u{0034}\u{0020}\u{0633}\u{0627}\u{0639}\u{0629}\u{0020}\u{0639}\u{0645}\u{0644}\u{002E}" : 'We review all project inquiries during business hours and respond within 24 business hours.' ),
+                array( 'architecture', $is_rtl ? "\u{0646}\u{0637}\u{0627}\u{0642}\u{0020}\u{0623}\u{0648}\u{0636}\u{062D}\u{0020}\u{0642}\u{0628}\u{0644}\u{0020}\u{0627}\u{0644}\u{062A}\u{0646}\u{0641}\u{064A}\u{0630}" : 'Clear Scope Roadmap',         $is_rtl ? "\u{0646}\u{0642}\u{0648}\u{0645}\u{0020}\u{0628}\u{062A}\u{062D}\u{0644}\u{064A}\u{0644}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{0637}\u{0644}\u{0628}\u{0627}\u{062A}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{0627}\u{064B}\u{0020}\u{0644}\u{0646}\u{0639}\u{0637}\u{064A}\u{0643}\u{0020}\u{0635}\u{0648}\u{0631}\u{0629}\u{0020}\u{062F}\u{0642}\u{064A}\u{0642}\u{0629}\u{0020}\u{0639}\u{0646}\u{0020}\u{0631}\u{062D}\u{0644}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{0637}\u{0648}\u{064A}\u{0631}\u{002E}" : 'We analyze tech specs up-front for absolute delivery clarity.' ),
+                array( 'groups',       $is_rtl ? "\u{0645}\u{0646}\u{0627}\u{0633}\u{0628}\u{0020}\u{0644}\u{0644}\u{0634}\u{0631}\u{0643}\u{0627}\u{062A}\u{0020}\u{0648}\u{0627}\u{0644}\u{0634}\u{0631}\u{0643}\u{0627}\u{0621}" : 'Agency & Corporate Ready',       $is_rtl ? "\u{0646}\u{0645}\u{0627}\u{0630}\u{062C}\u{0020}\u{062A}\u{0639}\u{0627}\u{0648}\u{0646}\u{0020}\u{0645}\u{0631}\u{0646}\u{0629}\u{0020}\u{062A}\u{0646}\u{0627}\u{0633}\u{0628}\u{0020}\u{0627}\u{0644}\u{0634}\u{0631}\u{0643}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0646}\u{0627}\u{0634}\u{0626}\u{0629}\u{0020}\u{0648}\u{0627}\u{0644}\u{0648}\u{0643}\u{0627}\u{0644}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0628}\u{0631}\u{0645}\u{062C}\u{064A}\u{0629}\u{002E}" : 'Flexible engagement models for startups, scaleups, and agencies.' ),
             );
             foreach ( $perks as $perk ) :
                 list( $icon, $ptitle, $ptext ) = $perk;
@@ -203,19 +261,19 @@ get_header();
 <section class="ct-section ct-section--gray">
     <div class="container">
         <div class="ct-reveal ct-section__header ct-section__header--center">
-            <h2 class="ct-h2">ما الذي تحتاجه اليوم؟</h2>
-            <p class="ct-lead">حلول تقنية مصممة لتلبية احتياجاتك الخاصة</p>
+            <h2 class="ct-h2"><?php echo esc_html($is_rtl ? "\u{0645}\u{0627}\u{0020}\u{0627}\u{0644}\u{0630}\u{064A}\u{0020}\u{062A}\u{062D}\u{062A}\u{0627}\u{062C}\u{0647}\u{0020}\u{0627}\u{0644}\u{064A}\u{0648}\u{0645}\u{061F}" : 'What Do You Need Built Today?'); ?></h2>
+            <p class="ct-lead"><?php echo esc_html($is_rtl ? "\u{062D}\u{0644}\u{0648}\u{0644}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{0629}\u{0020}\u{0645}\u{0635}\u{0645}\u{0645}\u{0629}\u{0020}\u{0644}\u{062A}\u{0644}\u{0628}\u{064A}\u{0629}\u{0020}\u{0627}\u{062D}\u{062A}\u{064A}\u{0627}\u{062C}\u{0627}\u{062A}\u{0643}\u{0020}\u{0627}\u{0644}\u{062E}\u{0627}\u{0635}\u{0629}" : 'Engineered software solutions tailored to your goals'); ?></p>
         </div>
 
         <div class="ct-cards-grid">
             <?php
             $request_cards = array(
-                array( 'rocket_launch', 'مشروع جديد',              'بناء المنتج من الصفر، من الفكرة إلى الإطلاق في المتاجر.' ),
-                array( 'upgrade',       'تطوير منتج قائم',         'تحسين الأداء، إضافة ميزات جديدة، أو إعادة هيكلة الكود.' ),
-                array( 'smartphone',    'تطبيق جوال فقط',          'تطبيقات native أو cross-platform بتجربة مستخدم استثنائية.' ),
-                array( 'dashboard',     'منصة ويب / لوحة تحكم',    'أنظمة إدارة بيانات معقدة ومنصات SaaS احترافية.' ),
-                array( 'handshake',     'شراكة تنفيذ تقنية',       'نعمل كفريق تقني داخلي لشركتك بمرونة تامة.' ),
-                array( 'visibility_off','تنفيذ تحت هوية الشريك',   'تنفيذ المشاريع لصالح الوكالات كفريق غير معلن (White Label).' ),
+                array( 'rocket_launch', $is_rtl ? "\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}\u{0020}\u{062C}\u{062F}\u{064A}\u{062F}" : 'Greenfield MVP / App',              $is_rtl ? "\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{062A}\u{062C}\u{0020}\u{0645}\u{0646}\u{0020}\u{0627}\u{0644}\u{0635}\u{0641}\u{0631}\u{060C}\u{0020}\u{0645}\u{0646}\u{0020}\u{0627}\u{0644}\u{0641}\u{0643}\u{0631}\u{0629}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0627}\u{0644}\u{0625}\u{0637}\u{0644}\u{0627}\u{0642}\u{0020}\u{0641}\u{064A}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{0627}\u{062C}\u{0631}\u{002E}" : 'Building products ground-up, from specification to store launch.' ),
+                array( 'upgrade',       $is_rtl ? "\u{062A}\u{0637}\u{0648}\u{064A}\u{0631}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}\u{0020}\u{0642}\u{0627}\u{0626}\u{0645}" : 'Scaling Existing Platform',         $is_rtl ? "\u{062A}\u{062D}\u{0633}\u{064A}\u{0646}\u{0020}\u{0627}\u{0644}\u{0623}\u{062F}\u{0627}\u{0621}\u{060C}\u{0020}\u{0625}\u{0636}\u{0627}\u{0641}\u{0629}\u{0020}\u{0645}\u{064A}\u{0632}\u{0627}\u{062A}\u{0020}\u{062C}\u{062F}\u{064A}\u{062F}\u{0629}\u{060C}\u{0020}\u{0623}\u{0648}\u{0020}\u{0625}\u{0639}\u{0627}\u{062F}\u{0629}\u{0020}\u{0647}\u{064A}\u{0643}\u{0644}\u{0629}\u{0020}\u{0627}\u{0644}\u{0643}\u{0648}\u{062F}\u{002E}" : 'Performance boost, new modules, and code refactoring.' ),
+                array( 'smartphone',    $is_rtl ? "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{062C}\u{0648}\u{0627}\u{0644}\u{0020}\u{0641}\u{0642}\u{0637}" : 'Mobile App Engineering',          $is_rtl ? "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0627}\u{062A}\u{0020}\u{006E}\u{0061}\u{0074}\u{0069}\u{0076}\u{0065}\u{0020}\u{0623}\u{0648}\u{0020}\u{0063}\u{0072}\u{006F}\u{0073}\u{0073}\u{002D}\u{0070}\u{006C}\u{0061}\u{0074}\u{0066}\u{006F}\u{0072}\u{006D}\u{0020}\u{0628}\u{062A}\u{062C}\u{0631}\u{0628}\u{0629}\u{0020}\u{0645}\u{0633}\u{062A}\u{062E}\u{062F}\u{0645}\u{0020}\u{0627}\u{0633}\u{062A}\u{062B}\u{0646}\u{0627}\u{0626}\u{064A}\u{0629}\u{002E}" : 'Native or cross-platform mobile builds with smooth UX.' ),
+                array( 'dashboard',     $is_rtl ? "\u{0645}\u{0646}\u{0635}\u{0629}\u{0020}\u{0648}\u{064A}\u{0628}\u{0020}\u{002F}\u{0020}\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{062A}\u{062D}\u{0643}\u{0645}" : 'Web Platform & Dashboard',    $is_rtl ? "\u{0623}\u{0646}\u{0638}\u{0645}\u{0629}\u{0020}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0628}\u{064A}\u{0627}\u{0646}\u{0627}\u{062A}\u{0020}\u{0645}\u{0639}\u{0642}\u{062F}\u{0629}\u{0020}\u{0648}\u{0645}\u{0646}\u{0635}\u{0627}\u{062A}\u{0020}\u{0053}\u{0061}\u{0061}\u{0053}\u{0020}\u{0627}\u{062D}\u{062A}\u{0631}\u{0627}\u{0641}\u{064A}\u{0629}\u{002E}" : 'Complex data management consoles and SaaS platforms.' ),
+                array( 'handshake',     $is_rtl ? "\u{0634}\u{0631}\u{0627}\u{0643}\u{0629}\u{0020}\u{062A}\u{0646}\u{0641}\u{064A}\u{0630}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{0629}" : 'Tech Partner Co-Execution',       $is_rtl ? "\u{0646}\u{0639}\u{0645}\u{0644}\u{0020}\u{0643}\u{0641}\u{0631}\u{064A}\u{0642}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{0020}\u{062F}\u{0627}\u{062E}\u{0644}\u{064A}\u{0020}\u{0644}\u{0634}\u{0631}\u{0643}\u{062A}\u{0643}\u{0020}\u{0628}\u{0645}\u{0631}\u{0648}\u{0646}\u{0629}\u{0020}\u{062A}\u{0627}\u{0645}\u{0629}\u{002E}" : 'Operating as an integrated extension of your engineering team.' ),
+                array( 'visibility_off',$is_rtl ? "\u{062A}\u{0646}\u{0641}\u{064A}\u{0630}\u{0020}\u{062A}\u{062D}\u{062A}\u{0020}\u{0647}\u{0648}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0634}\u{0631}\u{064A}\u{0643}" : 'White-Label Agency Partner',   $is_rtl ? "\u{062A}\u{0646}\u{0641}\u{064A}\u{0630}\u{0020}\u{0627}\u{0644}\u{0645}\u{0634}\u{0627}\u{0631}\u{064A}\u{0639}\u{0020}\u{0644}\u{0635}\u{0627}\u{0644}\u{062D}\u{0020}\u{0627}\u{0644}\u{0648}\u{0643}\u{0627}\u{0644}\u{0627}\u{062A}\u{0020}\u{0643}\u{0641}\u{0631}\u{064A}\u{0642}\u{0020}\u{063A}\u{064A}\u{0631}\u{0020}\u{0645}\u{0639}\u{0644}\u{0646}\u{0020}\u{0028}\u{0057}\u{0068}\u{0069}\u{0074}\u{0065}\u{0020}\u{004C}\u{0061}\u{0062}\u{0065}\u{006C}\u{0029}\u{002E}" : 'Executing projects under your brand for your end-clients.' ),
             );
             foreach ( $request_cards as $i => $card ) :
                 list( $icon, $ctitle, $ctext ) = $card;
@@ -239,17 +297,17 @@ get_header();
 <section class="ct-section ct-section--white">
     <div class="container">
         <div class="ct-reveal ct-section__header ct-section__header--center">
-            <h2 class="ct-h2">ماذا يحدث بعد إرسال الطلب؟</h2>
+            <h2 class="ct-h2"><?php echo esc_html($is_rtl ? "\u{0645}\u{0627}\u{0630}\u{0627}\u{0020}\u{064A}\u{062D}\u{062F}\u{062B}\u{0020}\u{0628}\u{0639}\u{062F}\u{0020}\u{0625}\u{0631}\u{0633}\u{0627}\u{0644}\u{0020}\u{0627}\u{0644}\u{0637}\u{0644}\u{0628}\u{061F}" : 'What Happens After You Submit?'); ?></h2>
         </div>
 
         <div class="ct-timeline">
             <div class="ct-timeline__line" aria-hidden="true"></div>
             <?php
             $timeline = array(
-                array( '١', 'مراجعة التفاصيل', 'فريقنا يحلل طلبك بدقة لفهم الرؤية والأهداف التقنية.' ),
-                array( '٢', 'تحديد المسار المناسب', 'نقترح أفضل التقنيات والمنهجيات المناسبة لميزانيتك وجدولك.' ),
-                array( '٣', 'مناقشة النطاق', 'جلسة عمل لضبط المواصفات النهائية وضمان توافق الرؤى.' ),
-                array( '٤', 'خطوة تنفيذ واضحة', 'الانتقال الفعلي للتعاقد والبدء في بناء منتجك الرقمي.' ),
+                array( '1', $is_rtl ? "\u{0645}\u{0631}\u{0627}\u{062C}\u{0639}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{0641}\u{0627}\u{0635}\u{064A}\u{0644}" : 'Spec Review', $is_rtl ? "\u{0641}\u{0631}\u{064A}\u{0642}\u{0646}\u{0627}\u{0020}\u{064A}\u{062D}\u{0644}\u{0644}\u{0020}\u{0637}\u{0644}\u{0628}\u{0643}\u{0020}\u{0628}\u{062F}\u{0642}\u{0629}\u{0020}\u{0644}\u{0641}\u{0647}\u{0645}\u{0020}\u{0627}\u{0644}\u{0631}\u{0624}\u{064A}\u{0629}\u{0020}\u{0648}\u{0627}\u{0644}\u{0623}\u{0647}\u{062F}\u{0627}\u{0641}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0646}\u{064A}\u{0629}\u{002E}" : 'Our engineers review your inquiry to understand tech goals.' ),
+                array( '2', $is_rtl ? "\u{062A}\u{062D}\u{062F}\u{064A}\u{062F}\u{0020}\u{0627}\u{0644}\u{0645}\u{0633}\u{0627}\u{0631}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{0627}\u{0633}\u{0628}" : 'Architecture Fit', $is_rtl ? "\u{0646}\u{0642}\u{062A}\u{0631}\u{062D}\u{0020}\u{0623}\u{0641}\u{0636}\u{0644}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0646}\u{064A}\u{0627}\u{062A}\u{0020}\u{0648}\u{0627}\u{0644}\u{0645}\u{0646}\u{0647}\u{062C}\u{064A}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{0627}\u{0633}\u{0628}\u{0629}\u{0020}\u{0644}\u{0645}\u{064A}\u{0632}\u{0627}\u{0646}\u{064A}\u{062A}\u{0643}\u{0020}\u{0648}\u{062C}\u{062F}\u{0648}\u{0644}\u{0643}\u{002E}" : 'We propose optimal stacks and delivery timelines for your budget.' ),
+                array( '3', $is_rtl ? "\u{0645}\u{0646}\u{0627}\u{0642}\u{0634}\u{0629}\u{0020}\u{0627}\u{0644}\u{0646}\u{0637}\u{0627}\u{0642}" : 'Scope Alignment', $is_rtl ? "\u{062C}\u{0644}\u{0633}\u{0629}\u{0020}\u{0639}\u{0645}\u{0644}\u{0020}\u{0644}\u{0636}\u{0628}\u{0637}\u{0020}\u{0627}\u{0644}\u{0645}\u{0648}\u{0627}\u{0635}\u{0641}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0646}\u{0647}\u{0627}\u{0626}\u{064A}\u{0629}\u{0020}\u{0648}\u{0636}\u{0645}\u{0627}\u{0646}\u{0020}\u{062A}\u{0648}\u{0627}\u{0641}\u{0642}\u{0020}\u{0627}\u{0644}\u{0631}\u{0624}\u{0649}\u{002E}" : 'A discovery session to align on final scope and deliverables.' ),
+                array( '4', $is_rtl ? "\u{062E}\u{0637}\u{0648}\u{0629}\u{0020}\u{062A}\u{0646}\u{0641}\u{064A}\u{0630}\u{0020}\u{0648}\u{0627}\u{0636}\u{062D}\u{0629}" : 'Sprint Kickoff', $is_rtl ? "\u{0627}\u{0644}\u{0627}\u{0646}\u{062A}\u{0642}\u{0627}\u{0644}\u{0020}\u{0627}\u{0644}\u{0641}\u{0639}\u{0644}\u{064A}\u{0020}\u{0644}\u{0644}\u{062A}\u{0639}\u{0627}\u{0642}\u{062F}\u{0020}\u{0648}\u{0627}\u{0644}\u{0628}\u{062F}\u{0621}\u{0020}\u{0641}\u{064A}\u{0020}\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}\u{0643}\u{0020}\u{0627}\u{0644}\u{0631}\u{0642}\u{0645}\u{064A}\u{002E}" : 'Formal agreement and immediate sprint kickoff.' ),
             );
             foreach ( $timeline as $i => $step ) :
                 list( $num, $stitle, $stext ) = $step;
@@ -273,16 +331,16 @@ get_header();
     <div class="container ct-b2b">
 
         <div class="ct-reveal ct-b2b__content" style="--ct-delay:0.05s">
-            <span class="ct-badge ct-badge--light">شراكات B2B</span>
-            <h2 class="ct-b2b__title">ندعم الوكالات والشركات التقنية كذراع تنفيذ موثوق</h2>
-            <p class="ct-b2b__text">إذا كنت وكالة تسويق، شركة استشارات، أو شركة برمجيات تحتاج لتوسيع قدرات فريقك التقني، فنحن نوفر لك نماذج تعاون احترافية تحت هويتك أو كشريك استراتيجي.</p>
+            <span class="ct-badge ct-badge--light"><?php echo esc_html($is_rtl ? "\u{0634}\u{0631}\u{0627}\u{0643}\u{0627}\u{062A}\u{0020}\u{0042}\u{0032}\u{0042}" : 'B2B Tech Alliances'); ?></span>
+            <h2 class="ct-b2b__title"><?php echo esc_html($is_rtl ? "\u{0646}\u{062F}\u{0639}\u{0645}\u{0020}\u{0627}\u{0644}\u{0648}\u{0643}\u{0627}\u{0644}\u{0627}\u{062A}\u{0020}\u{0648}\u{0627}\u{0644}\u{0634}\u{0631}\u{0643}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0646}\u{064A}\u{0629}\u{0020}\u{0643}\u{0630}\u{0631}\u{0627}\u{0639}\u{0020}\u{062A}\u{0646}\u{0641}\u{064A}\u{0630}\u{0020}\u{0645}\u{0648}\u{062B}\u{0648}\u{0642}" : 'Supporting Agencies & Tech Firms as a Dedicated Execution Arm'); ?></h2>
+            <p class="ct-b2b__text"><?php echo esc_html($is_rtl ? "\u{0625}\u{0630}\u{0627}\u{0020}\u{0643}\u{0646}\u{062A}\u{0020}\u{0648}\u{0643}\u{0627}\u{0644}\u{0629}\u{0020}\u{062A}\u{0633}\u{0648}\u{064A}\u{0642}\u{060C}\u{0020}\u{0634}\u{0631}\u{0643}\u{0629}\u{0020}\u{0627}\u{0633}\u{062A}\u{0634}\u{0627}\u{0631}\u{0627}\u{062A}\u{060C}\u{0020}\u{0623}\u{0648}\u{0020}\u{0634}\u{0631}\u{0643}\u{0629}\u{0020}\u{0628}\u{0631}\u{0645}\u{062C}\u{064A}\u{0627}\u{062A}\u{0020}\u{062A}\u{062D}\u{062A}\u{0627}\u{062C}\u{0020}\u{0644}\u{062A}\u{0648}\u{0633}\u{064A}\u{0639}\u{0020}\u{0642}\u{062F}\u{0631}\u{0627}\u{062A}\u{0020}\u{0641}\u{0631}\u{064A}\u{0642}\u{0643}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0646}\u{064A}\u{060C}\u{0020}\u{0641}\u{0646}\u{062D}\u{0646}\u{0020}\u{0646}\u{0648}\u{0641}\u{0631}\u{0020}\u{0644}\u{0643}\u{0020}\u{0646}\u{0645}\u{0627}\u{0630}\u{062C}\u{0020}\u{062A}\u{0639}\u{0627}\u{0648}\u{0646}\u{0020}\u{0627}\u{062D}\u{062A}\u{0631}\u{0627}\u{0641}\u{064A}\u{0629}\u{0020}\u{062A}\u{062D}\u{062A}\u{0020}\u{0647}\u{0648}\u{064A}\u{062A}\u{0643}\u{0020}\u{0623}\u{0648}\u{0020}\u{0643}\u{0634}\u{0631}\u{064A}\u{0643}\u{0020}\u{0627}\u{0633}\u{062A}\u{0631}\u{0627}\u{062A}\u{064A}\u{062C}\u{064A}\u{002E}" : 'If you are a design agency, consultancy, or software company expanding engineering capacity, we offer flexible white-label and strategic co-execution models.'); ?></p>
 
             <div class="ct-b2b__box">
-                <p class="ct-b2b__box-title">نماذجنا مثالية لـ:</p>
+                <p class="ct-b2b__box-title"><?php echo esc_html($is_rtl ? "\u{0646}\u{0645}\u{0627}\u{0630}\u{062C}\u{0646}\u{0627}\u{0020}\u{0645}\u{062B}\u{0627}\u{0644}\u{064A}\u{0629}\u{0020}\u{0644}\u{0640}\u{003A}" : 'Ideal for:'); ?></p>
                 <ul class="ct-b2b__list">
-                    <li><span class="material-symbols-outlined">check_circle</span> وكالات التسويق التي تريد تقديم حلول تقنية متكاملة لعملائها.</li>
-                    <li><span class="material-symbols-outlined">check_circle</span> الشركات التقنية التي تحتاج فريق دعم سريع لمشاريع مفاجئة.</li>
-                    <li><span class="material-symbols-outlined">check_circle</span> رواد الأعمال الذين يحتاجون شريكاً تقنياً مؤسساً (CTO as a Service).</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> <?php echo esc_html($is_rtl ? "\u{0648}\u{0643}\u{0627}\u{0644}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062A}\u{0633}\u{0648}\u{064A}\u{0642}\u{0020}\u{0627}\u{0644}\u{062A}\u{064A}\u{0020}\u{062A}\u{0631}\u{064A}\u{062F}\u{0020}\u{062A}\u{0642}\u{062F}\u{064A}\u{0645}\u{0020}\u{062D}\u{0644}\u{0648}\u{0644}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{0629}\u{0020}\u{0645}\u{062A}\u{0643}\u{0627}\u{0645}\u{0644}\u{0629}\u{0020}\u{0644}\u{0639}\u{0645}\u{0644}\u{0627}\u{0626}\u{0647}\u{0627}\u{002E}" : 'Agencies offering full-scale app builds to their clients.'); ?></li>
+                    <li><span class="material-symbols-outlined">check_circle</span> <?php echo esc_html($is_rtl ? "\u{0627}\u{0644}\u{0634}\u{0631}\u{0643}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0646}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{064A}\u{0020}\u{062A}\u{062D}\u{062A}\u{0627}\u{062C}\u{0020}\u{0641}\u{0631}\u{064A}\u{0642}\u{0020}\u{062F}\u{0639}\u{0645}\u{0020}\u{0633}\u{0631}\u{064A}\u{0639}\u{0020}\u{0644}\u{0645}\u{0634}\u{0627}\u{0631}\u{064A}\u{0639}\u{0020}\u{0645}\u{0641}\u{0627}\u{062C}\u{0626}\u{0629}\u{002E}" : 'Tech companies needing rapid engineering scaling for overflow projects.'); ?></li>
+                    <li><span class="material-symbols-outlined">check_circle</span> <?php echo esc_html($is_rtl ? "\u{0631}\u{0648}\u{0627}\u{062F}\u{0020}\u{0627}\u{0644}\u{0623}\u{0639}\u{0645}\u{0627}\u{0644}\u{0020}\u{0627}\u{0644}\u{0630}\u{064A}\u{0646}\u{0020}\u{064A}\u{062D}\u{062A}\u{0627}\u{062C}\u{0648}\u{0646}\u{0020}\u{0634}\u{0631}\u{064A}\u{0643}\u{0627}\u{064B}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{0627}\u{064B}\u{0020}\u{0645}\u{0624}\u{0633}\u{0633}\u{0627}\u{064B}\u{0020}\u{0028}\u{0043}\u{0054}\u{004F}\u{0020}\u{0061}\u{0073}\u{0020}\u{0061}\u{0020}\u{0053}\u{0065}\u{0072}\u{0076}\u{0069}\u{0063}\u{0065}\u{0029}\u{002E}" : 'Founders seeking a strategic CTO-as-a-Service partner.'); ?></li>
                 </ul>
             </div>
         </div>
@@ -290,10 +348,10 @@ get_header();
         <div class="ct-b2b__grid">
             <?php
             $b2b_cards = array(
-                array( 'partner_exchange', 'تنفيذ لصالح شريك تقني',        'نعمل معك كفريق متكامل لإتمام مشاريع عملائك بأعلى جودة.' ),
-                array( 'shield_person',    'تنفيذ تحت هوية الشريك',        'White-Label: نحن نعمل خلف الكواليس، وأنت الواجهة أمام عميلك.' ),
-                array( 'group_add',        'دعم فرق التطوير',              'زيادة سعة فريقك الحالي بمطورين متخصصين في مجالات محددة.' ),
-                array( 'extension',        'تطوير وحدات داخل منتج قائم',   'بناء ميزات أو Microservices مستقلة لدمجها في أنظمتك.' ),
+                array( 'partner_exchange', $is_rtl ? "\u{062A}\u{0646}\u{0641}\u{064A}\u{0630}\u{0020}\u{0644}\u{0635}\u{0627}\u{0644}\u{062D}\u{0020}\u{0634}\u{0631}\u{064A}\u{0643}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}" : 'Strategic Co-Execution',        $is_rtl ? "\u{0646}\u{0639}\u{0645}\u{0644}\u{0020}\u{0645}\u{0639}\u{0643}\u{0020}\u{0643}\u{0641}\u{0631}\u{064A}\u{0642}\u{0020}\u{0645}\u{062A}\u{0643}\u{0627}\u{0645}\u{0644}\u{0020}\u{0644}\u{0625}\u{062A}\u{0645}\u{0627}\u{0645}\u{0020}\u{0645}\u{0634}\u{0627}\u{0631}\u{064A}\u{0639}\u{0020}\u{0639}\u{0645}\u{0644}\u{0627}\u{0626}\u{0643}\u{0020}\u{0628}\u{0623}\u{0639}\u{0644}\u{0649}\u{0020}\u{062C}\u{0648}\u{062F}\u{0629}\u{002E}" : 'Working with your team to deliver client software with enterprise quality.' ),
+                array( 'shield_person',    $is_rtl ? "\u{062A}\u{0646}\u{0641}\u{064A}\u{0630}\u{0020}\u{062A}\u{062D}\u{062A}\u{0020}\u{0647}\u{0648}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0634}\u{0631}\u{064A}\u{0643}" : 'White-Label Delivery',        $is_rtl ? "\u{0057}\u{0068}\u{0069}\u{0074}\u{0065}\u{002D}\u{004C}\u{0061}\u{0062}\u{0065}\u{006C}\u{003A}\u{0020}\u{0646}\u{062D}\u{0646}\u{0020}\u{0646}\u{0639}\u{0645}\u{0644}\u{0020}\u{062E}\u{0644}\u{0641}\u{0020}\u{0627}\u{0644}\u{0643}\u{0648}\u{0627}\u{0644}\u{064A}\u{0633}\u{060C}\u{0020}\u{0648}\u{0623}\u{0646}\u{062A}\u{0020}\u{0627}\u{0644}\u{0648}\u{0627}\u{062C}\u{0647}\u{0629}\u{0020}\u{0623}\u{0645}\u{0627}\u{0645}\u{0020}\u{0639}\u{0645}\u{064A}\u{0644}\u{0643}\u{002E}" : 'White-label execution behind the scenes while you own the client relationship.' ),
+                array( 'group_add',        $is_rtl ? "\u{062F}\u{0639}\u{0645}\u{0020}\u{0641}\u{0631}\u{0642}\u{0020}\u{0627}\u{0644}\u{062A}\u{0637}\u{0648}\u{064A}\u{0631}" : 'Team Augmentation',              $is_rtl ? "\u{0632}\u{064A}\u{0627}\u{062F}\u{0629}\u{0020}\u{0633}\u{0639}\u{0629}\u{0020}\u{0641}\u{0631}\u{064A}\u{0642}\u{0643}\u{0020}\u{0627}\u{0644}\u{062D}\u{0627}\u{0644}\u{064A}\u{0020}\u{0628}\u{0645}\u{0637}\u{0648}\u{0631}\u{064A}\u{0646}\u{0020}\u{0645}\u{062A}\u{062E}\u{0635}\u{0635}\u{064A}\u{0646}\u{0020}\u{0641}\u{064A}\u{0020}\u{0645}\u{062C}\u{0627}\u{0644}\u{0627}\u{062A}\u{0020}\u{0645}\u{062D}\u{062F}\u{062F}\u{0629}\u{002E}" : 'Augmenting internal teams with specialized senior developers.' ),
+                array( 'extension',        $is_rtl ? "\u{062A}\u{0637}\u{0648}\u{064A}\u{0631}\u{0020}\u{0648}\u{062D}\u{062F}\u{0627}\u{062A}\u{0020}\u{062F}\u{0627}\u{062E}\u{0644}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}\u{0020}\u{0642}\u{0627}\u{0626}\u{0645}" : 'Module Engineering',   $is_rtl ? "\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0645}\u{064A}\u{0632}\u{0627}\u{062A}\u{0020}\u{0623}\u{0648}\u{0020}\u{004D}\u{0069}\u{0063}\u{0072}\u{006F}\u{0073}\u{0065}\u{0072}\u{0076}\u{0069}\u{0063}\u{0065}\u{0073}\u{0020}\u{0645}\u{0633}\u{062A}\u{0642}\u{0644}\u{0629}\u{0020}\u{0644}\u{062F}\u{0645}\u{062C}\u{0647}\u{0627}\u{0020}\u{0641}\u{064A}\u{0020}\u{0623}\u{0646}\u{0638}\u{0645}\u{062A}\u{0643}\u{002E}" : 'Engineering standalone microservices or custom modules.' ),
             );
             foreach ( $b2b_cards as $i => $card ) :
                 list( $icon, $ctitle, $ctext ) = $card;
@@ -316,16 +374,16 @@ get_header();
 <section class="ct-section ct-section--white">
     <div class="container ct-faq-container">
         <div class="ct-reveal ct-section__header ct-section__header--center">
-            <h2 class="ct-h2">الأسئلة الشائعة</h2>
+            <h2 class="ct-h2"><?php echo esc_html($is_rtl ? "\u{0627}\u{0644}\u{0623}\u{0633}\u{0626}\u{0644}\u{0629}\u{0020}\u{0627}\u{0644}\u{0634}\u{0627}\u{0626}\u{0639}\u{0629}" : 'Frequently Asked Questions'); ?></h2>
         </div>
 
         <div class="ct-faq">
             <?php
             $faqs = array(
-                array( 'كم تستغرق عملية البدء في المشروع؟', 'بعد استلام الطلب ومناقشة التفاصيل، عادة ما نبدأ في مرحلة التخطيط والنمذجة خلال 3-5 أيام عمل من توقيع الاتفاقية.', true ),
-                array( 'هل تقدمون خدمات الدعم الفني بعد الإطلاق؟', 'نعم، جميع مشاريعنا تشمل فترة ضمان ودعم فني مجانية، مع إمكانية التعاقد على صيانة سنوية لضمان استقرار المنتج وتحديثه.', false ),
-                array( 'هل يمكنكم العمل مع فريق تقني داخلي لدينا؟', 'بالتأكيد، لدينا خبرة واسعة في الاندماج مع الفرق القائمة، سواء في كتابة الكود أو مراجعة المعمارية التقنية أو تطوير وحدات مستقلة.', false ),
-                array( 'هل تحفظون حقوق الملكية الفكرية للكود؟', 'بمجرد تسليم المشروع ودفع المستحقات، تنتقل ملكية الكود المصدري والحقوق الفكرية بالكامل إلى العميل وفقاً للاتفاق المبرم.', false ),
+                array( $is_rtl ? "\u{0643}\u{0645}\u{0020}\u{062A}\u{0633}\u{062A}\u{063A}\u{0631}\u{0642}\u{0020}\u{0639}\u{0645}\u{0644}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0628}\u{062F}\u{0621}\u{0020}\u{0641}\u{064A}\u{0020}\u{0627}\u{0644}\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}\u{061F}" : 'How long does it take to kick off a project?', $is_rtl ? "\u{0628}\u{0639}\u{062F}\u{0020}\u{0627}\u{0633}\u{062A}\u{0644}\u{0627}\u{0645}\u{0020}\u{0627}\u{0644}\u{0637}\u{0644}\u{0628}\u{0020}\u{0648}\u{0645}\u{0646}\u{0627}\u{0642}\u{0634}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{0641}\u{0627}\u{0635}\u{064A}\u{0644}\u{060C}\u{0020}\u{0639}\u{0627}\u{062F}\u{0629}\u{0020}\u{0645}\u{0627}\u{0020}\u{0646}\u{0628}\u{062F}\u{0623}\u{0020}\u{0641}\u{064A}\u{0020}\u{0645}\u{0631}\u{062D}\u{0644}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{062E}\u{0637}\u{064A}\u{0637}\u{0020}\u{0648}\u{0627}\u{0644}\u{0646}\u{0645}\u{0630}\u{062C}\u{0629}\u{0020}\u{062E}\u{0644}\u{0627}\u{0644}\u{0020}\u{0033}\u{002D}\u{0035}\u{0020}\u{0623}\u{064A}\u{0627}\u{0645}\u{0020}\u{0639}\u{0645}\u{0644}\u{0020}\u{0645}\u{0646}\u{0020}\u{062A}\u{0648}\u{0642}\u{064A}\u{0639}\u{0020}\u{0627}\u{0644}\u{0627}\u{062A}\u{0641}\u{0627}\u{0642}\u{064A}\u{0629}\u{002E}" : 'Following initial inquiry review and scope alignment, we typically kick off sprint planning within 3-5 business days.', true ),
+                array( $is_rtl ? "\u{0647}\u{0644}\u{0020}\u{062A}\u{0642}\u{062F}\u{0645}\u{0648}\u{0646}\u{0020}\u{062E}\u{062F}\u{0645}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062F}\u{0639}\u{0645}\u{0020}\u{0627}\u{0644}\u{0641}\u{0646}\u{064A}\u{0020}\u{0628}\u{0639}\u{062F}\u{0020}\u{0627}\u{0644}\u{0625}\u{0637}\u{0644}\u{0627}\u{0642}\u{061F}" : 'Do you provide post-launch maintenance & support?', $is_rtl ? "\u{0646}\u{0639}\u{0645}\u{060C}\u{0020}\u{062C}\u{0645}\u{064A}\u{0639}\u{0020}\u{0645}\u{0634}\u{0627}\u{0631}\u{064A}\u{0639}\u{0646}\u{0627}\u{0020}\u{062A}\u{0634}\u{0645}\u{0644}\u{0020}\u{0641}\u{062A}\u{0631}\u{0629}\u{0020}\u{0636}\u{0645}\u{0627}\u{0646}\u{0020}\u{0648}\u{062F}\u{0639}\u{0645}\u{0020}\u{0641}\u{0646}\u{064A}\u{0020}\u{0645}\u{062C}\u{0627}\u{0646}\u{064A}\u{0629}\u{060C}\u{0020}\u{0645}\u{0639}\u{0020}\u{0625}\u{0645}\u{0643}\u{0627}\u{0646}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{0639}\u{0627}\u{0642}\u{062F}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{0635}\u{064A}\u{0627}\u{0646}\u{0629}\u{0020}\u{0633}\u{0646}\u{0648}\u{064A}\u{0629}\u{0020}\u{0644}\u{0636}\u{0645}\u{0627}\u{0646}\u{0020}\u{0627}\u{0633}\u{062A}\u{0642}\u{0631}\u{0627}\u{0631}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{062A}\u{062C}\u{0020}\u{0648}\u{062A}\u{062D}\u{062F}\u{064A}\u{062B}\u{0647}\u{002E}" : 'Yes, all builds include a warranty and SLA support period, with optional long-term annual maintenance contracts.', false ),
+                array( $is_rtl ? "\u{0647}\u{0644}\u{0020}\u{064A}\u{0645}\u{0643}\u{0646}\u{0643}\u{0645}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{0644}\u{0020}\u{0645}\u{0639}\u{0020}\u{0641}\u{0631}\u{064A}\u{0642}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{0020}\u{062F}\u{0627}\u{062E}\u{0644}\u{064A}\u{0020}\u{0644}\u{062F}\u{064A}\u{0646}\u{0627}\u{061F}" : 'Can you collaborate with our in-house dev team?', $is_rtl ? "\u{0628}\u{0627}\u{0644}\u{062A}\u{0623}\u{0643}\u{064A}\u{062F}\u{060C}\u{0020}\u{0644}\u{062F}\u{064A}\u{0646}\u{0627}\u{0020}\u{062E}\u{0628}\u{0631}\u{0629}\u{0020}\u{0648}\u{0627}\u{0633}\u{0639}\u{0629}\u{0020}\u{0641}\u{064A}\u{0020}\u{0627}\u{0644}\u{0627}\u{0646}\u{062F}\u{0645}\u{0627}\u{062C}\u{0020}\u{0645}\u{0639}\u{0020}\u{0627}\u{0644}\u{0641}\u{0631}\u{0642}\u{0020}\u{0627}\u{0644}\u{0642}\u{0627}\u{0626}\u{0645}\u{0629}\u{060C}\u{0020}\u{0633}\u{0648}\u{0627}\u{0621}\u{0020}\u{0641}\u{064A}\u{0020}\u{0643}\u{062A}\u{0627}\u{0628}\u{0629}\u{0020}\u{0627}\u{0644}\u{0643}\u{0648}\u{062F}\u{0020}\u{0623}\u{0648}\u{0020}\u{0645}\u{0631}\u{0627}\u{062C}\u{0639}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0639}\u{0645}\u{0627}\u{0631}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0646}\u{064A}\u{0629}\u{0020}\u{0623}\u{0648}\u{0020}\u{062A}\u{0637}\u{0648}\u{064A}\u{0631}\u{0020}\u{0648}\u{062D}\u{062F}\u{0627}\u{062A}\u{0020}\u{0645}\u{0633}\u{062A}\u{0642}\u{0644}\u{0629}\u{002E}" : 'Absolutely. We regularly integrate with client dev teams for co-execution, architecture audits, or module builds.', false ),
+                array( $is_rtl ? "\u{0647}\u{0644}\u{0020}\u{062A}\u{062D}\u{0641}\u{0638}\u{0648}\u{0646}\u{0020}\u{062D}\u{0642}\u{0648}\u{0642}\u{0020}\u{0627}\u{0644}\u{0645}\u{0644}\u{0643}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0641}\u{0643}\u{0631}\u{064A}\u{0629}\u{0020}\u{0644}\u{0644}\u{0643}\u{0648}\u{062F}\u{061F}" : 'Who owns the source code and IP rights?', $is_rtl ? "\u{0628}\u{0645}\u{062C}\u{0631}\u{062F}\u{0020}\u{062A}\u{0633}\u{0644}\u{064A}\u{0645}\u{0020}\u{0627}\u{0644}\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}\u{0020}\u{0648}\u{062F}\u{0641}\u{0639}\u{0020}\u{0627}\u{0644}\u{0645}\u{0633}\u{062A}\u{062D}\u{0642}\u{0627}\u{062A}\u{060C}\u{0020}\u{062A}\u{0646}\u{062A}\u{0642}\u{0644}\u{0020}\u{0645}\u{0644}\u{0643}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0643}\u{0648}\u{062F}\u{0020}\u{0627}\u{0644}\u{0645}\u{0635}\u{062F}\u{0631}\u{064A}\u{0020}\u{0648}\u{0627}\u{0644}\u{062D}\u{0642}\u{0648}\u{0642}\u{0020}\u{0627}\u{0644}\u{0641}\u{0643}\u{0631}\u{064A}\u{0629}\u{0020}\u{0628}\u{0627}\u{0644}\u{0643}\u{0627}\u{0645}\u{0644}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{064A}\u{0644}\u{0020}\u{0648}\u{0641}\u{0642}\u{0627}\u{064B}\u{0020}\u{0644}\u{0644}\u{0627}\u{062A}\u{0641}\u{0627}\u{0642}\u{0020}\u{0627}\u{0644}\u{0645}\u{0628}\u{0631}\u{0645}\u{002E}" : 'Upon project completion, the full source code, IP rights, and technical documentation are legally transferred to you.', false ),
             );
             foreach ( $faqs as $i => $faq ) :
                 list( $q, $a, $open ) = $faq;
@@ -355,11 +413,11 @@ get_header();
                 <path d="M0,70 Q25,45 50,70 T100,70" fill="none" stroke="white" stroke-width="0.15"></path>
             </svg>
             <div class="ct-cta__inner">
-                <h2 class="ct-reveal ct-cta__title">مستعد لبناء شيء استثنائي؟</h2>
-                <p class="ct-reveal ct-cta__text">فريق SpinesTech التقني جاهز للاستماع لتحديك القادم وتحويله إلى واقع رقمي ملموس.</p>
+                <h2 class="ct-reveal ct-cta__title"><?php echo esc_html($is_rtl ? "\u{0645}\u{0633}\u{062A}\u{0639}\u{062F}\u{0020}\u{0644}\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0634}\u{064A}\u{0621}\u{0020}\u{0627}\u{0633}\u{062A}\u{062B}\u{0646}\u{0627}\u{0626}\u{064A}\u{061F}" : 'Ready to Build Something Exceptional?'); ?></h2>
+                <p class="ct-reveal ct-cta__text"><?php echo esc_html($is_rtl ? "\u{0641}\u{0631}\u{064A}\u{0642}\u{0020}\u{0053}\u{0070}\u{0069}\u{006E}\u{0065}\u{0073}\u{0054}\u{0065}\u{0063}\u{0068}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0646}\u{064A}\u{0020}\u{062C}\u{0627}\u{0647}\u{0632}\u{0020}\u{0644}\u{0644}\u{0627}\u{0633}\u{062A}\u{0645}\u{0627}\u{0639}\u{0020}\u{0644}\u{062A}\u{062D}\u{062F}\u{064A}\u{0643}\u{0020}\u{0627}\u{0644}\u{0642}\u{0627}\u{062F}\u{0645}\u{0020}\u{0648}\u{062A}\u{062D}\u{0648}\u{064A}\u{0644}\u{0647}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0648}\u{0627}\u{0642}\u{0639}\u{0020}\u{0631}\u{0642}\u{0645}\u{064A}\u{0020}\u{0645}\u{0644}\u{0645}\u{0648}\u{0633}\u{002E}" : 'The SpinesTech engineering team is ready to analyze your next challenge and build a market-ready solution.'); ?></p>
                 <div class="ct-reveal ct-cta__actions">
-                    <a href="#ct-form-section" class="ct-btn ct-btn--primary">ابدأ مشروعك الآن</a>
-                    <a href="https://wa.me/201099293903" class="ct-btn ct-btn--ghost" target="_blank" rel="noopener">تحدث معنا عبر واتساب</a>
+                    <a href="#ct-form-section" class="ct-btn ct-btn--primary"><?php echo esc_html($is_rtl ? "\u{0627}\u{0628}\u{062F}\u{0623}\u{0020}\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}\u{0643}\u{0020}\u{0627}\u{0644}\u{0622}\u{0646}" : 'Start Your Project Now'); ?></a>
+                    <a href="<?php echo esc_url(home_url('/case-studies/')); ?>" class="ct-btn ct-btn--ghost"><?php echo esc_html($is_rtl ? "\u{0627}\u{0633}\u{062A}\u{0639}\u{0631}\u{0636}\u{0020}\u{0633}\u{0627}\u{0628}\u{0642}\u{0629}\u{0020}\u{0623}\u{0639}\u{0645}\u{0627}\u{0644}\u{0646}\u{0627}" : 'View Case Studies'); ?></a>
                 </div>
             </div>
         </div>

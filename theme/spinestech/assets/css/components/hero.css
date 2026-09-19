@@ -1,5 +1,9 @@
 /* =========================================
    Home Hero Section
+   Title/subtitle sizing unified with the
+   articles-page reference (.art2-hero__title /
+   .art2-hero__subtitle) so the header reads at
+   the same scale across every page.
 ========================================= */
 .home-hero {
   padding-block: clamp(3rem, 7vw, 7rem) 2.5rem;
@@ -7,41 +11,35 @@
     radial-gradient(circle at 10% 0%, rgba(3, 109, 54, 0.08), transparent 34rem),
     linear-gradient(180deg, #fff 0%, var(--color-background) 100%);
 }
-
 .home-hero__content {
   display: grid;
   gap: clamp(2rem, 5vw, 5rem);
   align-items: center;
 }
-
 .home-hero__text-side {
   display: grid;
   gap: 1.15rem;
   justify-items: start;
 }
-
 .home-hero__title {
   max-width: 48rem;
   color: var(--color-primary-container);
-  font-size: clamp(2rem, 4.8vw, 4rem);
+  font-size: clamp(1.9rem, 4.5vw, 3.3rem);
   font-weight: 900;
-  line-height: 1.08;
+  line-height: 1.22;
 }
-
 .home-hero__subtitle {
   max-width: 43rem;
   color: var(--color-on-surface-variant);
-  font-size: clamp(1rem, 1.7vw, 1.18rem);
-  line-height: 1.9;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.8;
 }
-
 .home-hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
   margin-block-start: 0.25rem;
 }
-
 .home-hero__trust {
   width: 100%;
   display: grid;
@@ -49,7 +47,6 @@
   gap: 0.75rem 1rem;
   padding-block-start: 0.8rem;
 }
-
 .home-hero__trust-item {
   display: inline-flex;
   align-items: center;
@@ -59,17 +56,14 @@
   font-size: 0.82rem;
   font-weight: 700;
 }
-
 .home-hero__trust-item .material-symbols-outlined {
   flex: 0 0 auto;
   color: var(--color-secondary);
   font-size: 1.05rem;
 }
-
 .home-hero__media {
   min-width: 0;
 }
-
 .home-hero__image-card {
   position: relative;
   max-width: 37rem;
@@ -80,14 +74,12 @@
   border: 1px solid var(--color-outline-variant);
   box-shadow: 0 24px 60px rgba(7, 26, 44, 0.16);
 }
-
 .home-hero__image {
   width: 100%;
   aspect-ratio: 1.55;
   object-fit: cover;
   border-radius: 1.1rem;
 }
-
 .home-hero__metric {
   position: absolute;
   min-width: 4.6rem;
@@ -99,31 +91,25 @@
   text-align: center;
   box-shadow: 0 14px 30px rgba(7, 26, 44, 0.15);
 }
-
 .home-hero__metric span {
   color: var(--color-on-surface-variant);
   font-size: 0.68rem;
   font-weight: 700;
 }
-
 .home-hero__metric--top {
   inset-block-start: -0.75rem;
   inset-inline-start: -0.75rem;
 }
-
 .home-hero__metric--bottom {
   inset-block-end: -0.85rem;
   inset-inline-end: -0.85rem;
 }
-
 @media (min-width: 768px) {
   .home-hero__trust { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
-
 @media (min-width: 960px) {
   .home-hero__content { grid-template-columns: 0.9fr 1.1fr; }
 }
-
 @media (max-width: 767px) {
   .home-hero { padding-block-start: 2rem; }
   .home-hero__text-side { justify-items: center; text-align: center; }

@@ -4,16 +4,16 @@
         <div class="page-consultation__grid">
             <div class="page-consultation__info">
                 <span class="page-consultation__eyebrow">
-                    <?php echo $locale === 'ar' ? 'استشارة مجانية · 45 دقيقة' : 'Free · 45 min'; ?>
+                    <?php echo $locale === 'ar' ? 'Ø§Ø³ØªØ´Ø§Ø±Ø© Ù…Ø¬Ø§Ù†ÙŠØ© Â· 45 Ø¯Ù‚ÙŠÙ‚Ø©' : 'Free Â· 45 min'; ?>
                 </span>
                 <h1 class="page-consultation__title"><?php echo esc_html(st_t('consultation.title')); ?></h1>
                 <p class="page-consultation__subtitle"><?php echo esc_html(st_t('consultation.subtitle')); ?></p>
                 <div class="page-consultation__goals" data-st-consult-goals>
                     <?php foreach ([
-                        ['growth', $locale === 'ar' ? 'نمو الأعمال' : 'Business growth'],
-                        ['automation', $locale === 'ar' ? 'أتمتة' : 'Automation'],
-                        ['ai', $locale === 'ar' ? 'ذكاء اصطناعي' : 'AI'],
-                        ['rebuild', $locale === 'ar' ? 'إعادة بناء' : 'Rebuild'],
+                        ['growth', $locale === 'ar' ? 'Ù†Ù…Ùˆ Ø§Ù„Ø£Ø¹Ù…Ø§Ù„' : 'Business growth'],
+                        ['automation', $locale === 'ar' ? 'Ø£ØªÙ…ØªØ©' : 'Automation'],
+                        ['ai', $locale === 'ar' ? 'Ø°ÙƒØ§Ø¡ Ø§ØµØ·Ù†Ø§Ø¹ÙŠ' : 'AI'],
+                        ['rebuild', $locale === 'ar' ? 'Ø¥Ø¹Ø§Ø¯Ø© Ø¨Ù†Ø§Ø¡' : 'Rebuild'],
                     ] as [$id, $label]) : ?>
                         <button type="button" data-goal="<?php echo esc_attr($id); ?>" class="page-consultation__goal-chip">
                             <?php echo esc_html($label); ?>
@@ -42,7 +42,7 @@
                         <input name="company" placeholder="<?php echo esc_attr(st_t('contact.company')); ?>" class="form-control">
                     </div>
                     <div class="form-group">
-                        <textarea required name="message" rows="4" placeholder="<?php echo $locale === 'ar' ? 'ما الذي تريد مناقشته؟' : 'What to discuss?'; ?>" class="form-control"></textarea>
+                        <textarea required name="message" rows="4" placeholder="<?php echo $locale === 'ar' ? 'Ù…Ø§ Ø§Ù„Ø°ÙŠ ØªØ±ÙŠØ¯ Ù…Ù†Ø§Ù‚Ø´ØªÙ‡ØŸ' : 'What to discuss?'; ?>" class="form-control"></textarea>
                     </div>
                     
                     <button type="submit" class="button button--secondary page-consultation__submit">

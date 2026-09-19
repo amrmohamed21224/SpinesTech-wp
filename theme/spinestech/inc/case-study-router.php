@@ -1,0 +1,147 @@
+<?php
+declare(strict_types=1);
+
+/**
+ * Virtual routing for theme-driven case studies (no WP post required).
+ * URLs like /case-studies/backway/ render single-st_case_study.php directly.
+ */
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+/** @return array<string, list<string>> */
+function st_case_study_virtual_slugs(): array
+{
+    return [
+        'backway' => ['backway', 'backway-logistics', 'logistics'],
+        'merchant' => ['merchant', 'merchant-ecommerce', 'fashion-marketplace'],
+        'propcare' => ['propcare', 'propcare-360', 'property-management'],
+        'lahza' => ['lahza', 'lahza-events', 'event-booking'],
+        'supply-chain-erp' => ['supply-chain-erp'],
+    ];
+}
+
+function st_case_study_canonical_slug(string $slug): ?string
+{
+    $slug = sanitize_title($slug);
+    if ($slug === '') {
+        return null;
+    }
+
+    foreach (st_case_study_virtual_slugs() as $canonical => $aliases) {
+        if (in_array($slug, $aliases, true)) {
+            return $canonical;
+        }
+    }
+
+    return null;
+}
+
+function st_case_study_slug_from_request(): ?string
+{
+    $path = trim((string) parse_url((string) ($_SERVER['REQUEST_URI'] ?? ''), PHP_URL_PATH), '/');
+    $parts = array_values(array_filter(explode('/', $path)));
+
+    if (!empty($parts) && in_array($parts[0], ['ar', 'en'], true)) {
+        array_shift($parts);
+    }
+
+    if (($parts[0] ?? '') !== 'case-studies' || empty($parts[1])) {
+        return null;
+    }
+
+    $slug = sanitize_title((string) $parts[1]);
+
+    return $slug !== '' ? $slug : null;
+}
+
+function st_case_study_virtual_title(string $canonical_slug): string
+{
+    if (function_exists('st_case_study_config') && function_exists('st_case_study_text')) {
+        $cfg = st_case_study_config($canonical_slug);
+        if ($cfg !== null && isset($cfg['title'])) {
+            return (string) st_case_study_text($cfg['title']);
+        }
+    }
+
+    return ucwords(str_replace('-', ' ', $canonical_slug));
+}
+
+function st_case_study_current_slug(): string
+{
+    global $post;
+
+    if ($post instanceof WP_Post && $post->post_name !== '') {
+        return (string) $post->post_name;
+    }
+
+    $queried = get_queried_object();
+    if ($queried instanceof WP_Post && $queried->post_name !== '') {
+        return (string) $queried->post_name;
+    }
+
+    $id = get_the_ID();
+    if ($id > 0) {
+        return (string) get_post_field('post_name', $id);
+    }
+
+    return '';
+}
+
+function st_case_study_render_virtual(string $canonical_slug): void
+{
+    global $wp_query, $post;
+
+    $virtual = new WP_Post((object) [
+        'ID'             => 0,
+        'post_author'    => 1,
+        'post_date'      => current_time('mysql'),
+        'post_date_gmt'  => current_time('mysql', 1),
+        'post_content'   => '',
+        'post_title'     => st_case_study_virtual_title($canonical_slug),
+        'post_excerpt'   => '',
+        'post_status'    => 'publish',
+        'comment_status' => 'closed',
+        'ping_status'    => 'closed',
+        'post_name'      => $canonical_slug,
+        'post_type'      => 'st_case_study',
+        'filter'         => 'raw',
+    ]);
+
+    $post = $virtual;
+    $wp_query->post = $virtual;
+    $wp_query->posts = [$virtual];
+    $wp_query->post_count = 1;
+    $wp_query->found_posts = 1;
+    $wp_query->max_num_pages = 1;
+    $wp_query->is_404 = false;
+    $wp_query->is_singular = true;
+    $wp_query->is_single = true;
+    $wp_query->is_archive = false;
+    $wp_query->is_home = false;
+    $wp_query->queried_object = $virtual;
+    $wp_query->queried_object_id = 0;
+
+    status_header(200);
+
+    include get_template_directory() . '/single-st_case_study.php';
+    exit;
+}
+
+add_action('template_redirect', static function (): void {
+    if (is_admin() || is_singular('st_case_study')) {
+        return;
+    }
+
+    $slug = st_case_study_slug_from_request();
+    if ($slug === null) {
+        return;
+    }
+
+    $canonical = st_case_study_canonical_slug($slug);
+    if ($canonical === null) {
+        return;
+    }
+
+    st_case_study_render_virtual($canonical);
+}, 0);

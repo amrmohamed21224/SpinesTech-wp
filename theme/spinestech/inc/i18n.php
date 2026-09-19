@@ -7,12 +7,27 @@ if (!defined('ABSPATH')) {
 
 function st_locale(): string
 {
+    $path = parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?: '/';
+    $segments = array_values(array_filter(explode('/', trim($path, '/'))));
+    if (isset($segments[0]) && in_array($segments[0], ['ar', 'en'], true)) {
+        return $segments[0];
+    }
+
+    if (isset($_GET['lang']) && in_array($_GET['lang'], ['ar', 'en'], true)) {
+        return $_GET['lang'];
+    }
+
+    if (isset($_COOKIE['st_lang']) && in_array($_COOKIE['st_lang'], ['ar', 'en'], true)) {
+        return $_COOKIE['st_lang'];
+    }
+
     if (function_exists('pll_current_language')) {
         $lang = pll_current_language('slug');
         if (in_array($lang, ['ar', 'en'], true)) {
             return $lang;
         }
     }
+
     return 'ar';
 }
 
@@ -34,11 +49,7 @@ function st_t(string $key): string
 
 function st_url(string $path = '/'): string
 {
-    $path = '/' . ltrim($path, '/');
-    if (function_exists('pll_home_url')) {
-        return trailingslashit(pll_home_url(st_locale())) . ltrim($path, '/');
-    }
-    return home_url($path);
+    return st_localized_url($path, st_locale());
 }
 
 function st_asset(string $rel): string
@@ -49,25 +60,99 @@ function st_asset(string $rel): string
 function st_is_current(string $path): bool
 {
     $path = untrailingslashit($path);
-    $current = untrailingslashit(parse_url((string) ($_SERVER['REQUEST_URI'] ?? ''), PHP_URL_PATH) ?: '');
+    $current = untrailingslashit(st_strip_lang_prefix(parse_url((string) ($_SERVER['REQUEST_URI'] ?? ''), PHP_URL_PATH) ?: ''));
     if ($path === '' || $path === '/') {
         return $current === '' || $current === '/' || is_front_page();
     }
     return str_ends_with($current, $path);
 }
 
+function st_lang_url(string $lang): string
+{
+    $lang = in_array($lang, ['ar', 'en'], true) ? $lang : 'ar';
+    return st_localized_url(st_current_canonical_path(), $lang);
+}
+
 function st_lang_switch_url(): string
 {
     $target = st_locale() === 'ar' ? 'en' : 'ar';
-    if (function_exists('pll_the_languages')) {
-        $langs = pll_the_languages(['raw' => 1]);
-        if (is_array($langs)) {
-            foreach ($langs as $lang) {
-                if (($lang['slug'] ?? '') === $target && !empty($lang['url'])) {
-                    return $lang['url'];
-                }
-            }
+    $current = parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?: '/';
+    $query = parse_url((string) ($_SERVER['REQUEST_URI'] ?? ''), PHP_URL_QUERY);
+    $clean_path = st_strip_lang_prefix($current);
+    $url = st_localized_url($clean_path, $target);
+    if ($query) {
+        parse_str($query, $params);
+        unset($params['lang']);
+        if ($params) {
+            $url .= '?' . http_build_query($params);
         }
     }
-    return home_url('/?lang=' . $target);
+    return $url;
+}
+
+function st_strip_lang_prefix(string $path): string
+{
+    $path = '/' . ltrim($path, '/');
+    if (preg_match('#^/(ar|en)(/.*)?$#', $path, $matches)) {
+        return $matches[2] ?? '/';
+    }
+    return $path;
+}
+
+function st_localized_url(string $path = '/', ?string $locale = null): string
+{
+    $locale = in_array($locale, ['ar', 'en'], true) ? $locale : st_locale();
+    $path = st_strip_lang_prefix($path);
+    $parts = parse_url($path);
+    $clean_path = '/' . ltrim((string) ($parts['path'] ?? '/'), '/');
+    $clean_path = $clean_path === '//' ? '/' : $clean_path;
+
+    if (function_exists('pll_home_url')) {
+        $url = trailingslashit((string) pll_home_url($locale)) . ltrim($clean_path, '/');
+    } else {
+        $url = home_url('/' . $locale . ($clean_path === '/' ? '/' : trailingslashit($clean_path)));
+    }
+
+    if (!empty($parts['query'])) {
+        $url .= '?' . $parts['query'];
+    }
+    return $url;
+}
+
+function st_current_canonical_path(): string
+{
+    return st_strip_lang_prefix(parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?: '/');
+}
+
+function st_localize_internal_url(string $url, ?string $locale = null): string
+{
+    if ($url === '' || is_admin()) {
+        return $url;
+    }
+
+    $home_host = parse_url(home_url('/'), PHP_URL_HOST);
+    $url_host = parse_url($url, PHP_URL_HOST);
+    if ($url_host && $home_host && strtolower((string) $url_host) !== strtolower((string) $home_host)) {
+        return $url;
+    }
+
+    $path = parse_url($url, PHP_URL_PATH) ?: '/';
+    if (preg_match('#^/(ar|en|wp-admin|wp-login\.php|wp-json|wp-content|wp-includes)(/|$)#', $path)) {
+        return $url;
+    }
+
+    if (preg_match('#\.[a-z0-9]{2,5}$#i', $path)) {
+        return $url;
+    }
+
+    $query = parse_url($url, PHP_URL_QUERY);
+    $fragment = parse_url($url, PHP_URL_FRAGMENT);
+    $localized = st_localized_url($path, $locale ?: st_locale());
+    if ($query) {
+        $localized .= '?' . $query;
+    }
+    if ($fragment) {
+        $localized .= '#' . $fragment;
+    }
+    return $localized;
 }

@@ -1,0 +1,315 @@
+/* =============================================================
+   NAVBAR THEMES — page-adaptive bar styling
+   Default dark bar lives in main.css (inlined navbar.css).
+   Light / brand themes activate via body classes from
+   inc/navbar-theme.php + --stn-page-accent* inline tokens.
+   ============================================================= */
+
+body.navbar-theme-light {
+    --stn-bar-bg: rgba(255, 255, 255, 0.58);
+    --stn-bar-bg-scrolled: rgba(255, 255, 255, 0.94);
+    --stn-bar-shadow: 0 1px 0 rgba(15, 23, 42, 0.05);
+    --stn-bar-shadow-scrolled: 0 12px 36px rgba(15, 23, 42, 0.08);
+    --stn-bar-text: #1b1c19;
+    --stn-bar-text-muted: rgba(27, 28, 25, 0.62);
+    --stn-bar-line: rgba(15, 23, 42, 0.09);
+    --stn-brand: var(--stn-page-accent, #036d36);
+    --stn-brand-bright: var(--stn-page-accent-bright, #0f9a52);
+    --stn-brand-soft: var(--stn-page-accent-soft, rgba(3, 109, 54, 0.11));
+    --stn-brand-glow: var(--stn-page-accent-glow, rgba(3, 109, 54, 0.26));
+}
+
+/* ── Bar shell ──────────────────────────────────────────────── */
+
+body.navbar-theme-light .navbar {
+    color: var(--stn-bar-text);
+    background: var(--stn-bar-bg);
+    backdrop-filter: blur(20px) saturate(1.35);
+    -webkit-backdrop-filter: blur(20px) saturate(1.35);
+    box-shadow: var(--stn-bar-shadow);
+    border-block-end: 1px solid var(--stn-bar-line);
+}
+
+body.navbar-theme-light .navbar.is-scrolled {
+    background: var(--stn-bar-bg-scrolled);
+    box-shadow: var(--stn-bar-shadow-scrolled);
+}
+
+body.navbar-theme-light .navbar__brand-word {
+    color: var(--stn-bar-text);
+}
+
+body.navbar-theme-light .navbar__brand-mark::after {
+    background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.85), transparent);
+    mix-blend-mode: soft-light;
+}
+
+/* ── Nav links ────────────────────────────────────────────── */
+
+body.navbar-theme-light .navbar__item:not(:first-child)::before {
+    background: var(--stn-bar-line);
+}
+
+body.navbar-theme-light .navbar__link {
+    color: var(--stn-bar-text-muted);
+}
+
+body.navbar-theme-light .navbar__link-icon {
+    color: color-mix(in srgb, var(--stn-brand) 72%, #fff);
+}
+
+body.navbar-theme-light .navbar__link:hover,
+body.navbar-theme-light .navbar__link--active {
+    color: var(--stn-bar-text);
+}
+
+body.navbar-theme-light .navbar__link:hover .navbar__link-icon,
+body.navbar-theme-light .navbar__link--active .navbar__link-icon {
+    color: var(--stn-brand);
+}
+
+body.navbar-theme-light .navbar__link::after {
+    background: linear-gradient(90deg, var(--stn-brand), var(--stn-brand-bright));
+}
+
+/* ── Actions ──────────────────────────────────────────────── */
+
+body.navbar-theme-light .navbar__lang {
+    color: var(--stn-bar-text-muted);
+    border-color: var(--stn-bar-line);
+}
+
+body.navbar-theme-light .navbar__lang:hover {
+    color: var(--stn-brand);
+    border-color: color-mix(in srgb, var(--stn-brand) 38%, transparent);
+    background: var(--stn-brand-soft);
+}
+
+body.navbar-theme-light .navbar__cta {
+    color: #fff;
+    background: linear-gradient(135deg, var(--stn-brand-bright), var(--stn-brand));
+    box-shadow: 0 10px 26px var(--stn-brand-glow), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+body.navbar-theme-light .navbar__cta:hover {
+    box-shadow: 0 14px 32px color-mix(in srgb, var(--stn-brand-glow) 85%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+body.navbar-theme-light .navbar__burger {
+    border-color: var(--stn-bar-line);
+}
+
+body.navbar-theme-light .navbar__burger-line {
+    background: var(--stn-bar-text);
+}
+
+body.navbar-theme-light .navbar__burger:hover {
+    border-color: color-mix(in srgb, var(--stn-brand) 34%, transparent);
+    background: var(--stn-brand-soft);
+}
+
+/* ── Spine progress ───────────────────────────────────────── */
+
+body.navbar-theme-light .navbar__spine {
+    background-image: repeating-linear-gradient(
+        90deg,
+        rgba(15, 23, 42, 0.07) 0,
+        rgba(15, 23, 42, 0.07) 5px,
+        transparent 5px,
+        transparent 13px
+    );
+}
+
+body.navbar-theme-light .navbar__spine-progress {
+    background: linear-gradient(90deg, var(--stn-brand), var(--stn-brand-bright));
+    box-shadow: 0 0 10px 1px color-mix(in srgb, var(--stn-brand) 42%, transparent);
+}
+
+/* ── Mobile drawer (matches light page) ───────────────────── */
+
+body.navbar-theme-light .drawer-overlay {
+    background: rgba(15, 23, 42, 0.32);
+}
+
+body.navbar-theme-light .drawer {
+    color: var(--stn-bar-text);
+    background: linear-gradient(168deg, #ffffff 0%, #f6f8fa 58%, #eef2f6 100%);
+    box-shadow: 0 0 72px rgba(15, 23, 42, 0.14);
+}
+
+body.navbar-theme-light .drawer__spine {
+    border-inline-color: var(--stn-bar-line);
+}
+
+body.navbar-theme-light .drawer__spine-tick {
+    background: var(--stn-bar-line);
+}
+
+body.navbar-theme-light .drawer.is-open .drawer__spine-tick {
+    animation-name: stn-tick-in-light;
+}
+
+@keyframes stn-tick-in-light {
+    to {
+        opacity: 1;
+        transform: scale(1);
+        background: var(--stn-brand);
+        box-shadow: 0 0 8px 1px color-mix(in srgb, var(--stn-brand) 55%, transparent);
+    }
+}
+
+body.navbar-theme-light .drawer__head {
+    border-block-end-color: var(--stn-bar-line);
+}
+
+body.navbar-theme-light .drawer__link {
+    border-block-end-color: var(--stn-bar-line);
+}
+
+body.navbar-theme-light .drawer__close {
+    color: var(--stn-bar-text-muted);
+    border-color: var(--stn-bar-line);
+}
+
+body.navbar-theme-light .drawer__close:hover {
+    color: var(--stn-brand);
+    border-color: color-mix(in srgb, var(--stn-brand) 34%, transparent);
+    background: var(--stn-brand-soft);
+}
+
+body.navbar-theme-light .drawer__link {
+    color: var(--stn-bar-text-muted);
+}
+
+body.navbar-theme-light .drawer__link-icon {
+    color: color-mix(in srgb, var(--stn-brand) 70%, #fff);
+}
+
+body.navbar-theme-light .drawer__link:hover,
+body.navbar-theme-light .drawer__link--active {
+    color: var(--stn-bar-text);
+    background: var(--stn-brand-soft);
+}
+
+body.navbar-theme-light .drawer__link--active .drawer__link-icon,
+body.navbar-theme-light .drawer__link:hover .drawer__link-icon {
+    color: var(--stn-brand);
+}
+
+body.navbar-theme-light .drawer__cta {
+    color: #fff;
+    background: linear-gradient(135deg, var(--stn-brand-bright), var(--stn-brand));
+    box-shadow: 0 12px 28px var(--stn-brand-glow);
+}
+
+body.navbar-theme-light .drawer__lang {
+    color: var(--stn-bar-text-muted);
+    border-color: var(--stn-bar-line);
+}
+
+body.navbar-theme-light .drawer__lang:hover {
+    color: var(--stn-brand);
+    border-color: color-mix(in srgb, var(--stn-brand) 34%, transparent);
+    background: var(--stn-brand-soft);
+}
+
+/* ── Brand-specific polish ──────────────────────────────────── */
+
+body.navbar-brand-backway.navbar-theme-light .navbar {
+    --stn-bar-bg: rgba(255, 252, 248, 0.68);
+}
+
+body.navbar-brand-merchant.navbar-theme-light .navbar__brand-word {
+    letter-spacing: 0.015em;
+}
+
+body.navbar-brand-propcare.navbar-theme-light .navbar__cta,
+body.navbar-brand-lahza.navbar-theme-light .navbar__cta {
+    border-radius: 0.75rem;
+}
+
+/* ── Case study heroes: fixed navbar clearance (no negative pull-up) ── */
+
+:root {
+    /* Matches .navbar__inner min-height — not the inflated --navbar-height token. */
+    --st-navbar-clearance: 5.125rem;
+}
+
+/* PropCare — does not depend on body.navbar-theme-light (works even if classes fail). */
+main.pc > .pc__hero:first-child,
+#hero.pc__hero {
+    margin-block-start: 0 !important;
+    padding-top: calc(var(--navbar-height, var(--st-navbar-clearance)) + clamp(2.75rem, 5vw, 4rem)) !important;
+    scroll-margin-top: calc(var(--navbar-height, var(--st-navbar-clearance)) + 0.5rem);
+}
+
+body.navbar-theme-light .cs-page .cs-hero,
+body.navbar-theme-light .mcs__hero,
+body.navbar-theme-light .pc__hero,
+body.navbar-theme-light .lh__hero {
+    margin-block-start: 0 !important;
+    padding-block-start: calc(var(--navbar-height, var(--st-navbar-clearance)) + clamp(2rem, 5vw, 3.5rem)) !important;
+    scroll-margin-top: calc(var(--navbar-height, var(--st-navbar-clearance)) + 0.5rem);
+}
+
+body.navbar-brand-propcare.navbar-theme-light .pc__hero {
+    background:
+        radial-gradient(ellipse 80% 55% at 18% 0%, rgba(134, 210, 253, 0.34) 0%, transparent 58%),
+        radial-gradient(ellipse 60% 45% at 88% 8%, rgba(0, 102, 138, 0.1) 0%, transparent 52%),
+        linear-gradient(180deg, #eef6fc 0%, var(--pc-bg, #f9f9fe) 42%, var(--pc-bg, #f9f9fe) 100%);
+}
+
+body.navbar-brand-propcare.navbar-theme-light .pc__hero-inner {
+    align-items: start;
+}
+
+body.navbar-brand-propcare.navbar-theme-light .pc__hero-content {
+    padding-block-start: clamp(0.35rem, 1.2vw, 0.85rem);
+}
+
+body.navbar-brand-propcare.navbar-theme-light .pc__hero-visual {
+    padding-block-start: clamp(0.25rem, 1vw, 0.75rem);
+}
+
+@media (max-width: 767px) {
+    main.pc > .pc__hero:first-child,
+    #hero.pc__hero {
+        padding-top: calc(var(--navbar-height, var(--st-navbar-clearance)) + 1.75rem) !important;
+    }
+
+    body.navbar-theme-light .cs-page .cs-hero,
+    body.navbar-theme-light .mcs__hero,
+    body.navbar-theme-light .pc__hero,
+    body.navbar-theme-light .lh__hero {
+        padding-block-start: calc(var(--navbar-height, var(--st-navbar-clearance)) + clamp(1.25rem, 4vw, 2rem)) !important;
+    }
+
+    body.navbar-brand-propcare.navbar-theme-light .pc__hero-inner {
+        gap: 2rem;
+    }
+
+    body.navbar-brand-propcare.navbar-theme-light .pc__hero-content {
+        padding-block-start: 0;
+    }
+
+    body.navbar-theme-light .mcs__hero-inner {
+        gap: 1.75rem;
+    }
+
+    body.navbar-theme-light .mcs__hero-visual {
+        height: clamp(250px, 58vw, 310px);
+        margin-block-start: 0.25rem;
+    }
+
+    body.navbar-theme-light .lh__hero-inner {
+        gap: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body.navbar-theme-light .cs-page .cs-hero__badge,
+    body.navbar-theme-light .mcs__badge,
+    body.navbar-theme-light .pc__badge {
+        margin-block-start: 0;
+    }
+}

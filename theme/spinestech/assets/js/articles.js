@@ -1,6 +1,20 @@
 /**
  * SpinesTech Articles — shared animation script
  * Used by: page-articles.php (hero shader) and single.php (reading progress)
+ *
+ * FIXES in this version:
+ * - Canvas backing-store size (canvas.width/height) was being reassigned on
+ *   EVERY animation frame regardless of whether it changed. Setting
+ *   canvas.width/height forces the browser to reset and fully clear the
+ *   WebGL drawing buffer, which is an expensive layout/paint operation.
+ *   Doing this 60 times per second was the direct cause of the scroll
+ *   jank/freeze reported — the browser was fighting between "compose
+ *   scroll" and "reset+repaint canvas" on every single frame, even while
+ *   the hero was scrolled far out of view.
+ * - The shader's requestAnimationFrame loop now pauses automatically once
+ *   the hero section scrolls out of the viewport (IntersectionObserver),
+ *   and resumes only when it's visible again. This removes ~all animation
+ *   cost while reading the rest of the article.
  */
 (function () {
     'use strict';
@@ -89,44 +103,134 @@
         var mouseLoc = gl.getUniformLocation(program, 'u_mouse');
 
         var mouseX = 0, mouseY = 0;
-        window.addEventListener('mousemove', function (e) {
+        canvas.addEventListener('mousemove', function (e) {
             var rect = canvas.getBoundingClientRect();
             mouseX = e.clientX - rect.left;
             mouseY = rect.height - (e.clientY - rect.top);
         });
 
+        // FIX: only touch canvas.width/height when the CSS size actually
+        // changed (e.g. on real resize), instead of every single frame.
+        function syncSize() {
+            var w = canvas.clientWidth || 1;
+            var h = canvas.clientHeight || 1;
+            if (canvas.width !== w || canvas.height !== h) {
+                canvas.width = w;
+                canvas.height = h;
+            }
+        }
+
+        if (typeof ResizeObserver !== 'undefined') {
+            new ResizeObserver(syncSize).observe(canvas);
+        } else {
+            window.addEventListener('resize', syncSize, { passive: true });
+        }
+        syncSize();
+
+        // FIX: pause the animation loop entirely while the hero is scrolled
+        // out of view, instead of running requestAnimationFrame forever on
+        // every page (including the whole time the reader is scrolling
+        // through the article body far below the hero).
+        var isRunning = false;
+        var rafId = null;
+
         function render(t) {
-            canvas.width = canvas.clientWidth;
-            canvas.height = canvas.clientHeight;
             gl.viewport(0, 0, canvas.width, canvas.height);
             gl.uniform1f(timeLoc, t * 0.001);
             gl.uniform2f(resLoc, canvas.width, canvas.height);
             gl.uniform2f(mouseLoc, mouseX, mouseY);
             gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-            requestAnimationFrame(render);
+            if (isRunning) {
+                rafId = requestAnimationFrame(render);
+            }
         }
-        requestAnimationFrame(render);
+
+        function start() {
+            if (isRunning) return;
+            isRunning = true;
+            rafId = requestAnimationFrame(render);
+        }
+
+        function stop() {
+            isRunning = false;
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+        }
+
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        start();
+                    } else {
+                        stop();
+                    }
+                });
+            }, { threshold: 0.01 });
+            io.observe(canvas);
+        } else {
+            // No IntersectionObserver support: just run continuously (old behavior)
+            start();
+        }
     }
 
     /* ─────────────────────────────
        2. SCROLL REVEAL
     ───────────────────────────── */
     function initReveal() {
-        var els = document.querySelectorAll('.reveal');
-        if (!els.length) return;
-        if (!('IntersectionObserver' in window)) {
-            els.forEach(function (el) { el.classList.add('reveal--visible'); });
+        var singleRoot = document.querySelector('.single-art');
+        var artRoot = document.querySelector('.art-page');
+        var roots = singleRoot ? [singleRoot] : artRoot ? [artRoot] : [];
+        if (!roots.length) return;
+
+        function markVisible(el) {
+            el.classList.add('reveal--visible');
+        }
+
+        function revealAll(root) {
+            root.querySelectorAll('.reveal').forEach(markVisible);
+        }
+
+        function revealInView(root) {
+            root.querySelectorAll('.reveal').forEach(function (el) {
+                var rect = el.getBoundingClientRect();
+                if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                    markVisible(el);
+                }
+            });
+        }
+
+        document.documentElement.classList.add('art-js-ready');
+
+        /* Reading view: never hide the article behind scroll-reveal. */
+        if (singleRoot) {
+            revealAll(singleRoot);
             return;
         }
+
+        var els = artRoot.querySelectorAll('.reveal');
+        if (!els.length) return;
+
+        if (!('IntersectionObserver' in window)) {
+            els.forEach(markVisible);
+            return;
+        }
+
         var observer = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal--visible');
+                    markVisible(entry.target);
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-        els.forEach(function (el) { observer.observe(el); });
+        }, { threshold: 0, rootMargin: '50px 0px 150px 0px' });
+
+        els.forEach(function (el) {
+            observer.observe(el);
+        });
+        revealInView(artRoot);
     }
 
     /* ─────────────────────────────
@@ -135,20 +239,103 @@
     function initReadingProgress() {
         var bar = document.getElementById('art-progress-bar');
         if (!bar) return;
-        window.addEventListener('scroll', function () {
+        var ticking = false;
+        function update() {
             var scrollTop = window.scrollY || document.documentElement.scrollTop;
             var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
             bar.style.width = pct + '%';
+            ticking = false;
+        }
+        window.addEventListener('scroll', function () {
+            if (!ticking) {
+                requestAnimationFrame(update);
+                ticking = true;
+            }
         }, { passive: true });
+    }
+
+    /* ─────────────────────────────
+       4. SHARE BUTTONS
+    ───────────────────────────── */
+    function initShareButtons() {
+
+        var toast      = document.getElementById('sa-copy-toast');
+        var toastTimer = null;
+
+        /* ── Toast helper ── */
+        function showToast() {
+            if (!toast) return;
+            clearTimeout(toastTimer);
+            toast.classList.add('is-visible');
+            toastTimer = setTimeout(function () {
+                toast.classList.remove('is-visible');
+            }, 2500);
+        }
+
+        /* ── Copy feedback helper ── */
+        var copyIcon = document.getElementById('sa-copy-icon');
+        function onCopied() {
+            if (copyIcon) { copyIcon.textContent = 'check'; }
+            showToast();
+            setTimeout(function () {
+                if (copyIcon) { copyIcon.textContent = 'content_copy'; }
+            }, 2500);
+        }
+
+        /* ── Button 1: Native Web Share ── */
+        var nativeBtn = document.getElementById('sa-share-native');
+        if (nativeBtn) {
+            if (!navigator.share) {
+                nativeBtn.style.display = 'none';
+            } else {
+                nativeBtn.addEventListener('click', function () {
+                    navigator.share({
+                        title: nativeBtn.getAttribute('data-share-title') || document.title,
+                        url:   nativeBtn.getAttribute('data-share-url')   || location.href
+                    })['catch'](function () { /* user cancelled */ });
+                });
+            }
+        }
+
+        /* ── Button 2: Copy link ── */
+        var copyBtn = document.getElementById('sa-share-copy');
+        if (copyBtn) {
+            copyBtn.addEventListener('click', function () {
+                var url = copyBtn.getAttribute('data-copy-url') || location.href;
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(url).then(onCopied)['catch'](onCopied);
+                } else {
+                    /* Legacy fallback — create off-screen textarea */
+                    var ta = document.createElement('textarea');
+                    ta.value = url;
+                    ta.setAttribute('readonly', '');
+                    ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
+                    document.body.appendChild(ta);
+                    ta.focus();
+                    ta.select();
+                    try { document.execCommand('copy'); } catch (e) { /* silent */ }
+                    document.body.removeChild(ta);
+                    onCopied();
+                }
+            });
+        }
     }
 
     /* ─────────────────────────────
        INIT
     ───────────────────────────── */
-    document.addEventListener('DOMContentLoaded', function () {
+    function bootArticlesPage() {
         initShader('art-shader-canvas');
         initReveal();
         initReadingProgress();
-    });
+        initShareButtons();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bootArticlesPage);
+    } else {
+        bootArticlesPage();
+    }
 })();
+

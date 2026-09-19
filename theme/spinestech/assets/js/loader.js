@@ -13,10 +13,13 @@
 
     var fill = document.getElementById('st-loader-fill');
     var html = document.documentElement;
+    var isMobile = !!(window.stTheme && window.stTheme.isMobile)
+        || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent || '');
 
-    var MIN_VISIBLE_MS = 550;   // avoids an unpleasant "blink" on very fast cached loads
-    var SAFETY_TIMEOUT_MS = 6000; // hard ceiling — never trap the user behind the loader
-    var EXIT_DURATION_MS = 750; // must match the CSS animation duration in loader.php
+    // Mobile: shorter floor so interaction isn't delayed for decoration.
+    var MIN_VISIBLE_MS = isMobile ? 180 : 550;
+    var SAFETY_TIMEOUT_MS = isMobile ? 3500 : 6000;
+    var EXIT_DURATION_MS = isMobile ? 320 : 750;
 
     var startedAt = Date.now();
     var exited = false;
@@ -25,7 +28,6 @@
         if (exited) return;
         exited = true;
 
-        // Snap the progress bar to 100% and stop the indeterminate sweep
         if (fill) {
             fill.classList.remove('is-indeterminate');
             fill.style.width = '100%';
@@ -46,15 +48,11 @@
         }, remaining);
     }
 
-    // Real signal: the page (including images/fonts/subframes) has finished loading.
     if (document.readyState === 'complete') {
         runExit();
     } else {
         window.addEventListener('load', runExit, { once: true });
     }
 
-    // Safety net only — not a fake timer driving normal behavior, just a
-    // ceiling so a single slow/hanging resource can never trap the user
-    // behind a full-screen overlay indefinitely.
     window.setTimeout(runExit, SAFETY_TIMEOUT_MS);
 })();

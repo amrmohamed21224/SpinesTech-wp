@@ -12,8 +12,8 @@
                 <h1 class="text-headline-xl font-bold text-primary my-4"><?php the_title(); ?></h1>
                 <p class="text-body-lg text-on-surface-variant mb-8"><?php echo esc_html(get_the_excerpt()); ?></p>
                 <div class="prose max-w-none mb-8"><?php the_content(); ?></div>
-                <?php if ($reqs) : ?><h2 class="font-bold text-primary mb-4"><?php echo st_locale() === 'ar' ? 'المتطلبات' : 'Requirements'; ?></h2><ul class="list-disc ps-6 space-y-2 mb-8"><?php foreach ($reqs as $r) : ?><li><?php echo esc_html($r); ?></li><?php endforeach; ?></ul><?php endif; ?>
-                <?php if ($benefits) : ?><h2 class="font-bold text-primary mb-4"><?php echo st_locale() === 'ar' ? 'المميزات' : 'Benefits'; ?></h2><ul class="list-disc ps-6 space-y-2"><?php foreach ($benefits as $b) : ?><li><?php echo esc_html($b); ?></li><?php endforeach; ?></ul><?php endif; ?>
+                <?php if ($reqs) : ?><h2 class="font-bold text-primary mb-4"><?php echo st_locale() === 'ar' ? 'Ø§Ù„Ù…ØªØ·Ù„Ø¨Ø§Øª' : 'Requirements'; ?></h2><ul class="list-disc ps-6 space-y-2 mb-8"><?php foreach ($reqs as $r) : ?><li><?php echo esc_html($r); ?></li><?php endforeach; ?></ul><?php endif; ?>
+                <?php if ($benefits) : ?><h2 class="font-bold text-primary mb-4"><?php echo st_locale() === 'ar' ? 'Ø§Ù„Ù…Ù…ÙŠØ²Ø§Øª' : 'Benefits'; ?></h2><ul class="list-disc ps-6 space-y-2"><?php foreach ($benefits as $b) : ?><li><?php echo esc_html($b); ?></li><?php endforeach; ?></ul><?php endif; ?>
             </div>
             <aside class="p-8 bg-surface-container-low rounded-2xl border border-outline-variant/20 h-fit sticky top-28">
                 <ul class="space-y-3 text-sm text-on-surface-variant mb-6">

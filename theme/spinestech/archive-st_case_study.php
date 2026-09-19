@@ -3,10 +3,27 @@
  * Archive: Case Studies
  * File: archive-st_case_study.php
  *
- * Images sourced directly from the Figma/design reference provided.
+ * Sourced directly from Figma/design references provided.
+ * Uses .cs2- BEM classes matching assets/css/pages/case-studies.css
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+// ── SEO Meta ─────────────────────────────────────────────────────────
+add_filter( 'pre_get_document_title', function () {
+    $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
+    return $is_rtl
+        ? 'دراسات الحالة | SpinesTech — منتجات رقمية مكتملة التشغيل'
+        : 'Case Studies | SpinesTech — Operational Digital Products Delivered';
+}, 999 );
+
+add_action( 'wp_head', function () {
+    $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
+    st_seo_set_description( $is_rtl
+        ? 'استعرض دراسات الحالة لمشاريع SpinesTech: Backway للخدمات اللوجستية، Merchant للتجارة الإلكترونية، PropCare 360 لإدارة الأملاك، ولحظة لحجز المناسبات.'
+        : 'Explore SpinesTech case studies: Backway logistics, Merchant e-commerce, PropCare 360 property management, and Lahza event booking platform.' );
+}, 3 );
+// ─────────────────────────────────────────────────────────────────────
 
 get_header();
 
@@ -23,7 +40,7 @@ $img_customer = 'https://lh3.googleusercontent.com/aida-public/AB6AXuDB5Y6kRQAdm
 $img_driver   = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAYCW5elAr01gMuFCBHXJCBR7NL9QIXHzPv52hcY1ilDU0BJVlqJAyqD6UvjpFaM2JerCfmT84GdVkRGms8x8OKZ2tw5gYjoa2plSF0baV0W8uUk_PnLUUqU1ruBGRX6dObH0z9UM5JZRrS1N_MIJCHzlineojb17xWUgnVtZymIRrh0Ffi4NTcJhqEsBPjDp4wg2isezRurNcitB8YHrf_KNRhg0q0hVd0QlH6aHiN3AJnI2HMTxzxf0uKmn6_eqLjvDMPoCLvbA';
 $img_admin    = 'https://lh3.googleusercontent.com/aida-public/AB6AXuD9RriQyjPxTAA3N3nsT26UVJ5GFTcarodgRn7023DfVab8iJfkpDgp_sSYN9jk8kgnpxoZWInqZZU1xyWb2J1M8ENYDMy3i7uW4-4QhDyYDpIYZuy0HdM4TLpzF7a6wEN_Fq-5ksPOxjmy90OLoraEuPK5Z3guXGCtV-ywf5tPzKRtERml3lwzA_LappMAWYJPGFX9CyCH_E4LxJTa9euvfsSawsP2xaKVpnRT_WxZzygSeXrBtmwNrCt1TevBZY-Bcv5DjMt8IQ';
 
-/* Merchant case study images (sourced from its design reference) */
+/* Merchant case study images */
 $img_merchant_dashboard = 'https://lh3.googleusercontent.com/aida-public/AB6AXuABmSjnknukfQY09JZuMi2mL3oAbDAke0MlpdALUVH3u_uXeUAaa4wNzthZrZ_Jmzh8puKmSMc0CBR02jG9JIrQhgrAtG3kzKfw676mUV2hgLQ8P9BiYuMOTWxPd434XcUZP56Ppfzu8CB4rKyl_YzBJFstCKOeW5ASsoJnKP8KmyF6gvx6Jj-5RIQoNRj_QoT81Xs12cz9nz8nZVAg5RLGFknr5-L2oKf9MWuQxck3hNF2bNwRT5bx2yvZKUwI3J88TEhiDyNr-iQ';
 $img_merchant_product   = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAyZsqol7z9Ue9KH2KG2lvLCSjMoe_anP1DrV1ZdmINtekEzJ3M_fsf0XOJLy7A2DlvEfE0s0y0QDU0OLN5LssS_St26d1y__bnTQ4aTETy1b4h29iV-P7HBBBjZ2wKjIekiuUCBkgL81ASDcX2omfAX0p80gikMhb5dkfJPFN7IWKbt1XJXJ11EXAy7aEgTdcZOMorCC7x434nb7NYxdfUUPo9_k-3jk6_5v9SWoFEy6b4wYhatLtMFtGkvCaNMPlkkT4jgwatWow';
 
@@ -33,14 +50,30 @@ $img_merchant_product   = 'https://lh3.googleusercontent.com/aida-public/AB6AXuA
 ───────────────────────────────────────────── */
 $resolve_case_url = static function ( array $slugs ): string {
     foreach ( $slugs as $slug ) {
-        $post = get_page_by_path( $slug, OBJECT, 'st_case_study' );
-        if ( $post instanceof WP_Post ) {
-            return (string) get_permalink( $post );
+        if ( function_exists( 'st_case_study_url_by_slug' ) ) {
+            return st_case_study_url_by_slug( $slug );
         }
     }
-    return (string) get_post_type_archive_link( 'st_case_study' );
+
+    static $base = null;
+    if ( $base === null ) {
+        $base = trailingslashit( (string) get_post_type_archive_link( 'st_case_study' ) );
+    }
+
+    return $base;
 };
 
+/* Helper: derive a short monospace "file reference" from a client name */
+$file_ref = static function ( string $title, int $index ): string {
+    $words = preg_split( '/\s+/', trim( $title ) );
+    $letters = '';
+    foreach ( $words as $w ) {
+        $letters .= mb_strtoupper( mb_substr( $w, 0, 1 ) );
+        if ( mb_strlen( $letters ) >= 2 ) break;
+    }
+    if ( $letters === '' ) $letters = 'SP';
+    return $letters . '–' . str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT );
+};
 
 /* ─────────────────────────────────────────────
    DATA
@@ -48,7 +81,7 @@ $resolve_case_url = static function ( array $slugs ): string {
 $featured = [
     [
         'title'       => 'Backway Logistics',
-        'title_ar'    => 'Backway للحلول اللوجستية',
+        'title_ar'    => 'باكواي للحلول اللوجستية',
         'kicker'      => '01 / Logistics and delivery',
         'kicker_ar'   => '01 / الخدمات اللوجستية والشحن',
         'headline'    => 'Building the future of last-mile delivery',
@@ -59,7 +92,8 @@ $featured = [
         'scope'       => 'iOS, Android, Web App',
         'scope_ar'    => 'iOS, Android, تطبيق ويب',
         'tag'         => $is_rtl ? 'منصة تشغيل' : 'Operations Platform',
-        'image'       => $img_map,      /* Live route dashboard screenshot */
+        'image'       => st_asset( 'images/case-studies/backway/card-opt.jpg' ),
+        'style'       => 'photo',
         'slugs'       => [ 'backway-logistics', 'backway', 'supply-chain-erp', 'logistics' ],
     ],
     [
@@ -78,7 +112,6 @@ $featured = [
         'image'       => st_asset( 'images/case-studies/merchant/card-veo.jpg' ),
         'style'       => 'photo',
         'slugs'       => [ 'merchant', 'merchant-ecommerce', 'fashion-marketplace' ],
-        'url'         => trailingslashit( (string) get_post_type_archive_link( 'st_case_study' ) ) . 'merchant/',
     ],
     [
         'title'       => 'PropCare 360',
@@ -93,64 +126,80 @@ $featured = [
         'scope'       => 'iOS, Android, Web Dashboard',
         'scope_ar'    => 'iOS, Android, لوحة تحكم ويب',
         'tag'         => $is_rtl ? 'منصة تشغيل' : 'Operations Platform',
-        'image'       => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCmEcMblEGonXBUcWDLYRGAdH3fRDWBbRqMrYq0WU4CtvOiLQ-UXuai4E7h-FrIOL-uF5Hk3gn6ot5LBTeu7eartskzk8CNPBJqm4fobBNAf8dF62xun638hLDwHaGfUnHafkAdwUX_wW3wEkp81kP3jmrNeGNYk4EuDbdKcq1cVKdJ726e-eXyR9ZlfunPFsspTo1JJgb54Y-eWv4ZglmfBuBpz6dA2PsjY9LmVeWxeP4UnZIdcJUd-qMcf9qjrVE1mOBMzjocFEbf',
+        'image'       => st_asset( 'images/case-studies/propcare/screen-card.png' ),
         'style'       => 'photo',
         'slugs'       => [ 'propcare', 'propcare-360', 'property-management' ],
-        'url'         => trailingslashit( (string) get_post_type_archive_link( 'st_case_study' ) ) . 'propcare/',
+    ],
+    [
+        'title'       => 'Lahza',
+        'title_ar'    => 'لحظة',
+        'kicker'      => '04 / Events & Bookings',
+        'kicker_ar'   => '04 / حجز وتنظيم المناسبات',
+        'headline'    => 'A seamless digital platform for booking and managing events',
+        'headline_ar' => 'منصة رقمية متكاملة لحجز وتنظيم المناسبات',
+        'summary'     => 'A refined digital experience connecting customers with the best event service providers in the Kingdom, with full booking and payment management.',
+        'summary_ar'  => 'حل رقمي متطور يجمع بين الفخامة والسهولة، صُمم لربط العملاء بأفضل مزودي خدمات المناسبات في المملكة، مع إدارة كاملة لكل تفاصيل الحجز والدفع.',
+        'client'      => $is_rtl ? 'لحظة' : 'Lahza',
+        'scope'       => 'iOS, Android, Web Dashboard',
+        'scope_ar'    => 'iOS, Android, لوحة تحكم ويب',
+        'tag'         => $is_rtl ? 'منصة حجوزات' : 'Booking Platform',
+        'image'       => st_asset( 'images/case-studies/lahza/card-case.png' ),
+        'style'       => 'photo',
+        'slugs'       => [ 'lahza', 'lahza-events', 'event-booking' ],
     ],
 ];
 
 $mobile_cards = [
     [
-        'title' => 'Swift UI',
-        'tag'   => $is_rtl ? 'منتج موبايل' : 'Mobile Product',
-        'image' => $img_phone,    /* Hero phone mockup */
-        'slugs' => [ 'fittrack-pro', 'fittrack', 'customer-service-ai-agent' ],
-    ],
-    [
-        'title' => 'FitTrack Pro',
-        'tag'   => $is_rtl ? 'تتبع صحي' : 'Health Tracking',
-        'image' => $img_driver,   /* Driver app screen */
-        'slugs' => [ 'fittrack-pro', 'fittrack', 'customer-service-ai-agent' ],
+        'title' => 'Merchant',
+        'tag'   => $is_rtl ? 'واجهة المتجر' : 'Storefront UI',
+        'image' => st_asset('images/case-studies/merchant/Wishlist.jpg'),
+        'slugs' => [ 'merchant', 'merchant-ecommerce', 'fashion-marketplace' ],
     ],
     [
         'title' => 'Backway App',
         'tag'   => $is_rtl ? 'سير عمل السائق' : 'Driver Workflow',
-        'image' => $img_customer, /* Customer app screen */
+        'image' => st_asset('images/case-studies/backway/driver-home-page.png'),
         'slugs' => [ 'backway-logistics', 'backway', 'supply-chain-erp' ],
     ],
     [
-        'title' => 'Merchant Kit',
-        'tag'   => $is_rtl ? 'واجهة المتجر' : 'Storefront UI',
-        'image' => $img_merchant_product, /* Product detail screen */
-        'slugs' => [ 'merchant', 'merchant-ecommerce', 'fashion-marketplace' ],
+        'title' => 'PropCare 360',
+        'tag'   => $is_rtl ? 'خدمات الأملاك' : 'Property Services',
+        'image' => st_asset('images/case-studies/propcare/mobile-home.png'),
+        'slugs' => [ 'propcare', 'propcare-360', 'property-management' ],
+    ],
+    [
+        'title' => $is_rtl ? 'لحظة' : 'Lahza',
+        'tag'   => $is_rtl ? 'حجز مناسبات' : 'Event Booking',
+        'image' => st_asset('images/case-studies/lahza/app-home.png'),
+        'slugs' => [ 'lahza', 'lahza-events', 'event-booking' ],
     ],
 ];
 
 $figma_cards = [
     [
-        'title'   => 'Backway Logistics',
+        'title'   => 'PropCare 360',
         'badge'   => 'Precision',
-        'desc'    => 'Complex logistics flows delivered as a polished, high-performance case study.',
-        'desc_ar' => 'مسارات لوجستية معقدة مُسلَّمة كدراسة حالة راقية وعالية الأداء.',
-        'image'   => $img_map,      /* Route map dashboard */
-        'slugs'   => [ 'backway-logistics', 'backway', 'supply-chain-erp' ],
+        'desc'    => 'A complete digital platform for property services and maintenance delivered flawlessly.',
+        'desc_ar' => 'منصة رقمية متكاملة لخدمات الأملاك والصيانة مُسلَّمة بدقة تامة.',
+        'image'   => st_asset('images/case-studies/propcare/screen.png'),
+        'slugs'   => [ 'propcare', 'propcare-360', 'property-management' ],
     ],
     [
         'title'   => 'Merchant',
         'badge'   => 'Figma Approved',
         'desc'    => 'Visual details and interactions preserved from design to implementation.',
         'desc_ar' => 'تفاصيل التصميم والتفاعلات محفوظة من الـ Figma حتى التطبيق الفعلي.',
-        'image'   => $img_merchant_product, /* Product detail screen */
+        'image'   => $img_merchant_product,
         'slugs'   => [ 'merchant', 'merchant-ecommerce', 'fashion-marketplace' ],
     ],
     [
-        'title'   => 'FitTrack Pro',
+        'title'   => $is_rtl ? 'لحظة' : 'Lahza',
         'badge'   => 'UI System',
-        'desc'    => 'A clear mobile interface for tracking activity and turning data into action.',
-        'desc_ar' => 'واجهة موبايل واضحة لتتبع النشاط وتحويل البيانات لقرارات.',
-        'image'   => $img_phone,    /* Phone mockup */
-        'slugs'   => [ 'fittrack-pro', 'fittrack', 'customer-service-ai-agent' ],
+        'desc'    => 'A seamless digital platform for booking and managing events translated pixel-perfectly.',
+        'desc_ar' => 'منصة متكاملة لحجز المناسبات مترجمة للبرمجة بدقة البكسل.',
+        'image'   => st_asset('images/case-studies/lahza/app-services.png'),
+        'slugs'   => [ 'lahza', 'lahza-events', 'event-booking' ],
     ],
 ];
 
@@ -159,200 +208,175 @@ $tech_badges = $is_rtl
     : [ 'Cross-Platform', 'Microservices', 'Enterprise', 'Cloud Native' ];
 
 $tech_stack = [
-    [ 'name' => 'Flutter',    'icon'   => 'https://cdn.simpleicons.org/flutter/025EB9',    'offset' => false ],
-    [ 'name' => 'Node.js',    'icon'   => 'https://cdn.simpleicons.org/nodedotjs/339933',  'offset' => true  ],
-    [ 'name' => 'NestJS',     'icon'   => 'https://cdn.simpleicons.org/nestjs/E0234E',     'offset' => false ],
-    [ 'name' => 'React',      'icon'   => 'https://cdn.simpleicons.org/react/61DAFB',      'offset' => true  ],
-    [ 'name' => 'Swift',      'icon'   => 'https://cdn.simpleicons.org/swift/F05138',      'offset' => false ],
-    [ 'name' => 'K8s',        'icon'   => 'https://cdn.simpleicons.org/kubernetes/326CE5', 'offset' => true  ],
-    [ 'name' => 'Docker',     'icon'   => 'https://cdn.simpleicons.org/docker/2496ED',     'offset' => false ],
-    [ 'name' => 'Python',     'icon'   => 'https://cdn.simpleicons.org/python/3776AB',     'offset' => true  ],
-    [ 'name' => 'TypeScript', 'icon'   => 'https://cdn.simpleicons.org/typescript/3178C6', 'offset' => false ],
-    [ 'name' => 'Postgres',   'icon'   => 'https://cdn.simpleicons.org/postgresql/4169E1', 'offset' => true  ],
-    [ 'name' => 'AI Agents',  'symbol' => 'psychology',              'offset' => false ],
-    [ 'name' => 'Automation', 'symbol' => 'precision_manufacturing', 'offset' => true  ],
+    [ 'name' => 'Flutter',    'icon'   => 'https://cdn.simpleicons.org/flutter/e8ebe4' ],
+    [ 'name' => 'Node.js',    'icon'   => 'https://cdn.simpleicons.org/nodedotjs/e8ebe4' ],
+    [ 'name' => 'NestJS',     'icon'   => 'https://cdn.simpleicons.org/nestjs/e8ebe4' ],
+    [ 'name' => 'Next.js',    'icon'   => 'https://cdn.simpleicons.org/nextdotjs/e8ebe4' ],
+    [ 'name' => 'React',      'icon'   => 'https://cdn.simpleicons.org/react/e8ebe4' ],
+    [ 'name' => 'Vue',        'icon'   => 'https://cdn.simpleicons.org/vuedotjs/e8ebe4' ],
+    [ 'name' => 'Laravel',    'icon'   => 'https://cdn.simpleicons.org/laravel/e8ebe4' ],
+    [ 'name' => 'Swift',      'icon'   => 'https://cdn.simpleicons.org/swift/e8ebe4' ],
+    [ 'name' => 'K8s',        'icon'   => 'https://cdn.simpleicons.org/kubernetes/e8ebe4' ],
+    [ 'name' => 'Docker',     'icon'   => 'https://cdn.simpleicons.org/docker/e8ebe4' ],
+    [ 'name' => 'Python',     'icon'   => 'https://cdn.simpleicons.org/python/e8ebe4' ],
+    [ 'name' => 'TypeScript', 'icon'   => 'https://cdn.simpleicons.org/typescript/e8ebe4' ],
+    [ 'name' => 'Postgres',   'icon'   => 'https://cdn.simpleicons.org/postgresql/e8ebe4' ],
+    [ 'name' => 'MySQL',      'icon'   => 'https://cdn.simpleicons.org/mysql/e8ebe4' ],
+    [ 'name' => 'MongoDB',    'icon'   => 'https://cdn.simpleicons.org/mongodb/e8ebe4' ],
+    [ 'name' => 'Redis',      'icon'   => 'https://cdn.simpleicons.org/redis/e8ebe4' ],
+    [ 'name' => 'Firebase',   'icon'   => 'https://cdn.simpleicons.org/firebase/e8ebe4' ],
+    [ 'name' => 'GraphQL',    'icon'   => 'https://cdn.simpleicons.org/graphql/e8ebe4' ],
+    [ 'name' => 'Tailwind',   'icon'   => 'https://cdn.simpleicons.org/tailwindcss/e8ebe4' ],
+    [ 'name' => 'RabbitMQ',   'icon'   => 'https://cdn.simpleicons.org/rabbitmq/e8ebe4' ],
+    [ 'name' => 'AI Agents',  'symbol' => 'psychology' ],
+    [ 'name' => 'Automation', 'symbol' => 'precision_manufacturing' ],
 ];
 ?>
 
-<main class="page-case-studies">
+<main class="page-case-studies" dir="<?php echo esc_attr( $is_rtl ? 'rtl' : 'ltr' ); ?>">
 
     <!-- ══════════════════════════════════════════════════════
          1. HERO
     ══════════════════════════════════════════════════════ -->
-    <section class="case-studies__hero">
-        <div class="case-studies__hero-bg" aria-hidden="true">
-            <div class="case-studies__hero-glow-1"></div>
-            <div class="case-studies__hero-glow-2"></div>
-            <div class="case-studies__hero-pattern"></div>
+    <section class="cs2-hero">
+        <canvas class="st-hero-canvas"></canvas>
+        <div class="cs2-hero-bg" aria-hidden="true">
+            <div class="cs2-hero-glow-1"></div>
+            <div class="cs2-hero-glow-2"></div>
+            <div class="cs2-hero-grid"></div>
+            <div class="cs2-hero-scan"></div>
         </div>
-        <div class="container case-studies__hero-content">
-            <span class="case-studies__label">
-                <?php echo esc_html( $is_rtl ? 'أعمال مختارة' : 'Selected Work' ); ?>
+        <div class="container cs2-hero-content">
+            <span class="cs2-eyebrow cs2-hero__eyebrow">
+                <?php echo esc_html( $is_rtl ? 'ملفات أعمال منجزة' : 'Delivered Case Files' ); ?>
             </span>
-            <h1 class="case-studies__hero-title">
+            <h1 class="cs2-hero-title">
                 <?php if ( $is_rtl ) : ?>
-                    أعمالنا المختارة تبرز كيف نبني منصات
-                    <span class="text-gradient-green">جاهزة للأعمال</span>
+                    كل مشروع هنا <span class="text-gradient-green">ملف قضية مغلق</span><br>
+                    بنيناه من الفكرة حتى التشغيل الفعلي
                 <?php else : ?>
-                    Selected Work That Shows How We Build
-                    <span class="text-gradient-green">Business-Ready</span> Platforms
+                    Every project here is a
+                    <span class="text-gradient-green">closed case file</span> —
+                    built from idea to real operation
                 <?php endif; ?>
             </h1>
-            <p class="case-studies__hero-copy">
+            <p class="cs2-hero-copy">
                 <?php echo esc_html( $is_rtl
                     ? 'نحوّل الأفكار والواجهات ومسارات التشغيل إلى منصات رقمية قابلة للنمو، واضحة للمستخدم، ومهيأة للتشغيل الحقيقي.'
                     : 'From logistics marketplaces to booking flows and mobile products, explore how ideas become usable digital systems.'
                 ); ?>
             </p>
-            <div class="case-studies__hero-actions">
-                <a class="case-studies__btn case-studies__btn--primary"
-                   href="<?php echo esc_url( home_url( '/quote/' ) ); ?>">
+            <div class="cs2-hero-actions">
+                <a class="cs2-btn cs2-btn--primary" href="<?php echo esc_url( function_exists( 'st_url' ) ? st_url( 'contact' ) : home_url( '/contact/' ) ); ?>">
                     <?php echo esc_html( $is_rtl ? 'ابدأ مشروعك معنا' : 'Start Your Project' ); ?>
                     <span class="material-symbols-outlined" aria-hidden="true"><?php echo esc_html( $arrow ); ?></span>
                 </a>
-                <a class="case-studies__btn case-studies__btn--outline"
-                   href="<?php echo esc_url( home_url( '/services/' ) ); ?>">
+                <a class="cs2-btn cs2-btn--ghost" href="<?php echo esc_url( home_url( '/services/' ) ); ?>">
                     <?php echo esc_html( $is_rtl ? 'عرض الخدمات' : 'View Services' ); ?>
                 </a>
+            </div>
+
+            <div class="cs2-hero-ticker" aria-hidden="true">
+                <div class="cs2-hero-ticker__track">
+                    <?php
+                    $ticker_pass = static function () use ( $featured, $is_rtl, $file_ref ) {
+                        foreach ( $featured as $i => $t ) {
+                            $name = $is_rtl ? $t['title_ar'] : $t['title'];
+                            echo '<span class="cs2-hero-ticker__item"><b>' . esc_html( $name ) . '</b> — ' . esc_html( $file_ref( $t['title'], $i ) ) . '</span>';
+                            echo '<span class="cs2-hero-ticker__dot"></span>';
+                        }
+                    };
+                    $ticker_pass();
+                    $ticker_pass(); // duplicate for seamless loop
+                    ?>
+                </div>
             </div>
         </div>
     </section>
 
 
     <!-- ══════════════════════════════════════════════════════
-         2. FEATURED PROJECTS
+         2. FEATURED — cinematic reel
     ══════════════════════════════════════════════════════ -->
-    <section class="case-studies__featured">
+    <section class="cs2-files" aria-labelledby="cs2-files-title">
         <div class="container">
-            <div class="case-studies__section-header">
-                <span class="case-studies__label">
-                    <?php echo esc_html( $is_rtl ? 'دراسات مختارة' : 'Featured full platform delivery' ); ?>
+            <div class="cs2-head cs2-files__head cs-reveal">
+                <span class="cs2-eyebrow">
+                    <?php echo esc_html( $is_rtl ? 'دراسات مختارة' : 'Selected Work' ); ?>
                 </span>
-                <h2 class="case-studies__section-title">
+                <h2 class="cs2-head__title" id="cs2-files-title">
                     <?php echo esc_html( $is_rtl
                         ? 'تسليم منظومات تقنية متكاملة'
-                        : 'Built with the same standard as Backway'
+                        : 'Platforms crafted for real operations'
                     ); ?>
                 </h2>
-                <p class="case-studies__section-copy">
+                <p class="cs2-head__copy">
                     <?php echo esc_html( $is_rtl
-                        ? 'نختار من هذه النماذج ما يوضح طريقة بناء المنصة من التصميم المعماري حتى المنتج القابل للتشغيل.'
-                        : 'Every project opens a detailed case study page using the premium case-study template.'
+                        ? 'كل دراسة حالة تكشف كيف نبني المنتج من القرار المعماري حتى التجربة النهائية للمستخدم.'
+                        : 'Each case study reveals how we shape the product from architecture to the final user experience.'
                     ); ?>
                 </p>
             </div>
+        </div>
 
-            <div class="case-studies__projects">
-                <?php foreach ( $featured as $index => $item ) :
-                    $reverse     = ( $index % 2 === 1 );
-                    $img_cls     = $reverse ? 'case-studies__project-image--right' : 'case-studies__project-image--left';
-                    $content_cls = $reverse ? 'case-studies__project-content--left' : 'case-studies__project-content--right';
-                    $align_cls   = $is_rtl  ? 'rtl-right' : 'ltr-right';
-                    $title_out   = $is_rtl  ? $item['title_ar']    : $item['title'];
-                    $kicker_out  = $is_rtl  ? $item['kicker_ar']   : $item['kicker'];
-                    $head_out    = $is_rtl  ? $item['headline_ar']  : $item['headline'];
-                    $summ_out    = $is_rtl  ? $item['summary_ar']   : $item['summary'];
-                    $scope_out   = $is_rtl  ? ( $item['scope_ar'] ?? $item['scope'] ) : $item['scope'];
-                    $card_style  = $item['style'] ?? 'photo';
-                ?>
-                <a class="case-studies__project case-studies__project-link-card"
-                   href="<?php echo esc_url( $item['url'] ?? $resolve_case_url( $item['slugs'] ) ); ?>">
+        <div class="cs2-file-list">
+            <?php foreach ( $featured as $index => $item ) :
+                $reverse    = ( $index % 2 === 1 );
+                $flip_cls   = $reverse ? ' cs2-file--flip' : '';
+                $tone_cls   = $reverse ? ' cs2-file--ink' : '';
+                $align_cls  = $is_rtl  ? 'rtl-right' : 'ltr-right';
+                $title_out  = $is_rtl  ? $item['title_ar']     : $item['title'];
+                $kicker_out = $is_rtl  ? $item['kicker_ar']    : $item['kicker'];
+                $head_out   = $is_rtl  ? $item['headline_ar']  : $item['headline'];
+                $summ_out   = $is_rtl  ? $item['summary_ar']   : $item['summary'];
+                $scope_out  = $is_rtl  ? ( $item['scope_ar'] ?? $item['scope'] ) : $item['scope'];
+                $num_out    = str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT );
+            ?>
+            <a class="cs2-file cs-reveal<?php echo esc_attr( $flip_cls . $tone_cls ); ?>"
+               href="<?php echo esc_url( $item['url'] ?? $resolve_case_url( $item['slugs'] ) ); ?>">
+                <div class="container cs2-file__inner">
+                    <div class="cs2-file__frame-col">
+                        <div class="cs2-file__frame">
+                            <div class="cs2-file__frame-img"
+                                 style="background-image:url('<?php echo esc_url( $item['image'] ); ?>');"
+                                 role="img"
+                                 aria-label="<?php echo esc_attr( $title_out ); ?>">
+                            </div>
+                            <div class="cs2-file__frame-overlay" aria-hidden="true"></div>
+                            <div class="cs2-file__tag <?php echo esc_attr( $align_cls ); ?>">
+                                <span class="cs2-file__tag-pill"><?php echo esc_html( $item['tag'] ); ?></span>
+                                <span class="cs2-file__tag-name"><?php echo esc_html( $title_out ); ?></span>
+                            </div>
+                        </div>
+                    </div>
 
-                    <?php if ( $card_style === 'mockup' ) : ?>
-                    <div class="case-studies__project-image <?php echo esc_attr( $img_cls ); ?> case-studies__project-image--mockup">
-                        <div class="mockup-browser">
-                            <div class="mockup-browser__bar">
-                                <span class="mockup-browser__brand">Merchant Hub</span>
-                                <span class="mockup-browser__icons" aria-hidden="true">
-                                    <span class="material-symbols-outlined">settings</span>
-                                    <span class="material-symbols-outlined">notifications</span>
-                                    <span class="material-symbols-outlined">account_circle</span>
+                    <div class="cs2-file__meta-col">
+                        <span class="cs2-file__stamp" aria-hidden="true"><?php echo esc_html( $num_out ); ?></span>
+                        <div class="cs2-file__body">
+                            <span class="cs2-file__kicker"><?php echo esc_html( $kicker_out ); ?></span>
+                            <h3 class="cs2-file__title"><?php echo esc_html( $head_out ); ?></h3>
+                            <p class="cs2-file__desc"><?php echo esc_html( $summ_out ); ?></p>
+                            <div class="cs2-file__stats">
+                                <div>
+                                    <div class="cs2-file__stat-label"><?php echo esc_html( $is_rtl ? 'العميل' : 'Client' ); ?></div>
+                                    <div class="cs2-file__stat-value"><?php echo esc_html( $item['client'] ); ?></div>
+                                </div>
+                                <div>
+                                    <div class="cs2-file__stat-label"><?php echo esc_html( $is_rtl ? 'النطاق' : 'Scope' ); ?></div>
+                                    <div class="cs2-file__stat-value"><?php echo esc_html( $scope_out ); ?></div>
+                                </div>
+                            </div>
+                            <span class="cs2-file__cta">
+                                <?php echo esc_html( $is_rtl ? 'استعراض تفاصيل المشروع' : 'Explore case study' ); ?>
+                                <span class="material-symbols-outlined <?php echo $is_rtl ? 'rtl' : 'ltr'; ?>" aria-hidden="true">
+                                    <?php echo esc_html( $arrow ); ?>
                                 </span>
-                            </div>
-                            <div class="mockup-browser__body">
-                                <div class="mockup-dash__head">
-                                    <h5>Merchant Case Study: Summer Collection Growth</h5>
-                                    <div class="mockup-dash__actions">
-                                        <span class="mockup-dash__range">June 1 – July 31, 2025</span>
-                                        <span class="mockup-dash__export"><span class="material-symbols-outlined">ios_share</span>Export Report</span>
-                                    </div>
-                                </div>
-                                <div class="mockup-dash__stats">
-                                    <div class="mockup-stat"><span class="mockup-stat__label">Total Revenue</span><span class="mockup-stat__value">$145,890 <em>+18%</em></span></div>
-                                    <div class="mockup-stat"><span class="mockup-stat__label">Orders</span><span class="mockup-stat__value">3,452 <em>+12%</em></span></div>
-                                    <div class="mockup-stat"><span class="mockup-stat__label">Average Order Value</span><span class="mockup-stat__value">$42.26 <em>+5%</em></span></div>
-                                    <div class="mockup-stat"><span class="mockup-stat__label">Conversion Rate</span><span class="mockup-stat__value">3.8% <em>+0.5%</em></span></div>
-                                </div>
-                                <div class="mockup-dash__chart">
-                                    <span class="mockup-dash__chart-title">Sales Overview</span>
-                                    <svg viewBox="0 0 400 90" preserveAspectRatio="none" class="mockup-dash__chart-svg">
-                                        <path d="M0,60 C20,55 35,25 55,30 C75,35 85,65 105,60 C125,55 140,15 160,18 C180,21 190,55 210,50 C230,45 245,20 265,22 C285,24 300,58 320,55 C340,52 355,30 375,32 C385,33 395,45 400,48"
-                                              fill="none" stroke="#5aa9a7" stroke-width="2.5"/>
-                                        <path d="M0,60 C20,55 35,25 55,30 C75,35 85,65 105,60 C125,55 140,15 160,18 C180,21 190,55 210,50 C230,45 245,20 265,22 C285,24 300,58 320,55 C340,52 355,30 375,32 C385,33 395,45 400,48 L400,90 L0,90 Z"
-                                              fill="rgba(0,103,101,0.08)" stroke="none"/>
-                                    </svg>
-                                </div>
-                                <div class="mockup-dash__products">
-                                    <span class="mockup-dash__products-title">Recently Added Products</span>
-                                    <div class="mockup-products-grid">
-                                        <div class="mockup-product"><span class="mockup-product__thumb mockup-product__thumb--1"></span><span class="mockup-product__name">Floral Maxi Dress</span><span class="mockup-product__price">$89.00</span></div>
-                                        <div class="mockup-product"><span class="mockup-product__thumb mockup-product__thumb--2"></span><span class="mockup-product__name">Denim Jacket</span><span class="mockup-product__price">$68.00</span></div>
-                                        <div class="mockup-product"><span class="mockup-product__thumb mockup-product__thumb--3"></span><span class="mockup-product__name">Linen Shirt</span><span class="mockup-product__price">$45.00</span></div>
-                                        <div class="mockup-product"><span class="mockup-product__thumb mockup-product__thumb--4"></span><span class="mockup-product__name">Denim Jacket</span><span class="mockup-product__price">$68.00</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="case-studies__project-image-overlay case-studies__project-image-overlay--mockup" aria-hidden="true"></div>
-                        <div class="case-studies__project-image-content <?php echo esc_attr( $align_cls ); ?>">
-                            <span class="case-studies__project-tag"><?php echo esc_html( $item['tag'] ); ?></span>
-                            <h3 class="case-studies__project-name"><?php echo esc_html( $title_out ); ?></h3>
-                        </div>
-                    </div>
-                    <?php else : ?>
-                    <div class="case-studies__project-image <?php echo esc_attr( $img_cls ); ?>">
-                        <div class="case-studies__project-image-bg"
-                             style="background-image:url('<?php echo esc_url( $item['image'] ); ?>');"
-                             role="img"
-                             aria-label="<?php echo esc_attr( $title_out ); ?>">
-                        </div>
-                        <div class="case-studies__project-image-overlay" aria-hidden="true"></div>
-                        <div class="case-studies__project-image-content <?php echo esc_attr( $align_cls ); ?>">
-                            <span class="case-studies__project-tag"><?php echo esc_html( $item['tag'] ); ?></span>
-                            <h3 class="case-studies__project-name"><?php echo esc_html( $title_out ); ?></h3>
-                        </div>
-                    </div>
-                    <?php endif; ?>
-
-
-                    <div class="case-studies__project-content <?php echo esc_attr( $content_cls ); ?>">
-                        <span class="case-studies__project-sector"><?php echo esc_html( $kicker_out ); ?></span>
-                        <h3 class="case-studies__project-title"><?php echo esc_html( $head_out ); ?></h3>
-                        <p class="case-studies__project-desc"><?php echo esc_html( $summ_out ); ?></p>
-                        <div class="case-studies__project-meta">
-                            <div>
-                                <div class="case-studies__meta-label">
-                                    <?php echo esc_html( $is_rtl ? 'العميل' : 'Client' ); ?>
-                                </div>
-                                <div class="case-studies__meta-value"><?php echo esc_html( $item['client'] ); ?></div>
-                            </div>
-                            <div>
-                                <div class="case-studies__meta-label">
-                                    <?php echo esc_html( $is_rtl ? 'النطاق' : 'Scope' ); ?>
-                                </div>
-                                <div class="case-studies__meta-value"><?php echo esc_html( $scope_out ); ?></div>
-                            </div>
-                        </div>
-                        <span class="case-studies__project-link" aria-hidden="true">
-                            <?php echo esc_html( $is_rtl ? 'استعرض تفاصيل المشروع' : 'Explore case study' ); ?>
-                            <span class="material-symbols-outlined <?php echo $is_rtl ? 'rtl' : 'ltr'; ?>">
-                                <?php echo esc_html( $arrow ); ?>
                             </span>
-                        </span>
+                        </div>
                     </div>
-                </a>
-                <?php endforeach; ?>
-            </div>
+                </div>
+            </a>
+            <?php endforeach; ?>
         </div>
     </section>
 
@@ -360,57 +384,57 @@ $tech_stack = [
     <!-- ══════════════════════════════════════════════════════
          3. TECH STACK
     ══════════════════════════════════════════════════════ -->
-    <section class="case-studies__tech">
+    <section class="cs2-tech">
         <div class="container">
-            <div class="case-studies__tech-header">
-                <div class="case-studies__tech-title-wrapper">
-                    <span class="case-studies__label">
+            <div class="cs2-tech-head cs-reveal">
+                <div class="cs2-head cs2-head--ink">
+                    <span class="cs2-eyebrow cs2-eyebrow--dark">
                         <?php echo esc_html( $is_rtl ? 'تميز تقني' : 'Technical Excellence' ); ?>
                     </span>
-                    <h2 class="case-studies__section-title">
+                    <h2 class="cs2-head__title">
                         <?php echo esc_html( $is_rtl
                             ? 'القوة الكامنة خلف بنيتكم الرقمية'
                             : 'The Power Behind Your Digital Infrastructure'
                         ); ?>
                     </h2>
-                    <p class="case-studies__section-copy">
+                    <p class="cs2-head__copy">
                         <?php echo esc_html( $is_rtl
                             ? 'نستخدم حزمة تقنية عالمية لبناء أنظمة مرنة وعالية الأداء تدعم نمو الأعمال والكفاءة التشغيلية.'
                             : 'We leverage a world-class technology stack to build resilient, high-performance systems that drive business growth and operational efficiency.'
                         ); ?>
                     </p>
                 </div>
-                <div class="case-studies__tech-badges"
-                     aria-label="<?php echo esc_attr( $is_rtl ? 'مزايا تقنية' : 'Technical capabilities' ); ?>">
+                <div class="cs2-tech-badges" aria-label="<?php echo esc_attr( $is_rtl ? 'مزایا تقنية' : 'Technical capabilities' ); ?>">
                     <?php foreach ( $tech_badges as $badge ) : ?>
-                    <span class="case-studies__tech-badge">
-                        <span class="case-studies__tech-badge-dot" aria-hidden="true"></span>
-                        <span class="case-studies__tech-badge-text"><?php echo esc_html( $badge ); ?></span>
+                    <span class="cs2-tech-badge">
+                        <span class="cs2-tech-badge__dot" aria-hidden="true"></span>
+                        <span class="cs2-tech-badge__text"><?php echo esc_html( $badge ); ?></span>
                     </span>
                     <?php endforeach; ?>
                 </div>
             </div>
 
-            <div class="case-studies__tech-grid">
-                <?php foreach ( $tech_stack as $tech ) :
-                    $offset_cls = ! empty( $tech['offset'] ) ? ' case-studies__tech-card--offset' : '';
-                ?>
-                <div class="case-studies__tech-card case-studies__premium-card<?php echo esc_attr( $offset_cls ); ?>">
-                    <span class="case-studies__tech-icon-wrapper">
-                        <?php if ( ! empty( $tech['icon'] ) ) : ?>
-                            <img src="<?php echo esc_url( $tech['icon'] ); ?>"
-                                 alt="<?php echo esc_attr( $tech['name'] ); ?>"
-                                 width="40" height="40"
-                                 loading="lazy">
-                        <?php else : ?>
-                            <span class="material-symbols-outlined case-studies__tech-symbol" aria-hidden="true">
-                                <?php echo esc_html( $tech['symbol'] ); ?>
-                            </span>
-                        <?php endif; ?>
-                    </span>
-                    <span class="case-studies__tech-name"><?php echo esc_html( $tech['name'] ); ?></span>
+            <div class="cs2-tech-marquee cs-reveal">
+                <div class="cs2-tech-marquee__track">
+                    <?php
+                    $tech_pass = static function () use ( $tech_stack ) {
+                        foreach ( $tech_stack as $tech ) {
+                            echo '<span class="cs2-tech-item">';
+                            echo '<span class="cs2-tech-item__icon">';
+                            if ( ! empty( $tech['icon'] ) ) {
+                                echo '<img src="' . esc_url( $tech['icon'] ) . '" alt="" width="30" height="30" loading="lazy">';
+                            } else {
+                                echo '<span class="material-symbols-outlined" aria-hidden="true">' . esc_html( $tech['symbol'] ) . '</span>';
+                            }
+                            echo '</span>';
+                            echo '<span class="cs2-tech-item__name">' . esc_html( $tech['name'] ) . '</span>';
+                            echo '</span>';
+                        }
+                    };
+                    $tech_pass();
+                    $tech_pass(); // duplicate for seamless loop
+                    ?>
                 </div>
-                <?php endforeach; ?>
             </div>
         </div>
     </section>
@@ -419,21 +443,21 @@ $tech_stack = [
     <!-- ══════════════════════════════════════════════════════
          4. MOBILE APP CARDS
     ══════════════════════════════════════════════════════ -->
-    <section class="case-studies__mobile">
+    <section class="cs2-mobile">
         <div class="container">
-            <div class="case-studies__mobile-header">
-                <div>
-                    <span class="case-studies__label">
+            <div class="cs2-mobile-head cs-reveal">
+                <div class="cs2-head">
+                    <span class="cs2-eyebrow">
                         <?php echo esc_html( $is_rtl ? 'تطبيقات الجوال' : 'Mobile App Designs' ); ?>
                     </span>
-                    <h2 class="case-studies__section-title">
+                    <h2 class="cs2-head__title">
                         <?php echo esc_html( $is_rtl
                             ? 'مساهماتنا في تصميم تطبيقات الجوال'
                             : 'Mobile App Designs & Contributions'
                         ); ?>
                     </h2>
                 </div>
-                <span class="case-studies__mobile-disclaimer">
+                <span class="cs2-mobile-note">
                     <?php echo esc_html( $is_rtl
                         ? 'اضغط على أي كارت لاستعراض دراسة الحالة'
                         : 'Tap any card to view the full case study'
@@ -441,24 +465,22 @@ $tech_stack = [
                 </span>
             </div>
 
-            <div class="case-studies__mobile-grid">
-                <?php foreach ( $mobile_cards as $card ) : ?>
-                <a class="case-studies__mobile-card case-studies__premium-card"
+            <div class="cs2-mobile-grid">
+                <?php foreach ( $mobile_cards as $mi => $card ) : ?>
+                <a class="cs2-mobile-card cs-reveal"
                    href="<?php echo esc_url( $resolve_case_url( $card['slugs'] ) ); ?>">
-                    <div class="case-studies__mobile-image-wrapper">
-                        <div class="case-studies__mobile-image"
+                    <div class="cs2-mobile-card__frame">
+                        <div class="cs2-mobile-card__img"
                              style="background-image:url('<?php echo esc_url( $card['image'] ); ?>');"
                              role="img"
                              aria-label="<?php echo esc_attr( $card['title'] ); ?>">
                         </div>
-                        <span class="case-studies__mobile-badge <?php echo esc_attr( $is_rtl ? 'rtl' : 'ltr' ); ?>"
-                              aria-hidden="true">
-                            <?php echo esc_html( $card['tag'] ); ?>
-                        </span>
+                        <span class="cs2-mobile-card__number" aria-hidden="true">№ <?php echo esc_html( str_pad( (string) ( $mi + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
+                        <span class="cs2-mobile-card__badge"><?php echo esc_html( $card['tag'] ); ?></span>
                     </div>
                     <div>
-                        <h3 class="case-studies__mobile-title"><?php echo esc_html( $card['title'] ); ?></h3>
-                        <p class="case-studies__mobile-meta">
+                        <h3 class="cs2-mobile-card__title"><?php echo esc_html( $card['title'] ); ?></h3>
+                        <p class="cs2-mobile-card__meta">
                             <?php echo esc_html( $is_rtl
                                 ? 'واجهة وتجربة مستخدم جاهزة للإنتاج.'
                                 : 'Production-ready interface and journey design.'
@@ -473,15 +495,164 @@ $tech_stack = [
 
 
     <!-- ══════════════════════════════════════════════════════
-         5. FIGMA TO CODE
+         5. WEB PROJECTS SPOTLIGHT
     ══════════════════════════════════════════════════════ -->
-    <section class="case-studies__figma">
+    <?php
+    // Auto-require config if not already loaded by functions.php
+    if ( ! function_exists( 'st_web_projects_config' ) ) {
+        $cfg_file = get_template_directory() . '/inc/web-projects-config.php';
+        if ( file_exists( $cfg_file ) ) {
+            require_once $cfg_file;
+        }
+    }
+
+    $web_projects = function_exists( 'st_web_projects_config' ) ? st_web_projects_config() : [];
+
+    // Fallback data if config is not available or empty
+    if ( empty( $web_projects ) ) {
+        $web_projects = [
+            'lawyer' => [
+                'name'     => [ 'ar' => 'محمد محسن للمحاماة', 'en' => 'Mohamed Mohsen Law Office' ],
+                'tagline'  => [ 'ar' => 'محامٍ جنائي — مساندة قانونية احترافية ووضوح في التواصل', 'en' => 'Criminal Lawyer — Professional Legal Support' ],
+                'type'     => [ 'ar' => 'موقع خدمات قانونية', 'en' => 'Legal Services Website' ],
+                'color'    => '#b8963e',
+                'year'     => '2025',
+                'live_url' => 'https://mohamed-mohsen-lawyer.great-site.net/?i=1',
+                'images'   => [ 'preview' => 'web-projects/lawyer/preview.webp' ],
+            ],
+            'awan-digital' => [
+                'name'     => [ 'ar' => 'أوان ديجيتال', 'en' => 'Awan Digital' ],
+                'tagline'  => [ 'ar' => 'وكالة تسويق رقمي وخدمات SEO متقدمة للنمو الرقمي', 'en' => 'Digital Marketing & SEO Agency' ],
+                'type'     => [ 'ar' => 'موقع وكالة تسويق رقمي', 'en' => 'Digital Agency Website' ],
+                'color'    => '#2563eb',
+                'year'     => '2025',
+                'live_url' => 'https://awan-digital.great-site.net/?i=1',
+                'images'   => [ 'preview' => 'web-projects/awan-digital/preview.webp' ],
+            ],
+        ];
+    }
+    ?>
+
+    <!-- [SPINESTECH_WEB_PROJECTS_ACTIVE count="<?php echo count( $web_projects ); ?>"] -->
+    <?php if ( ! wp_style_is( 'st-web-projects-spotlight', 'enqueued' ) ) : ?>
+    <link rel="stylesheet" id="st-web-projects-spotlight-direct-css" href="<?php echo esc_url( function_exists('st_asset') ? st_asset('css/components/web-projects-spotlight.css') : get_template_directory_uri() . '/assets/css/components/web-projects-spotlight.css' ); ?>">
+    <?php endif; ?>
+
+    <section class="cs2-webp" id="web-projects" aria-labelledby="webp-heading">
+        <div class="cs2-webp__spotlight" aria-hidden="true"></div>
+
+        <div class="container cs2-webp__inner">
+
+            <!-- Header -->
+            <div class="cs2-webp__header">
+                <div class="cs2-webp__heading">
+                    <div class="cs2-head cs-reveal">
+                        <span class="cs2-eyebrow">
+                            <?php echo esc_html( $is_rtl ? 'مشاريع الويب' : 'Web Projects' ); ?>
+                        </span>
+                        <h2 id="webp-heading" class="cs2-head__title" style="color:#fff;">
+                            <?php echo esc_html( $is_rtl
+                                ? 'مواقع ويب أطلقناها لعملائنا'
+                                : 'Websites We Launched for Our Clients'
+                            ); ?>
+                        </h2>
+                    </div>
+                </div>
+                <span class="cs2-webp__note">
+                    <?php echo esc_html( $is_rtl
+                        ? 'اضغط على أي مشروع لاستعراضه كاملاً'
+                        : 'Click any project to explore it in full'
+                    ); ?>
+                </span>
+            </div>
+
+            <!-- Cards grid -->
+            <div class="cs2-webp__grid">
+                <?php foreach ( $web_projects as $wp_key => $wp ) :
+                    $wp_name_out    = function_exists( 'st_wp_text' ) ? (string) st_wp_text( (array) ( $wp['name']    ?? [] ) ) : ( $is_rtl ? ( $wp['name']['ar'] ?? $wp_key ) : ( $wp['name']['en'] ?? $wp_key ) );
+                    $wp_tagline_out = function_exists( 'st_wp_text' ) ? (string) st_wp_text( (array) ( $wp['tagline'] ?? [] ) ) : ( $is_rtl ? ( $wp['tagline']['ar'] ?? '' ) : ( $wp['tagline']['en'] ?? '' ) );
+                    $wp_type_out    = function_exists( 'st_wp_text' ) ? (string) st_wp_text( (array) ( $wp['type']    ?? [] ) ) : ( $is_rtl ? ( $wp['type']['ar'] ?? '' ) : ( $wp['type']['en'] ?? '' ) );
+                    $wp_preview     = function_exists( 'st_wp_img'  ) ? st_wp_img( (string) ( $wp['images']['preview'] ?? '' ) ) : ( function_exists('st_asset') ? st_asset('images/' . ( $wp['images']['preview'] ?? '' )) : get_template_directory_uri() . '/assets/images/' . ( $wp['images']['preview'] ?? '' ) );
+                    $wp_card_url    = function_exists( 'st_web_project_url' ) ? st_web_project_url( $wp_key ) : ( function_exists('st_url') ? st_url('/web-projects/' . $wp_key . '/') : home_url('/web-projects/' . $wp_key . '/') );
+                    $wp_accent      = esc_attr( (string) ( $wp['color']  ?? '#036d36' ) );
+                    $wp_year_out    = esc_html( (string) ( $wp['year']   ?? '' ) );
+                    $wp_live_out    = esc_url( (string) ( $wp['live_url'] ?? '#' ) );
+                    $wp_host        = esc_html( (string) ( parse_url( (string) ( $wp['live_url'] ?? '' ), PHP_URL_HOST ) ?: '' ) );
+                ?>
+                <a class="cs2-webp-card cs-reveal"
+                   href="<?php echo esc_url( $wp_card_url ); ?>"
+                   style="--wp-card-accent:<?php echo $wp_accent; ?>;"
+                   aria-label="<?php echo esc_attr( $wp_name_out . ' — ' . ( $is_rtl ? 'عرض المشروع' : 'View project' ) ); ?>">
+
+                    <!-- Image frame -->
+                    <div class="cs2-webp-card__frame">
+                        <!-- Browser bar -->
+                        <div class="cs2-webp-card__browser-bar" aria-hidden="true">
+                            <span class="cs2-webp-card__dot cs2-webp-card__dot--r"></span>
+                            <span class="cs2-webp-card__dot cs2-webp-card__dot--y"></span>
+                            <span class="cs2-webp-card__dot cs2-webp-card__dot--g"></span>
+                            <?php if ( $wp_host ) : ?>
+                            <span class="cs2-webp-card__url"><?php echo $wp_host; ?></span>
+                            <?php endif; ?>
+                        </div>
+
+                        <!-- Screenshot -->
+                        <?php if ( $wp_preview ) : ?>
+                        <div class="cs2-webp-card__img"
+                             style="background-image:url('<?php echo esc_url( $wp_preview ); ?>');"
+                             role="img"
+                             aria-label="<?php echo esc_attr( $wp_name_out ); ?>">
+                        </div>
+                        <?php else : ?>
+                        <!-- Placeholder while image is being prepared -->
+                        <div class="cs2-webp-card__img" style="background:#111c14;" aria-hidden="true"></div>
+                        <?php endif; ?>
+
+                        <div class="cs2-webp-card__overlay" aria-hidden="true"></div>
+
+                        <?php if ( $wp_type_out ) : ?>
+                        <span class="cs2-webp-card__type"><?php echo esc_html( $wp_type_out ); ?></span>
+                        <?php endif; ?>
+                    </div>
+
+                    <!-- Body -->
+                    <div class="cs2-webp-card__body">
+                        <h3 class="cs2-webp-card__name"><?php echo esc_html( $wp_name_out ); ?></h3>
+                        <?php if ( $wp_tagline_out ) : ?>
+                        <p class="cs2-webp-card__tagline"><?php echo esc_html( $wp_tagline_out ); ?></p>
+                        <?php endif; ?>
+
+                        <div class="cs2-webp-card__footer">
+                            <?php if ( $wp_year_out ) : ?>
+                            <span class="cs2-webp-card__year"><?php echo $wp_year_out; ?></span>
+                            <?php endif; ?>
+                            <span class="cs2-webp-card__cta">
+                                <?php echo esc_html( $is_rtl ? 'استعراض المشروع' : 'View Project' ); ?>
+                                <span class="material-symbols-outlined" aria-hidden="true">
+                                    <?php echo esc_html( $arrow ); ?>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                </a>
+                <?php endforeach; ?>
+            </div><!-- .cs2-webp__grid -->
+
+        </div><!-- .container -->
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════
+         6. FIGMA TO CODE
+    ══════════════════════════════════════════════════════ -->
+    <section class="cs2-figma">
         <div class="container">
-            <div class="case-studies__section-header">
-                <span class="case-studies__label">
+            <div class="cs2-head cs2-head--center cs2-head--ink cs-reveal">
+                <span class="cs2-eyebrow cs2-eyebrow--dark" style="justify-content:center;">
                     <?php echo esc_html( $is_rtl ? 'من التصميم إلى البرمجة' : 'Figma to Code Excellence' ); ?>
                 </span>
-                <h2 class="case-studies__section-title">
+                <h2 class="cs2-head__title">
                     <?php echo esc_html( $is_rtl
                         ? 'التميز في ترجمة التصميم إلى برمجة'
                         : 'Design systems converted into real product pages'
@@ -489,33 +660,31 @@ $tech_stack = [
                 </h2>
             </div>
 
-            <div class="case-studies__figma-grid">
+            <div class="cs2-figma-grid cs-reveal">
                 <?php foreach ( $figma_cards as $card ) :
                     $desc_out = $is_rtl ? $card['desc_ar'] : $card['desc'];
                 ?>
-                <a class="case-studies__figma-card"
-                   href="<?php echo esc_url( $resolve_case_url( $card['slugs'] ) ); ?>">
-                    <div class="case-studies__figma-device">
-                        <div class="case-studies__figma-notch" aria-hidden="true"></div>
-                        <div class="case-studies__figma-screen">
-                            <div class="case-studies__figma-bg"
+                <a class="cs2-figma-card" href="<?php echo esc_url( $resolve_case_url( $card['slugs'] ) ); ?>">
+                    <div class="cs2-figma-device">
+                        <div class="cs2-figma-notch" aria-hidden="true"></div>
+                        <div class="cs2-figma-screen">
+                            <div class="cs2-figma-bg"
                                  style="background-image:url('<?php echo esc_url( $card['image'] ); ?>');"
                                  role="img"
                                  aria-label="<?php echo esc_attr( $card['title'] ); ?>">
                             </div>
-                            <span class="case-studies__figma-badge <?php echo esc_attr( $is_rtl ? 'rtl' : 'ltr' ); ?>"
-                                  aria-hidden="true">
+                            <span class="cs2-figma-badge <?php echo esc_attr( $is_rtl ? 'rtl' : 'ltr' ); ?>" aria-hidden="true">
                                 <?php echo esc_html( $card['badge'] ); ?>
                             </span>
                         </div>
                     </div>
-                    <div class="case-studies__figma-title-wrapper">
-                        <span class="material-symbols-outlined case-studies__figma-arrow" aria-hidden="true">
+                    <div class="cs2-figma-title-row">
+                        <span class="material-symbols-outlined cs2-figma-arrow" aria-hidden="true">
                             <?php echo esc_html( $arrow ); ?>
                         </span>
-                        <h3 class="case-studies__figma-title"><?php echo esc_html( $card['title'] ); ?></h3>
+                        <h3 class="cs2-figma-title"><?php echo esc_html( $card['title'] ); ?></h3>
                     </div>
-                    <p class="case-studies__figma-desc"><?php echo esc_html( $desc_out ); ?></p>
+                    <p class="cs2-figma-desc"><?php echo esc_html( $desc_out ); ?></p>
                 </a>
                 <?php endforeach; ?>
             </div>
@@ -523,5 +692,33 @@ $tech_stack = [
     </section>
 
 </main>
+
+<script>
+function safeRun( fn ) {
+    try { fn(); } catch ( e ) { if ( window.console ) console.error( e ); }
+}
+
+safeRun( function () {
+    if ( ! ( 'IntersectionObserver' in window ) ) return;
+
+    document.documentElement.classList.add( 'cs-js' );
+
+    var targets = document.querySelectorAll( '.page-case-studies .cs-reveal' );
+    if ( ! targets.length ) return;
+
+    var observer = new IntersectionObserver( function ( entries ) {
+        entries.forEach( function ( entry ) {
+            if ( entry.isIntersecting ) {
+                entry.target.classList.add( 'is-visible' );
+                observer.unobserve( entry.target );
+            }
+        } );
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' } );
+
+    targets.forEach( function ( el ) { observer.observe( el ); } );
+
+    document.documentElement.classList.add( 'cs-case-studies-js-ready' );
+} );
+</script>
 
 <?php get_footer(); ?>

@@ -14,7 +14,7 @@
     --ct-white-line:  rgba(255, 255, 255, 0.12);
     --ct-trans:       all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
-    background: var(--color-background, #fbf9f4);
+    background: var(--color-background, #f4f8f6);
     color: var(--ct-ink);
     font-family: var(--font-family-sans, 'IBM Plex Sans Arabic', sans-serif);
     overflow-x: hidden;
@@ -106,7 +106,7 @@ html.ct-js-ready .ct-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 .ct-section { padding-block: clamp(3.5rem, 7vw, 6rem); position: relative; }
 .ct-section--white { background: #fff; }
-.ct-section--gray  { background: var(--color-background, #fbf9f4); }
+.ct-section--gray  { background: var(--color-background, #f4f8f6); }
 .ct-section--dark  { background: var(--ct-navy); color: #fff; overflow: hidden; }
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -176,14 +176,14 @@ html.ct-js-ready .ct-reveal.is-visible { opacity: 1; transform: translateY(0); }
 }
 
 .ct-hero__title {
-    font-size: clamp(1.9rem, 4.5vw, 3rem);
-    font-weight: 700;
-    line-height: 1.25;
+    font-size: clamp(1.9rem, 4.5vw, 3.3rem);   /* كان: clamp(1.9rem, 4.5vw, 3rem) */
+    font-weight: 900;                            /* كان: 700 */
+    line-height: 1.22;                           /* كان: 1.25 */
     margin-block-end: 1.25rem;
 }
 
 .ct-hero__subtitle {
-    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    font-size: clamp(1rem, 1.5vw, 1.15rem);      /* كان: clamp(1rem, 1.6vw, 1.15rem) */
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.8;
     max-width: 38rem;
@@ -591,7 +591,7 @@ html.ct-js-ready .ct-reveal.is-visible { opacity: 1; transform: translateY(0); }
    FINAL CTA
    ────────────────────────────────────────────────────────────────────────── */
 
-.ct-section-wrap-cta { padding-block: clamp(3rem, 6vw, 5rem); background: var(--color-background, #fbf9f4); }
+.ct-section-wrap-cta { padding-block: clamp(3rem, 6vw, 5rem); background: var(--color-background, #f4f8f6); }
 
 .ct-cta {
     position: relative;
@@ -655,3 +655,18 @@ html.ct-js-ready .ct-reveal.is-visible { opacity: 1; transform: translateY(0); }
     }
     .ct-reveal { opacity: 1 !important; transform: none !important; }
 }
+
+.ct-thankyou {
+  display: flex;
+  gap: .85rem;
+  align-items: flex-start;
+  padding: 1rem 1.1rem;
+  border-radius: 1rem;
+  background: rgba(15,118,110,.08);
+  border: 1px solid rgba(15,118,110,.2);
+  margin-bottom: 1rem;
+}
+.ct-thankyou--hidden { display: none; }
+.ct-thankyou h4 { margin: 0 0 .35rem; }
+.ct-thankyou p { margin: 0; line-height: 1.6; }
+.ct-form--hidden { display: none; }

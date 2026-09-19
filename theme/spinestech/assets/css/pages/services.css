@@ -125,14 +125,11 @@ html.sv-js-ready .sv-reveal.is-visible {
 
 .sv-hero {
     position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: var(--sv-navy);
     overflow: hidden;
     text-align: center;
     color: #fff;
+    /* Height, padding, and navbar overlap: page-hero.css (loaded after this file). */
 }
 
 .sv-hero__canvas {
@@ -355,6 +352,11 @@ html.sv-js-ready .sv-reveal.is-visible {
     transform: translateY(-6px);
     box-shadow: 0 16px 36px rgba(7, 26, 44, 0.08);
     border-color: rgba(3, 109, 54, 0.25);
+}
+a.sv-build-card--link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
 }
 
 .sv-build-card__icon {

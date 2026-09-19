@@ -1,150 +1,146 @@
 <?php
-$dir    = st_dir();
-$locale = st_locale();
-$is_rtl = $dir === 'rtl';
+/**
+ * Footer â€” SpinesTech Cinematic Design
+ * theme/spinestech/template-parts/footer.php
+ *
+ * Fully static markup (no ACF / custom fields) matching the approved
+ * "cinematic" footer design: animated grid background, floating glow
+ * blobs, giant parallax watermark, live pulse indicator, shimmer logo,
+ * three static nav columns, and a bottom bar with a language pill.
+ *
+ * All UI copy now goes through st_t() â€” see inc/i18n/ar.php + en.php.
+ */
 
-$settings = [];
-if ( class_exists( 'SpinesTech_Headless_Mappers' ) ) {
-    $settings = SpinesTech_Headless_Mappers::settings();
-}
-$email   = $settings['contactEmail']  ?? 'contact@spinestech.com';
-$phone   = $settings['contactPhone']  ?? '+966 000 000 000';
-$address = $settings['officeAddress'] ?? ( $is_rtl ? 'الرياض، المملكة العربية السعودية' : 'Riyadh, Saudi Arabia' );
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+$footer_dir  = function_exists( 'st_dir' ) ? st_dir() : ( is_rtl() ? 'rtl' : 'ltr' );
+$footer_lang = function_exists( 'st_locale' ) ? st_locale() : 'ar';
+$is_rtl      = $footer_lang === 'ar';
+$year        = date( 'Y' );
+$copyright   = str_replace( '{year}', (string) $year, st_t( 'footer.copyright' ) );
 ?>
-<footer class="footer" role="contentinfo" dir="<?php echo esc_attr( $dir ); ?>">
-  <div class="container">
 
-    <!-- ═══ CTA Strip ═══ -->
-    <div class="footer__cta">
-      <div class="footer__cta-text-wrap">
-        <h3 class="footer__cta-title">
-          <?php echo $is_rtl ? 'جاهز لبدء رحلة التحول الرقمي؟' : 'Ready to Start Your Digital Journey?'; ?>
-        </h3>
-        <p class="footer__cta-sub">
-          <?php echo $is_rtl
-            ? 'تواصل معنا اليوم واكتشف كيف يمكن لحلولنا التقنية أن تنقل أعمالك إلى المستوى التالي بذكاء وابتكار.'
-            : 'Contact us today and discover how our tech solutions can take your business to the next level.'; ?>
-        </p>
-      </div>
-      <a href="<?php echo esc_url( st_url( '/contact/' ) ); ?>" class="footer__cta-link">
-        <span class="material-symbols-outlined">arrow_<?php echo $is_rtl ? 'back' : 'forward'; ?></span>
-        <?php echo $is_rtl ? 'تواصل معنا الآن' : 'Contact Us Now'; ?>
-      </a>
-    </div>
+<footer class="footer" dir="<?php echo esc_attr( $footer_dir ); ?>">
 
-    <!-- ═══ Main Footer Grid ═══ -->
-    <div class="footer__body">
+    <!-- Ambient / decorative layers (presentational only) -->
+    <div class="footer__grid-bg" aria-hidden="true"></div>
+    <div class="footer__glow footer__glow--1" aria-hidden="true"></div>
+    <div class="footer__glow footer__glow--2" aria-hidden="true"></div>
+    <div class="footer__watermark" data-footer-watermark aria-hidden="true">SpinesTech</div>
 
-      <!-- Brand -->
-      <div class="footer__brand">
-        <a href="<?php echo esc_url( st_url( '/' ) ); ?>" class="footer__logo-wrap">
-          <img src="<?php echo esc_url( st_asset( 'images/brand/icon.png' ) ); ?>"
-               alt="SpinesTech"
-               class="footer__logo-img">
-        </a>
-        <p class="footer__tagline">
-          <?php echo $is_rtl
-            ? 'شريكك الاستراتيجي في التحول الرقمي. نصمم المستقبل بأيدٍ سعودية وعالميين.'
-            : 'Your strategic partner in digital transformation. Building the future with Saudi and global excellence.'; ?>
-        </p>
-        <div class="footer__socials">
-          <a href="<?php echo esc_url( st_url( '/' ) ); ?>" class="footer__social" aria-label="Website">
-            <span class="material-symbols-outlined">language</span>
-          </a>
-          <a href="mailto:<?php echo esc_attr( $email ); ?>" class="footer__social" aria-label="Email">
-            <span class="material-symbols-outlined">alternate_email</span>
-          </a>
-          <a href="#" class="footer__social" aria-label="Share">
-            <span class="material-symbols-outlined">share</span>
-          </a>
+    <div class="container footer__inner">
+
+        <div class="footer__body" data-footer-reveal-group>
+
+            <!-- â”€â”€ Brand widget â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+            <div class="footer__brand" data-footer-reveal>
+                <div class="footer__widget">
+                    <span class="footer__pulse" aria-hidden="true">
+                        <span class="footer__pulse-dot"></span>
+                    </span>
+
+                    <span class="footer__logo footer__logo--shimmer">SpinesTech</span>
+
+                    <p class="footer__tagline">
+                        <?php echo esc_html( function_exists('st_entity_description') ? st_entity_description() : st_t( 'footer.tagline' ) ); ?>
+                    </p>
+
+                    <div class="footer__contact-list">
+                        <a class="footer__contact-row" href="mailto:admin@spinestech.com" data-st-track="email" data-st-location="footer">
+                            <span class="footer__contact-ico">
+                                <span class="material-symbols-outlined" aria-hidden="true">mail</span>
+                            </span>
+                            <span class="footer__contact-val footer__contact-val--link">admin@spinestech.com</span>
+                        </a>
+                        <?php if (function_exists('st_whatsapp_url')) : ?>
+                        <a class="footer__contact-row" href="<?php echo esc_url(st_whatsapp_url()); ?>" data-st-track="whatsapp" data-st-location="footer" target="_blank" rel="noopener noreferrer">
+                            <span class="footer__contact-ico">
+                                <span class="material-symbols-outlined" aria-hidden="true">chat</span>
+                            </span>
+                            <span class="footer__contact-val footer__contact-val--link"><?php echo esc_html($is_rtl ? 'واتساب' : 'WhatsApp'); ?></span>
+                        </a>
+                        <?php endif; ?>
+                        <div class="footer__contact-row footer__contact-row--muted">
+                            <span class="footer__contact-ico">
+                                <span class="material-symbols-outlined" aria-hidden="true">rocket_launch</span>
+                            </span>
+                            <span class="footer__contact-val"><?php echo esc_html( $is_rtl ? 'Ù†Ø¨Ù†ÙŠ Ù…Ù†ØªØ¬Ø§Øª ØªÙ‚ÙˆØ¯ Ø§Ù„Ø³ÙˆÙ‚' : 'Building market-leading products' ); ?></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- â”€â”€ Nav columns â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+            <div class="footer__columns">
+
+                <div class="footer__col" data-footer-reveal data-footer-reveal-delay="80">
+                    <h4 class="footer__heading">
+                        <span class="footer__heading-bar" aria-hidden="true"></span>
+                        <?php echo esc_html( st_t( 'footer.pagesHeading' ) ); ?>
+                    </h4>
+                    <ul class="footer__links">
+                        <li><a class="footer__link" href="<?php echo esc_url( st_url( '/' ) ); ?>"><?php echo esc_html( st_t( 'nav.home' ) ); ?></a></li>
+                        <li><a class="footer__link" href="<?php echo esc_url( st_url( 'about' ) ); ?>"><?php echo esc_html( st_t( 'nav.about' ) ); ?></a></li>
+                        <li><a class="footer__link" href="<?php echo esc_url( st_url( 'case-studies' ) ); ?>"><?php echo esc_html( st_t( 'nav.caseStudies' ) ); ?></a></li>
+                        <li><a class="footer__link" href="<?php echo esc_url( st_url( 'articles' ) ); ?>"><?php echo esc_html( st_t( 'nav.articles' ) ); ?></a></li>
+                        <li><a class="footer__link" href="<?php echo esc_url( st_url( 'contact' ) ); ?>"><?php echo esc_html( st_t( 'nav.contact' ) ); ?></a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col" data-footer-reveal data-footer-reveal-delay="160">
+                    <h4 class="footer__heading">
+                        <span class="footer__heading-bar" aria-hidden="true"></span>
+                        <?php echo esc_html( st_t( 'footer.solutionsHeading' ) ); ?>
+                    </h4>
+                    <ul class="footer__links">
+                        <?php
+                        $preview = function_exists('st_home_service_preview_cards') ? st_home_service_preview_cards() : [];
+                        foreach (array_slice($preview, 0, 6) as $svc) : ?>
+                            <li><a class="footer__link" href="<?php echo esc_url($svc['url']); ?>"><?php echo esc_html($svc['title']); ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+
+                <div class="footer__col" data-footer-reveal data-footer-reveal-delay="240">
+                    <h4 class="footer__heading">
+                        <span class="footer__heading-bar" aria-hidden="true"></span>
+                        <?php echo esc_html( st_t( 'footer.collabHeading' ) ); ?>
+                    </h4>
+                    <ul class="footer__links">
+                        <?php $ct_url = esc_url( st_url( 'contact' ) ); ?>
+                        <li><a class="footer__link" href="<?php echo $ct_url; ?>"><?php echo esc_html( st_t( 'footer.collabFullProject' ) ); ?></a></li>
+                        <li><a class="footer__link" href="<?php echo $ct_url; ?>"><?php echo esc_html( st_t( 'footer.collabMobileOnly' ) ); ?></a></li>
+                        <li><a class="footer__link" href="<?php echo $ct_url; ?>"><?php echo esc_html( st_t( 'footer.collabPartnerExec' ) ); ?></a></li>
+                        <li><a class="footer__link" href="<?php echo $ct_url; ?>"><?php echo esc_html( st_t( 'footer.collabWhitelabel' ) ); ?></a></li>
+                        <li><a class="footer__link" href="<?php echo $ct_url; ?>"><?php echo esc_html( st_t( 'footer.collabModules' ) ); ?></a></li>
+                        <li><a class="footer__link" href="<?php echo $ct_url; ?>"><?php echo esc_html( st_t( 'footer.collabDevSupport' ) ); ?></a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div><!-- /.footer__body -->
+
+        <!-- â”€â”€ Bottom bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+        <div class="footer__bar">
+            <div class="footer__bar-left" data-footer-reveal style="display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem;">
+                <span class="footer__copy"><?php echo esc_html( $copyright ); ?></span>
+            </div>
+
+            <div class="footer__lang-pill" data-footer-reveal data-footer-reveal-delay="80">
+                <a href="<?php echo esc_url( st_localized_url( st_current_canonical_path(), 'ar' ) ); ?>"
+                   hreflang="ar"
+                   class="footer__lang-btn<?php echo ( 'ar' === $footer_lang ) ? ' is-active' : ''; ?>">
+                    <?php echo esc_html( st_t( 'nav.arabic' ) ); ?>
+                </a>
+                <a href="<?php echo esc_url( st_localized_url( st_current_canonical_path(), 'en' ) ); ?>"
+                   hreflang="en"
+                   class="footer__lang-btn<?php echo ( 'ar' !== $footer_lang ) ? ' is-active' : ''; ?>">
+                    <?php echo esc_html( st_t( 'nav.english' ) ); ?>
+                </a>
+            </div>
         </div>
-      </div>
 
-      <!-- Nav Links — mirrors navbar -->
-      <div class="footer__col">
-        <h4 class="footer__heading">
-          <span class="footer__heading-bar"></span>
-          <?php echo $is_rtl ? 'روابط سريعة' : 'Quick Links'; ?>
-        </h4>
-        <ul class="footer__links">
-          <li>
-            <a href="<?php echo esc_url( st_url( '/' ) ); ?>" class="footer__link">
-              <?php echo $is_rtl ? 'الرئيسية' : 'Home'; ?>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo esc_url( st_url( '/about/' ) ); ?>" class="footer__link">
-              <?php echo $is_rtl ? 'من نحن' : 'About Us'; ?>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo esc_url( st_url( '/services/' ) ); ?>" class="footer__link">
-              <?php echo $is_rtl ? 'الخدمات' : 'Services'; ?>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo esc_url( st_url( '/case-studies/' ) ); ?>" class="footer__link">
-              <?php echo $is_rtl ? 'دراسات الحالة' : 'Case Studies'; ?>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo esc_url( st_url( '/contact/' ) ); ?>" class="footer__link">
-              <?php echo $is_rtl ? 'تواصل معنا' : 'Contact Us'; ?>
-            </a>
-          </li>
-        </ul>
-      </div>
+    </div><!-- /.footer__inner -->
 
-      <!-- Contact -->
-      <div class="footer__col">
-        <h4 class="footer__heading">
-          <span class="footer__heading-bar"></span>
-          <?php echo $is_rtl ? 'تواصل معنا' : 'Contact Us'; ?>
-        </h4>
-        <ul class="footer__contact-list">
-          <li class="footer__contact-row">
-            <span class="footer__contact-ico">
-              <span class="material-symbols-outlined">location_on</span>
-            </span>
-            <span class="footer__contact-val"><?php echo esc_html( $address ); ?></span>
-          </li>
-          <li class="footer__contact-row">
-            <span class="footer__contact-ico">
-              <span class="material-symbols-outlined">mail</span>
-            </span>
-            <a href="mailto:<?php echo esc_attr( $email ); ?>"
-               class="footer__contact-val footer__contact-val--link"
-               dir="ltr"><?php echo esc_html( $email ); ?></a>
-          </li>
-          <li class="footer__contact-row">
-            <span class="footer__contact-ico">
-              <span class="material-symbols-outlined">call</span>
-            </span>
-            <a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>"
-               class="footer__contact-val footer__contact-val--link"
-               dir="ltr"><?php echo esc_html( $phone ); ?></a>
-          </li>
-        </ul>
-      </div>
-
-    </div><!-- /.footer__body -->
-
-    <!-- ═══ Bottom Bar ═══ -->
-    <div class="footer__bar">
-      <p class="footer__copy">
-        © <?php echo date( 'Y' ); ?> SpinesTech.
-        <?php echo $is_rtl ? 'جميع الحقوق محفوظة.' : 'All Rights Reserved.'; ?>
-      </p>
-      <div class="footer__bar-links">
-        <a href="<?php echo esc_url( st_url( '/privacy/' ) ); ?>" class="footer__bar-link">
-          <?php echo $is_rtl ? 'سياسة الخصوصية' : 'Privacy Policy'; ?>
-        </a>
-        <span aria-hidden="true">•</span>
-        <a href="<?php echo esc_url( st_url( '/terms/' ) ); ?>" class="footer__bar-link">
-          <?php echo $is_rtl ? 'شروط الاستخدام' : 'Terms of Use'; ?>
-        </a>
-      </div>
-    </div>
-
-  </div><!-- /.container -->
 </footer>

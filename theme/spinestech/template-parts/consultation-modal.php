@@ -3,6 +3,7 @@
  * Template Part: Consultation Modal
  * Usage: get_template_part('template-parts/consultation-modal');
  */
+$is_rtl = st_locale() === 'ar';
 ?>
 <div id="st-consultation-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal__backdrop"></div>
@@ -12,55 +13,55 @@
             
             <div class="modal__hero">
                 <div class="modal__hero-top">
-                    <span class="material-symbols-outlined" style="color: #4ade80;">verified_user</span>
-                    <span style="color: #4ade80;">استشارة مجانية</span>
+                    <span class="material-symbols-outlined" style="color: #4ade80;" aria-hidden="true">verified_user</span>
+                    <span style="color: #4ade80;"><?php echo esc_html($is_rtl ? 'Ø§Ø³ØªØ´Ø§Ø±Ø© Ù…Ø¬Ø§Ù†ÙŠØ©' : 'Free Consultation'); ?></span>
                 </div>
 
-                <h3 class="modal__hero-title">لنبدأ رحلة التحول الرقمي معاً</h3>
+                <h3 class="modal__hero-title"><?php echo esc_html($is_rtl ? 'Ù„Ù†Ø¨Ø¯Ø£ Ø±Ø­Ù„Ø© Ø§Ù„ØªØ­ÙˆÙ„ Ø§Ù„Ø±Ù‚Ù…ÙŠ Ù…Ø¹Ø§Ù‹' : 'Let\'s Begin Your Digital Journey Together'); ?></h3>
 
                 <p class="modal__hero-copy">
-                    نساعدك في تحويل أفكارك إلى حلول تقنية عملية مدعومة بالخبرة والتكنولوجيا المناسبة لاحتياجات عملك.
+                    <?php echo esc_html($is_rtl ? 'Ù†Ø³Ø§Ø¹Ø¯Ùƒ ÙÙŠ ØªØ­ÙˆÙŠÙ„ Ø£ÙÙƒØ§Ø±Ùƒ Ø¥Ù„Ù‰ Ø­Ù„ÙˆÙ„ ØªÙ‚Ù†ÙŠØ© Ø¹Ù…Ù„ÙŠØ© Ù…Ø¯Ø¹ÙˆÙ…Ø© Ø¨Ø§Ù„Ø®Ø¨Ø±Ø© ÙˆØ§Ù„ØªÙƒÙ†ÙˆÙ„ÙˆØ¬ÙŠØ§ Ø§Ù„Ù…Ù†Ø§Ø³Ø¨Ø© Ù„Ø§Ø­ØªÙŠØ§Ø¬Ø§Øª Ø¹Ù…Ù„Ùƒ.' : 'We help turn your ideas into practical tech solutions backed by expertise and tailored technology.'); ?>
                 </p>
 
                 <div class="modal__features">
                     <div class="modal__feature">
                         <div class="modal__feature-icon">
-                            <span class="material-symbols-outlined" style="color: #4ade80;">manage_search</span>
+                            <span class="material-symbols-outlined" style="color: #4ade80;" aria-hidden="true">manage_search</span>
                         </div>
                         <div>
-                            <div style="font-weight: 600;">تحليل احتياجات واضح</div>
-                            <div style="font-size: 0.875rem; opacity: 0.7;">نحدد أولوياتك واحتياجاتك بدقة</div>
+                            <div style="font-weight: 600;"><?php echo esc_html($is_rtl ? 'ØªØ­Ù„ÙŠÙ„ Ø§Ø­ØªÙŠØ§Ø¬Ø§Øª ÙˆØ§Ø¶Ø­' : 'Clear Needs Analysis'); ?></div>
+                            <div style="font-size: 0.875rem; opacity: 0.7;"><?php echo esc_html($is_rtl ? 'Ù†Ø­Ø¯Ø¯ Ø£ÙˆÙ„ÙˆÙŠØ§ØªÙƒ ÙˆØ§Ø­ØªÙŠØ§Ø¬Ø§ØªÙƒ Ø¨Ø¯Ù‚Ø©' : 'We precisely define your priorities & needs'); ?></div>
                         </div>
                     </div>
 
                     <div class="modal__feature">
                         <div class="modal__feature-icon">
-                            <span class="material-symbols-outlined" style="color: #4ade80;">rocket_launch</span>
+                            <span class="material-symbols-outlined" style="color: #4ade80;" aria-hidden="true">rocket_launch</span>
                         </div>
                         <div>
-                            <div style="font-weight: 600;">خطة تنفيذ عملية</div>
-                            <div style="font-size: 0.875rem; opacity: 0.7;">نختار الحلول الأنسب وسير العمل</div>
+                            <div style="font-weight: 600;"><?php echo esc_html($is_rtl ? 'Ø®Ø·Ø© ØªÙ†ÙÙŠØ° Ø¹Ù…Ù„ÙŠØ©' : 'Practical Roadmap'); ?></div>
+                            <div style="font-size: 0.875rem; opacity: 0.7;"><?php echo esc_html($is_rtl ? 'Ù†Ø®ØªØ§Ø± Ø§Ù„Ø­Ù„ÙˆÙ„ Ø§Ù„Ø£Ù†Ø³Ø¨ ÙˆØ³ÙŠØ± Ø§Ù„Ø¹Ù…Ù„' : 'We choose optimal workflows & solutions'); ?></div>
                         </div>
                     </div>
 
                     <div class="modal__feature">
                         <div class="modal__feature-icon">
-                            <span class="material-symbols-outlined" style="color: #4ade80;">schedule</span>
+                            <span class="material-symbols-outlined" style="color: #4ade80;" aria-hidden="true">schedule</span>
                         </div>
                         <div>
-                            <div style="font-weight: 600;">رد خلال 24 ساعة</div>
-                            <div style="font-size: 0.875rem; opacity: 0.7;">نرد عليك في أقرب وقت ممكن</div>
+                            <div style="font-weight: 600;"><?php echo esc_html($is_rtl ? 'Ø±Ø¯ Ø®Ù„Ø§Ù„ 24 Ø³Ø§Ø¹Ø©' : '24-Hour Response'); ?></div>
+                            <div style="font-size: 0.875rem; opacity: 0.7;"><?php echo esc_html($is_rtl ? 'Ù†Ø±Ø¯ Ø¹Ù„ÙŠÙƒ ÙÙŠ Ø£Ù‚Ø±Ø¨ ÙˆÙ‚Øª Ù…Ù…ÙƒÙ†' : 'We respond as quickly as possible'); ?></div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="modal__content" style="position: relative;">
-                <button type="button" data-st-close-consultation aria-label="<?php echo st_dir() === 'rtl' ? 'إغلاق' : 'Close'; ?>" style="position: absolute; top: 1.5rem; inset-inline-end: 1.5rem; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: rgba(0,0,0,0.05); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--color-on-surface); transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='rgba(0,0,0,0.1)'" onmouseout="this.style.backgroundColor='rgba(0,0,0,0.05)'">
-                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">close</span>
+                <button type="button" data-st-close-consultation aria-label="<?php echo $is_rtl ? 'Ø¥ØºÙ„Ø§Ù‚' : 'Close'; ?>" style="position: absolute; top: 1.5rem; inset-inline-end: 1.5rem; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: rgba(0,0,0,0.05); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--color-on-surface); transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='rgba(0,0,0,0.1)'" onmouseout="this.style.backgroundColor='rgba(0,0,0,0.05)'">
+                    <span class="material-symbols-outlined" style="font-size: 1.25rem;" aria-hidden="true">close</span>
                 </button>
                 <div class="modal__stepper" style="padding-inline-end: 3rem;">
-                    <div class="modal__step-label" data-st-step-label>الخطوة 1 من 2</div>
+                    <div class="modal__step-label" data-st-step-label><?php echo esc_html($is_rtl ? 'Ø§Ù„Ø®Ø·ÙˆØ© 1 Ù…Ù† 2' : 'Step 1 of 2'); ?></div>
                     <div class="modal__step-dots">
                         <div data-st-step-dot="1" class="modal__step-dot is-active">1</div>
                         <div style="height: 2px; width: 2rem; background: var(--color-outline-variant); opacity: 0.4;"></div>
@@ -80,82 +81,82 @@
                     <div id="st-modal-step-1" class="modal__body">
                         <div class="row--2">
                             <div class="form-group">
-                                <label class="page-contact__label">الاسم الكامل</label>
-                                <input required name="name" type="text" placeholder="أدخل الاسم الكامل" class="form-control">
+                                <label class="page-contact__label"><?php echo esc_html($is_rtl ? 'Ø§Ù„Ø§Ø³Ù… Ø§Ù„ÙƒØ§Ù…Ù„' : 'Full Name'); ?></label>
+                                <input required name="name" type="text" placeholder="<?php echo esc_attr($is_rtl ? 'Ø£Ø¯Ø®Ù„ Ø§Ù„Ø§Ø³Ù… Ø§Ù„ÙƒØ§Ù…Ù„' : 'Enter your full name'); ?>" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label class="page-contact__label">البريد الإلكتروني</label>
+                                <label class="page-contact__label"><?php echo esc_html($is_rtl ? 'Ø§Ù„Ø¨Ø±ÙŠØ¯ Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ' : 'Email Address'); ?></label>
                                 <input required name="email" type="email" placeholder="example@domain.com" class="form-control" dir="ltr">
                             </div>
                         </div>
 
                         <div class="row--2">
                             <div class="form-group">
-                                <label class="page-contact__label">رقم الهاتف</label>
+                                <label class="page-contact__label"><?php echo esc_html($is_rtl ? 'Ø±Ù‚Ù… Ø§Ù„Ù‡Ø§ØªÙ' : 'Phone Number'); ?></label>
                                 <input required name="phone" type="tel" placeholder="05XXXXXXXX" class="form-control" dir="ltr">
                             </div>
                             <div class="form-group">
-                                <label class="page-contact__label">الشركة</label>
-                                <input name="company" type="text" placeholder="اسم الشركة" class="form-control">
+                                <label class="page-contact__label"><?php echo esc_html($is_rtl ? 'Ø§Ù„Ø´Ø±ÙƒØ©' : 'Company Name'); ?></label>
+                                <input name="company" type="text" placeholder="<?php echo esc_attr($is_rtl ? 'Ø§Ø³Ù… Ø§Ù„Ø´Ø±ÙƒØ©' : 'Company name'); ?>" class="form-control">
                             </div>
                         </div>
 
                         <div class="row--2">
                             <div class="form-group">
-                                <label class="page-contact__label">الوظيفة</label>
-                                <input name="job_title" type="text" placeholder="مثل: مدير تقنية المعلومات" class="form-control">
+                                <label class="page-contact__label"><?php echo esc_html($is_rtl ? 'Ø§Ù„ÙˆØ¸ÙŠÙØ©' : 'Job Title'); ?></label>
+                                <input name="job_title" type="text" placeholder="<?php echo esc_attr($is_rtl ? 'Ù…Ø«Ù„: Ù…Ø¯ÙŠØ± ØªÙ‚Ù†ÙŠØ© Ø§Ù„Ù…Ø¹Ù„ÙˆÙ…Ø§Øª' : 'e.g. CTO / IT Manager'); ?>" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label class="page-contact__label">حجم الشركة</label>
+                                <label class="page-contact__label"><?php echo esc_html($is_rtl ? 'Ø­Ø¬Ù… Ø§Ù„Ø´Ø±ÙƒØ©' : 'Company Size'); ?></label>
                                 <select name="company_size_select" class="form-control">
-                                    <option value="">اختر</option>
-                                    <option value="1-10">1–10 موظفين</option>
-                                    <option value="11-50">11–50 موظفاً</option>
-                                    <option value="51-200">51–200 موظفاً</option>
-                                    <option value="200+">200+ موظف</option>
+                                    <option value=""><?php echo esc_html($is_rtl ? 'Ø§Ø®ØªØ±' : 'Select'); ?></option>
+                                    <option value="1-10"><?php echo esc_html($is_rtl ? '1â€“10 Ù…ÙˆØ¸ÙÙŠÙ†' : '1â€“10 employees'); ?></option>
+                                    <option value="11-50"><?php echo esc_html($is_rtl ? '11â€“50 Ù…ÙˆØ¸ÙØ§Ù‹' : '11â€“50 employees'); ?></option>
+                                    <option value="51-200"><?php echo esc_html($is_rtl ? '51â€“200 Ù…ÙˆØ¸ÙØ§Ù‹' : '51â€“200 employees'); ?></option>
+                                    <option value="200+"><?php echo esc_html($is_rtl ? '200+ Ù…ÙˆØ¸Ù' : '200+ employees'); ?></option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="page-contact__label">القطاع</label>
+                            <label class="page-contact__label"><?php echo esc_html($is_rtl ? 'Ø§Ù„Ù‚Ø·Ø§Ø¹' : 'Industry'); ?></label>
                             <select name="sector_select" class="form-control">
-                                <option value="">اختر القطاع</option>
-                                <option value="قطاع خاص">قطاع خاص</option>
-                                <option value="حكومي">حكومي</option>
-                                <option value="استثماري">استثماري</option>
-                                <option value="تعليمي">تعليمي</option>
-                                <option value="صحي">صحي</option>
+                                <option value=""><?php echo esc_html($is_rtl ? 'Ø§Ø®ØªØ± Ø§Ù„Ù‚Ø·Ø§Ø¹' : 'Select Sector'); ?></option>
+                                <option value="Ù‚Ø·Ø§Ø¹ Ø®Ø§Øµ"><?php echo esc_html($is_rtl ? 'Ù‚Ø·Ø§Ø¹ Ø®Ø§Øµ' : 'Private Sector'); ?></option>
+                                <option value="Ø­ÙƒÙˆÙ…ÙŠ"><?php echo esc_html($is_rtl ? 'Ø­ÙƒÙˆÙ…ÙŠ' : 'Government'); ?></option>
+                                <option value="Ø§Ø³ØªØ«Ù…Ø§Ø±ÙŠ"><?php echo esc_html($is_rtl ? 'Ø§Ø³ØªØ«Ù…Ø§Ø±ÙŠ' : 'Investment'); ?></option>
+                                <option value="ØªØ¹Ù„ÙŠÙ…ÙŠ"><?php echo esc_html($is_rtl ? 'ØªØ¹Ù„ÙŠÙ…ÙŠ' : 'Education'); ?></option>
+                                <option value="ØµØ­ÙŠ"><?php echo esc_html($is_rtl ? 'ØµØ­ÙŠ' : 'Healthcare'); ?></option>
                             </select>
                         </div>
 
                         <div class="modal__actions">
-                            <button id="st-modal-next" type="button" class="button button--primary">التالي <span class="material-symbols-outlined text-base">arrow_forward</span></button>
+                            <button id="st-modal-next" type="button" class="button button--primary"><?php echo esc_html($is_rtl ? 'Ø§Ù„ØªØ§Ù„ÙŠ' : 'Next'); ?> <span class="material-symbols-outlined text-base"><?php echo $is_rtl ? 'arrow_forward' : 'arrow_back'; ?></span></button>
                         </div>
                     </div>
 
                     <div id="st-modal-step-2" class="modal__body is-hidden">
                         <div class="form-group">
-                            <label class="page-contact__label">ما هو هدف الاستشارة؟</label>
+                            <label class="page-contact__label"><?php echo esc_html($is_rtl ? 'Ù…Ø§ Ù‡Ùˆ Ù‡Ø¯Ù Ø§Ù„Ø§Ø³ØªØ´Ø§Ø±Ø©ØŸ' : 'What is your consultation goal?'); ?></label>
                             <div class="modal__goal-list" data-st-consult-goals>
-                                <button type="button" class="st-goal-chip" data-goal="تحليل احتياجات">تحليل احتياجات</button>
-                                <button type="button" class="st-goal-chip" data-goal="نظام ERP">نظام ERP</button>
-                                <button type="button" class="st-goal-chip" data-goal="تطبيق مخصص">تطبيق مخصص</button>
-                                <button type="button" class="st-goal-chip" data-goal="ذكاء اصطناعي">ذكاء اصطناعي</button>
-                                <button type="button" class="st-goal-chip" data-goal="استشارة تقنية">استشارة تقنية</button>
-                                <button type="button" class="st-goal-chip" data-goal="تحول رقمي">تحول رقمي</button>
-                                <button type="button" class="st-goal-chip" data-goal="أمن معلومات">أمن معلومات</button>
+                                <button type="button" class="st-goal-chip" data-goal="ØªØ­Ù„ÙŠÙ„ Ø§Ø­ØªÙŠØ§Ø¬Ø§Øª"><?php echo esc_html($is_rtl ? 'ØªØ­Ù„ÙŠÙ„ Ø§Ø­ØªÙŠØ§Ø¬Ø§Øª' : 'Needs Analysis'); ?></button>
+                                <button type="button" class="st-goal-chip" data-goal="Ù†Ø¸Ø§Ù… ERP"><?php echo esc_html($is_rtl ? 'Ù†Ø¸Ø§Ù… ERP' : 'ERP System'); ?></button>
+                                <button type="button" class="st-goal-chip" data-goal="ØªØ·Ø¨ÙŠÙ‚ Ù…Ø®ØµØµ"><?php echo esc_html($is_rtl ? 'ØªØ·Ø¨ÙŠÙ‚ Ù…Ø®ØµØµ' : 'Custom App'); ?></button>
+                                <button type="button" class="st-goal-chip" data-goal="Ø°ÙƒØ§Ø¡ Ø§ØµØ·Ù†Ø§Ø¹ÙŠ"><?php echo esc_html($is_rtl ? 'Ø°ÙƒØ§Ø¡ Ø§ØµØ·Ù†Ø§Ø¹ÙŠ' : 'AI Solution'); ?></button>
+                                <button type="button" class="st-goal-chip" data-goal="Ø§Ø³ØªØ´Ø§Ø±Ø© ØªÙ‚Ù†ÙŠØ©"><?php echo esc_html($is_rtl ? 'Ø§Ø³ØªØ´Ø§Ø±Ø© ØªÙ‚Ù†ÙŠØ©' : 'Tech Advisory'); ?></button>
+                                <button type="button" class="st-goal-chip" data-goal="ØªØ­ÙˆÙ„ Ø±Ù‚Ù…ÙŠ"><?php echo esc_html($is_rtl ? 'ØªØ­ÙˆÙ„ Ø±Ù‚Ù…ÙŠ' : 'Digital Transformation'); ?></button>
+                                <button type="button" class="st-goal-chip" data-goal="Ø£Ù…Ù† Ù…Ø¹Ù„ÙˆÙ…Ø§Øª"><?php echo esc_html($is_rtl ? 'Ø£Ù…Ù† Ù…Ø¹Ù„ÙˆÙ…Ø§Øª' : 'Cybersecurity'); ?></button>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="page-contact__label">وصف المشروع</label>
-                            <textarea required name="message" rows="4" placeholder="أخبرنا عن أهدافك واحتياجاتك..." class="form-control"></textarea>
+                            <label class="page-contact__label"><?php echo esc_html($is_rtl ? 'ÙˆØµÙ Ø§Ù„Ù…Ø´Ø±ÙˆØ¹' : 'Project Description'); ?></label>
+                            <textarea required name="message" rows="4" placeholder="<?php echo esc_attr($is_rtl ? 'Ø£Ø®Ø¨Ø±Ù†Ø§ Ø¹Ù† Ø£Ù‡Ø¯Ø§ÙÙƒ ÙˆØ§Ø­ØªÙŠØ§Ø¬Ø§ØªÙƒ...' : 'Tell us about your goals and requirements...'); ?>" class="form-control"></textarea>
                         </div>
 
                         <div class="modal__actions" style="justify-content: space-between; margin-top: 1rem;">
-                            <button id="st-modal-back" type="button" class="button button--ghost"><span class="material-symbols-outlined text-base">arrow_back</span> رجوع</button>
-                            <button type="submit" class="button button--primary"><span class="material-symbols-outlined text-base">send</span> إرسال الطلب</button>
+                            <button id="st-modal-back" type="button" class="button button--ghost"><span class="material-symbols-outlined text-base"><?php echo $is_rtl ? 'arrow_back' : 'arrow_forward'; ?></span> <?php echo esc_html($is_rtl ? 'Ø±Ø¬ÙˆØ¹' : 'Back'); ?></button>
+                            <button type="submit" class="button button--primary"><span class="material-symbols-outlined text-base">send</span> <?php echo esc_html($is_rtl ? 'Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø·Ù„Ø¨' : 'Submit Request'); ?></button>
                         </div>
                     </div>
                 </form>
@@ -219,7 +220,8 @@
             });
 
             if (stepLabel) {
-                stepLabel.textContent = 'الخطوة ' + step + ' من 2';
+                const isAr = document.documentElement.dir === 'rtl';
+                stepLabel.textContent = isAr ? ('Ø§Ù„Ø®Ø·ÙˆØ© ' + step + ' Ù…Ù† 2') : ('Step ' + step + ' of 2');
             }
         };
 
@@ -267,16 +269,16 @@
 
                 const details = [];
                 if (selectedGoals.length) {
-                    details.push('الأهداف: ' + selectedGoals.join('، '));
+                    details.push('Ø§Ù„Ø£Ù‡Ø¯Ø§Ù: ' + selectedGoals.join('ØŒ '));
                 }
                 if (companySizeField && companySizeField.value) {
-                    details.push('حجم الشركة: ' + companySizeField.value);
+                    details.push('Ø­Ø¬Ù… Ø§Ù„Ø´Ø±ÙƒØ©: ' + companySizeField.value);
                 }
                 if (sectorField && sectorField.value) {
-                    details.push('القطاع: ' + sectorField.value);
+                    details.push('Ø§Ù„Ù‚Ø·Ø§Ø¹: ' + sectorField.value);
                 }
                 if (jobTitleField && jobTitleField.value) {
-                    details.push('الوظيفة: ' + jobTitleField.value);
+                    details.push('Ø§Ù„ÙˆØ¸ÙŠÙØ©: ' + jobTitleField.value);
                 }
                 if (messageField && details.length) {
                     const base = (messageField.value || '').trim();
