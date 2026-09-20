@@ -15,6 +15,24 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+/**
+ * Early URI Normalization:
+ * Strip language prefix (/ar/ or /en/) from REQUEST_URI before WordPress core parses the request,
+ * allowing core rewrite rules to match pages, posts, CPTs, and archives natively.
+ * The detected language is stored in $_SERVER['ST_LANG_PREFIX'] and the full original URI in $_SERVER['ST_ORIGINAL_REQUEST_URI'].
+ */
+if (!is_admin() && (empty($_SERVER['SCRIPT_NAME']) || !str_contains($_SERVER['SCRIPT_NAME'], 'wp-admin'))) {
+    $raw_uri = (string) ($_SERVER['REQUEST_URI'] ?? '/');
+    $raw_path = parse_url($raw_uri, PHP_URL_PATH) ?: '/';
+    if (preg_match('#^/(ar|en)(/.*)?$#i', $raw_path, $m)) {
+        $_SERVER['ST_ORIGINAL_REQUEST_URI'] = $raw_uri;
+        $_SERVER['ST_LANG_PREFIX'] = strtolower($m[1]);
+        $sub_path = ($m[2] ?? '') ?: '/';
+        $query_str = parse_url($raw_uri, PHP_URL_QUERY);
+        $_SERVER['REQUEST_URI'] = $sub_path . ($query_str !== null ? '?' . $query_str : '');
+    }
+}
+
 define('ST_THEME_VERSION', '1.0.0');
 
 require_once get_template_directory() . '/inc/i18n.php';
@@ -54,24 +72,14 @@ add_action('send_headers', function (): void {
 });
 
 /**
- * Strip language prefix from the request before WordPress rewrites/query matching,
- * allowing /ar/{slug}/ and /en/{slug}/ to resolve natively to pages, posts, and CPTs.
- */
-add_action('parse_request', function (WP $wp): void {
-    if (is_admin()) {
-        return;
-    }
-    if (preg_match('#^(ar|en)(/.*)?$#i', $wp->request, $m)) {
-        $sub = trim($m[2] ?? '', '/');
-        $wp->request = $sub;
-    }
-}, 1);
-
-/**
- * Prevent WordPress canonical redirect from redirecting /ar/... or /en/... back to root URLs.
+ * Prevent WordPress canonical redirect from stripping /ar/ or /en/ or redirecting language routes.
  */
 add_filter('redirect_canonical', function ($redirect_url, $requested_url) {
-    $path = parse_url((string) $requested_url, PHP_URL_PATH) ?: '';
+    if (!empty($_SERVER['ST_LANG_PREFIX'])) {
+        return false;
+    }
+    $orig = (string) ($_SERVER['ST_ORIGINAL_REQUEST_URI'] ?? $requested_url ?? '');
+    $path = parse_url($orig, PHP_URL_PATH) ?: '';
     if (preg_match('#^/(ar|en)(/|$)#i', $path)) {
         return false;
     }

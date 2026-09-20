@@ -7,7 +7,12 @@ if (!defined('ABSPATH')) {
 
 function st_locale(): string
 {
-    $path = parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?: '/';
+    if (!empty($_SERVER['ST_LANG_PREFIX']) && in_array($_SERVER['ST_LANG_PREFIX'], ['ar', 'en'], true)) {
+        return $_SERVER['ST_LANG_PREFIX'];
+    }
+
+    $raw = (string) ($_SERVER['ST_ORIGINAL_REQUEST_URI'] ?? $_SERVER['REQUEST_URI'] ?? '/');
+    $path = parse_url($raw, PHP_URL_PATH) ?: '/';
     $segments = array_values(array_filter(explode('/', trim($path, '/'))));
     if (isset($segments[0]) && in_array($segments[0], ['ar', 'en'], true)) {
         return $segments[0];
@@ -67,7 +72,8 @@ function st_asset(string $rel): string
 function st_is_current(string $path): bool
 {
     $path = untrailingslashit($path);
-    $current = untrailingslashit(st_strip_lang_prefix(parse_url((string) ($_SERVER['REQUEST_URI'] ?? ''), PHP_URL_PATH) ?: ''));
+    $raw = (string) ($_SERVER['ST_ORIGINAL_REQUEST_URI'] ?? $_SERVER['REQUEST_URI'] ?? '');
+    $current = untrailingslashit(st_strip_lang_prefix(parse_url($raw, PHP_URL_PATH) ?: ''));
     if ($path === '' || $path === '/') {
         return $current === '' || $current === '/' || is_front_page();
     }
@@ -83,8 +89,9 @@ function st_lang_url(string $lang): string
 function st_lang_switch_url(): string
 {
     $target = st_locale() === 'ar' ? 'en' : 'ar';
-    $current = parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?: '/';
-    $query = parse_url((string) ($_SERVER['REQUEST_URI'] ?? ''), PHP_URL_QUERY);
+    $raw = (string) ($_SERVER['ST_ORIGINAL_REQUEST_URI'] ?? $_SERVER['REQUEST_URI'] ?? '/');
+    $current = parse_url($raw, PHP_URL_PATH) ?: '/';
+    $query = parse_url($raw, PHP_URL_QUERY);
     $clean_path = st_strip_lang_prefix($current);
     $url = st_localized_url($clean_path, $target);
     if ($query) {
@@ -128,7 +135,8 @@ function st_localized_url(string $path = '/', ?string $locale = null): string
 
 function st_current_canonical_path(): string
 {
-    return st_strip_lang_prefix(parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?: '/');
+    $raw = (string) ($_SERVER['ST_ORIGINAL_REQUEST_URI'] ?? $_SERVER['REQUEST_URI'] ?? '/');
+    return st_strip_lang_prefix(parse_url($raw, PHP_URL_PATH) ?: '/');
 }
 
 function st_localize_internal_url(string $url, ?string $locale = null): string

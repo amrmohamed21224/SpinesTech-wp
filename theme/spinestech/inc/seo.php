@@ -20,9 +20,11 @@ add_action('wp_head', function (): void {
 
 function st_seo_canonical_url(?string $locale = null): string
 {
-    $req_path = parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?: '/';
+    $req_path = parse_url((string) ($_SERVER['ST_ORIGINAL_REQUEST_URI'] ?? $_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?: '/';
     if ($locale === null) {
-        if (preg_match('#^/en(/|$)#i', $req_path)) {
+        if (!empty($_SERVER['ST_LANG_PREFIX'])) {
+            $locale = $_SERVER['ST_LANG_PREFIX'];
+        } elseif (preg_match('#^/en(/|$)#i', $req_path)) {
             $locale = 'en';
         } elseif (preg_match('#^/ar(/|$)#i', $req_path)) {
             $locale = 'ar';
