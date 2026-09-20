@@ -9,16 +9,20 @@
 // â”€â”€ SEO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 add_filter( 'pre_get_document_title', function () {
     $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
+    $paged = !empty($_GET['articles_page']) ? (int) $_GET['articles_page'] : 1;
+    $suffix = $paged > 1 ? ($is_rtl ? " — صفحة {$paged}" : " — Page {$paged}") : '';
     return $is_rtl
-        ? 'Ø§Ù„Ù…Ø¯ÙˆÙ†Ø© | SpinesTech â€” Ø±Ø¤Ù‰ ØªÙ‚Ù†ÙŠØ© Ù„Ø¨Ù†Ø§Ø¡ Ù…Ù†ØªØ¬Ø§Øª Ø±Ù‚Ù…ÙŠØ© Ø£ÙØ¶Ù„'
-        : 'Blog | SpinesTech â€” Tech Insights for Building Better Digital Products';
+        ? "مقالات ورؤى هندسة البرمجيات{$suffix} | SpinesTech"
+        : "Software Engineering Articles{$suffix} | SpinesTech";
 }, 999 );
 
 add_action( 'wp_head', function () {
     $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
+    $paged = !empty($_GET['articles_page']) ? (int) $_GET['articles_page'] : 1;
+    $suffix = $paged > 1 ? ($is_rtl ? " — صفحة {$paged}" : " — Page {$paged}") : '';
     st_seo_set_description( $is_rtl
-        ? 'مقالات SpinesTech التقنية حول بناء التطبيقات، المنصات الرقمية، لوحات التحكم، والأنظمة التشغيلية في السعودية والخليج.'
-        : 'SpinesTech technical articles on building apps, digital platforms, dashboards, and operational systems across Saudi Arabia and the GCC.' );
+        ? "مقالات وأدلة SpinesTech العملية حول تكلفة التطبيقات، إدارة المشاريع التقنية، وهندسة النظم الرقمية القابلة للنمو{$suffix}."
+        : "Practical SpinesTech guides on app costs, technical project management, and scalable digital engineering systems{$suffix}." );
 }, 3 );
 // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
@@ -158,7 +162,7 @@ $grid_query = new WP_Query([
     <section class="art2-featured container reveal">
         <div class="art2-featured__card art2-frame">
             <div class="art2-featured__media">
-                <img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr(get_the_title($featured_id)); ?>" loading="eager">
+                <img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr(get_the_title($featured_id)); ?>" width="800" height="450" loading="eager" decoding="async">
                 <div class="art2-featured__media-overlay" aria-hidden="true"></div>
                 <span class="art2-featured__badge">
                     <span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span>
@@ -206,7 +210,7 @@ $grid_query = new WP_Query([
                 ?>
                     <article class="art2-card reveal" style="--delay:<?php echo esc_attr(($i - 1) * 70); ?>ms">
                         <a href="<?php the_permalink(); ?>" class="art2-card__media">
-                            <img src="<?php echo esc_url($thumb); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy">
+                            <img src="<?php echo esc_url($thumb); ?>" alt="<?php the_title_attribute(); ?>" width="600" height="338" loading="lazy" decoding="async">
                             <span class="art2-card__cat-badge"><?php echo esc_html($cat_name); ?></span>
                         </a>
                         <div class="art2-card__body">

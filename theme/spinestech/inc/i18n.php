@@ -54,7 +54,14 @@ function st_url(string $path = '/'): string
 
 function st_asset(string $rel): string
 {
-    return get_template_directory_uri() . '/assets/' . ltrim($rel, '/');
+    $clean_rel = ltrim($rel, '/');
+    if (preg_match('/\.(png|jpe?g)$/i', $clean_rel)) {
+        $webp_rel = preg_replace('/\.(png|jpe?g)$/i', '.webp', $clean_rel);
+        if (file_exists(get_template_directory() . '/assets/' . rawurldecode($webp_rel))) {
+            $clean_rel = $webp_rel;
+        }
+    }
+    return get_template_directory_uri() . '/assets/' . $clean_rel;
 }
 
 function st_is_current(string $path): bool
@@ -137,7 +144,7 @@ function st_localize_internal_url(string $url, ?string $locale = null): string
     }
 
     $path = parse_url($url, PHP_URL_PATH) ?: '/';
-    if (preg_match('#^/(ar|en|wp-admin|wp-login\.php|wp-json|wp-content|wp-includes)(/|$)#', $path)) {
+    if (preg_match('#^/(wp-admin|wp-login\.php|wp-json|wp-content|wp-includes)(/|$)#', $path)) {
         return $url;
     }
 
@@ -145,9 +152,10 @@ function st_localize_internal_url(string $url, ?string $locale = null): string
         return $url;
     }
 
+    $clean_path = st_strip_lang_prefix($path);
     $query = parse_url($url, PHP_URL_QUERY);
     $fragment = parse_url($url, PHP_URL_FRAGMENT);
-    $localized = st_localized_url($path, $locale ?: st_locale());
+    $localized = st_localized_url($clean_path, $locale ?: st_locale());
     if ($query) {
         $localized .= '?' . $query;
     }

@@ -14,7 +14,7 @@ add_filter( 'pre_get_document_title', function () {
     $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
     return $is_rtl
         ? 'دراسات الحالة | SpinesTech — منتجات رقمية مكتملة التشغيل'
-        : 'Case Studies | SpinesTech — Operational Digital Products Delivered';
+        : 'Case Studies | SpinesTech — Operational Digital Products';
 }, 999 );
 
 add_action( 'wp_head', function () {
@@ -31,18 +31,18 @@ $is_rtl = st_locale() === 'ar';
 $arrow  = $is_rtl ? 'arrow_back' : 'arrow_forward';
 
 /* ─────────────────────────────────────────────
-   Image URLs — taken directly from Figma design
+   Image URLs — loaded from local case study assets
 ───────────────────────────────────────────── */
-$img_phone    = 'https://lh3.googleusercontent.com/aida-public/AB6AXuDxWRGeVthaBFQzTnRnY9a7Ot31Mj5O_sJJcG4ZRxba9iTPJaMwu9-HGayk05YVs-jAKPv4e2wUia7SXa8tFAQKKp9766TrjMI2sc5wRmGuZSFuC7hI0Mj9rLvOD70wWz7ouMENc95je__EP6JnJ3T74R-mW3cMLo2zSbUNfYrWkogLkLDC36tyPThn887msFkSg8XTsc2xOwIs63toE8GW42N-n8Oao-_B9iBAZ6dWVyLsFKjG5sqNx435nzHUEwj1fXitK8F6BA';
-$img_desktop  = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBdrz59eUmbWi4CUgxkfcEr_ly7uDKTk7tp90rYKgffzEPNq49hUiFQ3KUX4DKzm4QPlyorfbVURoIQYWRmffl-hgjloEi9r2PZKJcxSvuJ-QKvD0HlZXQkR4fvBfz5Q7kYx-U0vnnV_Jy2iYdsEdTnAS2FjCXyh1boV2_yJc__AaBspyeeH-fqlnBByd-OVYEQulLxom7_tFRfw2Y06ozvA23Y8LxAVX99RhryLL97oODDunz2m89EPO_K_xy5p53kjZKsm84XNQ';
-$img_map      = 'https://lh3.googleusercontent.com/aida-public/AB6AXuCSTB4gw6R2AB5wIaD_ZGwgQjbEc7JLxpRmMnyO8h3URFC8mlaCHFN2GzV_fn86hBwLEIZNUvjs4aMDPp_Bw7Fra-HQmn-uvVyIkIShPos1i32EZ6Zv-gEne-gLx_pJIdQdHQ8EvpYc-AGrAJiDx0ROHEzF6bz44KKzBgW_aoF4pNZcWBQmkY0u6ScO80r4EpjDo4qMA3bOurZyLAIHrgV4soli8vUPHrhqIqmQgmw1Zc_g_788WrT7eNpBKJ-McSTT-lLe-IocNw';
-$img_customer = 'https://lh3.googleusercontent.com/aida-public/AB6AXuDB5Y6kRQAdmuKIs4rBq9yEmT-smkgsGdlYdJbXsBEfbdoEn749XbHBXN-h5qi-4cc25F4yS4F3xRC8rFbkQjs3uwLeZJRb6ztg_rRo3nqxSh0qhfpff9vW_df8ZCyuZi_6Giu8Ilnki_RwnWSQUUzbmEFx5rhKatolGYFfYYSa1NtbK8Ns8BnlerUB6YWpV5GJBNSYrVGHVjoiSoTRNKdnmhsiXv4_BDrhgkyXx9eSO7sAd7FHQ8-gW0DdgeacJfxcKzFYtVuVXg';
-$img_driver   = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAYCW5elAr01gMuFCBHXJCBR7NL9QIXHzPv52hcY1ilDU0BJVlqJAyqD6UvjpFaM2JerCfmT84GdVkRGms8x8OKZ2tw5gYjoa2plSF0baV0W8uUk_PnLUUqU1ruBGRX6dObH0z9UM5JZRrS1N_MIJCHzlineojb17xWUgnVtZymIRrh0Ffi4NTcJhqEsBPjDp4wg2isezRurNcitB8YHrf_KNRhg0q0hVd0QlH6aHiN3AJnI2HMTxzxf0uKmn6_eqLjvDMPoCLvbA';
-$img_admin    = 'https://lh3.googleusercontent.com/aida-public/AB6AXuD9RriQyjPxTAA3N3nsT26UVJ5GFTcarodgRn7023DfVab8iJfkpDgp_sSYN9jk8kgnpxoZWInqZZU1xyWb2J1M8ENYDMy3i7uW4-4QhDyYDpIYZuy0HdM4TLpzF7a6wEN_Fq-5ksPOxjmy90OLoraEuPK5Z3guXGCtV-ywf5tPzKRtERml3lwzA_LappMAWYJPGFX9CyCH_E4LxJTa9euvfsSawsP2xaKVpnRT_WxZzygSeXrBtmwNrCt1TevBZY-Bcv5DjMt8IQ';
+$img_phone    = st_asset('images/case-studies/backway/shipper-home-page.png');
+$img_desktop  = st_asset('images/case-studies/backway/admin-home.png');
+$img_map      = st_asset('images/case-studies/backway/shipper-Shipment-details-Live-tracking.png');
+$img_customer = st_asset('images/case-studies/backway/shipper-home-page.png');
+$img_driver   = st_asset('images/case-studies/backway/driver-home-page.png');
+$img_admin    = st_asset('images/case-studies/backway/admin-home.png');
 
 /* Merchant case study images */
-$img_merchant_dashboard = 'https://lh3.googleusercontent.com/aida-public/AB6AXuABmSjnknukfQY09JZuMi2mL3oAbDAke0MlpdALUVH3u_uXeUAaa4wNzthZrZ_Jmzh8puKmSMc0CBR02jG9JIrQhgrAtG3kzKfw676mUV2hgLQ8P9BiYuMOTWxPd434XcUZP56Ppfzu8CB4rKyl_YzBJFstCKOeW5ASsoJnKP8KmyF6gvx6Jj-5RIQoNRj_QoT81Xs12cz9nz8nZVAg5RLGFknr5-L2oKf9MWuQxck3hNF2bNwRT5bx2yvZKUwI3J88TEhiDyNr-iQ';
-$img_merchant_product   = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAyZsqol7z9Ue9KH2KG2lvLCSjMoe_anP1DrV1ZdmINtekEzJ3M_fsf0XOJLy7A2DlvEfE0s0y0QDU0OLN5LssS_St26d1y__bnTQ4aTETy1b4h29iV-P7HBBBjZ2wKjIekiuUCBkgL81ASDcX2omfAX0p80gikMhb5dkfJPFN7IWKbt1XJXJ11EXAy7aEgTdcZOMorCC7x434nb7NYxdfUUPo9_k-3jk6_5v9SWoFEy6b4wYhatLtMFtGkvCaNMPlkkT4jgwatWow';
+$img_merchant_dashboard = st_asset('images/case-studies/merchant/Dashboard.jpg');
+$img_merchant_product   = st_asset('images/case-studies/merchant/Item+Details.jpg');
 
 /* ─────────────────────────────────────────────
    Helper: resolve a case-study URL by trying
@@ -422,7 +422,7 @@ $tech_stack = [
                             echo '<span class="cs2-tech-item">';
                             echo '<span class="cs2-tech-item__icon">';
                             if ( ! empty( $tech['icon'] ) ) {
-                                echo '<img src="' . esc_url( $tech['icon'] ) . '" alt="" width="30" height="30" loading="lazy">';
+                                echo '<img src="' . esc_url( $tech['icon'] ) . '" alt="' . esc_attr( $tech['name'] ) . '" width="30" height="30" loading="lazy">';
                             } else {
                                 echo '<span class="material-symbols-outlined" aria-hidden="true">' . esc_html( $tech['symbol'] ) . '</span>';
                             }
@@ -534,6 +534,11 @@ $tech_stack = [
     ?>
 
     <!-- [SPINESTECH_WEB_PROJECTS_ACTIVE count="<?php echo count( $web_projects ); ?>"] -->
+    <?php
+    // TOGGLE: Set to true to re-enable the Web Projects spotlight section
+    $show_web_projects_section = false;
+    ?>
+    <?php if ( $show_web_projects_section ) : ?>
     <?php if ( ! wp_style_is( 'st-web-projects-spotlight', 'enqueued' ) ) : ?>
     <link rel="stylesheet" id="st-web-projects-spotlight-direct-css" href="<?php echo esc_url( function_exists('st_asset') ? st_asset('css/components/web-projects-spotlight.css') : get_template_directory_uri() . '/assets/css/components/web-projects-spotlight.css' ); ?>">
     <?php endif; ?>
@@ -641,6 +646,7 @@ $tech_stack = [
 
         </div><!-- .container -->
     </section>
+    <?php endif; // end $show_web_projects_section ?>
 
 
     <!-- ══════════════════════════════════════════════════════

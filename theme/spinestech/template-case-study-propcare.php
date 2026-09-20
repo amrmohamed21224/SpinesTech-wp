@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Template Name: Case Study â€” PropCare 360
  * Template Post Type: st_case_study
@@ -39,7 +39,7 @@ get_header();
 
             <div class="pc__hero-content" data-pc-reveal>
                 <span class="pc__badge"><?php echo $is_rtl ? 'Ø¯Ø±Ø§Ø³Ø© Ø­Ø§Ù„Ø© Ù…Ù† SpinesTech' : 'Case Study by SpinesTech'; ?></span>
-                <h1 class="pc__hero-title" id="pc-hero-title"><?php echo $is_rtl ? 'Ù…Ù†ØµØ© Ø±Ù‚Ù…ÙŠØ© Ù…ØªÙƒØ§Ù…Ù„Ø© Ù„Ø¥Ø¯Ø§Ø±Ø© Ø®Ø¯Ù…Ø§Øª Ø§Ù„Ø£Ù…Ù„Ø§Ùƒ ÙˆØ§Ù„ØµÙŠØ§Ù†Ø©' : 'An Integrated Digital Platform for Property Services & Maintenance Management'; ?></h1>
+                <h1 class="pc__hero-title" id="pc-hero-title"><?php echo $is_rtl ? 'منصة رقمية متكاملة لإدارة خدمات الأملاك والصيانة' : 'Digital Platform for Property Services & Maintenance'; ?></h1>
                 <p class="pc__hero-copy">
                     <?php echo $is_rtl
                         ? 'PropCare 360 ØªØ³Ø§Ø¹Ø¯ Ø´Ø±ÙƒØ§Øª Ø®Ø¯Ù…Ø§Øª Ø§Ù„Ø£Ù…Ù„Ø§Ùƒ Ø¹Ù„Ù‰ Ø£ØªÙ…ØªØ© Ø§Ù„Ø¹Ù…Ù„ÙŠØ§ØªØŒ Ø¥Ø¯Ø§Ø±Ø© Ø§Ù„Ø¹Ù‚ÙˆØ¯ØŒ ÙˆØ±ÙØ¹ ÙƒÙØ§Ø¡Ø© ÙØ±Ù‚ Ø§Ù„ØµÙŠØ§Ù†Ø© Ø¹Ø¨Ø± ØªØ¬Ø±Ø¨Ø© Ù…Ø³ØªØ®Ø¯Ù… Ø¹Ø§Ù„Ù…ÙŠØ©.'

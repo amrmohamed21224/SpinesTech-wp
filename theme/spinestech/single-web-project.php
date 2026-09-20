@@ -158,6 +158,8 @@ get_header();
                     <img src="<?php echo esc_url( $img_hero ); ?>"
                          alt="<?php echo esc_attr( $wp_name ); ?>"
                          class="wp-browser-img"
+                         width="1920"
+                         height="1080"
                          loading="lazy"
                          decoding="async">
                 </div>
@@ -234,6 +236,8 @@ get_header();
                             <img src="<?php echo esc_url( $src ); ?>"
                                  alt="<?php echo esc_attr( $wp_name . ' — ' . ( $i + 1 ) ); ?>"
                                  class="wp-browser-img"
+                                 width="1280"
+                                 height="720"
                                  loading="lazy"
                                  decoding="async">
                         </div>

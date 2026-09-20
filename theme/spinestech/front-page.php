@@ -4,14 +4,14 @@ add_filter( 'pre_get_document_title', function () {
     $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
     return $is_rtl
         ? 'شركة تطوير تطبيقات وأنظمة أعمال في الخليج | SpinesTech'
-        : 'GCC Business App & Software Development Company | SpinesTech';
+        : 'Custom Business App & Software Studio | SpinesTech';
 }, 999 );
 
 add_action('wp_head', function () {
     $is_rtl = function_exists('st_locale') && st_locale() === 'ar';
     st_seo_set_description($is_rtl
-        ? 'تطوّر SpinesTech تطبيقات الجوال ومنصات الويب والأنظمة المخصصة للشركات في السعودية والخليج، من تحليل المتطلبات وحتى الإطلاق والتوسع.'
-        : 'SpinesTech builds mobile apps, web platforms, and custom business systems for companies in Saudi Arabia and the GCC — from discovery through launch and scale.');
+        ? 'استوديو هندسة منتجات يطور تطبيقات الجوال ومنصات الويب والأنظمة التشغيلية للشركات في السعودية والخليج.'
+        : 'Product engineering studio building mobile apps, web platforms, and operational software across the GCC.');
 }, 3);
 // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 

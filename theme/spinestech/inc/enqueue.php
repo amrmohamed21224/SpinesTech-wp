@@ -43,6 +43,20 @@ function st_is_page_slug(string $slug): bool
         }
     }
 
+    $post_name = get_post_field('post_name', get_the_ID());
+    if ($post_name === $slug) {
+        return true;
+    }
+
+    $path  = trim((string) parse_url((string) ($_SERVER['REQUEST_URI'] ?? ''), PHP_URL_PATH), '/');
+    $parts = array_values(array_filter(explode('/', $path)));
+    if (!empty($parts) && in_array($parts[0], ['ar', 'en'], true)) {
+        array_shift($parts);
+    }
+    if (($parts[0] ?? '') === $slug) {
+        return true;
+    }
+
     return false;
 }
 
@@ -101,14 +115,15 @@ function st_enqueue_assets(): void
     );
 
     $pages = [
-        'about' => 'st-about',
-        'contact' => 'st-contact',
-        'pricing' => 'st-pricing',
-        'quote' => 'st-quote',
-        'consultation' => 'st-consultation',
-        'solutions' => 'st-solutions',
-        'careers' => 'st-careers',
-        'jobs' => 'st-jobs',
+        'about'          => 'st-about',
+        'contact'        => 'st-contact',
+        'pricing'        => 'st-pricing',
+        'quote'          => 'st-quote',
+        'consultation'   => 'st-consultation',
+        'solutions'      => 'st-solutions',
+        'careers'        => 'st-careers',
+        'jobs'           => 'st-jobs',
+        'privacy-policy' => 'st-privacy-policy',
     ];
 
     foreach ($pages as $slug => $handle) {
@@ -402,6 +417,10 @@ add_filter('script_loader_tag', 'st_defer_scripts', 10, 2);
 function st_async_styles(string $html, string $handle, string $href, string $media): string
 {
     $async_handles = ['st-material-symbols'];
+    if (function_exists('st_is_mobile_request') && st_is_mobile_request()) {
+        $async_handles[] = 'st-chatbot';
+    }
+
     if (!in_array($handle, $async_handles, true)) {
         return $html;
     }

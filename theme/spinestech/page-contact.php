@@ -10,14 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 add_filter('pre_get_document_title', function($title) {
     $is_rtl = function_exists('st_locale') ? st_locale() === 'ar' : false;
     return $is_rtl 
-        ? "\u{062A}\u{0648}\u{0627}\u{0635}\u{0644}\u{0020}\u{0645}\u{0639}\u{0646}\u{0627}\u{0020}\u{007C}\u{0020}\u{0053}\u{0070}\u{0069}\u{006E}\u{0065}\u{0073}\u{0054}\u{0065}\u{0063}\u{0068}\u{0020}\u{002D}\u{0020}\u{0634}\u{0631}\u{064A}\u{0643}\u{0643}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0646}\u{064A}\u{0020}\u{0644}\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{0635}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0628}\u{0631}\u{0645}\u{062C}\u{064A}\u{0629}" 
-        : 'Contact Us | SpinesTech - Your Software & Product Engineering Partner';
+        ? 'تواصل معنا | ابدأ مشروعك التقني مع SpinesTech'
+        : 'Contact Us | SpinesTech Software Engineering';
 }, 999);
 
 add_action('wp_head', function() {
     $is_rtl = function_exists('st_locale') ? st_locale() === 'ar' : false;
     st_seo_set_description($is_rtl
-        ? 'تواصل مع فريق SpinesTech لبدء مشروعك التقني أو طلب استشارة مجانية لبناء تطبيقات الجوال، لوحات التحكم والأنظمة التشغيلية في السعودية والخليج.'
+        ? 'تواصل مع فريق SpinesTech الهندسي لبدء مشروعك أو حجز استشارة تقنية مجانية لتطبيقات الجوال والمنصات الرقمية.'
         : 'Get in touch with the SpinesTech engineering team to launch your next mobile app, dashboard, or digital platform across Saudi Arabia and the GCC.');
 }, 3);
 // ───────────────────────────────────────────────────────────────────────────
@@ -164,23 +164,23 @@ $arrow  = $is_rtl ? 'arrow_back' : 'arrow_forward';
                     </div>
 
                     <div class="form-group">
-                        <label for="ct-budget"><?php echo esc_html($is_rtl ? "\u{0627}\u{0644}\u{0645}\u{064A}\u{0632}\u{0627}\u{0646}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{0648}\u{0642}\u{0639}\u{0629}\u{0020}\u{0028}\u{0627}\u{062E}\u{062A}\u{064A}\u{0627}\u{0631}\u{064A}\u{0029}" : 'Estimated Budget (Optional)'); ?></label>
+                        <label for="ct-budget"><?php echo esc_html($is_rtl ? "\u{0627}\u{0644}\u{0645}\u{064A}\u{0632}\u{0644}\u{0646}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{0648}\u{0642}\u{0639}\u{0629}\u{0020}\u{0028}\u{0627}\u{062E}\u{062A}\u{064A}\u{0627}\u{0631}\u{064A}\u{0029}" : 'Estimated Budget (Optional)'); ?></label>
                         <input class="form-control" type="text" id="ct-budget" name="budget" placeholder="<?php echo esc_attr($is_rtl ? "\u{0646}\u{0637}\u{0627}\u{0642}\u{0020}\u{0627}\u{0644}\u{0645}\u{064A}\u{0632}\u{0627}\u{0646}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{0642}\u{0631}\u{064A}\u{0628}\u{064A}" : 'Approximate budget range'); ?>" />
                     </div>
 
                     <div class="form-group">
                         <label for="ct-message"><?php echo esc_html($is_rtl ? "\u{0648}\u{0635}\u{0641}\u{0020}\u{0645}\u{062E}\u{062A}\u{0635}\u{0631}\u{0020}\u{0644}\u{0644}\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}" : 'Short Project Overview'); ?></label>
-                        <textarea class="form-control" id="ct-message" name="message" rows="4" placeholder="<?php echo esc_attr($is_rtl ? "\u{0623}\u{062E}\u{0628}\u{0631}\u{0646}\u{0627}\u{0020}\u{0627}\u{0644}\u{0645}\u{0632}\u{064A}\u{062F}\u{0020}\u{0639}\u{0646}\u{0020}\u{0631}\u{0624}\u{064A}\u{062A}\u{0643}\u{002E}\u{002E}\u{002E}" : 'Tell us more about your requirements...'); ?>"></textarea>
+                        <textarea class="form-control" id="ct-message" name="message" rows="4" placeholder="<?php echo esc_attr($is_rtl ? "\u{0623}\u{062E}\u{0628}\u{0631}\u{0646}\u{0627}\u{0020}\u{0627}\u{0644}\u{0645}\u{0632}\u{064A}\u{062F}\u{0020}\u{0639}\u{0646}\u{0620}\u{0631}\u{0624}\u{064A}\u{062A}\u{0643}\u{002E}\u{002E}\u{002E}" : 'Tell us more about your requirements...'); ?>"></textarea>
                     </div>
 
                     <button type="submit" class="ct-submit-btn">
-                        <span><?php echo esc_html($is_rtl ? 'ابدأ مناقشة مشروعك' : 'Start your project discussion'); ?></span>
+                        <span><?php echo esc_html($is_rtl ? "\u{0627}\u{0628}\u{062F}\u{0623}\u{0020}\u{0645}\u{0646}\u{0627}\u{0642}\u{0634}\u{0629}\u{0020}\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}\u{0643}" : 'Start your project discussion'); ?></span>
                     </button>
                     
                     <p class="ct-form-privacy-note" style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.7; text-align: center;">
                         <?php echo $is_rtl 
-                            ? "\u{0628}\u{0625}\u{0631}\u{0633}\u{0627}\u{0644}\u{0643}\u{0020}\u{0644}\u{0647}\u{0630}\u{0627}\u{0020}\u{0627}\u{0644}\u{0646}\u{0645}\u{0648}\u{0630}\u{062C}\u{060C}\u{0020}\u{0623}\u{0646}\u{062A}\u{0020}\u{062A}\u{0648}\u{0627}\u{0641}\u{0642}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{003C}\u{0061}\u{0020}\u{0068}\u{0072}\u{0065}\u{0066}\u{003D}\u{0022}" . esc_url( home_url( '/privacy-policy/' ) ) . "\u{0022}\u{0020}\u{0073}\u{0074}\u{0079}\u{006C}\u{0065}\u{003D}\u{0022}\u{0063}\u{006F}\u{006C}\u{006F}\u{0072}\u{003A}\u{0020}\u{0069}\u{006E}\u{0068}\u{0065}\u{0072}\u{0069}\u{0074}\u{003B}\u{0020}\u{0074}\u{0065}\u{0078}\u{0074}\u{002D}\u{0064}\u{0065}\u{0063}\u{006F}\u{0072}\u{0061}\u{0074}\u{0069}\u{006F}\u{006E}\u{003A}\u{0020}\u{0075}\u{006E}\u{0064}\u{0065}\u{0072}\u{006C}\u{0069}\u{006E}\u{0065}\u{003B}\u{0022}\u{003E}\u{0633}\u{064A}\u{0627}\u{0633}\u{0629}\u{0020}\u{0627}\u{0644}\u{062E}\u{0635}\u{0648}\u{0635}\u{064A}\u{0629}\u{003C}\u{002F}\u{0061}\u{003E}\u{0020}\u{0627}\u{0644}\u{062E}\u{0627}\u{0635}\u{0629}\u{0020}\u{0628}\u{0646}\u{0627}\u{002E}" 
-                            : 'By submitting this form, you agree to our <a href="' . esc_url( home_url( '/privacy-policy/' ) ) . '" style="color: inherit; text-decoration: underline;">Privacy Policy</a>.'; ?>
+                            ? "\u{0628}\u{0625}\u{0631}\u{0633}\u{0627}\u{0644}\u{0643}\u{0020}\u{0644}\u{0647}\u{0630}\u{0627}\u{0020}\u{0627}\u{0644}\u{0646}\u{0645}\u{0648}\u{0630}\u{062C}\u{060C}\u{0020}\u{0623}\u{0646}\u{062A}\u{0020}\u{062A}\u{0648}\u{0627}\u{0641}\u{0642}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}<a href=\"" . esc_url( st_url( '/privacy-policy/' ) ) . "\" style=\"color: inherit; text-decoration: underline;\">\u{0633}\u{064A}\u{0627}\u{0633}\u{0629}\u{0020}\u{0627}\u{0644}\u{062E}\u{0635}\u{0648}\u{0635}\u{064A}\u{0629}</a>\u{0020}\u{0627}\u{0644}\u{062E}\u{0627}\u{0635}\u{0629}\u{0020}\u{0628}\u{0646}\u{0627}\u{002E}" 
+                            : 'By submitting this form, you agree to our <a href="' . esc_url( st_url( '/privacy-policy/' ) ) . '" style="color: inherit; text-decoration: underline;">Privacy Policy</a>.'; ?>
                     </p>
                 </form>
             </div>

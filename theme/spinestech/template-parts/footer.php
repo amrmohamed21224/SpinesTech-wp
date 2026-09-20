@@ -125,6 +125,7 @@ $copyright   = str_replace( '{year}', (string) $year, st_t( 'footer.copyright' )
         <div class="footer__bar">
             <div class="footer__bar-left" data-footer-reveal style="display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem;">
                 <span class="footer__copy"><?php echo esc_html( $copyright ); ?></span>
+                <a href="<?php echo esc_url( st_url( '/privacy-policy/' ) ); ?>" class="footer__link" style="font-size: 0.85rem; opacity: 0.8;"><?php echo esc_html( $is_rtl ? 'سياسة الخصوصية' : 'Privacy Policy' ); ?></a>
             </div>
 
             <div class="footer__lang-pill" data-footer-reveal data-footer-reveal-delay="80">

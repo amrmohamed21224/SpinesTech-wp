@@ -13,10 +13,116 @@ function st_seo_set_description(string $description): void
     $GLOBALS['st_seo_page_description'] = wp_strip_all_tags($description);
 }
 
+// Prevent WordPress core from outputting duplicate <link rel="canonical"> tag.
+add_action('wp_head', function (): void {
+    remove_action('wp_head', 'rel_canonical');
+}, 1);
+
+function st_seo_canonical_url(?string $locale = null): string
+{
+    $req_path = parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?: '/';
+    if ($locale === null) {
+        if (preg_match('#^/en(/|$)#i', $req_path)) {
+            $locale = 'en';
+        } elseif (preg_match('#^/ar(/|$)#i', $req_path)) {
+            $locale = 'ar';
+        } else {
+            $locale = 'raw';
+        }
+    }
+
+    $localize = static function (string $path) use ($locale): string {
+        $path = '/' . ltrim($path, '/');
+        if ($locale === 'raw') {
+            return home_url($path);
+        }
+        return function_exists('st_localized_url')
+            ? st_localized_url($path, $locale)
+            : home_url('/' . $locale . $path);
+    };
+
+    // 1) Front page
+    if (is_front_page()) {
+        return $localize('/');
+    }
+
+    // 2) Virtual Web Project Router
+    if (function_exists('st_web_project_current_slug')) {
+        $wp_slug = st_web_project_current_slug();
+        if ($wp_slug !== '') {
+            return $localize('/web-projects/' . $wp_slug . '/');
+        }
+    }
+
+    // 3) Virtual Case Study Router
+    if (function_exists('st_case_study_current_slug')) {
+        $cs_slug = st_case_study_current_slug();
+        if ($cs_slug !== '') {
+            return $localize('/case-studies/' . $cs_slug . '/');
+        }
+    }
+
+    // 4) Specific archives
+    if (is_post_type_archive('st_service')) {
+        return $localize('/services/');
+    }
+    if (is_post_type_archive('st_case_study')) {
+        return $localize('/case-studies/');
+    }
+    if (is_page('articles') || (function_exists('st_is_articles_archive') && st_is_articles_archive())) {
+        $url = $localize('/articles/');
+        if (!empty($_GET['articles_page'])) {
+            $url = add_query_arg('articles_page', (int) $_GET['articles_page'], $url);
+        }
+        return $url;
+    }
+
+    // 5) Singular service landings
+    if (is_singular('st_service')) {
+        $svc_slug = (string) get_post_field('post_name', get_the_ID());
+        if ($svc_slug !== '') {
+            return $localize('/services/' . $svc_slug . '/');
+        }
+    }
+
+    // 6) Singular posts, pages, and custom post types
+    if (is_singular()) {
+        $post_id = get_the_ID();
+        if ($post_id) {
+            if ($locale !== 'raw' && function_exists('pll_get_post')) {
+                $trans_id = pll_get_post($post_id, $locale);
+                if ($trans_id) {
+                    return user_trailingslashit((string) get_permalink($trans_id));
+                }
+            }
+            $permalink = (string) get_permalink($post_id);
+            if ($locale === 'raw') {
+                return user_trailingslashit($permalink);
+            }
+            if (function_exists('st_localize_internal_url')) {
+                return user_trailingslashit(st_localize_internal_url($permalink, $locale));
+            }
+            return user_trailingslashit($permalink);
+        }
+    }
+
+    // 7) Default path-based resolution
+    $path = function_exists('st_current_canonical_path') ? st_current_canonical_path() : '/';
+    $url = $localize($path);
+
+    // Keep pagination parameter synchronized across canonical and hreflang to avoid conflicts
+    if (!empty($_GET['articles_page'])) {
+        $url = add_query_arg('articles_page', (int) $_GET['articles_page'], $url);
+    } elseif (!empty($_GET['paged'])) {
+        $url = add_query_arg('paged', (int) $_GET['paged'], $url);
+    }
+
+    return $url;
+}
+
 function st_seo_current_url(?string $locale = null): string
 {
-    $path = function_exists('st_current_canonical_path') ? st_current_canonical_path() : '/';
-    return function_exists('st_localized_url') ? st_localized_url($path, $locale ?: st_locale()) : home_url($path);
+    return st_seo_canonical_url($locale);
 }
 
 function st_seo_description(): string
@@ -39,13 +145,32 @@ function st_seo_description(): string
         }
     }
 
+    if (is_post_type_archive('st_service')) {
+        return $locale === 'ar'
+            ? 'استكشف خدمات SpinesTech لتطوير تطبيقات الجوال، منصات الويب، ولوحات التحكم وأنظمة الأعمال المخصصة للشركات في الخليج.'
+            : 'Explore SpinesTech software development services: mobile apps, web platforms, dashboards, and custom business systems for companies in the GCC.';
+    }
+
+    if (is_post_type_archive('st_case_study')) {
+        return $locale === 'ar'
+            ? 'استعرض دراسات الحالة لمشاريع SpinesTech: تطبيقات لوجستية وتجارة إلكترونية وإدارة أملاك مكتملة التشغيل.'
+            : 'Explore SpinesTech case studies: real-world logistics, e-commerce, and property management platforms built for scale.';
+    }
+
     if (function_exists('st_entity_description')) {
         return st_entity_description($locale);
     }
 
-    return $locale === 'ar'
+    $desc = $locale === 'ar'
         ? 'SpinesTech شركة تطوير برمجيات للشركات في الخليج.'
         : 'SpinesTech builds custom software for companies in the GCC.';
+
+    $page_num = !empty($_GET['articles_page']) ? (int) $_GET['articles_page'] : (int) get_query_var('paged');
+    if ($page_num > 1) {
+        $desc .= $locale === 'ar' ? " — صفحة {$page_num}" : " — Page {$page_num}";
+    }
+
+    return $desc;
 }
 
 function st_seo_image(): string
@@ -89,7 +214,7 @@ function st_seo_print_meta(): void
 
     $locale = function_exists('st_locale') ? st_locale() : 'ar';
     $is_ar = $locale === 'ar';
-    $canonical = st_seo_current_url($locale);
+    $canonical = st_seo_current_url();
     $alternate_ar = st_seo_current_url('ar');
     $alternate_en = st_seo_current_url('en');
     $title = wp_get_document_title();
@@ -99,11 +224,13 @@ function st_seo_print_meta(): void
     $type = st_seo_og_type();
     ?>
     <meta name="description" content="<?php echo esc_attr($description); ?>">
+    <meta name="robots" content="<?php echo esc_attr(st_seo_robots_content()); ?>">
+    <?php if (!is_404()) : ?>
     <link rel="canonical" href="<?php echo esc_url($canonical); ?>">
     <link rel="alternate" hreflang="ar" href="<?php echo esc_url($alternate_ar); ?>">
     <link rel="alternate" hreflang="en" href="<?php echo esc_url($alternate_en); ?>">
     <link rel="alternate" hreflang="x-default" href="<?php echo esc_url($alternate_ar); ?>">
-    <meta name="robots" content="<?php echo esc_attr(st_seo_robots_content()); ?>">
+    <?php endif; ?>
     <meta property="og:locale" content="<?php echo esc_attr($is_ar ? 'ar_AR' : 'en_US'); ?>">
     <meta property="og:locale:alternate" content="<?php echo esc_attr($is_ar ? 'en_US' : 'ar_AR'); ?>">
     <meta property="og:type" content="<?php echo esc_attr($type); ?>">

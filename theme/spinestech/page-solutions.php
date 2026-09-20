@@ -1,4 +1,20 @@
 <?php
+add_filter( 'pre_get_document_title', function () {
+    $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
+    return $is_rtl
+        ? 'حلول برمجية وأنظمة تشغيل مخصصة | SpinesTech'
+        : 'Custom Business Solutions & Systems | SpinesTech';
+}, 999 );
+
+add_action( 'wp_head', function () {
+    $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
+    if (function_exists('st_seo_set_description')) {
+        st_seo_set_description($is_rtl
+            ? 'حلول برمجية مخصصة من SpinesTech: تطبيقات لوجستية، تجارة إلكترونية متعددة التجار، منصات حجز، وأنظمة إدارة أملاك.'
+            : 'Custom software solutions by SpinesTech: logistics apps, multi-vendor marketplaces, booking platforms, and property management systems.');
+    }
+}, 3 );
+
 get_header();
 $services = st_query_cpt('st_service');
 $sectors = st_query_cpt('st_sector');

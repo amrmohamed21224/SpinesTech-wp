@@ -1,4 +1,21 @@
-<?php get_header(); $locale = st_locale(); ?>
+<?php
+add_filter( 'pre_get_document_title', function () {
+    $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
+    return $is_rtl
+        ? 'احجز استشارة تقنية مجانية 45 دقيقة | SpinesTech'
+        : 'Book a Free 45-Min Tech Consultation | SpinesTech';
+}, 999 );
+
+add_action( 'wp_head', function () {
+    $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
+    if (function_exists('st_seo_set_description')) {
+        st_seo_set_description($is_rtl
+            ? 'جلسة استشارية متخصصة لمدة 45 دقيقة مع مهندسي SpinesTech لمناقشة فكرة مشروعك، بنيته التقنية، ونموذج إطلاقه.'
+            : 'Book a free 45-minute technical session with SpinesTech engineers to evaluate project architecture, stack, and launch roadmap.');
+    }
+}, 3 );
+
+get_header(); $locale = st_locale(); ?>
 <main class="page-consultation" data-st-consultation-page>
     <div class="container">
         <div class="page-consultation__grid">

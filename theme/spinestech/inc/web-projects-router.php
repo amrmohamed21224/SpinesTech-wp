@@ -100,9 +100,28 @@ function st_web_project_render_virtual( string $slug ): void {
     $GLOBALS['st_current_web_project_slug'] = $slug;
 
     status_header( 200 );
+    header( 'Content-Type: text/html; charset=UTF-8' );
 
     include get_template_directory() . '/single-web-project.php';
     exit;
+}
+
+/**
+ * Get current web project slug if viewing a web project page.
+ *
+ * @return string
+ */
+function st_web_project_current_slug(): string {
+    if ( ! empty( $GLOBALS['st_current_web_project_slug'] ) ) {
+        return (string) $GLOBALS['st_current_web_project_slug'];
+    }
+
+    $slug = st_web_project_slug_from_request();
+    if ( $slug !== null && st_is_web_project_slug( $slug ) ) {
+        return $slug;
+    }
+
+    return '';
 }
 
 /**

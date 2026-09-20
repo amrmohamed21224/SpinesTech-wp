@@ -69,20 +69,31 @@ function st_case_study_virtual_title(string $canonical_slug): string
 
 function st_case_study_current_slug(): string
 {
-    global $post;
-
-    if ($post instanceof WP_Post && $post->post_name !== '') {
-        return (string) $post->post_name;
+    $req_slug = st_case_study_slug_from_request();
+    if ($req_slug !== null) {
+        $canonical = st_case_study_canonical_slug($req_slug);
+        return $canonical ?? $req_slug;
     }
 
-    $queried = get_queried_object();
-    if ($queried instanceof WP_Post && $queried->post_name !== '') {
-        return (string) $queried->post_name;
-    }
+    if (is_singular('st_case_study')) {
+        global $post;
+        if ($post instanceof WP_Post && $post->post_name !== '') {
+            $canonical = st_case_study_canonical_slug($post->post_name);
+            return $canonical ?? (string) $post->post_name;
+        }
 
-    $id = get_the_ID();
-    if ($id > 0) {
-        return (string) get_post_field('post_name', $id);
+        $queried = get_queried_object();
+        if ($queried instanceof WP_Post && $queried->post_name !== '') {
+            $canonical = st_case_study_canonical_slug($queried->post_name);
+            return $canonical ?? (string) $queried->post_name;
+        }
+
+        $id = get_the_ID();
+        if ($id > 0) {
+            $raw_slug = (string) get_post_field('post_name', $id);
+            $canonical = st_case_study_canonical_slug($raw_slug);
+            return $canonical ?? $raw_slug;
+        }
     }
 
     return '';
@@ -123,6 +134,7 @@ function st_case_study_render_virtual(string $canonical_slug): void
     $wp_query->queried_object_id = 0;
 
     status_header(200);
+    header('Content-Type: text/html; charset=UTF-8');
 
     include get_template_directory() . '/single-st_case_study.php';
     exit;

@@ -38,7 +38,7 @@ $close_menu_label = $is_rtl ? "\u{0625}\u{063A}\u{0644}\u{0627}\u{0642}\u{0020}\
             <span class="navbar__brand-mark">
                 <picture>
                     <source srcset="<?php echo esc_url($logo_webp); ?>" type="image/webp">
-                    <img src="<?php echo esc_url($logo_png); ?>" alt="" class="navbar__brand-logo" width="104" height="64" decoding="async" fetchpriority="high">
+                    <img src="<?php echo esc_url($logo_png); ?>" alt="SpinesTech Logo" class="navbar__brand-logo" width="104" height="64" decoding="async" fetchpriority="high">
                 </picture>
             </span>
             <span class="navbar__brand-word">SpinesTech</span>
@@ -101,7 +101,7 @@ $close_menu_label = $is_rtl ? "\u{0625}\u{063A}\u{0644}\u{0627}\u{0642}\u{0020}\
                 <span class="navbar__brand-mark">
                     <picture>
                         <source srcset="<?php echo esc_url($logo_webp); ?>" type="image/webp">
-                        <img src="<?php echo esc_url($logo_png); ?>" alt="" class="navbar__brand-logo" width="104" height="64" decoding="async">
+                        <img src="<?php echo esc_url($logo_png); ?>" alt="SpinesTech Logo" class="navbar__brand-logo" width="104" height="64" decoding="async">
                     </picture>
                 </span>
                 <span class="navbar__brand-word">SpinesTech</span>

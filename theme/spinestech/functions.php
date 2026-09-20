@@ -34,9 +34,49 @@ require_once get_template_directory() . '/inc/article-bootstrap.php';
 require_once get_template_directory() . '/inc/case-study-router.php';
 require_once get_template_directory() . '/inc/web-projects-config.php';
 require_once get_template_directory() . '/inc/web-projects-router.php';
+require_once get_template_directory() . '/inc/redirects.php';
 require_once get_template_directory() . '/inc/seo.php';
 require_once get_template_directory() . '/inc/enqueue.php';
 require get_template_directory() . '/inc/rest-forms.php';
+
+/**
+ * Global Security Headers: HSTS (without preload), nosniff, SAMEORIGIN, Referrer-Policy, Permissions-Policy.
+ */
+add_action('send_headers', function (): void {
+    if (is_admin()) {
+        return;
+    }
+    header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
+    header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: SAMEORIGIN');
+    header('Referrer-Policy: strict-origin-when-cross-origin');
+    header('Permissions-Policy: geolocation=(), camera=(), microphone=()');
+});
+
+/**
+ * Strip language prefix from the request before WordPress rewrites/query matching,
+ * allowing /ar/{slug}/ and /en/{slug}/ to resolve natively to pages, posts, and CPTs.
+ */
+add_action('parse_request', function (WP $wp): void {
+    if (is_admin()) {
+        return;
+    }
+    if (preg_match('#^(ar|en)(/.*)?$#i', $wp->request, $m)) {
+        $sub = trim($m[2] ?? '', '/');
+        $wp->request = $sub;
+    }
+}, 1);
+
+/**
+ * Prevent WordPress canonical redirect from redirecting /ar/... or /en/... back to root URLs.
+ */
+add_filter('redirect_canonical', function ($redirect_url, $requested_url) {
+    $path = parse_url((string) $requested_url, PHP_URL_PATH) ?: '';
+    if (preg_match('#^/(ar|en)(/|$)#i', $path)) {
+        return false;
+    }
+    return $redirect_url;
+}, 10, 2);
 
 add_filter('template_include', function ($template) {
     if (is_page()) {

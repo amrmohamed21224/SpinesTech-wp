@@ -1,4 +1,21 @@
-<?php get_header(); $services = st_query_cpt('st_service'); $plans = st_query_cpt('st_pricing'); $locale = st_locale(); ?>
+<?php
+add_filter( 'pre_get_document_title', function () {
+    $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
+    return $is_rtl
+        ? 'طلب عرض سعر لمشروعك البرمجي | SpinesTech'
+        : 'Request a Software Project Quote | SpinesTech';
+}, 999 );
+
+add_action( 'wp_head', function () {
+    $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
+    if (function_exists('st_seo_set_description')) {
+        st_seo_set_description($is_rtl
+            ? 'اطلب عرض سعر مخصص لتطبيقك أو منصتك الرقمية. ندرس متطلباتك ونقدم تحليلاً تقديرياً للنطاق والميزانية والجدول.'
+            : 'Request a custom quote for your mobile app or digital platform. We analyze your requirements and provide realistic budget estimates.');
+    }
+}, 3 );
+
+get_header(); $services = st_query_cpt('st_service'); $plans = st_query_cpt('st_pricing'); $locale = st_locale(); ?>
 <main class="pt-24 sm:pt-28 lg:pt-32 pb-24 px-margin-mobile md:px-margin-desktop text-start" data-st-quote-page>
     <div class="max-w-container-max mx-auto mb-12 text-center">
         <span class="text-secondary font-bold text-label-md uppercase tracking-widest mb-4 block"><?php echo esc_html(st_t('quote.title')); ?></span>

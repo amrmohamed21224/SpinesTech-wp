@@ -290,18 +290,18 @@ $dir    = $is_rtl ? 'rtl' : 'ltr';
             <div class="mcs__video-grid" data-mcs-reveal-group>
                 <div class="mcs__video-card" data-mcs-reveal>
                     <h4><?php echo esc_html( $is_rtl ? "\u{0639}\u{0631}\u{0636}\u{0020}\u{062A}\u{0633}\u{062C}\u{064A}\u{0644}\u{0020}\u{062F}\u{062E}\u{0648}\u{0644}\u{0020}\u{0627}\u{0644}\u{062A}\u{0627}\u{062C}\u{0631}" : 'Merchant Login Demo' ); ?></h4>
-                    <a href="https://www.youtube.com/watch?v=OvxffxGhQ9E" target="_blank" class="mcs__video-thumb">
-                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0635}\u{0648}\u{0631}\u{0629}\u{0020}\u{0645}\u{0635}\u{063A}\u{0631}\u{0629}\u{0020}\u{0644}\u{0639}\u{0631}\u{0636}\u{0020}\u{062A}\u{0633}\u{062C}\u{064A}\u{0644}\u{0020}\u{062F}\u{062E}\u{0648}\u{0644}\u{0020}\u{0627}\u{0644}\u{062A}\u{0627}\u{062C}\u{0631}" : 'Merchant login demo thumbnail' ); ?>" loading="lazy" />
+                    <a href="https://www.youtube.com/watch?v=OvxffxGhQ9E" target="_blank" rel="noopener noreferrer" class="mcs__video-thumb">
+                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "صورة مصغرة لعرض تسجيل دخول التاجر" : 'Merchant login demo thumbnail' ); ?>" width="640" height="360" loading="lazy" decoding="async" />
                         <div class="mcs__video-overlay">
                             <span class="material-symbols-outlined" aria-hidden="true">play_circle</span>
-                            <p><?php echo esc_html( $is_rtl ? "\u{0645}\u{0634}\u{0627}\u{0647}\u{062F}\u{0629}\u{0020}\u{0627}\u{0644}\u{0641}\u{064A}\u{062F}\u{064A}\u{0648}" : 'Watch Video' ); ?></p>
+                            <p><?php echo esc_html( $is_rtl ? "مشاهدة الفيديو" : 'Watch Video' ); ?></p>
                         </div>
                     </a>
                 </div>
                 <div class="mcs__video-card" data-mcs-reveal data-mcs-delay="120">
-                    <h4><?php echo esc_html( $is_rtl ? "\u{0625}\u{0636}\u{0627}\u{0641}\u{0629}\u{0020}\u{0648}\u{062A}\u{0639}\u{062F}\u{064A}\u{0644}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{062A}\u{062C}\u{0627}\u{062A}" : 'Products Adding &amp; Editing' ); ?></h4>
-                    <a href="https://www.youtube.com/watch?v=KJGuiAH6qoc" target="_blank" class="mcs__video-thumb">
-                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0635}\u{0648}\u{0631}\u{0629}\u{0020}\u{0645}\u{0635}\u{063A}\u{0631}\u{0629}\u{0020}\u{0644}\u{0639}\u{0631}\u{0636}\u{0020}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{062A}\u{062C}\u{0627}\u{062A}" : 'Product management demo thumbnail' ); ?>" loading="lazy" />
+                    <h4><?php echo esc_html( $is_rtl ? "إضافة وتعديل المنتجات" : 'Products Adding &amp; Editing' ); ?></h4>
+                    <a href="https://www.youtube.com/watch?v=KJGuiAH6qoc" target="_blank" rel="noopener noreferrer" class="mcs__video-thumb">
+                        <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "صورة مصغرة لعرض إدارة المنتجات" : 'Product management demo thumbnail' ); ?>" width="640" height="360" loading="lazy" decoding="async" />
                         <div class="mcs__video-overlay">
                             <span class="material-symbols-outlined" aria-hidden="true">play_circle</span>
                             <p><?php echo esc_html( $is_rtl ? "\u{0645}\u{0634}\u{0627}\u{0647}\u{062F}\u{0629}\u{0020}\u{0627}\u{0644}\u{0641}\u{064A}\u{062F}\u{064A}\u{0648}" : 'Watch Video' ); ?></p>
@@ -343,7 +343,7 @@ $dir    = $is_rtl ? 'rtl' : 'ltr';
             <div class="mcs__admin-visual" data-mcs-reveal data-mcs-delay="150">
                 <div class="mcs__admin-glow" aria-hidden="true"></div>
                 <div class="mcs__admin-frame">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{0627}\u{0644}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0645}\u{0639}\u{0020}\u{062E}\u{0631}\u{064A}\u{0637}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{062C}\u{0627}\u{0631}\u{0020}\u{0627}\u{0644}\u{0639}\u{0627}\u{0644}\u{0645}\u{064A}\u{0629}" : 'Admin dashboard with global merchant map' ); ?>" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "لوحة الإدارة مع خريطة التجار العالمية" : 'Admin dashboard with global merchant map' ); ?>" width="1280" height="720" loading="lazy" decoding="async" />
                 </div>
             </div>
 
@@ -454,19 +454,19 @@ $dir    = $is_rtl ? 'rtl' : 'ltr';
                     <span class="mcs__browser-url">dashboard.merchant.spines.tech</span>
                 </div>
                 <div class="mcs__browser-body">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0639}\u{0631}\u{0648}\u{0636}\u{0020}\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{062D}\u{0643}\u{0645}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{062C}\u{0627}\u{0648}\u{0628}\u{0629}" : 'Dashboard responsive views' ); ?>" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "عروض لوحة التحكم المتجاوبة" : 'Dashboard responsive views' ); ?>" width="1280" height="720" loading="lazy" decoding="async" />
                 </div>
             </div>
 
             <div class="mcs__showcase-phones" data-mcs-reveal-group>
                 <div class="mcs__showcase-phone" data-mcs-reveal data-mcs-delay="80">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Home.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0627}\u{0644}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{0627}\u{0644}\u{0631}\u{0626}\u{064A}\u{0633}\u{064A}\u{0629}\u{0020}\u{0644}\u{0644}\u{0639}\u{0645}\u{064A}\u{0644}" : 'Customer home screen' ); ?>" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Home.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "الشاشة الرئيسية للعميل" : 'Customer home screen' ); ?>" width="320" height="680" loading="lazy" decoding="async" />
                 </div>
                 <div class="mcs__showcase-phone" data-mcs-reveal data-mcs-delay="160">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Welcome.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{0631}\u{062D}\u{064A}\u{0628}" : 'Welcome screen' ); ?>" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Welcome.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "شاشة الترحيب" : 'Welcome screen' ); ?>" width="320" height="680" loading="lazy" decoding="async" />
                 </div>
                 <div class="mcs__showcase-phone" data-mcs-reveal data-mcs-delay="240">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{0642}\u{0627}\u{0626}\u{0645}\u{0629}\u{0020}\u{0627}\u{0644}\u{0623}\u{0645}\u{0646}\u{064A}\u{0627}\u{062A}" : 'Wishlist screen montage' ); ?>" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Wishlist.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "شاشة قائمة الأمنيات" : 'Wishlist screen montage' ); ?>" width="320" height="680" loading="lazy" decoding="async" />
                 </div>
             </div>
 
@@ -493,16 +493,16 @@ $dir    = $is_rtl ? 'rtl' : 'ltr';
 
             <div class="mcs__results-gallery" data-mcs-reveal data-mcs-delay="150">
                 <div class="mcs__results-img">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Home.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0627}\u{0644}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{0627}\u{0644}\u{0631}\u{0626}\u{064A}\u{0633}\u{064A}\u{0629}\u{0020}\u{0644}\u{0644}\u{0639}\u{0645}\u{064A}\u{0644}" : 'Customer home screen' ); ?>" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Home.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "الشاشة الرئيسية للعميل" : 'Customer home screen' ); ?>" width="400" height="300" loading="lazy" decoding="async" />
                 </div>
                 <div class="mcs__results-img mcs__results-img--down">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Item+Details.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{062A}\u{0641}\u{0627}\u{0635}\u{064A}\u{0644}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{062A}\u{062C}" : 'Product details screen' ); ?>" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Item+Details.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "شاشة تفاصيل المنتج" : 'Product details screen' ); ?>" width="400" height="300" loading="lazy" decoding="async" />
                 </div>
                 <div class="mcs__results-img mcs__results-img--up">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{062C}\u{062F}\u{0648}\u{0644}\u{0020}\u{0642}\u{0627}\u{0626}\u{0645}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{062C}\u{0627}\u{0631}\u{0020}\u{0641}\u{064A}\u{0020}\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{0627}\u{0644}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}" : 'Admin merchant listing table' ); ?>" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard2.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "جدول قائمة التجار في لوحة الإدارة" : 'Admin merchant listing table' ); ?>" width="400" height="300" loading="lazy" decoding="async" />
                 </div>
                 <div class="mcs__results-img">
-                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{062A}\u{0627}\u{062C}\u{0631}\u{0020}\u{064A}\u{0633}\u{062A}\u{062E}\u{062F}\u{0645}\u{0020}\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{062D}\u{0643}\u{0645}\u{0020}\u{062F}\u{0627}\u{062E}\u{0644}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{062C}\u{0631}" : 'Merchant using dashboard in-store' ); ?>" loading="lazy" />
+                    <img src="<?php echo esc_url(st_asset('images/case-studies/merchant/Dashboard.jpg')); ?>" alt="<?php echo esc_attr( $is_rtl ? "تاجر يستخدم لوحة التحكم داخل المتجر" : 'Merchant using dashboard in-store' ); ?>" width="400" height="300" loading="lazy" decoding="async" />
                 </div>
             </div>
 

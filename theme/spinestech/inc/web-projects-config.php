@@ -188,7 +188,20 @@ function st_web_project_url( string $slug ): string {
  * @return string
  */
 function st_wp_img( string $rel ): string {
+    $clean_rel = ltrim( $rel, '/' );
+    $file_path = get_template_directory() . '/assets/images/' . $clean_rel;
+
+    if ( ! file_exists( $file_path ) ) {
+        // Fallback to placeholder/icon if the specific web-project screen asset is missing
+        $fallback = get_template_directory() . '/assets/images/brand/icon.png';
+        if ( file_exists( $fallback ) ) {
+            return function_exists( 'st_asset' )
+                ? st_asset( 'images/brand/icon.png' )
+                : get_template_directory_uri() . '/assets/images/brand/icon.png';
+        }
+    }
+
     return function_exists( 'st_asset' )
-        ? st_asset( 'images/' . ltrim( $rel, '/' ) )
-        : get_template_directory_uri() . '/assets/images/' . ltrim( $rel, '/' );
+        ? st_asset( 'images/' . $clean_rel )
+        : get_template_directory_uri() . '/assets/images/' . $clean_rel;
 }
