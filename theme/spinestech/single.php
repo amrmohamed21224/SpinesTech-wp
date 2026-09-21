@@ -7,110 +7,59 @@
  * the earlier client decision.
  */
 
-// ── SEO: dynamic per-post title & meta pulled from WordPress post data ────
+// â”€â”€ SEO: dynamic per-post title & meta pulled from WordPress post data â”€â”€â”€â”€
 add_filter( 'pre_get_document_title', function () {
     if ( ! is_singular( 'post' ) ) {
         return '';
     }
-    $post_id = get_queried_object_id();
-    $slug = (string) get_post_field( 'post_name', $post_id );
-
-    $curated_titles = [
-        'scaling-digital-operations' => 'التوسع التشغيلي للمشاريع الرقمية | SpinesTech',
-        'logistics-delivery-app-development' => 'تطوير تطبيقات اللوجستيك والتوصيل | SpinesTech',
-        'grc-governance-risk-compliance' => 'ما هو نظام GRC وكيف تبنيه لمؤسستك؟ | SpinesTech',
-        'digital-product-launch-incident-management' => 'إدارة أزمات إطلاق المنتجات الرقمية | SpinesTech',
-        'technology-partner-contract-sla-handover' => 'كيف تدير الشريك التقني وعقود SLA؟ | SpinesTech',
-        'software-project-cost-time-estimation' => 'تقدير تكلفة ومدة المشروع البرمجي | SpinesTech',
-        'technology-investment-roi' => 'حساب العائد على الاستثمار التقني ROI | SpinesTech',
-        'build-vs-buy-custom-software' => 'بناء نظام مخصص أم شراء حل جاهز؟ | SpinesTech',
-        'ideal-customer-profile-icp' => 'تحديد العميل المثالي ICP لمشروعك | SpinesTech',
-        'b2b-marketing-funnel' => 'بناء قمع تسويقي B2B لشركات الخدمات | SpinesTech',
-        'mobile-app-development-cost-saudi-arabia' => 'كم تكلفة تطوير تطبيق في السعودية؟ | SpinesTech',
-        'لماذا-تفشل-بعض-المشاريع-التقنية-قبل-ال' => 'لماذا تفشل المشاريع التقنية قبل الإطلاق؟ | SpinesTech',
-        'كم-تكلفة-تطوير-تطبيق-في-السعودية-العوا' => 'تكلفة تطوير تطبيق في السعودية والعوامل المؤثرة | SpinesTech',
-        'كيف-تكتب-وثيقة-متطلبات-لمشروعك-الرقمي' => 'كيف تكتب وثيقة متطلبات مشروعك الرقمي؟ | SpinesTech',
-        'لو-كتب-الذكاء-الاصطناعي-كود-مشروعك،-فم' => 'الذكاء الاصطناعي وكتابة كود المشاريع | SpinesTech',
-        'من-يملك-source-code-بعد-تطوير-التطبيق؟-وما-الذي-ي' => 'من يملك Source Code بعد تطوير التطبيق؟ | SpinesTech',
-        'مشروعك-البرمجي-متعثر؟-متى-تصلحه-ومتى-ت' => 'مشروعك البرمجي متعثر؟ متى تصلحه ومتى تعيد بناءه؟ | SpinesTech',
-    ];
-
-    if (isset($curated_titles[$slug])) {
-        return $curated_titles[$slug];
-    }
-
+    $slug = (string) get_post_field( 'post_name', get_queried_object_id() );
+    $title = '';
+    
     if ( function_exists( 'st_article_config' ) ) {
         $cfg = st_article_config( $slug );
         if ( $cfg && ! empty( $cfg['title'] ) ) {
-            $t = (string) st_article_text( $cfg['title'] );
-            if (mb_strlen($t . ' | SpinesTech') <= 60) {
-                return $t . ' | SpinesTech';
-            }
-            return mb_substr($t, 0, 46) . '… | SpinesTech';
+            $title = (string) st_article_text( $cfg['title'] );
         }
     }
-    $post_title = get_the_title( $post_id );
-    if ($post_title) {
-        if (mb_strlen($post_title . ' | SpinesTech') <= 60) {
-            return $post_title . ' | SpinesTech';
-        }
-        return mb_substr($post_title, 0, 46) . '… | SpinesTech';
+    
+    if ( ! $title ) {
+        $title = (string) get_the_title( get_queried_object_id() );
     }
-    return 'SpinesTech Blog';
+    
+    if ( ! $title ) {
+        return 'SpinesTech Blog';
+    }
+    
+    // Prevent title from being too long by omitting the site name
+    if ( mb_strlen( $title ) > 50 ) {
+        if ( mb_strlen( $title ) > 60 ) {
+            // Hard truncate to keep it strictly under 60 characters for SEO tools
+            $title = mb_substr( $title, 0, 57 ) . '...';
+        }
+        return $title;
+    }
+    
+    return $title . ' | SpinesTech';
 }, 999 );
 
 add_action('wp_head', function () {
     if (!is_singular('post')) {
         return;
     }
-    $post_id = get_queried_object_id();
-    $slug = (string) get_post_field('post_name', $post_id);
-
-    $curated_metas = [
-        'scaling-digital-operations' => 'دليل التوسع التشغيلي للمشاريع الرقمية: كيف تبني بنية تحتية وعمليات قابلة للنمو السريع وتتجنب اختناقات الأداء؟',
-        'logistics-delivery-app-development' => 'دليل تطوير منصات وتطبيقات اللوجستيك والتوصيل: إدارة أساطيل الشحن، تتبع الرحلات اللحظي، وتكامل لوحات الإدارة المركزية.',
-        'grc-governance-risk-compliance' => 'ما هو نظام GRC للحوكمة وإدارة المخاطر والامتثال؟ متطلبات بناء منصة رقابية قابلة للتدقيق والتشغيل المؤسسي المتكامل.',
-        'digital-product-launch-incident-management' => 'خطة إدارة الأزمات عند إطلاق المنتجات الرقمية: بروتوكولات الاستجابة السريعة، معالجة الأعطال، وحماية استقرار النظام.',
-        'technology-partner-contract-sla-handover' => 'دليل إدارة الشريك التقني: بنود العقود البرمجية، اتفاقيات مستوى الخدمة SLA، وآليات تسليم الكود والملكية الفكرية.',
-        'software-project-cost-time-estimation' => 'كيفية تقدير تكلفة ومدة المشاريع البرمجية بدقة: فك نطاق العمل، تحديد الجهد الهندسي، وتجنب المفاجآت في الميزانية.',
-        'technology-investment-roi' => 'كيف تحسب العائد على الاستثمار التقني (ROI) لمشروعك الرقمي قبل اعتماد الميزانية وتبرير جدوى الاستثمار البرمجي؟',
-        'build-vs-buy-custom-software' => 'مقارنة بين بناء نظام برمجي مخصص وشراء حلول SaaS جاهزة: إطار اتخاذ القرار الأنسب لنمو عمليات شركتك وتكاليفها.',
-        'ideal-customer-profile-icp' => 'كيف تحدد ملف العميل المثالي (ICP) لمشروعك التقني بدقة قبل إطلاق الحملات التسويقية لزيادة كفاءة المبيعات والنمو؟',
-        'b2b-marketing-funnel' => 'استراتيجية بناء قمع تسويقي B2B متكامل للشركات التقنية والخدمية لتحويل الزيارات إلى فرص عمل حقيقية بميزانية فعالة.',
-        'mobile-app-development-cost-saudi-arabia' => 'دليل تكلفة تطوير تطبيقات الجوال في السعودية: نطاقات MVP، العوامل المؤثرة على السعر، وكيفية الحصول على تقدير واقعي لمشروعك.',
-        'لماذا-تفشل-بعض-المشاريع-التقنية-قبل-ال' => 'أهم أسباب تعثر وفشل المشاريع البرمجية قبل إطلاقها، وكيف تتجنب الهدر المالي وأخطاء إدارة النطاق وفِرق التطوير.',
-        'كم-تكلفة-تطوير-تطبيق-في-السعودية-العوا' => 'تعرف على العوامل المؤثرة في تكلفة تطوير تطبيقات الجوال في السعودية، وكيف تختار نطاق العمل المناسب لميزانيتك.',
-        'كيف-تكتب-وثيقة-متطلبات-لمشروعك-الرقمي' => 'خطوات إعداد وثيقة متطلبات البرمجيات (PRD) لمشروعك: تحديد نطاق العمل، رحلة المستخدم، والمواصفات الفنية بدقة.',
-        'لو-كتب-الذكاء-الاصطناعي-كود-مشروعك،-فم' => 'هل يكفي الذكاء الاصطناعي لبناء تطبيقك؟ حدود توليد الكود بالذكاء الاصطناعي وأهمية الهندسة المعمارية والأمان.',
-        'من-يملك-source-code-بعد-تطوير-التطبيق؟-وما-الذي-ي' => 'حقوق الملكية الفكرية والشفرة المصدرية (Source Code): ما يجب أن تضمنه في عقد تطوير البرمجيات لحماية مشروعك.',
-        'مشروعك-البرمجي-متعثر؟-متى-تصلحه-ومتى-ت' => 'معايير إنقاذ المشاريع البرمجية المتعثرة: كيف تقيم الديون التقنية وتقرر بين إعادة الهيكلة أو إعادة البناء من الصفر.',
-    ];
-
-    if (isset($curated_metas[$slug]) && function_exists('st_seo_set_description')) {
-        st_seo_set_description($curated_metas[$slug]);
-        return;
-    }
-
+    $slug = (string) get_post_field('post_name', get_queried_object_id());
     if (function_exists('st_article_config')) {
         $cfg = st_article_config($slug);
         if ($cfg && !empty($cfg['meta_description']) && function_exists('st_seo_set_description')) {
-            $m = (string) st_article_text($cfg['meta_description']);
-            if (mb_strlen($m) > 155) {
-                $m = mb_substr($m, 0, 152) . '...';
-            }
-            st_seo_set_description($m);
+            st_seo_set_description((string) st_article_text($cfg['meta_description']));
             return;
         }
     }
     $excerpt = trim((string) get_the_excerpt());
     if ($excerpt !== '' && function_exists('st_seo_set_description')) {
-        if (mb_strlen($excerpt) > 155) {
-            $excerpt = mb_substr($excerpt, 0, 152) . '...';
-        }
         st_seo_set_description($excerpt);
     }
 }, 3);
-// ─────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 get_header();
 

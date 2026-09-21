@@ -7,15 +7,15 @@
 add_filter( 'pre_get_document_title', function () {
     $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
     return $is_rtl
-        ? 'عن SpinesTech | استوديو هندسة المنتجات الرقمية'
-        : 'About SpinesTech | Digital Product Engineering Studio';
+        ? 'عن SpinesTech | شركة تطوير برمجيات ومنتجات رقمية'
+        : 'About SpinesTech | Software & Digital Product Development';
 }, 999 );
 
 add_action( 'wp_head', function () {
     $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
     if (function_exists('st_seo_set_description')) {
         st_seo_set_description($is_rtl
-            ? 'تعرّف على SpinesTech: فريق هندسي يساعد الشركات في الخليج على تحويل الأفكار المعقدة إلى منتجات رقمية قابلة للتوسع.'
+            ? 'تعرّف على SpinesTech، استوديو هندسة منتجات يساعد الشركات على بناء تطبيقات جوال ومنصات ويب وأنظمة تشغيلية في السعودية والخليج.'
             : 'Learn about SpinesTech, a product engineering studio helping companies build mobile apps, web platforms, and operational systems across the GCC.');
     }
 }, 3 );

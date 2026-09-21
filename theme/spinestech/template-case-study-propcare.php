@@ -70,7 +70,7 @@ get_header();
                             <span class="pc__browser-dot pc__browser-dot--green"></span>
                         </div>
                         <img
-                            src="<?php echo $pc_img( 'admin-dashboard-summary.png' ); ?>"
+                            src="<?php echo $pc_img( 'admin-dashboard-summary.webp' ); ?>"
                             alt="<?php echo esc_attr( $is_rtl ? 'Ù„ÙˆØ­Ø© ØªØ­ÙƒÙ… PropCare 360 â€” Ù†Ø¸Ø±Ø© Ø¹Ø§Ù…Ø© Ø¹Ù„Ù‰ Ø§Ù„Ø¹Ù…Ù„ÙŠØ§Øª ÙˆØ§Ù„Ø¹Ù‚ÙˆØ¯' : 'PropCare 360 Admin Dashboard â€” Overview of Operations and Contracts' ); ?>"
                             width="1440"
                             height="900"
@@ -81,7 +81,7 @@ get_header();
                     </div>
                     <div class="pc__hero-phone pc__media-reveal">
                         <img
-                            src="<?php echo $pc_img( 'screen.png' ); ?>"
+                            src="<?php echo $pc_img( 'screen.webp' ); ?>"
                             alt="<?php echo esc_attr( $is_rtl ? 'ØªØ·Ø¨ÙŠÙ‚ PropCare 360 â€” Ø§Ù„Ø´Ø§Ø´Ø© Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ© Ù„Ù„Ø¹Ù…ÙŠÙ„' : 'PropCare 360 Mobile App â€” Customer Home Screen' ); ?>"
                             width="390"
                             height="844"
@@ -173,7 +173,7 @@ get_header();
                         <span class="pc__browser-dot pc__browser-dot--green"></span>
                     </div>
                     <img
-                        src="<?php echo $pc_img( 'admin-dashboard-orders-chart.png' ); ?>"
+                        src="<?php echo $pc_img( 'admin-dashboard-orders-chart.webp' ); ?>"
                         alt="<?php echo esc_attr( $is_rtl ? 'ØªØ­Ù„ÙŠÙ„Ø§Øª Ø¹Ø±ÙˆØ¶ Ø§Ù„Ø£Ø³Ø¹Ø§Ø± ÙˆØ­Ø§Ù„Ø© Ø§Ù„ØµÙŠØ§Ù†Ø© Ø­Ø³Ø¨ Ù†ÙˆØ¹ Ø§Ù„Ø®Ø¯Ù…Ø© ÙˆØ§Ù„Ù…Ø¨Ù†Ù‰' : 'Quote analytics and maintenance status by service type and building' ); ?>"
                         width="1440"
                         height="900"
@@ -196,7 +196,7 @@ get_header();
                             <span class="pc__browser-dot pc__browser-dot--green"></span>
                         </div>
                         <img
-                            src="<?php echo $pc_img( 'admin-dashboard-service-chart.png' ); ?>"
+                            src="<?php echo $pc_img( 'admin-dashboard-service-chart.webp' ); ?>"
                             alt="<?php echo esc_attr( $is_rtl ? 'ØªÙ‚Ø§Ø±ÙŠØ± ØªØ´ØºÙŠÙ„ÙŠØ© ÙˆÙ…Ø¤Ø´Ø±Ø§Øª Ø¥Ù†Ø¬Ø§Ø² Ø§Ù„Ø®Ø¯Ù…Ø§Øª Ø§Ù„ÙŠÙˆÙ…ÙŠØ©' : 'Operational reports and daily service performance metrics' ); ?>"
                             width="1200"
                             height="800"
@@ -217,7 +217,7 @@ get_header();
                             <span class="pc__browser-dot pc__browser-dot--green"></span>
                         </div>
                         <img
-                            src="<?php echo $pc_img( 'admin-dashboard-summary.png' ); ?>"
+                            src="<?php echo $pc_img( 'admin-dashboard-summary.webp' ); ?>"
                             alt="<?php echo esc_attr( $is_rtl ? 'Ù…Ù„Ø®Øµ Ù…Ø¤Ø´Ø±Ø§Øª Ø§Ù„Ø¹Ù‚ÙˆØ¯ ÙˆØ§Ù„Ø²ÙŠØ§Ø±Ø§Øª ÙˆØ§Ù„Ø·Ù„Ø¨Ø§Øª ÙÙŠ Ù„ÙˆØ­Ø© Ø§Ù„ØªØ­ÙƒÙ…' : 'Summary of contracts, visits, and request metrics in the admin dashboard' ); ?>"
                             width="1200"
                             height="800"
@@ -240,7 +240,7 @@ get_header();
                         <span class="pc__browser-dot pc__browser-dot--green"></span>
                     </div>
                     <img
-                        src="<?php echo $pc_img( 'admin-dashboard-full.png' ); ?>"
+                        src="<?php echo $pc_img( 'admin-dashboard-full.webp' ); ?>"
                         alt="<?php echo esc_attr( $is_rtl ? 'ÙˆØ§Ø¬Ù‡Ø© Ø¥Ø¯Ø§Ø±Ø© Ø§Ù„Ø®Ø¯Ù…Ø§Øª ÙˆØ§Ù„Ù…Ø­ØªÙˆÙ‰ Ø¨Ù…Ø§ ÙÙŠ Ø°Ù„Ùƒ Ø§Ù„Ø¨Ø§Ù†Ø±Ø§Øª ÙˆØ§Ù„Ø£Ø³Ø¦Ù„Ø© Ø§Ù„Ø´Ø§Ø¦Ø¹Ø©' : 'Services and content management interface including banners and FAQs' ); ?>"
                         width="1440"
                         height="900"
@@ -277,7 +277,7 @@ get_header();
                 <div class="pc__spotlight-visual pc__spotlight-visual--secondary pc__media-reveal">
                     <div class="pc__spotlight-frame">
                         <img
-                            src="<?php echo $pc_img( 'mobile-subscriptions.png' ); ?>"
+                            src="<?php echo $pc_img( 'mobile-subscriptions.webp' ); ?>"
                             alt="<?php echo esc_attr( $is_rtl ? 'Ø´Ø§Ø´Ø© Ø§Ø´ØªØ±Ø§ÙƒØ§Øª Ø§Ù„Ø¹Ù‚ÙˆØ¯ Ø§Ù„Ø³Ù†ÙˆÙŠØ© ÙÙŠ ØªØ·Ø¨ÙŠÙ‚ PropCare 360' : 'Annual contract subscriptions screen in the PropCare 360 app' ); ?>"
                             width="390"
                             height="844"
@@ -327,7 +327,7 @@ get_header();
                 <div class="pc__spotlight-visual pc__spotlight-visual--tertiary pc__media-reveal">
                     <div class="pc__spotlight-frame">
                         <img
-                            src="<?php echo $pc_img( 'mobile-services.png' ); ?>"
+                            src="<?php echo $pc_img( 'mobile-services.webp' ); ?>"
                             alt="<?php echo esc_attr( $is_rtl ? 'Ø´Ø§Ø´Ø© Ø®Ø¯Ù…Ø§Øª Ø¹Ø±ÙˆØ¶ Ø§Ù„Ø£Ø³Ø¹Ø§Ø± Ù„Ù…Ø´Ø§Ø±ÙŠØ¹ Ø§Ù„ØªØ£Ø³ÙŠØ³ ÙˆØ§Ù„ØªØ±Ù…ÙŠÙ…' : 'Quote services screen for new build and renovation projects' ); ?>"
                             width="390"
                             height="844"
@@ -371,7 +371,7 @@ get_header();
                 <article class="pc__journey-item pc__journey-item--offset" data-pc-reveal data-pc-delay="80">
                     <div class="pc__mini-frame pc__media-reveal">
                         <img
-                            src="<?php echo $pc_img( 'mobile-subscriptions.png' ); ?>"
+                            src="<?php echo $pc_img( 'mobile-subscriptions.webp' ); ?>"
                             alt="<?php echo esc_attr( $is_rtl ? 'Ø§Ø´ØªØ±Ø§ÙƒØ§Øª ÙˆØ¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ø¹Ù…ÙŠÙ„ ÙˆØ§Ù„Ø¹Ù‚Ø§Ø±Ø§Øª' : 'Subscriptions, customer data, and properties' ); ?>"
                             width="390"
                             height="844"
@@ -386,7 +386,7 @@ get_header();
                 <article class="pc__journey-item" data-pc-reveal data-pc-delay="160">
                     <div class="pc__mini-frame pc__media-reveal">
                         <img
-                            src="<?php echo $pc_img( 'mobile-menu.png' ); ?>"
+                            src="<?php echo $pc_img( 'mobile-menu.webp' ); ?>"
                             alt="<?php echo esc_attr( $is_rtl ? 'Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© Ø§Ù„Ø¬Ø§Ù†Ø¨ÙŠØ© Ù„Ù„ØªÙ†Ù‚Ù„ Ø¨ÙŠÙ† Ø£Ù‚Ø³Ø§Ù… Ø§Ù„ØªØ·Ø¨ÙŠÙ‚' : 'Side menu for navigating app sections' ); ?>"
                             width="390"
                             height="844"
@@ -416,7 +416,7 @@ get_header();
                 <article class="pc__journey-item" data-pc-reveal data-pc-delay="320">
                     <div class="pc__mini-frame pc__media-reveal">
                         <img
-                            src="<?php echo $pc_img( 'mobile-request-details.png' ); ?>"
+                            src="<?php echo $pc_img( 'mobile-request-details.webp' ); ?>"
                             alt="<?php echo esc_attr( $is_rtl ? 'ØªØ®ØµÙŠØµ Ø§Ù„Ø·Ù„Ø¨ Ø­Ø³Ø¨ Ù†ÙˆØ¹ Ø§Ù„Ø®Ø¯Ù…Ø© ÙˆØ§Ù„Ù…Ø¨Ù†Ù‰' : 'Customize request by service type and building' ); ?>"
                             width="390"
                             height="844"
@@ -431,7 +431,7 @@ get_header();
                 <article class="pc__journey-item pc__journey-item--offset" data-pc-reveal data-pc-delay="400">
                     <div class="pc__mini-frame pc__media-reveal">
                         <img
-                            src="<?php echo $pc_img( 'mobile-orders-history.png' ); ?>"
+                            src="<?php echo $pc_img( 'mobile-orders-history.webp' ); ?>"
                             alt="<?php echo esc_attr( $is_rtl ? 'ØªØ°Ø§ÙƒØ± Ø§Ù„Ø¯Ø¹Ù… Ø§Ù„ÙÙ†ÙŠ ÙˆÙ…ØªØ§Ø¨Ø¹Ø© Ø­Ø§Ù„Ø© Ø§Ù„Ù…Ø´ÙƒÙ„Ø§Øª' : 'Support tickets and issue status tracking' ); ?>"
                             width="390"
                             height="844"
@@ -446,7 +446,7 @@ get_header();
                 <article class="pc__journey-item pc__journey-item--wide" data-pc-reveal data-pc-delay="480">
                     <div class="pc__mini-frame pc__media-reveal">
                         <img
-                            src="<?php echo $pc_img( 'mobile-chat.png' ); ?>"
+                            src="<?php echo $pc_img( 'mobile-chat.webp' ); ?>"
                             alt="<?php echo esc_attr( $is_rtl ? 'Ù…Ø­Ø§Ø¯Ø«Ø© Ø¯Ø¹Ù… ÙÙ†ÙŠ Ù…Ø¨Ø§Ø´Ø±Ø© Ø¯Ø§Ø®Ù„ Ø§Ù„ØªØ·Ø¨ÙŠÙ‚' : 'Live in-app technical support chat' ); ?>"
                             width="390"
                             height="844"
@@ -483,7 +483,7 @@ get_header();
             <div class="pc__v2-visual" data-pc-reveal data-pc-delay="150">
                 <div class="pc__v2-phone pc__media-reveal">
                     <img
-                        src="<?php echo $pc_img( 'mobile-splash.png' ); ?>"
+                        src="<?php echo $pc_img( 'mobile-splash.webp' ); ?>"
                         alt="<?php echo esc_attr( $is_rtl ? 'Ù…ÙÙ‡ÙˆÙ… ØªØ·Ø¨ÙŠÙ‚ Ø§Ù„ÙÙ†ÙŠÙŠÙ† Ø§Ù„Ù…ÙŠØ¯Ø§Ù†ÙŠ â€” Ø§Ù„Ù…Ø±Ø­Ù„Ø© Ø§Ù„Ø«Ø§Ù†ÙŠØ©' : 'Field technician app concept â€” Phase Two' ); ?>"
                         width="390"
                         height="844"

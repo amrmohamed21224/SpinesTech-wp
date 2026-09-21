@@ -33,16 +33,16 @@ $arrow  = $is_rtl ? 'arrow_back' : 'arrow_forward';
 /* ─────────────────────────────────────────────
    Image URLs — loaded from local case study assets
 ───────────────────────────────────────────── */
-$img_phone    = st_asset('images/case-studies/backway/shipper-home-page.png');
-$img_desktop  = st_asset('images/case-studies/backway/admin-home.png');
-$img_map      = st_asset('images/case-studies/backway/shipper-Shipment-details-Live-tracking.png');
-$img_customer = st_asset('images/case-studies/backway/shipper-home-page.png');
-$img_driver   = st_asset('images/case-studies/backway/driver-home-page.png');
-$img_admin    = st_asset('images/case-studies/backway/admin-home.png');
+$img_phone    = st_asset('images/case-studies/backway/shipper-home-page.webp');
+$img_desktop  = st_asset('images/case-studies/backway/admin-home.webp');
+$img_map      = st_asset('images/case-studies/backway/shipper-Shipment-details-Live-tracking.webp');
+$img_customer = st_asset('images/case-studies/backway/shipper-home-page.webp');
+$img_driver   = st_asset('images/case-studies/backway/driver-home-page.webp');
+$img_admin    = st_asset('images/case-studies/backway/admin-home.webp');
 
 /* Merchant case study images */
-$img_merchant_dashboard = st_asset('images/case-studies/merchant/Dashboard.jpg');
-$img_merchant_product   = st_asset('images/case-studies/merchant/Item+Details.jpg');
+$img_merchant_dashboard = st_asset('images/case-studies/merchant/Dashboard.webp');
+$img_merchant_product   = st_asset('images/case-studies/merchant/Item+Details.webp');
 
 /* ─────────────────────────────────────────────
    Helper: resolve a case-study URL by trying
@@ -92,7 +92,7 @@ $featured = [
         'scope'       => 'iOS, Android, Web App',
         'scope_ar'    => 'iOS, Android, تطبيق ويب',
         'tag'         => $is_rtl ? 'منصة تشغيل' : 'Operations Platform',
-        'image'       => st_asset( 'images/case-studies/backway/card-opt.jpg' ),
+        'image'       => st_asset( 'images/case-studies/backway/card-opt.webp' ),
         'style'       => 'photo',
         'slugs'       => [ 'backway-logistics', 'backway', 'supply-chain-erp', 'logistics' ],
     ],
@@ -109,7 +109,7 @@ $featured = [
         'scope'       => 'iOS, Android, Web Dashboard',
         'scope_ar'    => 'iOS, Android, لوحة تحكم ويب',
         'tag'         => $is_rtl ? 'سوق إلكتروني' : 'E-Commerce Platform',
-        'image'       => st_asset( 'images/case-studies/merchant/card-veo.jpg' ),
+        'image'       => st_asset( 'images/case-studies/merchant/card-veo.webp' ),
         'style'       => 'photo',
         'slugs'       => [ 'merchant', 'merchant-ecommerce', 'fashion-marketplace' ],
     ],
@@ -126,7 +126,7 @@ $featured = [
         'scope'       => 'iOS, Android, Web Dashboard',
         'scope_ar'    => 'iOS, Android, لوحة تحكم ويب',
         'tag'         => $is_rtl ? 'منصة تشغيل' : 'Operations Platform',
-        'image'       => st_asset( 'images/case-studies/propcare/screen-card.png' ),
+        'image'       => st_asset( 'images/case-studies/propcare/screen-card.webp' ),
         'style'       => 'photo',
         'slugs'       => [ 'propcare', 'propcare-360', 'property-management' ],
     ],
@@ -143,7 +143,7 @@ $featured = [
         'scope'       => 'iOS, Android, Web Dashboard',
         'scope_ar'    => 'iOS, Android, لوحة تحكم ويب',
         'tag'         => $is_rtl ? 'منصة حجوزات' : 'Booking Platform',
-        'image'       => st_asset( 'images/case-studies/lahza/card-case.png' ),
+        'image'       => st_asset( 'images/case-studies/lahza/card-case.webp' ),
         'style'       => 'photo',
         'slugs'       => [ 'lahza', 'lahza-events', 'event-booking' ],
     ],
@@ -153,13 +153,13 @@ $mobile_cards = [
     [
         'title' => 'Merchant',
         'tag'   => $is_rtl ? 'واجهة المتجر' : 'Storefront UI',
-        'image' => st_asset('images/case-studies/merchant/Wishlist.jpg'),
+        'image' => st_asset('images/case-studies/merchant/Wishlist.webp'),
         'slugs' => [ 'merchant', 'merchant-ecommerce', 'fashion-marketplace' ],
     ],
     [
         'title' => 'Backway App',
         'tag'   => $is_rtl ? 'سير عمل السائق' : 'Driver Workflow',
-        'image' => st_asset('images/case-studies/backway/driver-home-page.png'),
+        'image' => st_asset('images/case-studies/backway/driver-home-page.webp'),
         'slugs' => [ 'backway-logistics', 'backway', 'supply-chain-erp' ],
     ],
     [
@@ -171,7 +171,7 @@ $mobile_cards = [
     [
         'title' => $is_rtl ? 'لحظة' : 'Lahza',
         'tag'   => $is_rtl ? 'حجز مناسبات' : 'Event Booking',
-        'image' => st_asset('images/case-studies/lahza/app-home.png'),
+        'image' => st_asset('images/case-studies/lahza/app-home.webp'),
         'slugs' => [ 'lahza', 'lahza-events', 'event-booking' ],
     ],
 ];
@@ -182,7 +182,7 @@ $figma_cards = [
         'badge'   => 'Precision',
         'desc'    => 'A complete digital platform for property services and maintenance delivered flawlessly.',
         'desc_ar' => 'منصة رقمية متكاملة لخدمات الأملاك والصيانة مُسلَّمة بدقة تامة.',
-        'image'   => st_asset('images/case-studies/propcare/screen.png'),
+        'image'   => st_asset('images/case-studies/propcare/screen.webp'),
         'slugs'   => [ 'propcare', 'propcare-360', 'property-management' ],
     ],
     [
@@ -198,7 +198,7 @@ $figma_cards = [
         'badge'   => 'UI System',
         'desc'    => 'A seamless digital platform for booking and managing events translated pixel-perfectly.',
         'desc_ar' => 'منصة متكاملة لحجز المناسبات مترجمة للبرمجة بدقة البكسل.',
-        'image'   => st_asset('images/case-studies/lahza/app-services.png'),
+        'image'   => st_asset('images/case-studies/lahza/app-services.webp'),
         'slugs'   => [ 'lahza', 'lahza-events', 'event-booking' ],
     ],
 ];

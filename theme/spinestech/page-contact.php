@@ -10,14 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 add_filter('pre_get_document_title', function($title) {
     $is_rtl = function_exists('st_locale') ? st_locale() === 'ar' : false;
     return $is_rtl 
-        ? 'تواصل معنا | ابدأ مشروعك التقني مع SpinesTech'
+        ? 'تواصل معنا | SpinesTech لتطوير البرمجيات والأنظمة'
         : 'Contact Us | SpinesTech Software Engineering';
 }, 999);
 
 add_action('wp_head', function() {
     $is_rtl = function_exists('st_locale') ? st_locale() === 'ar' : false;
     st_seo_set_description($is_rtl
-        ? 'تواصل مع فريق SpinesTech الهندسي لبدء مشروعك أو حجز استشارة تقنية مجانية لتطبيقات الجوال والمنصات الرقمية.'
+        ? 'تواصل مع فريق SpinesTech لبدء مشروعك التقني أو طلب استشارة مجانية لبناء تطبيقات الجوال، لوحات التحكم والأنظمة التشغيلية في السعودية والخليج.'
         : 'Get in touch with the SpinesTech engineering team to launch your next mobile app, dashboard, or digital platform across Saudi Arabia and the GCC.');
 }, 3);
 // ───────────────────────────────────────────────────────────────────────────

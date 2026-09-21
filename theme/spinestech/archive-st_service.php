@@ -10,15 +10,15 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 add_filter( 'pre_get_document_title', function () {
     $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
     return $is_rtl
-        ? 'خدمات تطوير البرمجيات والمنصات | SpinesTech'
-        : 'Software & App Development Services | SpinesTech';
+        ? 'Ø®Ø¯Ù…Ø§ØªÙ†Ø§ | SpinesTech â€” ØªØ·ÙˆÙŠØ± ØªØ·Ø¨ÙŠÙ‚Ø§Øª Ø§Ù„Ø¬ÙˆØ§Ù„ ÙˆØ§Ù„Ù…Ù†ØµØ§Øª Ø§Ù„Ø±Ù‚Ù…ÙŠØ©'
+        : 'Our Services | SpinesTech â€” Mobile App & Digital Platform Development';
 }, 999 );
 
 add_action( 'wp_head', function () {
     $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
     st_seo_set_description( $is_rtl
-        ? 'خدمات هندسة البرمجيات مع SpinesTech: تطوير تطبيقات الجوال (iOS/Android)، منصات الويب، ولوحات التحكم التشغيلية.'
-        : 'Software engineering services with SpinesTech: mobile apps (iOS/Android), web platforms, and operational dashboards.' );
+        ? 'اكتشف خدمات SpinesTech في تطوير تطبيقات الجوال، منصات الويب، لوحات التحكم، الأسواق الرقمية، وأنظمة الحجوزات في السعودية والخليج.'
+        : 'Explore SpinesTech services in mobile app development, web platforms, admin dashboards, digital marketplaces, and booking systems across Saudi Arabia and the GCC.' );
 }, 3 );
 // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 

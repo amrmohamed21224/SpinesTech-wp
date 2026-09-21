@@ -16,8 +16,8 @@ $locale = $is_rtl ? 'ar' : 'en';
 // ── SEO ──────────────────────────────────────────────────────────────────────
 add_filter( 'pre_get_document_title', function () use ( $is_rtl ) {
     return $is_rtl
-        ? 'سياسة الخصوصية | SpinesTech'
-        : 'Privacy Policy | SpinesTech';
+        ? 'سياسة الخصوصية | SpinesTech | تطوير تطبيقات الجوال'
+        : 'Privacy Policy | SpinesTech | Custom Software & Mobile Apps';
 }, 999 );
 
 add_action( 'wp_head', function () use ( $is_rtl ) {

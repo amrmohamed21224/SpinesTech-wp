@@ -20,39 +20,25 @@ add_action('wp_head', function (): void {
 
 function st_seo_canonical_url(?string $locale = null): string
 {
-    $req_path = parse_url((string) ($_SERVER['ST_ORIGINAL_REQUEST_URI'] ?? $_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?: '/';
-    if ($locale === null) {
-        if (!empty($_SERVER['ST_LANG_PREFIX'])) {
-            $locale = $_SERVER['ST_LANG_PREFIX'];
-        } elseif (preg_match('#^/en(/|$)#i', $req_path)) {
-            $locale = 'en';
-        } elseif (preg_match('#^/ar(/|$)#i', $req_path)) {
-            $locale = 'ar';
-        } else {
-            $locale = 'raw';
-        }
-    }
-
-    $localize = static function (string $path) use ($locale): string {
-        $path = '/' . ltrim($path, '/');
-        if ($locale === 'raw') {
-            return home_url($path);
-        }
-        return function_exists('st_localized_url')
-            ? st_localized_url($path, $locale)
-            : home_url('/' . $locale . $path);
-    };
+    $current_locale = function_exists('st_locale') ? st_locale() : 'ar';
+    $locale = in_array($locale, ['ar', 'en'], true) ? $locale : $current_locale;
+    $is_alternate = ($locale !== $current_locale);
+    
+    // The core issue is fake 'en' URLs causing 404s. 
+    // Arabic is the primary language, so its URLs generally exist.
+    $is_unverified_alternate_en = ($is_alternate && $locale === 'en');
 
     // 1) Front page
     if (is_front_page()) {
-        return $localize('/');
+        return function_exists('st_localized_url') ? st_localized_url('/', $locale) : home_url('/' . $locale . '/');
     }
 
     // 2) Virtual Web Project Router
     if (function_exists('st_web_project_current_slug')) {
         $wp_slug = st_web_project_current_slug();
         if ($wp_slug !== '') {
-            return $localize('/web-projects/' . $wp_slug . '/');
+            $path = '/web-projects/' . $wp_slug . '/';
+            return function_exists('st_localized_url') ? st_localized_url($path, $locale) : home_url('/' . $locale . $path);
         }
     }
 
@@ -60,47 +46,68 @@ function st_seo_canonical_url(?string $locale = null): string
     if (function_exists('st_case_study_current_slug')) {
         $cs_slug = st_case_study_current_slug();
         if ($cs_slug !== '') {
-            return $localize('/case-studies/' . $cs_slug . '/');
+            $path = '/case-studies/' . $cs_slug . '/';
+            return function_exists('st_localized_url') ? st_localized_url($path, $locale) : home_url('/' . $locale . $path);
+        }
+    }
+
+    // Singular items (Posts, Pages, Custom Post Types like st_service)
+    if (is_singular()) {
+        $post_id = get_the_ID();
+        if ($post_id) {
+            if (function_exists('pll_get_post')) {
+                $trans_id = pll_get_post($post_id, $locale);
+                if ($trans_id) {
+                    $permalink = (string) get_permalink($trans_id);
+                    $url = user_trailingslashit($permalink);
+                    
+                    // Preserve pagination for articles page
+                    if ((is_page('articles') || (function_exists('st_is_articles_archive') && st_is_articles_archive())) && !empty($_GET['articles_page'])) {
+                        $url = add_query_arg('articles_page', (int) $_GET['articles_page'], $url);
+                    }
+                    return $url;
+                }
+            }
+
+            // If translation doesn't exist, DO NOT guess it. Guessing causes 404s and asymmetric missing return links.
+            if ($is_alternate) {
+                return '';
+            }
         }
     }
 
     // 4) Specific archives
     if (is_post_type_archive('st_service')) {
-        return $localize('/services/');
+        if ($is_alternate) return ''; // Prevent linking to 404 English services archive
+        return function_exists('st_localized_url') ? st_localized_url('/services/', $locale) : home_url('/' . $locale . '/services/');
     }
-    if (is_post_type_archive('st_case_study')) {
-        return $localize('/case-studies/');
+    if (is_post_type_archive('st_case_study') || (function_exists('st_case_study_is_archive_request') && st_case_study_is_archive_request())) {
+        return function_exists('st_localized_url') ? st_localized_url('/case-studies/', $locale) : home_url('/' . $locale . '/case-studies/');
     }
     if (is_page('articles') || (function_exists('st_is_articles_archive') && st_is_articles_archive())) {
-        $url = $localize('/articles/');
+        if ($is_alternate) return ''; // Prevent linking to 404 English articles archive
+        $url = function_exists('st_localized_url') ? st_localized_url('/articles/', $locale) : home_url('/' . $locale . '/articles/');
         if (!empty($_GET['articles_page'])) {
             $url = add_query_arg('articles_page', (int) $_GET['articles_page'], $url);
         }
         return $url;
     }
 
-    // 5) Singular service landings
+    // 5) Singular service landings (Fallback if not caught by is_singular above)
     if (is_singular('st_service')) {
         $svc_slug = (string) get_post_field('post_name', get_the_ID());
         if ($svc_slug !== '') {
-            return $localize('/services/' . $svc_slug . '/');
+            if ($is_alternate) return ''; // Prevent linking to 404 English service landings
+            return function_exists('st_localized_url') ? st_localized_url('/services/' . $svc_slug . '/', $locale) : home_url('/' . $locale . '/services/' . $svc_slug . '/');
         }
     }
 
-    // 6) Singular posts, pages, and custom post types
+    // 6) Singular posts, pages, and custom post types (Fallback if not caught above)
     if (is_singular()) {
         $post_id = get_the_ID();
         if ($post_id) {
-            if ($locale !== 'raw' && function_exists('pll_get_post')) {
-                $trans_id = pll_get_post($post_id, $locale);
-                if ($trans_id) {
-                    return user_trailingslashit((string) get_permalink($trans_id));
-                }
-            }
+            if ($is_alternate) return ''; // Do not guess URLs for unverified alternates
             $permalink = (string) get_permalink($post_id);
-            if ($locale === 'raw') {
-                return user_trailingslashit($permalink);
-            }
             if (function_exists('st_localize_internal_url')) {
                 return user_trailingslashit(st_localize_internal_url($permalink, $locale));
             }
@@ -109,8 +116,10 @@ function st_seo_canonical_url(?string $locale = null): string
     }
 
     // 7) Default path-based resolution
+    if ($is_alternate) return '';
+
     $path = function_exists('st_current_canonical_path') ? st_current_canonical_path() : '/';
-    $url = $localize($path);
+    $url = function_exists('st_localized_url') ? st_localized_url($path, $locale) : home_url($path);
 
     // Keep pagination parameter synchronized across canonical and hreflang to avoid conflicts
     if (!empty($_GET['articles_page'])) {
@@ -216,7 +225,7 @@ function st_seo_print_meta(): void
 
     $locale = function_exists('st_locale') ? st_locale() : 'ar';
     $is_ar = $locale === 'ar';
-    $canonical = st_seo_current_url();
+    $canonical = st_seo_current_url($locale);
     $alternate_ar = st_seo_current_url('ar');
     $alternate_en = st_seo_current_url('en');
     $title = wp_get_document_title();
@@ -228,10 +237,16 @@ function st_seo_print_meta(): void
     <meta name="description" content="<?php echo esc_attr($description); ?>">
     <meta name="robots" content="<?php echo esc_attr(st_seo_robots_content()); ?>">
     <?php if (!is_404()) : ?>
-    <link rel="canonical" href="<?php echo esc_url($canonical); ?>">
-    <link rel="alternate" hreflang="ar" href="<?php echo esc_url($alternate_ar); ?>">
-    <link rel="alternate" hreflang="en" href="<?php echo esc_url($alternate_en); ?>">
-    <link rel="alternate" hreflang="x-default" href="<?php echo esc_url($alternate_ar); ?>">
+        <?php if ($canonical): ?>
+        <link rel="canonical" href="<?php echo esc_url($canonical); ?>">
+        <?php endif; ?>
+        <?php if ($alternate_ar): ?>
+        <link rel="alternate" hreflang="ar" href="<?php echo esc_url($alternate_ar); ?>">
+        <link rel="alternate" hreflang="x-default" href="<?php echo esc_url($alternate_ar); ?>">
+        <?php endif; ?>
+        <?php if ($alternate_en): ?>
+        <link rel="alternate" hreflang="en" href="<?php echo esc_url($alternate_en); ?>">
+        <?php endif; ?>
     <?php endif; ?>
     <meta property="og:locale" content="<?php echo esc_attr($is_ar ? 'ar_AR' : 'en_US'); ?>">
     <meta property="og:locale:alternate" content="<?php echo esc_attr($is_ar ? 'en_US' : 'ar_AR'); ?>">
@@ -504,6 +519,34 @@ add_filter('pre_get_document_title', function (string $title): string {
     }
     return $title;
 }, 5);
+
+add_filter('document_title_parts', function (array $title): array {
+    $main_title = $title['title'] ?? '';
+    
+    // 1) Prevent title from being too long (Over 561px)
+    if (mb_strlen($main_title) > 50) {
+        unset($title['site']);
+        unset($title['tagline']);
+        return $title;
+    }
+
+    // 2) Enrich title with USPs/keywords if it's too short (Below 30 chars)
+    if (!is_front_page() && !is_404()) {
+        $combined_length = mb_strlen(implode(' - ', $title));
+        if ($combined_length < 35) {
+            $locale = function_exists('st_locale') ? st_locale() : 'ar';
+            $site_name = $title['site'] ?? 'SpinesTech';
+            
+            if ($locale === 'en') {
+                $title['site'] = $site_name . ' | Custom Software & Mobile Apps';
+            } else {
+                $title['site'] = $site_name . ' | تطوير تطبيقات الجوال والبرمجيات';
+            }
+        }
+    }
+
+    return $title;
+}, 10);
 
 add_action('template_redirect', function (): void {
     $redirects = [

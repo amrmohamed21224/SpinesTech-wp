@@ -1,21 +1,4 @@
-<?php
-add_filter( 'pre_get_document_title', function () {
-    $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
-    return $is_rtl
-        ? 'طلب عرض سعر لمشروعك البرمجي | SpinesTech'
-        : 'Request a Software Project Quote | SpinesTech';
-}, 999 );
-
-add_action( 'wp_head', function () {
-    $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
-    if (function_exists('st_seo_set_description')) {
-        st_seo_set_description($is_rtl
-            ? 'اطلب عرض سعر مخصص لتطبيقك أو منصتك الرقمية. ندرس متطلباتك ونقدم تحليلاً تقديرياً للنطاق والميزانية والجدول.'
-            : 'Request a custom quote for your mobile app or digital platform. We analyze your requirements and provide realistic budget estimates.');
-    }
-}, 3 );
-
-get_header(); $services = st_query_cpt('st_service'); $plans = st_query_cpt('st_pricing'); $locale = st_locale(); ?>
+<?php get_header(); $services = st_query_cpt('st_service'); $plans = st_query_cpt('st_pricing'); $locale = st_locale(); ?>
 <main class="pt-24 sm:pt-28 lg:pt-32 pb-24 px-margin-mobile md:px-margin-desktop text-start" data-st-quote-page>
     <div class="max-w-container-max mx-auto mb-12 text-center">
         <span class="text-secondary font-bold text-label-md uppercase tracking-widest mb-4 block"><?php echo esc_html(st_t('quote.title')); ?></span>
@@ -39,6 +22,31 @@ get_header(); $services = st_query_cpt('st_service'); $plans = st_query_cpt('st_
                         <button type="button" data-value="<?php echo esc_attr($b); ?>" class="st-quote-chip px-4 py-2 rounded-full border border-outline-variant/30 text-sm hover:border-secondary"><?php echo esc_html($b); ?></button>
                     <?php endforeach; ?>
                 </div>
+            </section>
+        </div>
+            
+            <section class="p-8 bg-white border border-outline-variant/30 rounded-2xl">
+                <?php if ($locale === 'ar'): ?>
+                    <h2 class="text-headline-sm font-bold text-primary mb-4">لماذا تطلب عرض سعر من SpinesTech؟</h2>
+                    <div class="text-body-md text-on-surface-variant space-y-4">
+                        <p>طلب عرض السعر هو الخطوة الأولى لتحويل رؤيتك إلى منتج رقمي ملموس. في SpinesTech، نحن لا نقدم مجرد تسعير للبرمجيات، بل نقدم دراسة فنية وتجارية شاملة لمشروعك.</p>
+                        <p>سواء كنت تهدف إلى <strong>تطوير تطبيق جوال</strong> مبتكر، أو <strong>بناء منصة تجارة إلكترونية</strong>، أو تصميم <strong>نظام إداري (ERP)</strong> مخصص، فإن فريقنا يقوم بتحليل متطلباتك بدقة لتحديد الهيكلية التقنية الأنسب، وتقدير الوقت والتكلفة بشفافية تامة.</p>
+                        <p>يتضمن عرض السعر الخاص بنا تفاصيل حول مراحل التطوير، منهجية العمل الرشيقة (Agile)، تقنيات البرمجة المستخدمة، ومستوى الدعم الفني ما بعد الإطلاق. نحن نركز على تقديم قيمة حقيقية تضمن عائد استثمار مرتفع لميزانيتك التقنية، مع الالتزام بأعلى معايير جودة الكود وتجربة المستخدم.</p>
+                        <h3 class="text-title-lg font-bold text-primary mt-6 mb-2">ما هي الخطوات التالية؟</h3>
+                        <p>بعد تقديم طلب عرض السعر من خلال النموذج أعلاه، سيقوم فريقنا بمراجعة تفاصيل مشروعك بدقة وعناية. سنتواصل معك في أقرب وقت ممكن لتوضيح أي متطلبات إضافية ومناقشة نطاق العمل التقني بشكل أعمق إذا لزم الأمر، لضمان دقة التسعير.</p>
+                        <p>نحن نفخر في SpinesTech بتقديم تسعير شفاف ومبني على تحليل منهجي دقيق. لا توجد رسوم خفية، بل خطة عمل واضحة توضح الجهد الهندسي المطلوب في كل مرحلة من مراحل تطوير واختبار وإطلاق نظامك البرمجي، لضمان استثمار آمن وموثوق يحقق أهدافك التجارية.</p>
+                    </div>
+                <?php else: ?>
+                    <h2 class="text-headline-sm font-bold text-primary mb-4">Why request a quote from SpinesTech?</h2>
+                    <div class="text-body-md text-on-surface-variant space-y-4">
+                        <p>Requesting a quote is the first step toward turning your vision into a tangible digital product. At SpinesTech, we don't just provide a price tag; we deliver a comprehensive technical and business analysis for your project.</p>
+                        <p>Whether you aim to <strong>develop an innovative mobile app</strong>, <strong>build an e-commerce platform</strong>, or design a <strong>custom ERP system</strong>, our engineering team thoroughly analyzes your requirements to determine the optimal software architecture and transparently estimate the timeline and cost.</p>
+                        <p>Our proposals include details about the development phases, our Agile methodology, the programming tech stack, and post-launch technical support. We focus on delivering real value that ensures a high ROI for your technology budget, all while adhering to the highest standards of code quality and user experience design.</p>
+                        <h3 class="text-title-lg font-bold text-primary mt-6 mb-2">What are the next steps?</h3>
+                        <p>After you submit your quote request through the form above, our technical team will carefully review the details of your project. We will contact you as soon as possible to clarify any additional requirements and discuss the project scope in more depth if necessary, ensuring complete pricing accuracy.</p>
+                        <p>At SpinesTech, we pride ourselves on providing transparent pricing based on systematic and rigorous analysis. There are no hidden fees—only a clear action plan outlining the engineering effort required at every stage of developing, testing, and launching your software system. We ensure a safe and reliable investment that drives your business goals forward.</p>
+                    </div>
+                <?php endif; ?>
             </section>
         </div>
         <aside class="p-8 bg-surface-container-low rounded-2xl border border-outline-variant/20 h-fit sticky top-28">

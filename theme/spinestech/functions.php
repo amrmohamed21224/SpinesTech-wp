@@ -15,24 +15,6 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-/**
- * Early URI Normalization:
- * Strip language prefix (/ar/ or /en/) from REQUEST_URI before WordPress core parses the request,
- * allowing core rewrite rules to match pages, posts, CPTs, and archives natively.
- * The detected language is stored in $_SERVER['ST_LANG_PREFIX'] and the full original URI in $_SERVER['ST_ORIGINAL_REQUEST_URI'].
- */
-if (!is_admin() && (empty($_SERVER['SCRIPT_NAME']) || !str_contains($_SERVER['SCRIPT_NAME'], 'wp-admin'))) {
-    $raw_uri = (string) ($_SERVER['REQUEST_URI'] ?? '/');
-    $raw_path = parse_url($raw_uri, PHP_URL_PATH) ?: '/';
-    if (preg_match('#^/(ar|en)(/.*)?$#i', $raw_path, $m)) {
-        $_SERVER['ST_ORIGINAL_REQUEST_URI'] = $raw_uri;
-        $_SERVER['ST_LANG_PREFIX'] = strtolower($m[1]);
-        $sub_path = ($m[2] ?? '') ?: '/';
-        $query_str = parse_url($raw_uri, PHP_URL_QUERY);
-        $_SERVER['REQUEST_URI'] = $sub_path . ($query_str !== null ? '?' . $query_str : '');
-    }
-}
-
 define('ST_THEME_VERSION', '1.0.0');
 
 require_once get_template_directory() . '/inc/i18n.php';
@@ -57,34 +39,15 @@ require_once get_template_directory() . '/inc/seo.php';
 require_once get_template_directory() . '/inc/enqueue.php';
 require get_template_directory() . '/inc/rest-forms.php';
 
-/**
- * Global Security Headers: HSTS (without preload), nosniff, SAMEORIGIN, Referrer-Policy, Permissions-Policy.
- */
-add_action('send_headers', function (): void {
+// Intercept the request to strip language prefixes so WordPress doesn't throw 404s for /en/* paths
+add_action('parse_request', function ($wp) {
     if (is_admin()) {
         return;
     }
-    header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
-    header('X-Content-Type-Options: nosniff');
-    header('X-Frame-Options: SAMEORIGIN');
-    header('Referrer-Policy: strict-origin-when-cross-origin');
-    header('Permissions-Policy: geolocation=(), camera=(), microphone=()');
+    if (isset($wp->request) && preg_match('#^(ar|en)(?:/+(.*))?$#i', (string) $wp->request, $matches)) {
+        $wp->request = $matches[2] ?? '';
+    }
 });
-
-/**
- * Prevent WordPress canonical redirect from stripping /ar/ or /en/ or redirecting language routes.
- */
-add_filter('redirect_canonical', function ($redirect_url, $requested_url) {
-    if (!empty($_SERVER['ST_LANG_PREFIX'])) {
-        return false;
-    }
-    $orig = (string) ($_SERVER['ST_ORIGINAL_REQUEST_URI'] ?? $requested_url ?? '');
-    $path = parse_url($orig, PHP_URL_PATH) ?: '';
-    if (preg_match('#^/(ar|en)(/|$)#i', $path)) {
-        return false;
-    }
-    return $redirect_url;
-}, 10, 2);
 
 add_filter('template_include', function ($template) {
     if (is_page()) {
@@ -154,4 +117,4 @@ add_action('template_redirect', function () {
 
     wp_safe_redirect($target, 301);
     exit;
-}, 0);
+}, -1);

@@ -9,20 +9,31 @@
 // â”€â”€ SEO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 add_filter( 'pre_get_document_title', function () {
     $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
-    $paged = !empty($_GET['articles_page']) ? (int) $_GET['articles_page'] : 1;
-    $suffix = $paged > 1 ? ($is_rtl ? " — صفحة {$paged}" : " — Page {$paged}") : '';
+    $paged = isset($_GET['articles_page']) ? absint($_GET['articles_page']) : 1;
+    
+    if ($paged > 1) {
+        return $is_rtl
+            ? "المقالات التقنية | SpinesTech - الصفحة $paged"
+            : "Tech Articles | SpinesTech - Page $paged";
+    }
+    
     return $is_rtl
-        ? "مقالات ورؤى هندسة البرمجيات{$suffix} | SpinesTech"
-        : "Software Engineering Articles{$suffix} | SpinesTech";
+        ? 'المقالات التقنية | SpinesTech — رؤى هندسة البرمجيات'
+        : 'Tech Articles & Insights | SpinesTech Engineering';
 }, 999 );
 
 add_action( 'wp_head', function () {
     $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
-    $paged = !empty($_GET['articles_page']) ? (int) $_GET['articles_page'] : 1;
-    $suffix = $paged > 1 ? ($is_rtl ? " — صفحة {$paged}" : " — Page {$paged}") : '';
-    st_seo_set_description( $is_rtl
-        ? "مقالات وأدلة SpinesTech العملية حول تكلفة التطبيقات، إدارة المشاريع التقنية، وهندسة النظم الرقمية القابلة للنمو{$suffix}."
-        : "Practical SpinesTech guides on app costs, technical project management, and scalable digital engineering systems{$suffix}." );
+    $desc = $is_rtl
+        ? 'مقالات SpinesTech التقنية حول بناء التطبيقات، المنصات الرقمية، لوحات التحكم، والأنظمة التشغيلية في السعودية والخليج.'
+        : 'SpinesTech technical articles on building apps, digital platforms, dashboards, and operational systems across Saudi Arabia and the GCC.';
+        
+    $paged = isset($_GET['articles_page']) ? absint($_GET['articles_page']) : 1;
+    if ($paged > 1) {
+        $desc .= $is_rtl ? " (الصفحة $paged)" : " (Page $paged)";
+    }
+    
+    st_seo_set_description( $desc );
 }, 3 );
 // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 

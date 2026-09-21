@@ -14,8 +14,8 @@ function st_case_study_seo_config(): array
     return [
         'backway' => [
             'meta_title' => [
-                'ar' => 'منصة لوجستية متعددة الأطراف قائمة على الرحلات | دراسة حالة Backway',
-                'en' => 'Trip-Based Multi-Party Logistics Platform | Backway Case Study',
+                'ar' => 'منصة لوجستية متعددة الأطراف | دراسة حالة Backway',
+                'en' => 'Trip-Based Logistics Platform | Backway Case Study',
             ],
             'meta_description' => [
                 'ar' => 'دراسة حالة Backway: منصة شحن ولوجستيات تربط الشاحنين والسائقين والإدارة حول الرحلة كوحدة تشغيلية — تطبيقات جوال ولوحة تحكم متكاملة.',

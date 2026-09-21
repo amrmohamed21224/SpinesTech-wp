@@ -53,21 +53,21 @@ get_header();
 				<div class="lh__phone-stack" data-lh-tilt>
 					<div class="lh__phone-stack-item lh__phone-stack-item--3">
 						<img
-							src="<?php echo $lh_img( 'app-hall-details.png' ); ?>"
+							src="<?php echo $lh_img( 'app-hall-details.webp' ); ?>"
 							alt="<?php echo esc_attr( $is_rtl ? "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0644}\u{062D}\u{0638}\u{0629}\u{0020}\u{2014}\u{0020}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{062A}\u{0641}\u{0627}\u{0635}\u{064A}\u{0644}\u{0020}\u{0627}\u{0644}\u{0642}\u{0627}\u{0639}\u{0629}" : 'Lahza app â€” hall details screen' ); ?>"
 							width="240" height="519" loading="eager" decoding="async"
 						/>
 					</div>
 					<div class="lh__phone-stack-item lh__phone-stack-item--2">
 						<img
-							src="<?php echo $lh_img( 'app-home.png' ); ?>"
+							src="<?php echo $lh_img( 'app-home.webp' ); ?>"
 							alt="<?php echo esc_attr( $is_rtl ? "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0644}\u{062D}\u{0638}\u{0629}\u{0020}\u{2014}\u{0020}\u{0627}\u{0644}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{0627}\u{0644}\u{0631}\u{0626}\u{064A}\u{0633}\u{064A}\u{0629}" : 'Lahza app â€” home screen' ); ?>"
 							width="240" height="519" loading="eager" decoding="async"
 						/>
 					</div>
 					<div class="lh__phone-stack-item lh__phone-stack-item--1">
 						<img
-							src="<?php echo $lh_img( 'hero-splash.png' ); ?>"
+							src="<?php echo $lh_img( 'hero-splash.webp' ); ?>"
 							alt="<?php echo esc_attr( $is_rtl ? "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0644}\u{062D}\u{0638}\u{0629}\u{0020}\u{2014}\u{0020}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{0627}\u{0644}\u{0628}\u{062F}\u{0627}\u{064A}\u{0629}" : 'Lahza app â€” splash screen' ); ?>"
 							width="240" height="519" loading="eager" fetchpriority="high" decoding="async"
 						/>
@@ -205,16 +205,16 @@ get_header();
 				<div class="lh__gallery-scroll">
 					<div class="lh__gallery-track">
 						<div class="lh__phone-card">
-							<img src="<?php echo $lh_img( 'hero-splash.png' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0644}\u{062D}\u{0638}\u{0629}\u{0020}\u{2014}\u{0020}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{0627}\u{0644}\u{0628}\u{062F}\u{0627}\u{064A}\u{0629}\u{0020}\u{0628}\u{062A}\u{0635}\u{0645}\u{064A}\u{0645}\u{0020}\u{0623}\u{0646}\u{064A}\u{0642}" : 'Lahza â€” elegant splash screen' ); ?>" width="280" height="606" loading="lazy" decoding="async" />
+							<img src="<?php echo $lh_img( 'hero-splash.webp' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0644}\u{062D}\u{0638}\u{0629}\u{0020}\u{2014}\u{0020}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{0627}\u{0644}\u{0628}\u{062F}\u{0627}\u{064A}\u{0629}\u{0020}\u{0628}\u{062A}\u{0635}\u{0645}\u{064A}\u{0645}\u{0020}\u{0623}\u{0646}\u{064A}\u{0642}" : 'Lahza â€” elegant splash screen' ); ?>" width="280" height="606" loading="lazy" decoding="async" />
 						</div>
 						<div class="lh__phone-card">
-							<img src="<?php echo $lh_img( 'app-login.png' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0644}\u{062D}\u{0638}\u{0629}\u{0020}\u{2014}\u{0020}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{062A}\u{0633}\u{062C}\u{064A}\u{0644}\u{0020}\u{0627}\u{0644}\u{062F}\u{062E}\u{0648}\u{0644}" : 'Lahza â€” login screen' ); ?>" width="280" height="606" loading="lazy" decoding="async" />
+							<img src="<?php echo $lh_img( 'app-login.webp' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0644}\u{062D}\u{0638}\u{0629}\u{0020}\u{2014}\u{0020}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{062A}\u{0633}\u{062C}\u{064A}\u{0644}\u{0020}\u{0627}\u{0644}\u{062F}\u{062E}\u{0648}\u{0644}" : 'Lahza â€” login screen' ); ?>" width="280" height="606" loading="lazy" decoding="async" />
 						</div>
 						<div class="lh__phone-card">
-							<img src="<?php echo $lh_img( 'app-home.png' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0644}\u{062D}\u{0638}\u{0629}\u{0020}\u{2014}\u{0020}\u{0627}\u{0644}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{0627}\u{0644}\u{0631}\u{0626}\u{064A}\u{0633}\u{064A}\u{0629}\u{0020}\u{0648}\u{062A}\u{0635}\u{0646}\u{064A}\u{0641}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{0627}\u{0633}\u{0628}\u{0627}\u{062A}" : 'Lahza â€” home screen and event categories' ); ?>" width="280" height="606" loading="lazy" decoding="async" />
+							<img src="<?php echo $lh_img( 'app-home.webp' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0644}\u{062D}\u{0638}\u{0629}\u{0020}\u{2014}\u{0020}\u{0627}\u{0644}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{0627}\u{0644}\u{0631}\u{0626}\u{064A}\u{0633}\u{064A}\u{0629}\u{0020}\u{0648}\u{062A}\u{0635}\u{0646}\u{064A}\u{0641}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{0627}\u{0633}\u{0628}\u{0627}\u{062A}" : 'Lahza â€” home screen and event categories' ); ?>" width="280" height="606" loading="lazy" decoding="async" />
 						</div>
 						<div class="lh__phone-card">
-							<img src="<?php echo $lh_img( 'app-services.png' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0644}\u{062D}\u{0638}\u{0629}\u{0020}\u{2014}\u{0020}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{0627}\u{062E}\u{062A}\u{064A}\u{0627}\u{0631}\u{0020}\u{0627}\u{0644}\u{062E}\u{062F}\u{0645}\u{0627}\u{062A}" : 'Lahza â€” service selection screen' ); ?>" width="280" height="606" loading="lazy" decoding="async" />
+							<img src="<?php echo $lh_img( 'app-services.webp' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0644}\u{062D}\u{0638}\u{0629}\u{0020}\u{2014}\u{0020}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{0627}\u{062E}\u{062A}\u{064A}\u{0627}\u{0631}\u{0020}\u{0627}\u{0644}\u{062E}\u{062F}\u{0645}\u{0627}\u{062A}" : 'Lahza â€” service selection screen' ); ?>" width="280" height="606" loading="lazy" decoding="async" />
 						</div>
 					</div>
 				</div>
@@ -228,14 +228,14 @@ get_header();
 				</div>
 				<div class="lh__dash-grid">
 					<figure class="lh__dash-card lh__dash-card--main">
-						<img src="<?php echo $lh_img( 'dashboard-admin.png' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{062A}\u{062D}\u{0643}\u{0645}\u{0020}\u{0627}\u{0644}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{0627}\u{062D}\u{062A}\u{0631}\u{0627}\u{0641}\u{064A}\u{0629}\u{0020}\u{2014}\u{0020}\u{062A}\u{062D}\u{0644}\u{064A}\u{0644}\u{0627}\u{062A}\u{0020}\u{0648}\u{0631}\u{0633}\u{0648}\u{0645}\u{0020}\u{0628}\u{064A}\u{0627}\u{0646}\u{064A}\u{0629}" : 'Professional admin dashboard â€” analytics and charts' ); ?>" width="900" height="620" loading="lazy" decoding="async" />
+						<img src="<?php echo $lh_img( 'dashboard-admin.webp' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{062A}\u{062D}\u{0643}\u{0645}\u{0020}\u{0627}\u{0644}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{0627}\u{062D}\u{062A}\u{0631}\u{0627}\u{0641}\u{064A}\u{0629}\u{0020}\u{2014}\u{0020}\u{062A}\u{062D}\u{0644}\u{064A}\u{0644}\u{0627}\u{062A}\u{0020}\u{0648}\u{0631}\u{0633}\u{0648}\u{0645}\u{0020}\u{0628}\u{064A}\u{0627}\u{0646}\u{064A}\u{0629}" : 'Professional admin dashboard â€” analytics and charts' ); ?>" width="900" height="620" loading="lazy" decoding="async" />
 					</figure>
 					<div class="lh__dash-stack">
 						<figure class="lh__dash-card">
-							<img src="<?php echo $lh_img( 'dashboard-provider.png' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{0645}\u{0642}\u{062F}\u{0645}\u{0020}\u{0627}\u{0644}\u{062E}\u{062F}\u{0645}\u{0629}\u{0020}\u{2014}\u{0020}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{062D}\u{062C}\u{0648}\u{0632}\u{0627}\u{062A}\u{0020}\u{0648}\u{0625}\u{0639}\u{062F}\u{0627}\u{062F}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{062F}\u{0646}" : 'Provider dashboard â€” booking management and city settings' ); ?>" width="600" height="420" loading="lazy" decoding="async" />
+							<img src="<?php echo $lh_img( 'dashboard-provider.webp' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{0645}\u{0642}\u{062F}\u{0645}\u{0020}\u{0627}\u{0644}\u{062E}\u{062F}\u{0645}\u{0629}\u{0020}\u{2014}\u{0020}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{062D}\u{062C}\u{0648}\u{0632}\u{0627}\u{062A}\u{0020}\u{0648}\u{0625}\u{0639}\u{062F}\u{0627}\u{062F}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{062F}\u{0646}" : 'Provider dashboard â€” booking management and city settings' ); ?>" width="600" height="420" loading="lazy" decoding="async" />
 						</figure>
 						<figure class="lh__dash-card">
-							<img src="<?php echo $lh_img( 'dashboard-stats.png' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{0627}\u{0644}\u{0625}\u{062D}\u{0635}\u{0627}\u{0626}\u{064A}\u{0627}\u{062A}\u{0020}\u{0648}\u{0627}\u{0644}\u{0646}\u{0638}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0627}\u{0644}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0639}\u{0627}\u{0645}\u{0629}" : 'Statistics dashboard and financial overview' ); ?>" width="600" height="420" loading="lazy" decoding="async" />
+							<img src="<?php echo $lh_img( 'dashboard-stats.webp' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{0627}\u{0644}\u{0625}\u{062D}\u{0635}\u{0627}\u{0626}\u{064A}\u{0627}\u{062A}\u{0020}\u{0648}\u{0627}\u{0644}\u{0646}\u{0638}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0627}\u{0644}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0639}\u{0627}\u{0645}\u{0629}" : 'Statistics dashboard and financial overview' ); ?>" width="600" height="420" loading="lazy" decoding="async" />
 						</figure>
 					</div>
 				</div>
@@ -320,10 +320,10 @@ get_header();
 					<div class="lh__results-glow" aria-hidden="true"></div>
 					<div class="lh__results-collage">
 						<div class="lh__results-phone">
-							<img src="<?php echo $lh_img( 'app-home.png' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0644}\u{062D}\u{0638}\u{0629}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{0627}\u{0644}\u{0645}\u{0648}\u{0628}\u{0627}\u{064A}\u{0644}" : 'Lahza mobile app' ); ?>" width="200" height="433" loading="lazy" decoding="async" />
+							<img src="<?php echo $lh_img( 'app-home.webp' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0644}\u{062D}\u{0638}\u{0629}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{0627}\u{0644}\u{0645}\u{0648}\u{0628}\u{0627}\u{064A}\u{0644}" : 'Lahza mobile app' ); ?>" width="200" height="433" loading="lazy" decoding="async" />
 						</div>
 						<div class="lh__results-dashboard">
-							<img src="<?php echo $lh_img( 'dashboard-admin.png' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0625}\u{062D}\u{0635}\u{0627}\u{0626}\u{064A}\u{0627}\u{062A}\u{0020}\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{062A}\u{062D}\u{0643}\u{0645}\u{0020}\u{0644}\u{062D}\u{0638}\u{0629}" : 'Lahza admin dashboard statistics' ); ?>" width="400" height="280" loading="lazy" decoding="async" />
+							<img src="<?php echo $lh_img( 'dashboard-admin.webp' ); ?>" alt="<?php echo esc_attr( $is_rtl ? "\u{0625}\u{062D}\u{0635}\u{0627}\u{0626}\u{064A}\u{0627}\u{062A}\u{0020}\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{062A}\u{062D}\u{0643}\u{0645}\u{0020}\u{0644}\u{062D}\u{0638}\u{0629}" : 'Lahza admin dashboard statistics' ); ?>" width="400" height="280" loading="lazy" decoding="async" />
 						</div>
 					</div>
 				</div>

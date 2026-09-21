@@ -8,16 +8,16 @@
  * sources, alt text, and light animation hooks were added.
  *
  * Image → section mapping (all 8 provided screenshots are used):
- *   Hero (back phone)          → driver-negotiation.png
- *   Hero (front phone)         → shipper-home-page.png
- *   The Trip Comes First       → admin-home.png (cinematic browser frame)
- *   Ecosystem · Customer App   → shipper-Shipment-details-Live-tracking.png (phone)
- *   Ecosystem · Driver App     → driver-home-page.png (front phone)
- *                                 + driver-Trips History.png (back phone)
- *   Ecosystem · Admin Panel    → admin-login.png (browser frame — genuine
+ *   Hero (back phone)          → driver-negotiation.webp
+ *   Hero (front phone)         → shipper-home-page.webp
+ *   The Trip Comes First       → admin-home.webp (cinematic browser frame)
+ *   Ecosystem · Customer App   → shipper-Shipment-details-Live-tracking.webp (phone)
+ *   Ecosystem · Driver App     → driver-home-page.webp (front phone)
+ *                                 + driver-Trips History.webp (back phone)
+ *   Ecosystem · Admin Panel    → admin-login.webp (browser frame — genuine
  *                                 web content, kept as a desktop screen
  *                                 rather than forced into a phone shape)
- *   Final CTA                  → driver-settlments.jpg (tilted phone)
+ *   Final CTA                  → driver-settlments.webp (tilted phone)
  */
 
 /* ════════════════════════════════════════════════════════════════
@@ -70,7 +70,7 @@ if ( in_array( $_cs_slug, [ 'supply-chain-erp' ], true ) ) {
 if ( ! function_exists( 'cs_bw_img' ) ) {
     /**
      * Resolve a Backway case-study image URL, safely encoding spaces
-     * in filenames that still contain them (e.g. "driver-Trips History.png").
+     * in filenames that still contain them (e.g. "driver-Trips History.webp").
      */
     function cs_bw_img( $filename ) {
         $path = 'images/case-studies/backway/' . str_replace( ' ', '%20', $filename );
@@ -150,10 +150,8 @@ get_header();
                     <div class="cs-hero__phone cs-hero__phone--back">
                         <div class="cs-hero__phone-notch" aria-hidden="true"></div>
                         <img
-                            src="<?php echo esc_url( cs_bw_img( 'driver-negotiation.png' ) ); ?>"
+                            src="<?php echo esc_url( cs_bw_img( 'driver-negotiation.webp' ) ); ?>"
                             alt="<?php echo esc_attr( cs_bw_text( 'Backway driver app price negotiation screen for a shipment request', "\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{062A}\u{0641}\u{0627}\u{0648}\u{0636}\u{0020}\u{0627}\u{0644}\u{0633}\u{0639}\u{0631}\u{0020}\u{0641}\u{064A}\u{0020}\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0633}\u{0627}\u{0626}\u{0642}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{0644}\u{0637}\u{0644}\u{0628}\u{0020}\u{0634}\u{062D}\u{0646}" ) ); ?>"
-                            width="375"
-                            height="1029"
                             loading="eager"
                             decoding="async"
                         />
@@ -162,10 +160,8 @@ get_header();
                     <div class="cs-hero__phone cs-hero__phone--front">
                         <div class="cs-hero__phone-notch" aria-hidden="true"></div>
                         <img
-                            src="<?php echo esc_url( cs_bw_img( 'shipper-home-page.png' ) ); ?>"
+                            src="<?php echo esc_url( cs_bw_img( 'shipper-home-page.webp' ) ); ?>"
                             alt="<?php echo esc_attr( cs_bw_text( 'Backway customer app home screen showing available trips and quick shipment actions', "\u{0627}\u{0644}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{0627}\u{0644}\u{0631}\u{0626}\u{064A}\u{0633}\u{064A}\u{0629}\u{0020}\u{0644}\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0639}\u{0645}\u{064A}\u{0644}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{062A}\u{0639}\u{0631}\u{0636}\u{0020}\u{0627}\u{0644}\u{0631}\u{062D}\u{0644}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{0627}\u{062D}\u{0629}\u{0020}\u{0648}\u{0625}\u{062C}\u{0631}\u{0627}\u{0621}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0634}\u{062D}\u{0646}\u{0020}\u{0627}\u{0644}\u{0633}\u{0631}\u{064A}\u{0639}\u{0629}" ) ); ?>"
-                            width="1125"
-                            height="2436"
                             loading="eager"
                             decoding="async"
                         />
@@ -375,12 +371,12 @@ get_header();
                 <div class="cs-model__card" data-reveal data-reveal-delay="100">
                     <span class="cs-model__num">02</span>
                     <h4><?php echo esc_html( cs_bw_text( 'Multi-Order Batching', "\u{062A}\u{062C}\u{0645}\u{064A}\u{0639}\u{0020}\u{0639}\u{062F}\u{0629}\u{0020}\u{0637}\u{0644}\u{0628}\u{0627}\u{062A}" ) ); ?></h4>
-                    <p><?php echo esc_html( cs_bw_text( 'Drivers can accept multiple orders along their route until vehicle capacity is met.', "\u{064A}\u{0645}\u{0643}\u{0646}\u{0020}\u{0644}\u{0644}\u{0633}\u{0627}\u{062E}\u{064A}\u{0642}\u{0020}\u{0642}\u{0628}\u{0648}\u{0644}\u{0020}\u{0639}\u{062F}\u{0629}\u{0020}\u{0637}\u{0644}\u{0628}\u{0627}\u{062A}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{0645}\u{0633}\u{0627}\u{0631}\u{0647}\u{0020}\u{062D}\u{062A}\u{0649}\u{0020}\u{0627}\u{0644}\u{0648}\u{0635}\u{0648}\u{0644}\u{0020}\u{0644}\u{0633}\u{0639}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0631}\u{0643}\u{0628}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{0627}\u{062D}\u{0649}\u{002E}" ) ); ?></p>
+                    <p><?php echo esc_html( cs_bw_text( 'Drivers can accept multiple orders along their route until vehicle capacity is met.', "\u{064A}\u{0645}\u{0643}\u{0646}\u{0020}\u{0644}\u{0644}\u{0633}\u{0627}\u{0626}\u{0642}\u{0020}\u{0642}\u{0628}\u{0648}\u{0644}\u{0020}\u{0639}\u{062F}\u{0629}\u{0020}\u{0637}\u{0644}\u{0628}\u{0627}\u{062A}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{0645}\u{0633}\u{0627}\u{0631}\u{0647}\u{0020}\u{062D}\u{062A}\u{0649}\u{0020}\u{0627}\u{0644}\u{0648}\u{0635}\u{0648}\u{0644}\u{0020}\u{0644}\u{0633}\u{0639}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0631}\u{0643}\u{0628}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{0627}\u{062D}\u{0629}\u{002E}" ) ); ?></p>
                 </div>
                 <div class="cs-model__card" data-reveal data-reveal-delay="200">
                     <span class="cs-model__num">03</span>
                     <h4><?php echo esc_html( cs_bw_text( 'Independent Status', "\u{062D}\u{0627}\u{0644}\u{0629}\u{0020}\u{0645}\u{0633}\u{062A}\u{0642}\u{0644}\u{0629}\u{0020}\u{0644}\u{0643}\u{0644}\u{0020}\u{0637}\u{0644}\u{0628}" ) ); ?></h4>
-                    <p><?php echo esc_html( cs_bw_text( 'Each order has its own lifecycle; closing an order doesn\'t force a trip to end.', "\u{0644}\u{0643}\u{0644}\u{0020}\u{0637}\u{0644}\u{0628}\u{0020}\u{062F}\u{0648}\u{0631}\u{0629}\u{0020}\u{062D}\u{064A}\u{0627}\u{0629}\u{0020}\u{0645}\u{0633}\u{062A}\u{0642}\u{0644}\u{0629}\u{061B}\u{0020}\u{0625}\u{063A}\u{0644}\u{0627}\u{0642}\u{0020}\u{0637}\u{0644}\u{0628}\u{0020}\u{0644}\u{0627}\u{0644}\u{0020}\u{064A}\u{0639}\u{0646}\u{064A}\u{0020}\u{0625}\u{0646}\u{0647}\u{0627}\u{0621}\u{0020}\u{0627}\u{0644}\u{0631}\u{062D}\u{0644}\u{0629}\u{0020}\u{0628}\u{0627}\u{0644}\u{0643}\u{0627}\u{0645}\u{0644}\u{064A}\u{002E}" ) ); ?></p>
+                    <p><?php echo esc_html( cs_bw_text( 'Each order has its own lifecycle; closing an order doesn\'t force a trip to end.', "\u{0644}\u{0643}\u{0644}\u{0020}\u{0637}\u{0644}\u{0628}\u{0020}\u{062F}\u{0648}\u{0631}\u{0629}\u{0020}\u{062D}\u{064A}\u{0627}\u{0629}\u{0020}\u{0645}\u{0633}\u{062A}\u{0642}\u{0644}\u{0629}\u{061B}\u{0020}\u{0625}\u{063A}\u{0644}\u{0627}\u{0642}\u{0020}\u{0637}\u{0644}\u{0628}\u{0020}\u{0644}\u{0627}\u{0020}\u{064A}\u{0639}\u{0646}\u{064A}\u{0020}\u{0625}\u{0646}\u{0647}\u{0627}\u{0621}\u{0020}\u{0627}\u{0644}\u{0631}\u{062D}\u{0644}\u{0629}\u{0020}\u{0628}\u{0627}\u{0644}\u{0643}\u{0627}\u{0645}\u{0644}\u{002E}" ) ); ?></p>
                 </div>
             </div>
 
@@ -392,10 +388,8 @@ get_header();
                 </div>
                 <div class="cs-model__visual-frame">
                     <img
-                        src="<?php echo esc_url( cs_bw_img( 'admin-home.png' ) ); ?>"
+                        src="<?php echo esc_url( cs_bw_img( 'admin-home.webp' ) ); ?>"
                         alt="<?php echo esc_attr( cs_bw_text( 'Backway admin dashboard showing platform-wide trip and shipment overview', "\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{062A}\u{0639}\u{0631}\u{0636}\u{0020}\u{0646}\u{0638}\u{0631}\u{0629}\u{0020}\u{0639}\u{0627}\u{0645}\u{0629}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{0627}\u{0644}\u{0631}\u{062D}\u{0644}\u{0627}\u{062A}\u{0020}\u{0648}\u{0627}\u{0644}\u{0634}\u{062D}\u{0646}\u{0627}\u{062A}\u{0020}\u{0639}\u{0628}\u{0631}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{0635}\u{0629}" ) ); ?>"
-                        width="1921"
-                        height="1029"
                         loading="lazy"
                         decoding="async"
                     />
@@ -425,10 +419,8 @@ get_header();
                         <div class="cs-ecosystem__phone">
                             <div class="cs-ecosystem__phone-notch" aria-hidden="true"></div>
                             <img
-                                src="<?php echo esc_url( cs_bw_img( 'shipper-Shipment-details-Live-tracking.png' ) ); ?>"
+                                src="<?php echo esc_url( cs_bw_img( 'shipper-Shipment-details-Live-tracking.webp' ) ); ?>"
                                 alt="<?php echo esc_attr( cs_bw_text( 'Backway customer app live shipment tracking and delivery details screen', "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0639}\u{0645}\u{064A}\u{0644}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{064A}\u{0639}\u{0631}\u{0636}\u{0020}\u{062A}\u{062A}\u{0628}\u{0639}\u{0020}\u{0627}\u{0644}\u{0634}\u{062D}\u{0646}\u{0629}\u{0020}\u{0648}\u{062A}\u{0641}\u{0627}\u{0635}\u{064A}\u{0644}\u{0020}\u{0627}\u{0644}\u{062A}\u{0633}\u{0644}\u{064A}\u{0645}" ) ); ?>"
-                                width="1500"
-                                height="4164"
                                 loading="lazy"
                                 decoding="async"
                             />
@@ -438,8 +430,8 @@ get_header();
                         <h4><?php echo esc_html( cs_bw_text( 'Customer App', "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{064A}\u{0644}" ) ); ?></h4>
                         <ul class="cs-feature-list">
                             <li><span class="material-symbols-outlined" aria-hidden="true">check</span> <?php echo esc_html( cs_bw_text( 'Trip Search & Filters', "\u{0627}\u{0644}\u{0628}\u{062D}\u{062B}\u{0020}\u{0639}\u{0646}\u{0020}\u{0627}\u{0644}\u{0631}\u{062D}\u{0644}\u{0627}\u{062A}\u{0020}\u{0648}\u{0627}\u{0644}\u{062A}\u{0635}\u{0641}\u{064A}\u{0629}" ) ); ?></li>
-                            <li><span class="material-symbols-outlined" aria-hidden="true">check</span> <?php echo esc_html( cs_bw_text( 'Manual Driver Selection', "\u{0627}\u{062E}\u{062A}\u{062A}\u{062F}\u{064A}\u{0627}\u{0631}\u{0020}\u{0627}\u{0644}\u{0633}\u{0627}\u{062E}\u{064A}\u{0642}\u{0020}\u{064A}\u{062F}\u{0648}\u{064A}\u{0627}" ) ); ?></li>
-                            <li><span class="material-symbols-outlined" aria-hidden="true">check</span> <?php echo esc_html( cs_bw_text( 'Price Negotiation Engine', "\u{0646}\u{0638}\u{0627}\u{0645}\u{0020}\u{0627}\u{0644}\u{062A}\u{0641}\u{0627}\u{0648}\u{0636}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{0627}\u{0644}\u{0633}\u{0631}\u{0633}\u{062B}" ) ); ?></li>
+                            <li><span class="material-symbols-outlined" aria-hidden="true">check</span> <?php echo esc_html( cs_bw_text( 'Manual Driver Selection', "\u{0627}\u{062E}\u{062A}\u{064A}\u{0627}\u{0631}\u{0020}\u{0627}\u{0644}\u{0633}\u{0627}\u{0626}\u{0642}\u{0020}\u{064A}\u{062F}\u{0648}\u{064A}\u{0627}" ) ); ?></li>
+                            <li><span class="material-symbols-outlined" aria-hidden="true">check</span> <?php echo esc_html( cs_bw_text( 'Price Negotiation Engine', "\u{0646}\u{0638}\u{0627}\u{0645}\u{0020}\u{0627}\u{0644}\u{062A}\u{0641}\u{0627}\u{0648}\u{0636}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{0627}\u{0644}\u{0633}\u{0639}\u{0631}" ) ); ?></li>
                             <li><span class="material-symbols-outlined" aria-hidden="true">check</span> <?php echo esc_html( cs_bw_text( 'Secure Wallet Integration', "\u{062A}\u{0643}\u{0627}\u{0645}\u{0644}\u{0020}\u{0645}\u{062D}\u{0641}\u{0638}\u{0629}\u{0020}\u{0622}\u{0645}\u{0646}" ) ); ?></li>
                             <li><span class="material-symbols-outlined" aria-hidden="true">check</span> <?php echo esc_html( cs_bw_text( 'OTP Delivery Confirmation', "\u{062A}\u{0623}\u{0643}\u{064A}\u{062F}\u{0020}\u{0627}\u{0644}\u{062A}\u{0633}\u{0644}\u{064A}\u{0645}\u{0020}\u{0639}\u{0628}\u{0631}\u{0020}\u{004F}\u{0054}\u{0050}" ) ); ?></li>
                         </ul>
@@ -454,10 +446,8 @@ get_header();
                         <div class="cs-ecosystem__phone cs-ecosystem__phone--back">
                             <div class="cs-ecosystem__phone-notch" aria-hidden="true"></div>
                             <img
-                                src="<?php echo esc_url( cs_bw_img( 'driver-Trips History.png' ) ); ?>"
-                                alt="<?php echo esc_attr( cs_bw_text( 'Backway driver app trip history screen listing completed and past trips', "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0633}\u{0627}\u{062E}\u{064A}\u{0642}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{064A}\u{0639}\u{0631}\u{0636}\u{0020}\u{0633}\u{062C}\u{0644}\u{0020}\u{0627}\u{0644}\u{0631}\u{062D}\u{0644}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{0643}\u{062A}\u{0645}\u{0644}\u{0629}\u{0020}\u{0648}\u{0627}\u{0644}\u{0633}\u{0627}\u{0628}\u{0642}\u{0629}" ) ); ?>"
-                                width="375"
-                                height="1145"
+                                src="<?php echo esc_url( cs_bw_img( 'driver-Trips History.webp' ) ); ?>"
+                                alt="\u{003C}\u{003F}\u{0070}\u{0068}\u{0070}\u{0020}\u{0065}\u{0063}\u{0068}\u{006F}\u{0020}\u{0065}\u{0073}\u{0063}\u{005F}\u{0061}\u{0074}\u{0074}\u{0072}\u{0028}\u{0020}\u{0063}\u{0073}\u{005F}\u{0062}\u{0077}\u{005F}\u{0074}\u{0065}\u{0078}\u{0074}\u{0028}\u{0020}\u{0027}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{0064}\u{0072}\u{0069}\u{0076}\u{0065}\u{0072}\u{0020}\u{0061}\u{0070}\u{0070}\u{0020}\u{0074}\u{0072}\u{0069}\u{0070}\u{0020}\u{0068}\u{0069}\u{0073}\u{0074}\u{006F}\u{0072}\u{0079}\u{0020}\u{0073}\u{0063}\u{0072}\u{0065}\u{0065}\u{006E}\u{0020}\u{006C}\u{0069}\u{0073}\u{0074}\u{0069}\u{006E}\u{0067}\u{0020}\u{0063}\u{006F}\u{006D}\u{0070}\u{006C}\u{0065}\u{0074}\u{0065}\u{0064}\u{0020}\u{0061}\u{006E}\u{0064}\u{0020}\u{0070}\u{0061}\u{0073}\u{0074}\u{0020}\u{0074}\u{0072}\u{0069}\u{0070}\u{0073}\u{0027}\u{002C}\u{0020}\u{0027}\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0633}\u{0627}\u{0626}\u{0642}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{064A}\u{0639}\u{0631}\u{0636}\u{0020}\u{0633}\u{062C}\u{0644}\u{0020}\u{0627}\u{0644}\u{0631}\u{062D}\u{0644}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{0643}\u{062A}\u{0645}\u{0644}\u{0629}\u{0020}\u{0648}\u{0627}\u{0644}\u{0633}\u{0627}\u{0628}\u{0642}\u{0629}\u{0027}\u{0020}\u{0029}\u{0020}\u{0029}\u{003B}\u{0020}\u{003F}\u{003E}"
                                 loading="lazy"
                                 decoding="async"
                             />
@@ -465,10 +455,8 @@ get_header();
                         <div class="cs-ecosystem__phone cs-ecosystem__phone--front">
                             <div class="cs-ecosystem__phone-notch" aria-hidden="true"></div>
                             <img
-                                src="<?php echo esc_url( cs_bw_img( 'driver-home-page.png' ) ); ?>"
-                                alt="<?php echo esc_attr( cs_bw_text( 'Backway driver app home screen showing active trip and incoming shipment requests', "\u{0627}\u{0644}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{0627}\u{0644}\u{0631}\u{0626}\u{064A}\u{0633}\u{064A}\u{0629}\u{0020}\u{0644}\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0633}\u{0627}\u{0626}\u{0642}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{062A}\u{0639}\u{0631}\u{0636}\u{0020}\u{0627}\u{0644}\u{0631}\u{062D}\u{0644}\u{0629}\u{0627}\u{0644}\u{0646}\u{0634}\u{0637}\u{0629}\u{0020}\u{0648}\u{0637}\u{0644}\u{0628}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0634}\u{062D}\u{0646}\u{0620}\u{0627}\u{0644}\u{0648}\u{0627}\u{0631}\u{062F}\u{0629}" ) ); ?>"
-                                width="375"
-                                height="812"
+                                src="<?php echo esc_url( cs_bw_img( 'driver-home-page.webp' ) ); ?>"
+                                alt="\u{003C}\u{003F}\u{0070}\u{0068}\u{0070}\u{0020}\u{0065}\u{0063}\u{0068}\u{006F}\u{0020}\u{0065}\u{0073}\u{0063}\u{005F}\u{0061}\u{0074}\u{0074}\u{0072}\u{0028}\u{0020}\u{0063}\u{0073}\u{005F}\u{0062}\u{0077}\u{005F}\u{0074}\u{0065}\u{0078}\u{0074}\u{0028}\u{0020}\u{0027}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{0064}\u{0072}\u{0069}\u{0076}\u{0065}\u{0072}\u{0020}\u{0061}\u{0070}\u{0070}\u{0020}\u{0068}\u{006F}\u{006D}\u{0065}\u{0020}\u{0073}\u{0063}\u{0072}\u{0065}\u{0065}\u{006E}\u{0020}\u{0073}\u{0068}\u{006F}\u{0077}\u{0069}\u{006E}\u{0067}\u{0020}\u{0061}\u{0063}\u{0074}\u{0069}\u{0076}\u{0065}\u{0020}\u{0074}\u{0072}\u{0069}\u{0070}\u{0020}\u{0061}\u{006E}\u{0064}\u{0020}\u{0069}\u{006E}\u{0063}\u{006F}\u{006D}\u{0069}\u{006E}\u{0067}\u{0020}\u{0073}\u{0068}\u{0069}\u{0070}\u{006D}\u{0065}\u{006E}\u{0074}\u{0020}\u{0072}\u{0065}\u{0071}\u{0075}\u{0065}\u{0073}\u{0074}\u{0073}\u{0027}\u{002C}\u{0020}\u{0027}\u{0627}\u{0644}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{0627}\u{0644}\u{0631}\u{0626}\u{064A}\u{0633}\u{064A}\u{0629}\u{0020}\u{0644}\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0633}\u{0627}\u{0626}\u{0642}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{062A}\u{0639}\u{0631}\u{0636}\u{0020}\u{0627}\u{0644}\u{0631}\u{062D}\u{0644}\u{0629}\u{0020}\u{0627}\u{0644}\u{0646}\u{0634}\u{0637}\u{0629}\u{0020}\u{0648}\u{0637}\u{0644}\u{0628}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0634}\u{062D}\u{0646}\u{0020}\u{0627}\u{0644}\u{0648}\u{0627}\u{0631}\u{062F}\u{0629}\u{0027}\u{0020}\u{0029}\u{0020}\u{0029}\u{003B}\u{0020}\u{003F}\u{003E}"
                                 loading="lazy"
                                 decoding="async"
                             />
@@ -497,10 +485,8 @@ get_header();
                             <span class="cs-ecosystem__browser-dot cs-ecosystem__browser-dot--green"></span>
                         </div>
                         <img
-                            src="<?php echo esc_url( cs_bw_img( 'admin-login.png' ) ); ?>"
-                            alt="<?php echo esc_attr( cs_bw_text( 'Backway admin panel secure login screen', "\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{062A}\u{0633}\u{062C}\u{064A}\u{0644}\u{0020}\u{0627}\u{0644}\u{062F}\u{062E}\u{0648}\u{0644}\u{0020}\u{0627}\u{0644}\u{0622}\u{0645}\u{0646}\u{0020}\u{0644}\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}" ) ); ?>"
-                            width="1917"
-                            height="1039"
+                            src="<?php echo esc_url( cs_bw_img( 'admin-login.webp' ) ); ?>"
+                            alt="\u{003C}\u{003F}\u{0070}\u{0068}\u{0070}\u{0020}\u{0065}\u{0063}\u{0068}\u{006F}\u{0020}\u{0065}\u{0073}\u{0063}\u{005F}\u{0061}\u{0074}\u{0074}\u{0072}\u{0028}\u{0020}\u{0063}\u{0073}\u{005F}\u{0062}\u{0077}\u{005F}\u{0074}\u{0065}\u{0078}\u{0074}\u{0028}\u{0020}\u{0027}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{0061}\u{0064}\u{006D}\u{0069}\u{006E}\u{0020}\u{0070}\u{0061}\u{006E}\u{0065}\u{006C}\u{0020}\u{0073}\u{0065}\u{0063}\u{0075}\u{0072}\u{0065}\u{0020}\u{006C}\u{006F}\u{0067}\u{0069}\u{006E}\u{0020}\u{0073}\u{0063}\u{0072}\u{0065}\u{0065}\u{006E}\u{0027}\u{002C}\u{0020}\u{0027}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{062A}\u{0633}\u{062C}\u{064A}\u{0644}\u{0020}\u{0627}\u{0644}\u{062F}\u{062E}\u{0648}\u{0644}\u{0020}\u{0627}\u{0644}\u{0622}\u{0645}\u{0646}\u{0020}\u{0644}\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0027}\u{0020}\u{0029}\u{0020}\u{0029}\u{003B}\u{0020}\u{003F}\u{003E}"
                             loading="lazy"
                             decoding="async"
                         />
@@ -717,10 +703,8 @@ get_header();
                 <div class="cs-final-cta__phone">
                     <div class="cs-final-cta__phone-notch" aria-hidden="true"></div>
                     <img
-                        src="<?php echo esc_url( cs_bw_img( 'driver-settlments.jpg' ) ); ?>"
+                        src="<?php echo esc_url( cs_bw_img( 'driver-settlments.webp' ) ); ?>"
                         alt="<?php echo esc_attr( cs_bw_text( 'Backway driver settlements screen showing completed payouts and earnings history', "\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{062A}\u{0633}\u{0648}\u{064A}\u{0627}\u{062A}\u{0020}\u{0633}\u{0627}\u{0626}\u{0642}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{062A}\u{0639}\u{0631}\u{0636}\u{0020}\u{0627}\u{0644}\u{0645}\u{062F}\u{0641}\u{0648}\u{0639}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{0643}\u{062A}\u{0645}\u{0644}\u{0629}\u{0020}\u{0648}\u{0633}\u{062C}\u{0644}\u{0020}\u{0627}\u{0644}\u{0623}\u{0631}\u{0628}\u{0627}\u{062D}" ) ); ?>"
-                        width="1080"
-                        height="2166"
                         loading="lazy"
                         decoding="async"
                     />
