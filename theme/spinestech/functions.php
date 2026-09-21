@@ -118,8 +118,3 @@ add_action('template_redirect', function () {
     wp_safe_redirect($target, 301);
     exit;
 }, -1);
-
-// Enforce HTTP Strict Transport Security (HSTS)
-add_action('send_headers', function () {
-    header('Strict-Transport-Security: max-age=31536000; includeSubDomains; preload');
-});
