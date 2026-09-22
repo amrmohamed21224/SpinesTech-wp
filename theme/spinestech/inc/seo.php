@@ -61,9 +61,9 @@ function st_seo_canonical_url(?string $locale = null): string
                     $permalink = (string) get_permalink($trans_id);
                     $url = user_trailingslashit($permalink);
                     
-                    // Preserve pagination for articles page
+                    // Preserve pagination for articles page (only for canonical, not alternate)
                     $paged = max(1, get_query_var('paged'), get_query_var('page'), isset($_GET['articles_page']) ? (int) $_GET['articles_page'] : 1);
-                    if ((is_page('articles') || (function_exists('st_is_articles_archive') && st_is_articles_archive())) && $paged > 1) {
+                    if (!$is_alternate && (is_page('articles') || (function_exists('st_is_articles_archive') && st_is_articles_archive())) && $paged > 1) {
                         $url = user_trailingslashit($url . 'page/' . $paged);
                     }
                     return $url;
@@ -124,8 +124,9 @@ function st_seo_canonical_url(?string $locale = null): string
     $url = function_exists('st_localized_url') ? st_localized_url($path, $locale) : home_url($path);
 
     // Keep pagination parameter synchronized across canonical and hreflang to avoid conflicts
+    // Note: We skip appending pagination for alternates to prevent 404s if the translated archive has fewer pages
     $paged = max(1, get_query_var('paged'), get_query_var('page'), isset($_GET['articles_page']) ? (int) $_GET['articles_page'] : 1);
-    if ($paged > 1) {
+    if (!$is_alternate && $paged > 1) {
         $url = user_trailingslashit($url . 'page/' . $paged);
     }
 
