@@ -88,22 +88,14 @@ add_action('template_redirect', function () {
         return;
     }
 
-    if (isset($_GET['lang']) && in_array($_GET['lang'], ['ar', 'en'], true)) {
-        $lang = $_GET['lang'];
-        $path = function_exists('st_current_canonical_path') ? st_current_canonical_path() : '/';
-        $target = function_exists('st_localized_url') ? st_localized_url($path, $lang) : home_url('/' . $lang . '/');
-        setcookie('st_lang', $lang, time() + YEAR_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN, is_ssl(), true);
-        wp_safe_redirect($target, 302);
-        exit;
+    // Always sync the st_lang cookie with the actual language of the page being viewed
+    // This replaces the old ?lang= interceptor which caused 302 redirects.
+    $current_lang = function_exists('st_locale') ? st_locale() : 'ar';
+    if (($_COOKIE['st_lang'] ?? '') !== $current_lang) {
+        setcookie('st_lang', $current_lang, time() + YEAR_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN, is_ssl(), true);
     }
-
+    
     $path = parse_url((string) ($_SERVER['REQUEST_URI'] ?? ''), PHP_URL_PATH) ?: '';
-    if (preg_match('#^/(ar|en)(/|$)#', $path, $lang_match)) {
-        $lang = $lang_match[1];
-        if (($_COOKIE['st_lang'] ?? '') !== $lang) {
-            setcookie('st_lang', $lang, time() + YEAR_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN, is_ssl(), true);
-        }
-    }
 
     // Redirect old query parameters to clean URLs
     if (strpos($path, '/articles/') !== false && isset($_GET['articles_page'])) {

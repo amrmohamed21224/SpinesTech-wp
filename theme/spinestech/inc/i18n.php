@@ -17,10 +17,6 @@ function st_locale(): string
         return $_GET['lang'];
     }
 
-    if (isset($_COOKIE['st_lang']) && in_array($_COOKIE['st_lang'], ['ar', 'en'], true)) {
-        return $_COOKIE['st_lang'];
-    }
-
     if (function_exists('pll_current_language')) {
         $lang = pll_current_language('slug');
         if (in_array($lang, ['ar', 'en'], true)) {
@@ -90,11 +86,10 @@ function st_lang_switch_url(): string
         parse_str($query, $params);
     }
     
-    // ALWAYS append the lang parameter so that functions.php can catch it, update the cookie, and redirect.
-    // This prevents the user from being trapped in English due to the st_lang cookie.
-    $params['lang'] = $target;
+    // We removed the ?lang parameter here to prevent 302 redirects for SEO.
+    // The language cookie is now automatically synced in functions.php based on the current page.
     
-    return $url . '?' . http_build_query($params);
+    return empty($params) ? $url : $url . '?' . http_build_query($params);
 }
 
 function st_strip_lang_prefix(string $path): string
@@ -117,12 +112,13 @@ function st_localized_url(string $path = '/', ?string $locale = null): string
     if ($clean_path === '/') {
         $url = home_url('/');
     } else {
-        if (function_exists('pll_home_url')) {
-            $url = trailingslashit((string) pll_home_url($locale)) . ltrim($clean_path, '/');
+        // Force Arabic (default language) URLs to NOT have the /ar/ prefix
+        // This prevents 301 redirects to the clean URL by WordPress canonical redirect
+        if ($locale === 'ar') {
+            $url = home_url(trailingslashit($clean_path));
         } else {
-            // For the default Arabic language, do not inject the prefix to match native WP permalinks
-            if ($locale === 'ar') {
-                $url = home_url(trailingslashit($clean_path));
+            if (function_exists('pll_home_url')) {
+                $url = trailingslashit((string) pll_home_url($locale)) . ltrim($clean_path, '/');
             } else {
                 $url = home_url('/' . $locale . trailingslashit($clean_path));
             }
