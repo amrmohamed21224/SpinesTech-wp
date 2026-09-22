@@ -75,7 +75,7 @@ $arrow  = $is_rtl ? 'arrow_back' : 'arrow_forward';
         <!-- Form -->
         <div class="ct-reveal ct-form-col" style="--ct-delay:0.05s">
             <div class="ct-form-card">
-                <h3 class="ct-form-card__title"><?php echo esc_html($is_rtl ? 'ابدأ مناقشة مشروعك' : 'Start your project discussion'); ?></h3>
+                <h2 class="ct-form-card__title"><?php echo esc_html($is_rtl ? 'ابدأ مناقشة مشروعك' : 'Start your project discussion'); ?></h2>
 
                 <p class="ct-form-trust-intro">
                     <?php echo esc_html($is_rtl
@@ -87,7 +87,7 @@ $arrow  = $is_rtl ? 'arrow_back' : 'arrow_forward';
                 <div id="st-form-thankyou" class="ct-thankyou ct-thankyou--hidden" role="status" aria-live="polite">
                     <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
                     <div>
-                        <h4><?php echo esc_html($is_rtl ? 'شكراً — استلمنا طلبك' : 'Thank you — we received your request'); ?></h4>
+                        <h3><?php echo esc_html($is_rtl ? 'شكراً — استلمنا طلبك' : 'Thank you — we received your request'); ?></h3>
                         <p><?php echo esc_html($is_rtl ? 'سيتواصل معك فريق SpinesTech خلال 24 ساعة عمل لبدء مناقشة مشروعك.' : 'The SpinesTech team will reach out within one business day to discuss your project.'); ?></p>
                     </div>
                 </div>
@@ -192,7 +192,7 @@ $arrow  = $is_rtl ? 'arrow_back' : 'arrow_forward';
             <div class="ct-contact-panel">
                 <div class="ct-contact-panel__glow ct-contact-panel__glow--1" aria-hidden="true"></div>
                 <div class="ct-contact-panel__glow ct-contact-panel__glow--2" aria-hidden="true"></div>
-                <h3 class="ct-contact-panel__title"><?php echo esc_html($is_rtl ? "\u{062A}\u{0648}\u{0627}\u{0635}\u{0644}\u{0020}\u{0645}\u{0628}\u{0627}\u{0634}\u{0631}" : 'Direct Contact'); ?></h3>
+                <h2 class="ct-contact-panel__title"><?php echo esc_html($is_rtl ? "\u{062A}\u{0648}\u{0627}\u{0635}\u{0644}\u{0020}\u{0645}\u{0628}\u{0627}\u{0634}\u{0631}" : 'Direct Contact'); ?></h2>
 
                 <div class="ct-contact-item">
                     <span class="material-symbols-outlined">schedule</span>
@@ -244,7 +244,7 @@ $arrow  = $is_rtl ? 'arrow_back' : 'arrow_forward';
                     <span class="material-symbols-outlined"><?php echo esc_html( $icon ); ?></span>
                 </div>
                 <div>
-                    <h4 class="ct-perk-card__title"><?php echo esc_html( $ptitle ); ?></h4>
+                    <h3 class="ct-perk-card__title"><?php echo esc_html( $ptitle ); ?></h3>
                     <p class="ct-perk-card__text"><?php echo esc_html( $ptext ); ?></p>
                 </div>
             </div>
@@ -282,7 +282,7 @@ $arrow  = $is_rtl ? 'arrow_back' : 'arrow_forward';
                 <div class="ct-req-card__icon">
                     <span class="material-symbols-outlined"><?php echo esc_html( $icon ); ?></span>
                 </div>
-                <h4 class="ct-req-card__title"><?php echo esc_html( $ctitle ); ?></h4>
+                <h3 class="ct-req-card__title"><?php echo esc_html( $ctitle ); ?></h3>
                 <p class="ct-req-card__text"><?php echo esc_html( $ctext ); ?></p>
             </div>
             <?php endforeach; ?>
@@ -314,7 +314,7 @@ $arrow  = $is_rtl ? 'arrow_back' : 'arrow_forward';
             ?>
             <div class="ct-reveal ct-timeline__step" style="--ct-delay:<?php echo esc_attr( $i * 0.08 ); ?>s">
                 <div class="ct-timeline__num"><?php echo esc_html( $num ); ?></div>
-                <h4 class="ct-timeline__title"><?php echo esc_html( $stitle ); ?></h4>
+                <h3 class="ct-timeline__title"><?php echo esc_html( $stitle ); ?></h3>
                 <p class="ct-timeline__text"><?php echo esc_html( $stext ); ?></p>
             </div>
             <?php endforeach; ?>
@@ -358,7 +358,7 @@ $arrow  = $is_rtl ? 'arrow_back' : 'arrow_forward';
             ?>
             <div class="ct-reveal ct-b2b-card" style="--ct-delay:<?php echo esc_attr( 0.1 + $i * 0.07 ); ?>s">
                 <span class="material-symbols-outlined ct-b2b-card__icon"><?php echo esc_html( $icon ); ?></span>
-                <h4 class="ct-b2b-card__title"><?php echo esc_html( $ctitle ); ?></h4>
+                <h3 class="ct-b2b-card__title"><?php echo esc_html( $ctitle ); ?></h3>
                 <p class="ct-b2b-card__text"><?php echo esc_html( $ctext ); ?></p>
             </div>
             <?php endforeach; ?>
