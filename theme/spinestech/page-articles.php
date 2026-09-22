@@ -135,9 +135,9 @@ $grid_query = new WP_Query([
             </span>
             <h1 class="art-cinematic art2-hero__title" style="--delay:0.1s">
                 <?php if ( $is_rtl ) : ?>
-                    Ø±Ø¤Ù‰ ØªÙ‚Ù†ÙŠØ© Ù„Ø¨Ù†Ø§Ø¡ <span class="art2-hero__title-accent">Ù…Ù†ØªØ¬Ø§Øª Ø±Ù‚Ù…ÙŠØ© Ø£ÙØ¶Ù„</span>
+                    Ø±Ø¤Ù‰ ØªÙ‚Ù†ÙŠØ© Ù„Ø¨Ù†Ø§Ø¡ <span class="art2-hero__title-accent">Ù…Ù†ØªØ¬Ø§Øª Ø±Ù‚Ù…ÙŠØ© Ø£ÙØ¶Ù„</span><?php if ($paged > 1) echo " - الصفحة $paged"; ?>
                 <?php else : ?>
-                    Tech Insights for Building <span class="art2-hero__title-accent">Better Digital Products</span>
+                    Tech Insights for Building <span class="art2-hero__title-accent">Better Digital Products</span><?php if ($paged > 1) echo " - Page $paged"; ?>
                 <?php endif; ?>
             </h1>
             <p class="art-cinematic art2-hero__subtitle" style="--delay:0.3s">
