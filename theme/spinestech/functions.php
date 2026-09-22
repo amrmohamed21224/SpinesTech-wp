@@ -15,6 +15,16 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+// Ensure security headers (including HSTS) are sent natively via PHP as a fallback
+add_action('send_headers', function () {
+    if (!headers_sent() && !is_admin()) {
+        header('Strict-Transport-Security: max-age=31536000; includeSubDomains', true);
+        header('X-Content-Type-Options: nosniff', true);
+        header('X-Frame-Options: SAMEORIGIN', true);
+        header('Referrer-Policy: strict-origin-when-cross-origin', true);
+    }
+});
+
 define('ST_THEME_VERSION', '1.0.0');
 
 require_once get_template_directory() . '/inc/i18n.php';
