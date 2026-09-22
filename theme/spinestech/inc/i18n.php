@@ -110,12 +110,12 @@ function st_localized_url(string $path = '/', ?string $locale = null): string
     $clean_path = $clean_path === '//' ? '/' : $clean_path;
 
     if ($clean_path === '/') {
-        $url = home_url('/');
+        $url = trailingslashit(get_option('home'));
     } else {
         // Force Arabic (default language) URLs to NOT have the /ar/ prefix
-        // This prevents 301 redirects to the clean URL by WordPress canonical redirect
+        // We use get_option('home') to bypass Polylang's home_url filter which might forcefully inject /ar/
         if ($locale === 'ar') {
-            $url = home_url(trailingslashit($clean_path));
+            $url = trailingslashit(get_option('home')) . ltrim($clean_path, '/');
         } else {
             if (function_exists('pll_home_url')) {
                 $url = trailingslashit((string) pll_home_url($locale)) . ltrim($clean_path, '/');

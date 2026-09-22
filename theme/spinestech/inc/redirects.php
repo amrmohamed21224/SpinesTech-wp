@@ -25,7 +25,7 @@ function st_handle_legacy_redirects(): void
     // Explicitly redirect /ar and /ar/ to the root homepage
     // We do NOT redirect /en/ because the English homepage needs to return 200 OK for SEO hreflang.
     if (preg_match('#^/ar/?$#i', $decoded_path)) {
-        wp_safe_redirect(home_url('/'), 301);
+        wp_safe_redirect(trailingslashit(get_option('home')), 301);
         exit;
     }
 
