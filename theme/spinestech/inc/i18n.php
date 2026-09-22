@@ -113,9 +113,17 @@ function st_localized_url(string $path = '/', ?string $locale = null): string
         $url = home_url('/');
     } else {
         // Force Arabic (default language) URLs to NOT have the /ar/ prefix
-        // This prevents 301 redirects to the clean URL by WordPress canonical redirect
+        // We safely remove it from the generated URL path to avoid bypassing home_url() entirely
         if ($locale === 'ar') {
             $url = home_url(trailingslashit($clean_path));
+            $parsed = parse_url($url);
+            if (isset($parsed['path']) && preg_match('#^/ar(/|$)#i', $parsed['path'])) {
+                $parsed['path'] = preg_replace('#^/ar(/|$)#i', '/', $parsed['path']);
+                $scheme = $parsed['scheme'] ?? 'https';
+                $host = $parsed['host'] ?? '';
+                $port = isset($parsed['port']) ? ':' . $parsed['port'] : '';
+                $url = $scheme . '://' . $host . $port . $parsed['path'];
+            }
         } else {
             if (function_exists('pll_home_url')) {
                 $url = trailingslashit((string) pll_home_url($locale)) . ltrim($clean_path, '/');
