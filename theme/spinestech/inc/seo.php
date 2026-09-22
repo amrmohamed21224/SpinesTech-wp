@@ -137,7 +137,7 @@ function st_seo_current_url(?string $locale = null): string
     return st_seo_canonical_url($locale);
 }
 
-function st_seo_description(): string
+function st_seo_description_raw(): string
 {
     if (!empty($GLOBALS['st_seo_page_description'])) {
         return (string) $GLOBALS['st_seo_page_description'];
@@ -182,6 +182,15 @@ function st_seo_description(): string
         $desc .= $locale === 'ar' ? " — صفحة {$page_num}" : " — Page {$page_num}";
     }
 
+    return $desc;
+}
+
+function st_seo_description(): string
+{
+    $desc = st_seo_description_raw();
+    if (mb_strlen($desc) > 155) {
+        $desc = mb_substr($desc, 0, 152) . '...';
+    }
     return $desc;
 }
 
