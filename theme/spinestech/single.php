@@ -530,7 +530,7 @@ if (!empty($article_json_ld) && is_array($article_json_ld)) {
 
         <?php if (!empty($article_faq)) : ?>
         <section class="single-art__faq container">
-            <h2><?php echo esc_html($is_rtl ? 'أسئلة شائعة' : 'FAQ'); ?></h2>
+            <h3><?php echo esc_html($is_rtl ? 'أسئلة شائعة' : 'FAQ'); ?></h3>
             <div class="single-art__faq-list">
                 <?php foreach ($article_faq as $item) :
                     if (!is_array($item)) {
@@ -616,7 +616,7 @@ if (!empty($article_json_ld) && is_array($article_json_ld)) {
 
     <?php if (!empty($related_service_slugs)) : ?>
         <section class="single-art__related container">
-            <h2><?php echo esc_html($is_rtl ? 'خدمات ذات صلة' : 'Related services'); ?></h2>
+            <h3><?php echo esc_html($is_rtl ? 'خدمات ذات صلة' : 'Related services'); ?></h3>
             <ul class="single-art__service-links">
                 <?php foreach ($related_service_slugs as $service_slug) :
                     $cfg = function_exists('st_service_config') ? st_service_config($service_slug) : null;
@@ -632,7 +632,7 @@ if (!empty($article_json_ld) && is_array($article_json_ld)) {
 
     <?php if (!empty($related_case_slugs)) : ?>
         <section class="single-art__related container">
-            <h2><?php echo esc_html($is_rtl ? 'دراسات حالة ذات صلة' : 'Related case studies'); ?></h2>
+            <h3><?php echo esc_html($is_rtl ? 'دراسات حالة ذات صلة' : 'Related case studies'); ?></h3>
             <ul class="single-art__service-links">
                 <?php foreach ($related_case_slugs as $case_slug) :
                     $cs_cfg = function_exists('st_case_study_config') ? st_case_study_config($case_slug) : null;
@@ -651,10 +651,10 @@ if (!empty($article_json_ld) && is_array($article_json_ld)) {
 
     <!-- ═══════════════════════════════
          RELATED ARTICLES
-    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â•  -->
     <?php if (!empty($related)) : ?>
         <section class="single-art__related container">
-            <h2 class="reveal"><?php echo esc_html($is_rtl ? 'Ù…Ù‚Ø§Ù„Ø§Øª Ø°Ø§Øª ØµÙ„Ø©' : 'Related Articles'); ?></h2>
+            <h3 class="reveal"><?php echo esc_html($is_rtl ? 'مقالات ذات صلة' : 'Related Articles'); ?></h3>
             <div class="single-art__related-grid">
                 <?php foreach ($related as $i => $rpost) :
                     $rpid = $rpost->ID;

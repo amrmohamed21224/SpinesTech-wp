@@ -62,10 +62,10 @@ $other_slugs = array_slice($other_slugs, 0, 3);
     <div class="cs-config-related__grid">
         <?php if ($service_slugs !== []) : ?>
             <section class="cs-config-related__panel">
-                <h2 class="cs-config-related__heading">
+                <h3 class="cs-config-related__heading">
                     <span class="material-symbols-outlined" aria-hidden="true">design_services</span>
                     <?php echo esc_html($is_rtl ? 'خدمات ذات صلة' : 'Related Services'); ?>
-                </h2>
+                </h3>
                 <ul class="cs-config-related__list">
                     <?php foreach ($service_slugs as $service_slug) :
                         $label = function_exists('st_service_related_label')
@@ -90,10 +90,10 @@ $other_slugs = array_slice($other_slugs, 0, 3);
 
         <?php if ($article_slugs !== []) : ?>
             <section class="cs-config-related__panel">
-                <h2 class="cs-config-related__heading">
+                <h3 class="cs-config-related__heading">
                     <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
                     <?php echo esc_html($is_rtl ? 'مقالات ذات صلة' : 'Related Articles'); ?>
-                </h2>
+                </h3>
                 <ul class="cs-config-related__list">
                     <?php foreach ($article_slugs as $article_slug) :
                         $post = function_exists('st_find_published_post')
@@ -128,10 +128,10 @@ $other_slugs = array_slice($other_slugs, 0, 3);
 
         <?php if ($other_slugs !== []) : ?>
             <section class="cs-config-related__panel">
-                <h2 class="cs-config-related__heading">
+                <h3 class="cs-config-related__heading">
                     <span class="material-symbols-outlined" aria-hidden="true">work_history</span>
                     <?php echo esc_html($is_rtl ? 'دراسات حالة أخرى' : 'Other Case Studies'); ?>
-                </h2>
+                </h3>
                 <ul class="cs-config-related__list">
                     <?php foreach ($other_slugs as $cs_slug) :
                         $cs_cfg = st_case_study_config($cs_slug);
@@ -156,7 +156,7 @@ $other_slugs = array_slice($other_slugs, 0, 3);
 
     <section class="cs-config-related__cta">
         <div class="cs-config-related__cta-inner">
-            <h2 class="cs-config-related__cta-title"><?php echo esc_html($is_rtl ? 'لنناقش مشروعك' : 'Discuss Your Project'); ?></h2>
+            <h3 class="cs-config-related__cta-title"><?php echo esc_html($is_rtl ? 'لنناقش مشروعك' : 'Discuss Your Project'); ?></h3>
             <p><?php echo esc_html($is_rtl
                 ? 'تواصل مع فريق SpinesTech لمناقشة متطلباتك والحصول على استشارة أولية.'
                 : 'Contact the SpinesTech team to discuss your requirements and get an initial consultation.'); ?></p>
