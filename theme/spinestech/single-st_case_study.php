@@ -151,6 +151,7 @@ get_header();
                         <div class="cs-hero__phone-notch" aria-hidden="true"></div>
                         <img
                             src="<?php echo esc_url( cs_bw_img( 'driver-negotiation.webp' ) ); ?>"
+                                width="375" height="1029"
                             alt="<?php echo esc_attr( cs_bw_text( 'Backway driver app price negotiation screen for a shipment request', "\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{062A}\u{0641}\u{0627}\u{0648}\u{0636}\u{0020}\u{0627}\u{0644}\u{0633}\u{0639}\u{0631}\u{0020}\u{0641}\u{064A}\u{0020}\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0633}\u{0627}\u{0626}\u{0642}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{0644}\u{0637}\u{0644}\u{0628}\u{0020}\u{0634}\u{062D}\u{0646}" ) ); ?>"
                             loading="eager"
                             decoding="async"
@@ -161,6 +162,7 @@ get_header();
                         <div class="cs-hero__phone-notch" aria-hidden="true"></div>
                         <img
                             src="<?php echo esc_url( cs_bw_img( 'shipper-home-page.webp' ) ); ?>"
+                                width="1125" height="2436"
                             alt="<?php echo esc_attr( cs_bw_text( 'Backway customer app home screen showing available trips and quick shipment actions', "\u{0627}\u{0644}\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{0627}\u{0644}\u{0631}\u{0626}\u{064A}\u{0633}\u{064A}\u{0629}\u{0020}\u{0644}\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0639}\u{0645}\u{064A}\u{0644}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{062A}\u{0639}\u{0631}\u{0636}\u{0020}\u{0627}\u{0644}\u{0631}\u{062D}\u{0644}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{0627}\u{062D}\u{0629}\u{0020}\u{0648}\u{0625}\u{062C}\u{0631}\u{0627}\u{0621}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0634}\u{062D}\u{0646}\u{0020}\u{0627}\u{0644}\u{0633}\u{0631}\u{064A}\u{0639}\u{0629}" ) ); ?>"
                             loading="eager"
                             decoding="async"
@@ -389,6 +391,7 @@ get_header();
                 <div class="cs-model__visual-frame">
                     <img
                         src="<?php echo esc_url( cs_bw_img( 'admin-home.webp' ) ); ?>"
+                                width="1200" height="643"
                         alt="<?php echo esc_attr( cs_bw_text( 'Backway admin dashboard showing platform-wide trip and shipment overview', "\u{0644}\u{0648}\u{062D}\u{0629}\u{0020}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{062A}\u{0639}\u{0631}\u{0636}\u{0020}\u{0646}\u{0638}\u{0631}\u{0629}\u{0020}\u{0639}\u{0627}\u{0645}\u{0629}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{0627}\u{0644}\u{0631}\u{062D}\u{0644}\u{0627}\u{062A}\u{0020}\u{0648}\u{0627}\u{0644}\u{0634}\u{062D}\u{0646}\u{0627}\u{062A}\u{0020}\u{0639}\u{0628}\u{0631}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{0635}\u{0629}" ) ); ?>"
                         loading="lazy"
                         decoding="async"
@@ -420,6 +423,7 @@ get_header();
                             <div class="cs-ecosystem__phone-notch" aria-hidden="true"></div>
                             <img
                                 src="<?php echo esc_url( cs_bw_img( 'shipper-Shipment-details-Live-tracking.webp' ) ); ?>"
+                                width="692" height="1920"
                                 alt="<?php echo esc_attr( cs_bw_text( 'Backway customer app live shipment tracking and delivery details screen', "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0639}\u{0645}\u{064A}\u{0644}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{064A}\u{0639}\u{0631}\u{0636}\u{0020}\u{062A}\u{062A}\u{0628}\u{0639}\u{0020}\u{0627}\u{0644}\u{0634}\u{062D}\u{0646}\u{0629}\u{0020}\u{0648}\u{062A}\u{0641}\u{0627}\u{0635}\u{064A}\u{0644}\u{0020}\u{0627}\u{0644}\u{062A}\u{0633}\u{0644}\u{064A}\u{0645}" ) ); ?>"
                                 loading="lazy"
                                 decoding="async"
@@ -447,6 +451,7 @@ get_header();
                             <div class="cs-ecosystem__phone-notch" aria-hidden="true"></div>
                             <img
                                 src="<?php echo esc_url( cs_bw_img( 'driver-Trips History.webp' ) ); ?>"
+                                width="375" height="1145"
                                 alt="<?php echo esc_attr( cs_bw_text( 'Driver app trip history', 'سجل رحلات تطبيق السائق' ) ); ?>"
                                 loading="lazy"
                                 decoding="async"
@@ -456,6 +461,7 @@ get_header();
                             <div class="cs-ecosystem__phone-notch" aria-hidden="true"></div>
                             <img
                                 src="<?php echo esc_url( cs_bw_img( 'driver-home-page.webp' ) ); ?>"
+                                width="375" height="812"
                                 alt="<?php echo esc_attr( cs_bw_text( 'Driver app home screen', 'الرئيسية لتطبيق السائق' ) ); ?>"
                                 loading="lazy"
                                 decoding="async"
@@ -486,6 +492,7 @@ get_header();
                         </div>
                         <img
                             src="<?php echo esc_url( cs_bw_img( 'admin-login.webp' ) ); ?>"
+                                width="1200" height="650"
                             alt="<?php echo esc_attr( cs_bw_text( 'Admin panel login', 'تسجيل دخول لوحة الإدارة' ) ); ?>"
                             loading="lazy"
                             decoding="async"
@@ -704,6 +711,7 @@ get_header();
                     <div class="cs-final-cta__phone-notch" aria-hidden="true"></div>
                     <img
                         src="<?php echo esc_url( cs_bw_img( 'driver-settlments.webp' ) ); ?>"
+                                width="957" height="1920"
                         alt="<?php echo esc_attr( cs_bw_text( 'Backway driver settlements screen showing completed payouts and earnings history', "\u{0634}\u{0627}\u{0634}\u{0629}\u{0020}\u{062A}\u{0633}\u{0648}\u{064A}\u{0627}\u{062A}\u{0020}\u{0633}\u{0627}\u{0626}\u{0642}\u{0020}\u{0042}\u{0061}\u{0063}\u{006B}\u{0077}\u{0061}\u{0079}\u{0020}\u{062A}\u{0639}\u{0631}\u{0636}\u{0020}\u{0627}\u{0644}\u{0645}\u{062F}\u{0641}\u{0648}\u{0639}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{0643}\u{062A}\u{0645}\u{0644}\u{0629}\u{0020}\u{0648}\u{0633}\u{062C}\u{0644}\u{0020}\u{0627}\u{0644}\u{0623}\u{0631}\u{0628}\u{0627}\u{062D}" ) ); ?>"
                         loading="lazy"
                         decoding="async"
