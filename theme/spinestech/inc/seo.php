@@ -62,8 +62,9 @@ function st_seo_canonical_url(?string $locale = null): string
                     $url = user_trailingslashit($permalink);
                     
                     // Preserve pagination for articles page
-                    if ((is_page('articles') || (function_exists('st_is_articles_archive') && st_is_articles_archive())) && !empty($_GET['articles_page'])) {
-                        $url = add_query_arg('articles_page', (int) $_GET['articles_page'], $url);
+                    $paged = max(1, get_query_var('paged'), get_query_var('page'), isset($_GET['articles_page']) ? (int) $_GET['articles_page'] : 1);
+                    if ((is_page('articles') || (function_exists('st_is_articles_archive') && st_is_articles_archive())) && $paged > 1) {
+                        $url = user_trailingslashit($url . 'page/' . $paged);
                     }
                     return $url;
                 }
@@ -87,8 +88,9 @@ function st_seo_canonical_url(?string $locale = null): string
     if (is_page('articles') || (function_exists('st_is_articles_archive') && st_is_articles_archive())) {
         if ($is_alternate) return ''; // Prevent linking to 404 English articles archive
         $url = function_exists('st_localized_url') ? st_localized_url('/articles/', $locale) : home_url('/' . $locale . '/articles/');
-        if (!empty($_GET['articles_page'])) {
-            $url = add_query_arg('articles_page', (int) $_GET['articles_page'], $url);
+        $paged = max(1, get_query_var('paged'), get_query_var('page'), isset($_GET['articles_page']) ? (int) $_GET['articles_page'] : 1);
+        if ($paged > 1) {
+            $url = user_trailingslashit($url . 'page/' . $paged);
         }
         return $url;
     }
@@ -122,10 +124,9 @@ function st_seo_canonical_url(?string $locale = null): string
     $url = function_exists('st_localized_url') ? st_localized_url($path, $locale) : home_url($path);
 
     // Keep pagination parameter synchronized across canonical and hreflang to avoid conflicts
-    if (!empty($_GET['articles_page'])) {
-        $url = add_query_arg('articles_page', (int) $_GET['articles_page'], $url);
-    } elseif (!empty($_GET['paged'])) {
-        $url = add_query_arg('paged', (int) $_GET['paged'], $url);
+    $paged = max(1, get_query_var('paged'), get_query_var('page'), isset($_GET['articles_page']) ? (int) $_GET['articles_page'] : 1);
+    if ($paged > 1) {
+        $url = user_trailingslashit($url . 'page/' . $paged);
     }
 
     return $url;
