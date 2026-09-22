@@ -9,7 +9,7 @@
 // â”€â”€ SEO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 add_filter( 'pre_get_document_title', function () {
     $is_rtl = function_exists( 'st_locale' ) && st_locale() === 'ar';
-    $paged = isset($_GET['articles_page']) ? absint($_GET['articles_page']) : 1;
+    $paged = max(1, get_query_var('paged'), get_query_var('page'), isset($_GET['articles_page']) ? absint($_GET['articles_page']) : 1);
     
     if ($paged > 1) {
         return $is_rtl
@@ -28,7 +28,7 @@ add_action( 'wp_head', function () {
         ? 'مقالات SpinesTech التقنية حول بناء التطبيقات، المنصات الرقمية، لوحات التحكم، والأنظمة التشغيلية في السعودية والخليج.'
         : 'SpinesTech technical articles on building apps, digital platforms, dashboards, and operational systems across Saudi Arabia and the GCC.';
         
-    $paged = isset($_GET['articles_page']) ? absint($_GET['articles_page']) : 1;
+    $paged = max(1, get_query_var('paged'), get_query_var('page'), isset($_GET['articles_page']) ? absint($_GET['articles_page']) : 1);
     if ($paged > 1) {
         $desc .= $is_rtl ? " (الصفحة $paged)" : " (Page $paged)";
     }
@@ -107,7 +107,7 @@ $featured_id = $featured_query->have_posts() ? $featured_query->posts[0]->ID : 0
 wp_reset_postdata();
 
 /* â”€â”€ grid: paginated, ALWAYS excluding featured â”€â”€ */
-$paged = isset($_GET['articles_page']) ? max(1, absint($_GET['articles_page'])) : 1;
+$paged = max(1, get_query_var('paged'), get_query_var('page'), isset($_GET['articles_page']) ? absint($_GET['articles_page']) : 1);
 $grid_query = new WP_Query([
     'posts_per_page' => 6,
     'post_status'    => 'publish',
@@ -241,12 +241,12 @@ $grid_query = new WP_Query([
             </div>
 
             <?php
-            $pagination_base = trailingslashit(remove_query_arg('articles_page', get_permalink()));
+            $pagination_base = trailingslashit(get_permalink());
             $big_links = paginate_links([
                 'total'     => $grid_query->max_num_pages,
                 'current'   => $paged,
-                'base'      => $pagination_base . '%_%',
-                'format'    => '?articles_page=%#%',
+                'base'      => user_trailingslashit($pagination_base . 'page/%#%'),
+                'format'    => '',
                 'mid_size'  => 2,
                 'prev_text' => '<span class="material-symbols-outlined" aria-hidden="true">' . ($is_rtl ? 'chevron_right' : 'chevron_left') . '</span>',
                 'next_text' => '<span class="material-symbols-outlined" aria-hidden="true">' . ($is_rtl ? 'chevron_left' : 'chevron_right') . '</span>',

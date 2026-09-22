@@ -105,16 +105,15 @@ add_action('template_redirect', function () {
         }
     }
 
-    if (!preg_match('#^/(ar|en)?/?articles/page/([0-9]+)/?$#', $path, $matches)) {
-        return;
+    // Redirect old query parameters to clean URLs
+    if (strpos($path, '/articles/') !== false && isset($_GET['articles_page'])) {
+        $page = max(1, (int) $_GET['articles_page']);
+        if ($page > 1) {
+            $locale = (function_exists('st_locale') ? st_locale() : 'ar');
+            $prefix = $locale === 'ar' ? '' : '/' . $locale;
+            $target = home_url($prefix . '/articles/page/' . $page . '/');
+            wp_safe_redirect($target, 301);
+            exit;
+        }
     }
-
-    $locale = !empty($matches[1]) && in_array($matches[1], ['ar', 'en'], true)
-        ? $matches[1]
-        : (function_exists('st_locale') ? st_locale() : 'ar');
-    $page = max(1, (int) $matches[2]);
-    $target = home_url('/' . $locale . '/articles/?articles_page=' . $page);
-
-    wp_safe_redirect($target, 301);
-    exit;
 }, -1);
