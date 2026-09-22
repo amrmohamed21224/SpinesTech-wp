@@ -33,3 +33,10 @@
     ExpiresByType application/javascript "access plus 1 month"
 </IfModule>
 # END SpinesTech Security & Performance Headers
+
+<IfModule mod_headers.c>
+    # Force modern MIME type for JavaScript
+    <FilesMatch "\.(js|mjs)$">
+        Header set Content-Type "text/javascript; charset=UTF-8"
+    </FilesMatch>
+</IfModule>
