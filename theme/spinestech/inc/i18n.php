@@ -77,6 +77,10 @@ function st_lang_switch_url(): string
 {
     $target = st_locale() === 'ar' ? 'en' : 'ar';
     $current = parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?: '/';
+    
+    // Strip pagination to prevent 404s when target language lacks those pages
+    $current = preg_replace('#/page/\d+/?$#', '/', $current);
+    
     $query = parse_url((string) ($_SERVER['REQUEST_URI'] ?? ''), PHP_URL_QUERY);
     $clean_path = st_strip_lang_prefix($current);
     $url = st_localized_url($clean_path, $target);
@@ -133,7 +137,12 @@ function st_localized_url(string $path = '/', ?string $locale = null): string
 
 function st_current_canonical_path(): string
 {
-    return st_strip_lang_prefix(parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?: '/');
+    $current = parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?: '/';
+    
+    // Strip pagination to prevent 404s when target language lacks those pages
+    $current = preg_replace('#/page/\d+/?$#', '/', $current);
+    
+    return st_strip_lang_prefix($current);
 }
 
 function st_localize_internal_url(string $url, ?string $locale = null): string
