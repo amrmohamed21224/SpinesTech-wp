@@ -131,11 +131,13 @@ $copyright   = str_replace( '{year}', (string) $year, st_t( 'footer.copyright' )
             <div class="footer__lang-pill" data-footer-reveal data-footer-reveal-delay="80">
                 <a href="<?php echo esc_url( st_localized_url( st_current_canonical_path(), 'ar' ) ); ?>"
                    hreflang="ar"
+                   rel="nofollow"
                    class="footer__lang-btn<?php echo ( 'ar' === $footer_lang ) ? ' is-active' : ''; ?>">
                     <?php echo esc_html( st_t( 'nav.arabic' ) ); ?>
                 </a>
                 <a href="<?php echo esc_url( st_localized_url( st_current_canonical_path(), 'en' ) ); ?>"
                    hreflang="en"
+                   rel="nofollow"
                    class="footer__lang-btn<?php echo ( 'ar' !== $footer_lang ) ? ' is-active' : ''; ?>">
                     <?php echo esc_html( st_t( 'nav.english' ) ); ?>
                 </a>
