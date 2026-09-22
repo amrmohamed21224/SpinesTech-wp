@@ -62,7 +62,7 @@ $close_menu_label = $is_rtl ? "\u{0625}\u{063A}\u{0644}\u{0627}\u{0642}\u{0020}\
         </nav>
 
         <div class="navbar__actions">
-            <a href="<?php echo esc_url($switch_url); ?>" class="navbar__lang" hreflang="<?php echo esc_attr($target_locale); ?>" aria-label="<?php echo esc_attr($switch_aria); ?>" rel="nofollow">
+            <a href="<?php echo esc_url($switch_url); ?>" class="navbar__lang" hreflang="<?php echo esc_attr($target_locale); ?>" aria-label="<?php echo esc_attr($switch_aria); ?>">
                 <span class="navbar__lang-text"><?php echo esc_html($switch_label); ?></span>
             </a>
 
@@ -133,7 +133,7 @@ $close_menu_label = $is_rtl ? "\u{0625}\u{063A}\u{0644}\u{0627}\u{0642}\u{0020}\
                 <span><?php echo esc_html($cta_label); ?></span>
                 <span class="material-symbols-outlined" aria-hidden="true"><?php echo esc_html($arrow_icon); ?></span>
             </a>
-            <a href="<?php echo esc_url($switch_url); ?>" class="drawer__lang" hreflang="<?php echo esc_attr($target_locale); ?>" rel="nofollow">
+            <a href="<?php echo esc_url($switch_url); ?>" class="drawer__lang" hreflang="<?php echo esc_attr($target_locale); ?>">
                 <span class="material-symbols-outlined" aria-hidden="true">translate</span>
                 <span><?php echo esc_html($switch_full_label); ?></span>
             </a>
