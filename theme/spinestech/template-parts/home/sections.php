@@ -1,11 +1,11 @@
-<?php
+﻿<?php
 $is_rtl  = st_locale() === 'ar';
 $arrow   = $is_rtl ? 'arrow_back' : 'arrow_forward';
 $services = st_query_cpt('st_service', 3);
 $plans    = st_query_cpt('st_pricing', 3);
 $faqs     = st_query_cpt('st_faq', 6);
 
-/* ── sort pricing so recommended is always in the middle ── */
+/* â”€â”€ sort pricing so recommended is always in the middle â”€â”€ */
 if ($plans) {
     $featIdx = null;
     foreach ($plans as $i => $p) {
@@ -121,22 +121,22 @@ $process_steps = [
 ];
 
 $tech_stack = [
-    ['widgets',           $is_rtl ? 'Flutter' : 'Flutter',                 $is_rtl ? 'تطبيقات iOS و Android من كود واحد' : 'iOS & Android from one codebase'],
-    ['smartphone',        $is_rtl ? 'iOS / Android' : 'iOS / Android',     $is_rtl ? 'Native عند الحاجة لأقصى أداء' : 'Native when peak performance matters'],
-    ['code_blocks',       $is_rtl ? 'React / Next.js' : 'React / Next.js', $is_rtl ? 'واجهات ويب حديثة وسريعة' : 'Modern, fast web interfaces'],
-    ['database',          $is_rtl ? 'PostgreSQL / MySQL' : 'PostgreSQL / MySQL', $is_rtl ? 'قواعد بيانات موثوقة للإنتاج' : 'Production-grade databases'],
-    ['cloud_sync',        $is_rtl ? 'AWS / Azure' : 'AWS / Azure',         $is_rtl ? 'بنية سحابية قابلة للتوسع' : 'Scalable cloud infrastructure'],
-    ['partner_exchange',  $is_rtl ? 'White-Label Delivery' : 'White-Label Delivery', $is_rtl ? 'تنفيذ تحت علامتك التجارية' : 'Delivery under your brand'],
+    ['widgets',           $is_rtl ? 'Flutter' : 'Flutter',                 $is_rtl ? 'ØªØ·Ø¨ÙŠÙ‚Ø§Øª iOS Ùˆ Android Ù…Ù† ÙƒÙˆØ¯ ÙˆØ§Ø­Ø¯' : 'iOS & Android from one codebase'],
+    ['smartphone',        $is_rtl ? 'iOS / Android' : 'iOS / Android',     $is_rtl ? 'Native Ø¹Ù†Ø¯ Ø§Ù„Ø­Ø§Ø¬Ø© Ù„Ø£Ù‚ØµÙ‰ Ø£Ø¯Ø§Ø¡' : 'Native when peak performance matters'],
+    ['code_blocks',       $is_rtl ? 'React / Next.js' : 'React / Next.js', $is_rtl ? 'ÙˆØ§Ø¬Ù‡Ø§Øª ÙˆÙŠØ¨ Ø­Ø¯ÙŠØ«Ø© ÙˆØ³Ø±ÙŠØ¹Ø©' : 'Modern, fast web interfaces'],
+    ['database',          $is_rtl ? 'PostgreSQL / MySQL' : 'PostgreSQL / MySQL', $is_rtl ? 'Ù‚ÙˆØ§Ø¹Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù…ÙˆØ«ÙˆÙ‚Ø© Ù„Ù„Ø¥Ù†ØªØ§Ø¬' : 'Production-grade databases'],
+    ['cloud_sync',        $is_rtl ? 'AWS / Azure' : 'AWS / Azure',         $is_rtl ? 'Ø¨Ù†ÙŠØ© Ø³Ø­Ø§Ø¨ÙŠØ© Ù‚Ø§Ø¨Ù„Ø© Ù„Ù„ØªÙˆØ³Ø¹' : 'Scalable cloud infrastructure'],
+    ['partner_exchange',  $is_rtl ? 'White-Label Delivery' : 'White-Label Delivery', $is_rtl ? 'ØªÙ†ÙÙŠØ° ØªØ­Øª Ø¹Ù„Ø§Ù…ØªÙƒ Ø§Ù„ØªØ¬Ø§Ø±ÙŠØ©' : 'Delivery under your brand'],
 ];
 ?>
 
-    <!-- ═══════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
          2. TECHNICAL CAPABILITIES
-    ═══════════════════════════════ -->
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="hs-section hs-section--white">
         <div class="container">
             <div class="hs-header hs-header--center">
-                <h2 class="hs-title"><?php echo esc_html($is_rtl ? "\u{0642}\u{062F}\u{0631}\u{0627}\u{062A}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{0629}\u{0020}\u{0644}\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}\u{0627}\u{062A}\u{0020}\u{062D}\u{0642}\u{064A}\u{0642}\u{064A}\u{0629}" : 'Technical capabilities for building real products'); ?></h2>
+                <h3><?php echo esc_html($is_rtl ? "\u{0642}\u{062F}\u{0631}\u{0627}\u{062A}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{0629}\u{0020}\u{0644}\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}\u{0627}\u{062A}\u{0020}\u{062D}\u{0642}\u{064A}\u{0642}\u{064A}\u{0629}" : 'Technical capabilities for building real products'); ?></h3>
                 <p class="hs-subtitle"><?php echo esc_html($is_rtl ? "\u{0646}\u{0645}\u{062A}\u{0644}\u{0643}\u{0020}\u{0627}\u{0644}\u{0623}\u{062F}\u{0648}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0647}\u{0646}\u{062F}\u{0633}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0644}\u{0627}\u{0632}\u{0645}\u{0629}\u{0020}\u{0644}\u{062A}\u{062D}\u{0648}\u{064A}\u{0644}\u{0020}\u{0627}\u{0644}\u{0623}\u{0641}\u{0643}\u{0627}\u{0631}\u{0020}\u{0627}\u{0644}\u{0645}\u{0639}\u{0642}\u{062F}\u{0629}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0648}\u{0627}\u{0642}\u{0639}\u{0020}\u{062A}\u{0634}\u{063A}\u{064A}\u{0644}\u{064A}\u{0020}\u{0645}\u{0644}\u{0645}\u{0648}\u{0633}\u{002E}" : 'We have the engineering tools to turn complex ideas into real operational solutions.'); ?></p>
             </div>
             <div class="hs-grid hs-grid--4">
@@ -151,16 +151,16 @@ $tech_stack = [
         </div>
     </section>
 
-    <!-- ═══════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
          2b. SERVICES PREVIEW
-    ═══════════════════════════════ -->
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <?php $home_services = function_exists('st_home_service_preview_cards') ? st_home_service_preview_cards() : []; ?>
     <?php if (!empty($home_services)) : ?>
     <section class="hs-section hs-section--light">
         <div class="container">
             <div class="hs-header hs-header--center">
-                <h2 class="hs-title"><?php echo esc_html($is_rtl ? 'خدماتنا الرئيسية' : 'Core services'); ?></h2>
-                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? 'صفحات خدمات مفصّلة تشرح المشكلة، النطاق، والمنهجية — مع روابط مباشرة لمشاريعنا ومقالاتنا.' : 'Dedicated service pages covering problems, scope, process, and related case studies.'); ?></p>
+                <h3><?php echo esc_html($is_rtl ? 'Ø®Ø¯Ù…Ø§ØªÙ†Ø§ Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©' : 'Core services'); ?></h3>
+                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? 'ØµÙØ­Ø§Øª Ø®Ø¯Ù…Ø§Øª Ù…ÙØµÙ‘Ù„Ø© ØªØ´Ø±Ø­ Ø§Ù„Ù…Ø´ÙƒÙ„Ø©ØŒ Ø§Ù„Ù†Ø·Ø§Ù‚ØŒ ÙˆØ§Ù„Ù…Ù†Ù‡Ø¬ÙŠØ© â€” Ù…Ø¹ Ø±ÙˆØ§Ø¨Ø· Ù…Ø¨Ø§Ø´Ø±Ø© Ù„Ù…Ø´Ø§Ø±ÙŠØ¹Ù†Ø§ ÙˆÙ…Ù‚Ø§Ù„Ø§ØªÙ†Ø§.' : 'Dedicated service pages covering problems, scope, process, and related case studies.'); ?></p>
             </div>
             <div class="hs-grid hs-grid--services">
                 <?php foreach ($home_services as $svc) : ?>
@@ -173,7 +173,7 @@ $tech_stack = [
             </div>
             <div class="hs-cases-foot" style="margin-top:1.5rem;">
                 <a class="hs-cases-all" href="<?php echo esc_url(st_url('services')); ?>">
-                    <?php echo esc_html($is_rtl ? 'عرض كل الخدمات' : 'View all services'); ?>
+                    <?php echo esc_html($is_rtl ? 'Ø¹Ø±Ø¶ ÙƒÙ„ Ø§Ù„Ø®Ø¯Ù…Ø§Øª' : 'View all services'); ?>
                     <span class="material-symbols-outlined" aria-hidden="true"><?php echo esc_html($arrow); ?></span>
                 </a>
             </div>
@@ -186,21 +186,21 @@ $tech_stack = [
     <section class="hs-section hs-section--white hs-articles-section" aria-labelledby="hs-articles-title">
         <div class="container">
             <div class="hs-header hs-header--center">
-                <span class="hs-articles-kicker"><?php echo esc_html($is_rtl ? 'معرفة قبل القرار' : 'Knowledge before you build'); ?></span>
-                <h2 id="hs-articles-title" class="hs-title"><?php echo esc_html($is_rtl ? 'أهم المقالات' : 'Featured articles'); ?></h2>
-                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? 'إجابات عملية لأسئلة شائعة قبل بدء مشروعك الرقمي.' : 'Practical answers to common questions before you start your digital project.'); ?></p>
+                <span class="hs-articles-kicker"><?php echo esc_html($is_rtl ? 'Ù…Ø¹Ø±ÙØ© Ù‚Ø¨Ù„ Ø§Ù„Ù‚Ø±Ø§Ø±' : 'Knowledge before you build'); ?></span>
+                <h3><?php echo esc_html($is_rtl ? 'Ø£Ù‡Ù… Ø§Ù„Ù…Ù‚Ø§Ù„Ø§Øª' : 'Featured articles'); ?></h3>
+                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? 'Ø¥Ø¬Ø§Ø¨Ø§Øª Ø¹Ù…Ù„ÙŠØ© Ù„Ø£Ø³Ø¦Ù„Ø© Ø´Ø§Ø¦Ø¹Ø© Ù‚Ø¨Ù„ Ø¨Ø¯Ø¡ Ù…Ø´Ø±ÙˆØ¹Ùƒ Ø§Ù„Ø±Ù‚Ù…ÙŠ.' : 'Practical answers to common questions before you start your digital project.'); ?></p>
             </div>
             <div class="hs-grid hs-grid--2 hs-articles-grid">
                 <?php foreach ($featured_articles as $article) : ?>
                     <a class="hs-article-card" href="<?php echo esc_url($article['url']); ?>">
                         <div class="hs-article-card__top">
                             <span class="material-symbols-outlined hs-article-card__icon" aria-hidden="true">menu_book</span>
-                            <span class="hs-article-card__badge"><?php echo esc_html($is_rtl ? 'دليل عملي' : 'Buyer guide'); ?></span>
+                            <span class="hs-article-card__badge"><?php echo esc_html($is_rtl ? 'Ø¯Ù„ÙŠÙ„ Ø¹Ù…Ù„ÙŠ' : 'Buyer guide'); ?></span>
                         </div>
                         <h3 class="hs-article-card__title"><?php echo esc_html($article['title']); ?></h3>
                         <p class="hs-article-card__excerpt"><?php echo esc_html(wp_trim_words($article['excerpt'], 22)); ?></p>
                         <span class="hs-article-card__link">
-                            <?php echo esc_html($is_rtl ? 'اقرأ المقال' : 'Read article'); ?>
+                            <?php echo esc_html($is_rtl ? 'Ø§Ù‚Ø±Ø£ Ø§Ù„Ù…Ù‚Ø§Ù„' : 'Read article'); ?>
                             <span class="material-symbols-outlined" aria-hidden="true"><?php echo esc_html($arrow); ?></span>
                         </span>
                     </a>
@@ -208,7 +208,7 @@ $tech_stack = [
             </div>
             <div class="hs-cases-foot">
                 <a class="hs-cases-all" href="<?php echo esc_url(function_exists('st_url') ? st_url('articles') : home_url('/articles/')); ?>">
-                    <?php echo esc_html($is_rtl ? 'عرض كل المقالات' : 'View all articles'); ?>
+                    <?php echo esc_html($is_rtl ? 'Ø¹Ø±Ø¶ ÙƒÙ„ Ø§Ù„Ù…Ù‚Ø§Ù„Ø§Øª' : 'View all articles'); ?>
                     <span class="material-symbols-outlined" aria-hidden="true"><?php echo esc_html($arrow); ?></span>
                 </a>
             </div>
@@ -216,15 +216,15 @@ $tech_stack = [
     </section>
     <?php endif; ?>
 
-    <!-- ═══════════════════════════════
-         3. CASE STUDIES — full-width smooth marquee
-    ═══════════════════════════════ -->
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         3. CASE STUDIES â€” full-width smooth marquee
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <?php $cases_archive = (string) get_post_type_archive_link( 'st_case_study' ); ?>
     <section class="hs-section hs-section--light hs-cases-section" aria-labelledby="hs-cases-title">
         <div class="container">
             <div class="hs-cases-head">
                 <span class="hs-cases-kicker"><?php echo esc_html( $is_rtl ? "\u{0623}\u{0639}\u{0645}\u{0627}\u{0644}\u{0020}\u{0645}\u{0646}\u{0641}\u{0630}\u{0629}" : 'Selected Work' ); ?></span>
-                <h2 id="hs-cases-title" class="hs-title"><?php echo esc_html($is_rtl ? "\u{062F}\u{0631}\u{0627}\u{0633}\u{0627}\u{062A}\u{0020}\u{062D}\u{0627}\u{0644}\u{0629}\u{0020}\u{0645}\u{062E}\u{062A}\u{0627}\u{0631}\u{0629}" : 'Featured Case Studies'); ?></h2>
+                <h3><?php echo esc_html($is_rtl ? "\u{062F}\u{0631}\u{0627}\u{0633}\u{0627}\u{062A}\u{0020}\u{062D}\u{0627}\u{0644}\u{0629}\u{0020}\u{0645}\u{062E}\u{062A}\u{0627}\u{0631}\u{0629}" : 'Featured Case Studies'); ?></h3>
                 <p class="hs-subtitle"><?php echo esc_html($is_rtl ? "\u{0645}\u{0634}\u{0627}\u{0631}\u{064A}\u{0639}\u{0020}\u{062D}\u{0642}\u{064A}\u{0642}\u{064A}\u{0629}\u{0020}\u{062D}\u{0648}\u{0651}\u{0644}\u{0646}\u{0627}\u{0647}\u{0627}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}\u{0627}\u{062A}\u{0020}\u{0631}\u{0642}\u{0645}\u{064A}\u{0629}\u{0020}\u{0646}\u{0627}\u{062C}\u{062D}\u{0629}\u{002E}" : 'Real projects we turned into successful digital products.'); ?></p>
             </div>
         </div>
@@ -296,13 +296,13 @@ $tech_stack = [
     </section>
 
 
-    <!-- ═══════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
          4. MOBILE APP CONTRIBUTIONS
-    ═══════════════════════════════ -->
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="hs-section hs-section--white">
         <div class="container">
             <div class="hs-header hs-header--center">
-                <h2 class="hs-title"><?php echo esc_html($is_rtl ? "\u{0645}\u{0634}\u{0627}\u{0631}\u{0643}\u{0627}\u{062A}\u{0020}\u{0641}\u{064A}\u{0020}\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062C}\u{0648}\u{0627}\u{0644}" : 'Mobile App Contributions'); ?></h2>
+                <h3><?php echo esc_html($is_rtl ? "\u{0645}\u{0634}\u{0627}\u{0631}\u{0643}\u{0627}\u{062A}\u{0020}\u{0641}\u{064A}\u{0020}\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062C}\u{0648}\u{0627}\u{0644}" : 'Mobile App Contributions'); ?></h3>
                 <p class="hs-subtitle"><?php echo esc_html($is_rtl ? "\u{0646}\u{0641}\u{062E}\u{0631}\u{0020}\u{0628}\u{0645}\u{0634}\u{0627}\u{0631}\u{0643}\u{062A}\u{0646}\u{0627}\u{0020}\u{0627}\u{0644}\u{0647}\u{0646}\u{062F}\u{0633}\u{064A}\u{0629}\u{0020}\u{0641}\u{064A}\u{0020}\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0648}\u{062A}\u{0637}\u{0648}\u{064A}\u{0631}\u{0020}\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0627}\u{062A}\u{0020}\u{0646}\u{0627}\u{062C}\u{062D}\u{0629}\u{0020}\u{0641}\u{064A}\u{0020}\u{0642}\u{0637}\u{0627}\u{0639}\u{0627}\u{062A}\u{0020}\u{062D}\u{064A}\u{0648}\u{064A}\u{0629}\u{002E}" : 'We are proud of our engineering contributions to successful apps in vital sectors.'); ?></p>
             </div>
             <div class="hs-grid hs-grid--3">
@@ -327,13 +327,13 @@ $tech_stack = [
         </div>
     </section>
 
-    <!-- ═══════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
          5. INDUSTRIES
-    ═══════════════════════════════ -->
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="hs-section hs-section--muted">
         <div class="container">
             <div class="hs-header">
-                <h2 class="hs-title"><?php echo esc_html($is_rtl ? "\u{0642}\u{0637}\u{0627}\u{0639}\u{0627}\u{062A}\u{0020}\u{0646}\u{062A}\u{062E}\u{0635}\u{0635}\u{0020}\u{0641}\u{064A}\u{0020}\u{062D}\u{0644}\u{0648}\u{0644}\u{0647}\u{0627}" : 'Industries we specialize in'); ?></h2>
+                <h3><?php echo esc_html($is_rtl ? "\u{0642}\u{0637}\u{0627}\u{0639}\u{0627}\u{062A}\u{0020}\u{0646}\u{062A}\u{062E}\u{0635}\u{0635}\u{0020}\u{0641}\u{064A}\u{0020}\u{062D}\u{0644}\u{0648}\u{0644}\u{0647}\u{0627}" : 'Industries we specialize in'); ?></h3>
                 <p class="hs-subtitle"><?php echo esc_html($is_rtl ? "\u{062E}\u{0628}\u{0631}\u{0629}\u{0020}\u{0639}\u{0645}\u{064A}\u{0642}\u{0629}\u{0020}\u{0641}\u{064A}\u{0020}\u{0642}\u{0637}\u{0627}\u{0639}\u{0627}\u{062A}\u{0020}\u{062A}\u{062A}\u{0637}\u{0644}\u{0628}\u{0020}\u{062F}\u{0642}\u{0629}\u{0020}\u{0647}\u{0646}\u{062F}\u{0633}\u{064A}\u{0629}\u{0020}\u{0639}\u{0627}\u{0644}\u{064A}\u{0629}\u{0020}\u{0648}\u{0641}\u{0647}\u{0645}\u{0627}\u{064B}\u{0020}\u{0639}\u{0645}\u{064A}\u{0642}\u{0627}\u{064B}\u{0020}\u{0644}\u{0633}\u{064A}\u{0631}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{0644}\u{002E}" : 'Deep expertise in sectors requiring high engineering precision.'); ?></p>
             </div>
             <div class="hs-grid hs-grid--4">
@@ -350,13 +350,13 @@ $tech_stack = [
         </div>
     </section>
 
-    <!-- ═══════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
          6. WHY SPINESTECH
-    ═══════════════════════════════ -->
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="hs-section hs-section--white">
         <div class="container">
             <div class="hs-header hs-header--center">
-                <h2 class="hs-title"><?php echo esc_html($is_rtl ? "\u{0644}\u{0645}\u{0627}\u{0630}\u{0627}\u{0020}\u{062A}\u{062E}\u{062A}\u{0627}\u{0631}\u{0020}\u{0053}\u{0070}\u{0069}\u{006E}\u{0065}\u{0073}\u{0054}\u{0065}\u{0063}\u{0068}\u{0020}\u{0643}\u{0634}\u{0631}\u{064A}\u{0643}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{061F}" : 'Why choose SpinesTech as your tech partner?'); ?></h2>
+                <h3><?php echo esc_html($is_rtl ? "\u{0644}\u{0645}\u{0627}\u{0630}\u{0627}\u{0020}\u{062A}\u{062E}\u{062A}\u{0627}\u{0631}\u{0020}\u{0053}\u{0070}\u{0069}\u{006E}\u{0065}\u{0073}\u{0054}\u{0065}\u{0063}\u{0068}\u{0020}\u{0643}\u{0634}\u{0631}\u{064A}\u{0643}\u{0020}\u{062A}\u{0642}\u{0646}\u{064A}\u{061F}" : 'Why choose SpinesTech as your tech partner?'); ?></h3>
             </div>
             <div class="hs-why-grid">
                 <?php foreach ($why_us as [$icon, $title, $desc, $wide]) : ?>
@@ -370,13 +370,13 @@ $tech_stack = [
         </div>
     </section>
 
-    <!-- ═══════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
          7. ENGINEERING DEPTH
-    ═══════════════════════════════ -->
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="hs-section hs-section--dark">
         <div class="container">
             <div class="hs-header hs-header--center">
-                <h2 class="hs-title hs-title--light"><?php echo esc_html($is_rtl ? "\u{0639}\u{0645}\u{0642}\u{0020}\u{0647}\u{0646}\u{062F}\u{0633}\u{064A}\u{0020}\u{062E}\u{0644}\u{0641}\u{0020}\u{0643}\u{0644}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}" : 'Engineering depth behind every product'); ?></h2>
+                <h3><?php echo esc_html($is_rtl ? "\u{0639}\u{0645}\u{0642}\u{0020}\u{0647}\u{0646}\u{062F}\u{0633}\u{064A}\u{0020}\u{062E}\u{0644}\u{0641}\u{0020}\u{0643}\u{0644}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}" : 'Engineering depth behind every product'); ?></h3>
                 <p class="hs-subtitle hs-subtitle--light"><?php echo esc_html($is_rtl ? "\u{0627}\u{0644}\u{062C}\u{0648}\u{062F}\u{0629}\u{0020}\u{0627}\u{0644}\u{062D}\u{0642}\u{064A}\u{0642}\u{064A}\u{0629}\u{0020}\u{062A}\u{0643}\u{0645}\u{0646}\u{0020}\u{0641}\u{064A}\u{0020}\u{0627}\u{0644}\u{0628}\u{0646}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{062D}\u{062A}\u{064A}\u{0629}\u{0020}\u{0627}\u{0644}\u{0635}\u{0644}\u{0628}\u{0629}\u{0020}\u{0627}\u{0644}\u{062A}\u{064A}\u{0020}\u{0644}\u{0627}\u{0020}\u{064A}\u{0631}\u{0627}\u{0647}\u{0627}\u{0020}\u{0627}\u{0644}\u{0645}\u{0633}\u{062A}\u{062E}\u{062F}\u{002E}" : 'True quality lies in the solid infrastructure users never see.'); ?></p>
             </div>
             <div class="hs-grid hs-grid--3">
@@ -391,13 +391,13 @@ $tech_stack = [
         <div class="hs-section--dark__glow"></div>
     </section>
 
-    <!-- ═══════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
          8. PROCESS
-    ═══════════════════════════════ -->
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="hs-section hs-section--light">
         <div class="container">
             <div class="hs-header hs-header--center">
-                <h2 class="hs-title"><?php echo esc_html($is_rtl ? "\u{0645}\u{0646}\u{0020}\u{0627}\u{0644}\u{0641}\u{0643}\u{0631}\u{0629}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0627}\u{0644}\u{0625}\u{0637}\u{0644}\u{0627}\u{0642}" : 'From idea to launch'); ?></h2>
+                <h3><?php echo esc_html($is_rtl ? "\u{0645}\u{0646}\u{0020}\u{0627}\u{0644}\u{0641}\u{0643}\u{0631}\u{0629}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0627}\u{0644}\u{0625}\u{0637}\u{0644}\u{0627}\u{0642}" : 'From idea to launch'); ?></h3>
                 <p class="hs-subtitle"><?php echo esc_html($is_rtl ? "\u{0631}\u{062D}\u{0644}\u{062A}\u{0646}\u{0627}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{0647}\u{062C}\u{064A}\u{0629}\u{0020}\u{0644}\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0645}\u{0646}\u{062A}\u{062C}\u{0643}\u{0020}\u{0627}\u{0644}\u{0631}\u{0642}\u{0645}\u{064A}\u{0020}\u{0628}\u{0645}\u{0639}\u{0627}\u{064A}\u{064A}\u{0631}\u{0020}\u{0639}\u{0627}\u{0644}\u{0645}\u{064A}\u{0629}\u{002E}" : 'Our systematic journey to build your digital product to world standards.'); ?></p>
             </div>
             <div class="hs-process">
@@ -412,15 +412,15 @@ $tech_stack = [
         </div>
     </section>
 
-    <!-- ═══════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
          9. TECH STACK
-    ═══════════════════════════════ -->
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="hs-section hs-section--muted hs-tech-stack-section" aria-labelledby="hs-tech-stack-title">
         <div class="container">
             <div class="hs-header hs-header--center">
-                <span class="hs-tech-stack-kicker"><?php echo esc_html($is_rtl ? 'التقنيات والمنصات' : 'Tech stack'); ?></span>
-                <h2 id="hs-tech-stack-title" class="hs-title"><?php echo esc_html($is_rtl ? 'التقنيات والمنصات التي نعمل معها' : 'Technologies and platforms we work with'); ?></h2>
-                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? 'نختار التقنية حسب متطلبات المنتج — وليس العكس.' : 'We choose technology based on product requirements — not the other way around.'); ?></p>
+                <span class="hs-tech-stack-kicker"><?php echo esc_html($is_rtl ? 'Ø§Ù„ØªÙ‚Ù†ÙŠØ§Øª ÙˆØ§Ù„Ù…Ù†ØµØ§Øª' : 'Tech stack'); ?></span>
+                <h3><?php echo esc_html($is_rtl ? 'Ø§Ù„ØªÙ‚Ù†ÙŠØ§Øª ÙˆØ§Ù„Ù…Ù†ØµØ§Øª Ø§Ù„ØªÙŠ Ù†Ø¹Ù…Ù„ Ù…Ø¹Ù‡Ø§' : 'Technologies and platforms we work with'); ?></h3>
+                <p class="hs-subtitle"><?php echo esc_html($is_rtl ? 'Ù†Ø®ØªØ§Ø± Ø§Ù„ØªÙ‚Ù†ÙŠØ© Ø­Ø³Ø¨ Ù…ØªØ·Ù„Ø¨Ø§Øª Ø§Ù„Ù…Ù†ØªØ¬ â€” ÙˆÙ„ÙŠØ³ Ø§Ù„Ø¹ÙƒØ³.' : 'We choose technology based on product requirements â€” not the other way around.'); ?></p>
             </div>
             <div class="hs-grid hs-grid--tech-stack">
                 <?php foreach ($tech_stack as [$icon, $label, $hint]) : ?>
@@ -435,20 +435,20 @@ $tech_stack = [
             </div>
             <p class="hs-tech-stack-note">
                 <?php echo esc_html($is_rtl
-                    ? 'بعض المشاريع تُنفَّذ مباشرة من SpinesTech، بينما تعكس أخرى مساهمات فريقنا ضمن مشاريع يقودها شركاء تقنيون. يُوضَّح دورنا ونطاق عملنا داخل كل مشروع.'
+                    ? 'Ø¨Ø¹Ø¶ Ø§Ù„Ù…Ø´Ø§Ø±ÙŠØ¹ ØªÙÙ†ÙÙ‘ÙŽØ° Ù…Ø¨Ø§Ø´Ø±Ø© Ù…Ù† SpinesTechØŒ Ø¨ÙŠÙ†Ù…Ø§ ØªØ¹ÙƒØ³ Ø£Ø®Ø±Ù‰ Ù…Ø³Ø§Ù‡Ù…Ø§Øª ÙØ±ÙŠÙ‚Ù†Ø§ Ø¶Ù…Ù† Ù…Ø´Ø§Ø±ÙŠØ¹ ÙŠÙ‚ÙˆØ¯Ù‡Ø§ Ø´Ø±ÙƒØ§Ø¡ ØªÙ‚Ù†ÙŠÙˆÙ†. ÙŠÙÙˆØ¶Ù‘ÙŽØ­ Ø¯ÙˆØ±Ù†Ø§ ÙˆÙ†Ø·Ø§Ù‚ Ø¹Ù…Ù„Ù†Ø§ Ø¯Ø§Ø®Ù„ ÙƒÙ„ Ù…Ø´Ø±ÙˆØ¹.'
                     : 'Some projects were executed directly by SpinesTech; others reflect our team\'s contributions within projects led by technology partners. Our role and scope are clarified inside each project.'); ?>
             </p>
         </div>
     </section>
 
-    <!-- ═══════════════════════════════
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
          10. FINAL CTA
-    ═══════════════════════════════ -->
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="hs-cta">
         <div class="hs-cta__glow hs-cta__glow--1"></div>
         <div class="hs-cta__glow hs-cta__glow--2"></div>
         <div class="container hs-cta__inner">
-            <h2 class="hs-cta__title"><?php echo esc_html($is_rtl ? "\u{0647}\u{0644}\u{0020}\u{0641}\u{0643}\u{0631}\u{062A}\u{0643}\u{0020}\u{0627}\u{0644}\u{0642}\u{0627}\u{062F}\u{0645}\u{0629}\u{0020}\u{062A}\u{062D}\u{062A}\u{0627}\u{062C}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0623}\u{0643}\u{062B}\u{0631}\u{0020}\u{0645}\u{0646}\u{0020}\u{0645}\u{062C}\u{0631}\u{062F}\u{0020}\u{0643}\u{0648}\u{062F}\u{061F}" : 'Does your next idea need more than just code?'); ?></h2>
+            <h3><?php echo esc_html($is_rtl ? "\u{0647}\u{0644}\u{0020}\u{0641}\u{0643}\u{0631}\u{062A}\u{0643}\u{0020}\u{0627}\u{0644}\u{0642}\u{0627}\u{062F}\u{0645}\u{0629}\u{0020}\u{062A}\u{062D}\u{062A}\u{0627}\u{062C}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0623}\u{0643}\u{062B}\u{0631}\u{0020}\u{0645}\u{0646}\u{0020}\u{0645}\u{062C}\u{0631}\u{062F}\u{0020}\u{0643}\u{0648}\u{062F}\u{061F}" : 'Does your next idea need more than just code?'); ?></h3>
             <p class="hs-cta__desc"><?php echo esc_html($is_rtl
                 ? "\u{0646}\u{062D}\u{0646}\u{0020}\u{0647}\u{0646}\u{0627}\u{0020}\u{0644}\u{0646}\u{062D}\u{0648}\u{0644}\u{0020}\u{0631}\u{0624}\u{064A}\u{062A}\u{0643}\u{0020}\u{0625}\u{0644}\u{0649}\u{0020}\u{0648}\u{0627}\u{0642}\u{0639}\u{0020}\u{0647}\u{0646}\u{062F}\u{0633}\u{064A}\u{0020}\u{0642}\u{0627}\u{0628}\u{0644}\u{0020}\u{0644}\u{0644}\u{062A}\u{0648}\u{0633}\u{0639}\u{002E}\u{0020}\u{0633}\u{0648}\u{0627}\u{0621}\u{0020}\u{0643}\u{0646}\u{062A}\u{0020}\u{062A}\u{0628}\u{0646}\u{064A}\u{0020}\u{0645}\u{0646}\u{0635}\u{0629}\u{0020}\u{0644}\u{0648}\u{062C}\u{0633}\u{062A}\u{064A}\u{0629}\u{060C}\u{0020}\u{0633}\u{0648}\u{0642}\u{0627}\u{064B}\u{0020}\u{0631}\u{0642}\u{0645}\u{064A}\u{0627}\u{064B}\u{060C}\u{0020}\u{0623}\u{0648}\u{0020}\u{0646}\u{0638}\u{0627}\u{0645}\u{0020}\u{062A}\u{0634}\u{063A}\u{064A}\u{0644}\u{0020}\u{0644}\u{0639}\u{0645}\u{0644}\u{0643}\u{060C}\u{0020}\u{0053}\u{0070}\u{0069}\u{006E}\u{0065}\u{0073}\u{0054}\u{0065}\u{0063}\u{0068}\u{0020}\u{0647}\u{064A}\u{0020}\u{0634}\u{0631}\u{064A}\u{0643}\u{0643}\u{0020}\u{0627}\u{0644}\u{0623}\u{0645}\u{062B}\u{0644}\u{002E}"
                 : 'We are here to turn your vision into scalable engineering reality. Whether logistics, marketplace or operations system, SpinesTech is your ideal partner.'); ?>

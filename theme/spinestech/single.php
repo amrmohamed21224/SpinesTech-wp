@@ -682,7 +682,7 @@ if (!empty($article_json_ld) && is_array($article_json_ld)) {
     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="single-art__cta reveal">
         <div class="container single-art__cta-inner">
-            <h2><?php echo esc_html($is_rtl ? 'Ø¬Ø§Ù‡Ø² Ù„Ø¨Ù†Ø§Ø¡ Ù…Ù†ØµØªÙƒ Ø§Ù„Ù‚Ø§Ø¯Ù…Ø©ØŸ' : 'Ready to build your next platform?'); ?></h2>
+            <h3><?php echo esc_html($is_rtl ? 'Ø¬Ø§Ù‡Ø² Ù„Ø¨Ù†Ø§Ø¡ Ù…Ù†ØµØªÙƒ Ø§Ù„Ù‚Ø§Ø¯Ù…Ø©ØŸ' : 'Ready to build your next platform?'); ?></h3>
             <p><?php echo esc_html($is_rtl
                 ? 'Ø§Ù†Ø¶Ù… Ø¥Ù„Ù‰ Ø¹Ø´Ø±Ø§Øª Ø§Ù„Ø´Ø±ÙƒØ§Øª Ø§Ù„ØªÙŠ ØªØ¹ØªÙ…Ø¯ Ø¹Ù„Ù‰ Ù…Ù†Ù‡Ø¬ÙŠØ© SpinesTech Ù„ØªØµÙ…ÙŠÙ… ÙˆØ¨Ù†Ø§Ø¡ ÙˆØªÙˆØ³ÙŠØ¹ ØªØ¬Ø§Ø±Ø¨ Ø±Ù‚Ù…ÙŠØ© Ø¬Ø§Ù‡Ø²Ø© Ù„Ù„Ù…Ø³ØªÙ‚Ø¨Ù„.'
                 : 'Join dozens of enterprises leveraging SpinesTech\'s methodology to design, build, and scale future-proof digital experiences.'); ?></p>

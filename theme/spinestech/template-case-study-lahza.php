@@ -83,7 +83,7 @@ get_header();
 		<div class="lh__container lh__overview-inner">
 
 			<div class="lh__overview-intro" data-lh-reveal>
-				<h2 class="lh__h2" id="lh-overview-title"><?php echo esc_html( $is_rtl ? "\u{0646}\u{0638}\u{0631}\u{0629}\u{0020}\u{0639}\u{0627}\u{0645}\u{0629}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{0627}\u{0644}\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}" : 'Project Overview' ); ?></h2>
+				<h3 class="lh__h2" id="lh-overview-title"><?php echo esc_html( $is_rtl ? "\u{0646}\u{0638}\u{0631}\u{0629}\u{0020}\u{0639}\u{0627}\u{0645}\u{0629}\u{0020}\u{0639}\u{0644}\u{0649}\u{0020}\u{0627}\u{0644}\u{0645}\u{0634}\u{0631}\u{0648}\u{0639}" : 'Project Overview' ); ?></h3>
 				<p class="lh__p">
 					<?php echo esc_html( $is_rtl
 						? "\u{00D9}\u{0160}\u{00D9}\u{2021}\u{00D8}\u{00AF}\u{00D9}\u{0081}\u{0020}\u{00D9}\u{2026}\u{00D8}\u{00B4}\u{00D8}\u{00B1}\u{00D9}\u{02C6}\u{00D8}\u{00B9}\u{0020}\u{0022}\u{0644}\u{062D}\u{0638}\u{0629}\u{0022}\u{0020}\u{00D8}\u{00A5}\u{00D9}\u{201E}\u{00D9}\u{2030}\u{0020}\u{00D8}\u{00AA}\u{00D8}\u{00AD}\u{00D9}\u{02C6}\u{00D9}\u{0160}\u{00D9}\u{201E}\u{0020}\u{00D9}\u{201A}\u{00D8}\u{00B7}\u{00D8}\u{00A7}\u{00D8}\u{00B9}\u{0020}\u{00D8}\u{00A7}\u{00D9}\u{201E}\u{00D9}\u{2026}\u{00D9}\u{2020}\u{00D8}\u{00A7}\u{00D8}\u{00B3}\u{00D8}\u{00A8}\u{00D8}\u{00A7}\u{00D8}\u{00AA}\u{0020}\u{00D8}\u{00A7}\u{00D9}\u{201E}\u{00D8}\u{00AA}\u{00D9}\u{201A}\u{00D9}\u{201E}\u{00D9}\u{0160}\u{00D8}\u{00AF}\u{00D9}\u{0160}\u{0020}\u{00D8}\u{00A5}\u{00D9}\u{201E}\u{00D9}\u{2030}\u{0020}\u{00D8}\u{00AA}\u{00D8}\u{00AC}\u{00D8}\u{00B1}\u{00D8}\u{00A8}\u{00D8}\u{00A9}\u{0020}\u{00D8}\u{00B1}\u{00D9}\u{201A}\u{00D9}\u{2026}\u{00D9}\u{0160}\u{00D8}\u{00A9}\u{0020}\u{00D8}\u{00B3}\u{00D9}\u{201E}\u{00D8}\u{00B3}\u{00D8}\u{00A9}\u{002E}\u{0020}\u{00D9}\u{2026}\u{00D9}\u{2020}\u{0020}\u{00D8}\u{00AE}\u{00D9}\u{201E}\u{00D8}\u{00A7}\u{00D9}\u{201E}\u{0020}\u{00D8}\u{00AA}\u{00D9}\u{02C6}\u{00D9}\u{0081}\u{00D9}\u{0160}\u{00D8}\u{00B1}\u{0020}\u{00D8}\u{00AB}\u{00D9}\u{201E}\u{00D8}\u{00A7}\u{00D8}\u{00AB}\u{00D8}\u{00A9}\u{0020}\u{00D9}\u{2026}\u{00D9}\u{2020}\u{00D8}\u{00A7}\u{00D9}\u{0081}\u{00D8}\u{00B0}\u{0020}\u{00D8}\u{00AA}\u{00D9}\u{201A}\u{00D9}\u{2020}\u{00D9}\u{0160}\u{00D8}\u{00A9}\u{0020}\u{00D9}\u{2026}\u{00D8}\u{00AA}\u{00D9}\u{0192}\u{00D8}\u{00A7}\u{00D9}\u{2026}\u{00D9}\u{201E}\u{00D8}\u{00A9}\u{00D8}\u{0152}\u{0020}\u{00D9}\u{0160}\u{00D8}\u{00B6}\u{00D9}\u{2026}\u{00D9}\u{2020}\u{0020}\u{00D8}\u{00A7}\u{00D9}\u{201E}\u{00D9}\u{2020}\u{00D8}\u{00B8}\u{00D8}\u{00A7}\u{00D9}\u{2026}\u{0020}\u{00D8}\u{00AA}\u{00D8}\u{00AF}\u{00D9}\u{0081}\u{00D9}\u{201A}\u{0020}\u{00D8}\u{00A7}\u{00D9}\u{201E}\u{00D8}\u{00B9}\u{00D9}\u{2026}\u{00D9}\u{201E}\u{0020}\u{00D9}\u{2026}\u{00D9}\u{2020}\u{0020}\u{00D9}\u{201E}\u{00D8}\u{00AD}\u{00D8}\u{00B8}\u{00D8}\u{00A9}\u{0020}\u{00D8}\u{00A8}\u{00D8}\u{00AD}\u{00D8}\u{00AB}\u{0020}\u{00D8}\u{00A7}\u{00D9}\u{201E}\u{00D8}\u{00B9}\u{00D9}\u{2026}\u{00D9}\u{0160}\u{00D9}\u{201E}\u{0020}\u{00D8}\u{00B9}\u{00D9}\u{2020}\u{0020}\u{00D9}\u{201A}\u{00D8}\u{00A7}\u{00D8}\u{00B9}\u{00D8}\u{00A9}\u{0020}\u{00D9}\u{02C6}\u{00D8}\u{00AD}\u{00D8}\u{00AA}\u{00D9}\u{2030}\u{0020}\u{00D8}\u{00B5}\u{00D8}\u{00AF}\u{00D9}\u{02C6}\u{00D8}\u{00B1}\u{0020}\u{00D8}\u{00A7}\u{00D9}\u{201E}\u{00D8}\u{00AA}\u{00D9}\u{201A}\u{00D8}\u{00B1}\u{00D9}\u{0160}\u{00D8}\u{00B1}\u{0020}\u{00D8}\u{00A7}\u{00D9}\u{201E}\u{00D9}\u{2026}\u{00D8}\u{00A7}\u{00D9}\u{201E}\u{00D9}\u{0160}\u{0020}\u{00D8}\u{00A7}\u{00D9}\u{201E}\u{00D9}\u{2020}\u{00D9}\u{2021}\u{00D8}\u{00A7}\u{00D8}\u{00A6}\u{00D9}\u{0160}\u{0020}\u{00D9}\u{201E}\u{00D9}\u{2026}\u{00D8}\u{00B2}\u{00D9}\u{02C6}\u{00D8}\u{00AF}\u{0020}\u{00D8}\u{00A7}\u{00D9}\u{201E}\u{00D8}\u{00AE}\u{00D8}\u{00AF}\u{00D9}\u{2026}\u{00D8}\u{00A9}\u{002E}"
@@ -119,7 +119,7 @@ get_header();
 			<article class="lh__challenge-card" data-lh-reveal>
 				<div class="lh__challenge-head lh__challenge-head--error">
 					<span class="material-symbols-outlined" aria-hidden="true">report_problem</span>
-					<h2 class="lh__h3"><?php echo esc_html( $is_rtl ? "\u{0627}\u{0644}\u{062A}\u{062D}\u{062F}\u{064A}" : 'The Challenge' ); ?></h2>
+					<h3 class="lh__h3"><?php echo esc_html( $is_rtl ? "\u{0627}\u{0644}\u{062A}\u{062D}\u{062F}\u{064A}" : 'The Challenge' ); ?></h3>
 				</div>
 				<p class="lh__p">
 					<?php echo esc_html( $is_rtl
@@ -137,7 +137,7 @@ get_header();
 				<span class="material-symbols-outlined lh__challenge-watermark" aria-hidden="true">verified</span>
 				<div class="lh__challenge-head lh__challenge-head--gold">
 					<span class="material-symbols-outlined" aria-hidden="true">verified</span>
-					<h2 class="lh__h3"><?php echo esc_html( $is_rtl ? "\u{0627}\u{0644}\u{062D}\u{0644}" : 'The Solution' ); ?></h2>
+					<h3 class="lh__h3"><?php echo esc_html( $is_rtl ? "\u{0627}\u{0644}\u{062D}\u{0644}" : 'The Solution' ); ?></h3>
 				</div>
 				<p class="lh__p lh__p--on-dark">
 					<?php echo esc_html( $is_rtl
@@ -164,7 +164,7 @@ get_header();
 		<div class="lh__container">
 
 			<div class="lh__features-head" data-lh-reveal>
-				<h2 class="lh__h2 lh__h2--center" id="lh-features-title"><?php echo esc_html( $is_rtl ? "\u{0645}\u{0645}\u{064A}\u{0632}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{0635}\u{0629}\u{0020}\u{0627}\u{0644}\u{0623}\u{0633}\u{0627}\u{0633}\u{064A}\u{0629}" : 'Core Platform Features' ); ?></h2>
+				<h3 class="lh__h2 lh__h2--center" id="lh-features-title"><?php echo esc_html( $is_rtl ? "\u{0645}\u{0645}\u{064A}\u{0632}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{0635}\u{0629}\u{0020}\u{0627}\u{0644}\u{0623}\u{0633}\u{0627}\u{0633}\u{064A}\u{0629}" : 'Core Platform Features' ); ?></h3>
 				<p class="lh__features-sub"><?php echo esc_html( $is_rtl ? "\u{0635}\u{064F}\u{0645}\u{0645}\u{062A}\u{0020}\u{0643}\u{0644}\u{0020}\u{0645}\u{064A}\u{0632}\u{0629}\u{0020}\u{0628}\u{0639}\u{0646}\u{0627}\u{064A}\u{0629}\u{0020}\u{0644}\u{062A}\u{0644}\u{0628}\u{064A}\u{0629}\u{0020}\u{0645}\u{062A}\u{0637}\u{0644}\u{0628}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0633}\u{0648}\u{0642}\u{0020}\u{0627}\u{0644}\u{0633}\u{0639}\u{0648}\u{062F}\u{064A}\u{0020}\u{0641}\u{064A}\u{0020}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{0646}\u{0627}\u{0633}\u{0628}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{0643}\u{0628}\u{0631}\u{0649}" : 'Every feature carefully designed to meet Saudi market requirements for managing large-scale events' ); ?></p>
 			</div>
 
@@ -200,7 +200,7 @@ get_header();
 			<div class="lh__gallery-block" data-lh-reveal>
 				<div class="lh__section-kicker">
 					<span class="lh__kicker-bar" aria-hidden="true"></span>
-					<h2 class="lh__h2"><?php echo esc_html( $is_rtl ? "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{064A}\u{0644}" : 'Client App' ); ?></h2>
+					<h3 class="lh__h2"><?php echo esc_html( $is_rtl ? "\u{062A}\u{0637}\u{0628}\u{064A}\u{0642}\u{0020}\u{0627}\u{0644}\u{0639}\u{0645}\u{064A}\u{0644}" : 'Client App' ); ?></h3>
 				</div>
 				<div class="lh__gallery-scroll">
 					<div class="lh__gallery-track">
@@ -224,7 +224,7 @@ get_header();
 			<div class="lh__gallery-block" data-lh-reveal>
 				<div class="lh__section-kicker">
 					<span class="lh__kicker-bar" aria-hidden="true"></span>
-					<h2 class="lh__h2"><?php echo esc_html( $is_rtl ? "\u{0644}\u{0648}\u{062D}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062A}\u{062D}\u{0643}\u{0645}\u{0020}\u{0648}\u{0627}\u{0644}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}" : 'Control & Admin Dashboards' ); ?></h2>
+					<h3 class="lh__h2"><?php echo esc_html( $is_rtl ? "\u{0644}\u{0648}\u{062D}\u{0627}\u{062A}\u{0020}\u{0627}\u{0644}\u{062A}\u{062D}\u{0643}\u{0645}\u{0020}\u{0648}\u{0627}\u{0644}\u{0625}\u{062F}\u{0627}\u{0631}\u{0629}" : 'Control & Admin Dashboards' ); ?></h3>
 				</div>
 				<div class="lh__dash-grid">
 					<figure class="lh__dash-card lh__dash-card--main">
@@ -248,7 +248,7 @@ get_header();
 	<section class="lh__ecosystem" id="ecosystem" aria-labelledby="lh-ecosystem-title">
 		<div class="lh__container">
 			<div class="lh__ecosystem-head" data-lh-reveal>
-				<h2 class="lh__h2 lh__h2--center" id="lh-ecosystem-title"><?php echo esc_html( $is_rtl ? "\u{0627}\u{0644}\u{0645}\u{0646}\u{0638}\u{0648}\u{0645}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{0635}\u{0644}\u{0629}" : 'Connected Ecosystem' ); ?></h2>
+				<h3 class="lh__h2 lh__h2--center" id="lh-ecosystem-title"><?php echo esc_html( $is_rtl ? "\u{0627}\u{0644}\u{0645}\u{0646}\u{0638}\u{0648}\u{0645}\u{0629}\u{0020}\u{0627}\u{0644}\u{0645}\u{062A}\u{0635}\u{0644}\u{0629}" : 'Connected Ecosystem' ); ?></h3>
 				<p class="lh__features-sub"><?php echo esc_html( $is_rtl ? "\u{062B}\u{0644}\u{0627}\u{062B}\u{0020}\u{0648}\u{0627}\u{062C}\u{0647}\u{0627}\u{062A}\u{060C}\u{0020}\u{0647}\u{062F}\u{0641}\u{0020}\u{0648}\u{0627}\u{062D}\u{062F}\u{003A}\u{0020}\u{0645}\u{0646}\u{0627}\u{0633}\u{0628}\u{0629}\u{0020}\u{0644}\u{0627}\u{0020}\u{062A}\u{064F}\u{0646}\u{0633}\u{0649}" : 'Three interfaces, one goal: an unforgettable event' ); ?></p>
 			</div>
 
@@ -294,7 +294,7 @@ get_header();
 
 			<div class="lh__results-grid">
 				<div class="lh__results-text" data-lh-reveal>
-					<h2 class="lh__h2"><?php echo esc_html( $is_rtl ? "\u{0642}\u{064A}\u{0645}\u{0629}\u{0020}\u{0631}\u{0642}\u{0645}\u{064A}\u{0629}\u{0020}\u{062A}\u{062A}\u{062C}\u{0627}\u{0648}\u{0632}\u{0020}\u{0645}\u{062C}\u{0631}\u{062F}\u{0020}\u{0627}\u{0644}\u{062D}\u{062C}\u{0632}" : 'Digital Value Beyond Just Booking' ); ?></h2>
+					<h3 class="lh__h2"><?php echo esc_html( $is_rtl ? "\u{0642}\u{064A}\u{0645}\u{0629}\u{0020}\u{0631}\u{0642}\u{0645}\u{064A}\u{0629}\u{0020}\u{062A}\u{062A}\u{062C}\u{0627}\u{0648}\u{0632}\u{0020}\u{0645}\u{062C}\u{0631}\u{062F}\u{0020}\u{0627}\u{0644}\u{062D}\u{062C}\u{0632}" : 'Digital Value Beyond Just Booking' ); ?></h3>
 					<p class="lh__p"><?php echo esc_html( $is_rtl
 						? "\u{0646}\u{062C}\u{062D}\u{0646}\u{0627}\u{0020}\u{0641}\u{064A}\u{0020}\u{0628}\u{0646}\u{0627}\u{0621}\u{0020}\u{0645}\u{0646}\u{0635}\u{0629}\u{0020}\u{0644}\u{0627}\u{0020}\u{062A}\u{0648}\u{0641}\u{0631}\u{0020}\u{0641}\u{0642}\u{0637}\u{0020}\u{062E}\u{062F}\u{0645}\u{0629}\u{0020}\u{0627}\u{0644}\u{062D}\u{062C}\u{0632}\u{060C}\u{0020}\u{0628}\u{0644}\u{0020}\u{062A}\u{0628}\u{0646}\u{064A}\u{0020}\u{0645}\u{062C}\u{062A}\u{0645}\u{0639}\u{0627}\u{064B}\u{0020}\u{0645}\u{0648}\u{062B}\u{0648}\u{0642}\u{0627}\u{064B}\u{0020}\u{0641}\u{064A}\u{0020}\u{0642}\u{0637}\u{0627}\u{0639}\u{0020}\u{0627}\u{0644}\u{0641}\u{0639}\u{0627}\u{0644}\u{064A}\u{0627}\u{062A}\u{0020}\u{0628}\u{0627}\u{0644}\u{0645}\u{0645}\u{0644}\u{0643}\u{0629}\u{060C}\u{0020}\u{0645}\u{0645}\u{0627}\u{0020}\u{0623}\u{062F}\u{0649}\u{0020}\u{0625}\u{0644}\u{0649}\u{003A}"
 						: 'We succeeded in building a platform that not only provides a booking service, but builds a trusted community in the Saudi events sector, leading to:' ); ?></p>

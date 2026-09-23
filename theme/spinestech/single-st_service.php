@@ -68,35 +68,35 @@ while (have_posts()) :
 
         <?php if ($problem) : ?>
         <section class="svc-block">
-            <h2><?php echo esc_html($is_rtl ? 'المشكلة التي نحلها' : 'The problem we solve'); ?></h2>
+            <h3><?php echo esc_html($is_rtl ? 'المشكلة التي نحلها' : 'The problem we solve'); ?></h3>
             <p><?php echo esc_html($problem); ?></p>
         </section>
         <?php endif; ?>
 
         <?php if ($audience) : ?>
         <section class="svc-block">
-            <h2><?php echo esc_html($is_rtl ? 'لمن هذه الخدمة؟' : 'Who is this for?'); ?></h2>
+            <h3><?php echo esc_html($is_rtl ? 'لمن هذه الخدمة؟' : 'Who is this for?'); ?></h3>
             <ul class="svc-list"><?php foreach ($audience as $item) : ?><li><?php echo esc_html($item); ?></li><?php endforeach; ?></ul>
         </section>
         <?php endif; ?>
 
         <?php if ($scope) : ?>
         <section class="svc-block">
-            <h2><?php echo esc_html($is_rtl ? 'ماذا يشمل التنفيذ؟' : 'What does delivery include?'); ?></h2>
+            <h3><?php echo esc_html($is_rtl ? 'ماذا يشمل التنفيذ؟' : 'What does delivery include?'); ?></h3>
             <ul class="svc-list"><?php foreach ($scope as $item) : ?><li><?php echo esc_html($item); ?></li><?php endforeach; ?></ul>
         </section>
         <?php endif; ?>
 
         <?php if ($capabilities) : ?>
         <section class="svc-block">
-            <h2><?php echo esc_html($is_rtl ? 'قدرات أعمال رئيسية' : 'Key business capabilities'); ?></h2>
+            <h3><?php echo esc_html($is_rtl ? 'قدرات أعمال رئيسية' : 'Key business capabilities'); ?></h3>
             <div class="svc-pills"><?php foreach ($capabilities as $item) : ?><span class="svc-pill"><?php echo esc_html($item); ?></span><?php endforeach; ?></div>
         </section>
         <?php endif; ?>
 
         <?php if (!empty($cases)) : ?>
         <section class="svc-block">
-            <h2><?php echo esc_html($is_rtl ? 'مشاريع ذات صلة' : 'Related case studies'); ?></h2>
+            <h3><?php echo esc_html($is_rtl ? 'مشاريع ذات صلة' : 'Related case studies'); ?></h3>
             <div class="svc-related">
                 <?php foreach ($cases as $case) : ?>
                     <a class="svc-related__card" href="<?php echo esc_url(get_permalink($case)); ?>">
@@ -110,7 +110,7 @@ while (have_posts()) :
 
         <?php if ($process) : ?>
         <section class="svc-block">
-            <h2><?php echo esc_html($is_rtl ? 'منهجية التنفيذ' : 'Our process'); ?></h2>
+            <h3><?php echo esc_html($is_rtl ? 'منهجية التنفيذ' : 'Our process'); ?></h3>
             <ol class="svc-process">
                 <?php foreach ($process as $step) : ?>
                     <li>
@@ -124,7 +124,7 @@ while (have_posts()) :
 
         <?php if ($stack) : ?>
         <section class="svc-block">
-            <h2><?php echo esc_html($is_rtl ? 'التقنيات' : 'Technology stack'); ?></h2>
+            <h3><?php echo esc_html($is_rtl ? 'التقنيات' : 'Technology stack'); ?></h3>
             <div class="svc-pills"><?php foreach ($stack as $item) : ?><span class="svc-pill svc-pill--tech"><?php echo esc_html($item); ?></span><?php endforeach; ?></div>
         </section>
         <?php endif; ?>
@@ -135,7 +135,7 @@ while (have_posts()) :
 
         <?php if (!empty($articles)) : ?>
         <section class="svc-block">
-            <h2><?php echo esc_html($is_rtl ? 'مقالات ذات صلة' : 'Related articles'); ?></h2>
+            <h3><?php echo esc_html($is_rtl ? 'مقالات ذات صلة' : 'Related articles'); ?></h3>
             <ul class="svc-articles">
                 <?php foreach ($articles as $art) : ?>
                     <li><a href="<?php echo esc_url(get_permalink($art)); ?>"><?php echo esc_html(get_the_title($art)); ?></a></li>
@@ -145,7 +145,7 @@ while (have_posts()) :
         <?php endif; ?>
 
         <section class="svc-cta">
-            <h2><?php echo esc_html($is_rtl ? 'جاهز لبدء مشروعك؟' : 'Ready to start your project?'); ?></h2>
+            <h3><?php echo esc_html($is_rtl ? 'جاهز لبدء مشروعك؟' : 'Ready to start your project?'); ?></h3>
             <p><?php echo esc_html($is_rtl ? 'شاركنا متطلباتك وسنعود إليك بخطة تنفيذ واضحة.' : 'Share your requirements and we will respond with a clear execution plan.'); ?></p>
             <a href="<?php echo esc_url(st_url('contact')); ?>" class="svc-btn svc-btn--primary"><?php echo esc_html($is_rtl ? 'ابدأ مناقشة مشروعك' : 'Start your project discussion'); ?></a>
         </section>
