@@ -31,9 +31,9 @@ if ( empty( $meta['measurable_outcomes'] ) ) return;
 
         <div class="cs-outcome-block__header">
             <span class="material-symbols-outlined" aria-hidden="true">trending_up</span>
-            <h3 id="cs-outcome-heading-<?php echo esc_attr( $post_id ); ?>">
+            <h2 id="cs-outcome-heading-<?php echo esc_attr( $post_id ); ?>">
                 <?php echo esc_html( $is_rtl ? "\u{0646}\u{062A}\u{0627}\u{0626}\u{062C}\u{0020}\u{0642}\u{0627}\u{0628}\u{0644}\u{0629}\u{0020}\u{0644}\u{0644}\u{0642}\u{064A}\u{0627}\u{0633}" : 'Measured Outcomes' ); ?>
-            </h3>
+            </h2>
         </div>
 
         <div class="cs-outcome-block__content">

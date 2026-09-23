@@ -104,7 +104,7 @@ get_header();
         <div class="pc__container">
 
             <div class="pc__challenge-head" data-pc-reveal>
-                <h3 class="pc__h2 pc__h2--light pc__h2--center" id="pc-challenge-title"><?php echo $is_rtl ? 'Ø§Ù„ØªØ­Ø¯ÙŠØ§Øª ÙˆØ­Ù„ÙˆÙ„ Ø§Ù„ØªØ­ÙˆÙ„ Ø§Ù„Ø±Ù‚Ù…ÙŠ' : 'Challenges & Digital Transformation Solutions'; ?></h3>
+                <h2 class="pc__h2 pc__h2--light pc__h2--center" id="pc-challenge-title"><?php echo $is_rtl ? 'Ø§Ù„ØªØ­Ø¯ÙŠØ§Øª ÙˆØ­Ù„ÙˆÙ„ Ø§Ù„ØªØ­ÙˆÙ„ Ø§Ù„Ø±Ù‚Ù…ÙŠ' : 'Challenges & Digital Transformation Solutions'; ?></h2>
                 <span class="pc__underline" aria-hidden="true"></span>
             </div>
 
@@ -161,7 +161,7 @@ get_header();
         <div class="pc__container">
 
             <div class="pc__dashboard-head" data-pc-reveal>
-                <h3 class="pc__h2 pc__h2--center" id="pc-dashboard-title"><?php echo $is_rtl ? 'Ø§Ù„Ù‚ÙˆØ© Ø§Ù„Ù…Ø±ÙƒØ²ÙŠØ©: Ù„ÙˆØ­Ø© ØªØ­ÙƒÙ… Ø§Ù„Ø¥Ø¯Ø§Ø±Ø©' : 'Central Command: Admin Dashboard'; ?></h3>
+                <h2 class="pc__h2 pc__h2--center" id="pc-dashboard-title"><?php echo $is_rtl ? 'Ø§Ù„Ù‚ÙˆØ© Ø§Ù„Ù…Ø±ÙƒØ²ÙŠØ©: Ù„ÙˆØ­Ø© ØªØ­ÙƒÙ… Ø§Ù„Ø¥Ø¯Ø§Ø±Ø©' : 'Central Command: Admin Dashboard'; ?></h2>
                 <p class="pc__dashboard-sub"><?php echo $is_rtl ? 'Ù…Ø±ÙƒØ² Ø¹Ù…Ù„ÙŠØ§Øª Ø´Ø§Ù…Ù„ ÙŠÙ…Ù†Ø­ ØµÙ†Ø§Ø¹ Ø§Ù„Ù‚Ø±Ø§Ø± Ø±Ø¤ÙŠØ© 360 Ø¯Ø±Ø¬Ø© Ù„ÙƒÙ„ Ù…Ø§ ÙŠØ­Ø¯Ø« ÙÙŠ Ø§Ù„Ù…Ù†Ø´Ø£Ø©.' : 'A comprehensive operations hub giving decision-makers a 360-degree view of everything happening across the organization.'; ?></p>
             </div>
 
@@ -266,7 +266,7 @@ get_header();
             <article class="pc__spotlight" data-pc-reveal>
                 <div class="pc__spotlight-text">
                     <span class="pc__pill pc__pill--secondary"><?php echo $is_rtl ? 'Ø¥Ø¯Ø§Ø±Ø© Ø§Ù„Ø¹Ù‚ÙˆØ¯ ÙˆØ§Ù„Ø²ÙŠØ§Ø±Ø§Øª' : 'Contract & Visit Management'; ?></span>
-                    <h3 class="pc__h2"><?php echo $is_rtl ? 'ØªØ­ÙƒÙ… ÙƒØ§Ù…Ù„ ÙÙŠ Ø§Ù„Ø¹Ù‚ÙˆØ¯ Ø§Ù„Ø³Ù†ÙˆÙŠØ©' : 'Full Control Over Annual Contracts'; ?></h3>
+                    <h2 class="pc__h2"><?php echo $is_rtl ? 'ØªØ­ÙƒÙ… ÙƒØ§Ù…Ù„ ÙÙŠ Ø§Ù„Ø¹Ù‚ÙˆØ¯ Ø§Ù„Ø³Ù†ÙˆÙŠØ©' : 'Full Control Over Annual Contracts'; ?></h2>
                     <p class="pc__p"><?php echo $is_rtl ? 'Ø£ØªÙ…ØªØ© Ø¹Ù…Ù„ÙŠØ© ØªØ¬Ø¯ÙŠØ¯ Ø§Ù„Ø¹Ù‚ÙˆØ¯ Ù…Ø¹ Ø¥Ø±Ø³Ø§Ù„ ØªÙ†Ø¨ÙŠÙ‡Ø§Øª Ø°ÙƒÙŠØ© Ù„Ù„Ø¹Ù…Ù„Ø§Ø¡ Ù‚Ø¨Ù„ Ø§Ù†ØªÙ‡Ø§Ø¡ Ø§Ù„Ø§Ø´ØªØ±Ø§ÙƒØŒ Ù…Ù…Ø§ ÙŠØ¶Ù…Ù† Ø§Ø³ØªÙ…Ø±Ø§Ø±ÙŠØ© Ø§Ù„Ø¥ÙŠØ±Ø§Ø¯Ø§Øª ÙˆØ§Ù„Ø®Ø¯Ù…Ø©.' : 'Automate contract renewals with smart alerts sent to customers before subscription expiry, ensuring revenue continuity and uninterrupted service.'; ?></p>
                     <ul class="pc__checklist">
                         <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span> <?php echo $is_rtl ? 'ØªÙ†Ø¨ÙŠÙ‡Ø§Øª Ø¢Ù„ÙŠØ© Ù„Ù„ØªØ¬Ø¯ÙŠØ¯' : 'Automated renewal alerts'; ?></li>
@@ -291,7 +291,7 @@ get_header();
             <article class="pc__spotlight pc__spotlight--reverse" data-pc-reveal>
                 <div class="pc__spotlight-text">
                     <span class="pc__pill pc__pill--primary"><?php echo $is_rtl ? 'Ø·Ù„Ø¨Ø§Øª Ø§Ù„ØµÙŠØ§Ù†Ø©' : 'Maintenance Requests'; ?></span>
-                    <h3 class="pc__h2"><?php echo $is_rtl ? 'Ø±ÙØ¹ Ø§Ù„Ø·Ù„Ø¨Ø§Øª ÙˆÙ…ØªØ§Ø¨Ø¹Ø© Ø§Ù„Ø­Ø§Ù„Ø©' : 'Submit Requests & Track Status'; ?></h3>
+                    <h2 class="pc__h2"><?php echo $is_rtl ? 'Ø±ÙØ¹ Ø§Ù„Ø·Ù„Ø¨Ø§Øª ÙˆÙ…ØªØ§Ø¨Ø¹Ø© Ø§Ù„Ø­Ø§Ù„Ø©' : 'Submit Requests & Track Status'; ?></h2>
                     <p class="pc__p"><?php echo $is_rtl ? 'ÙˆØ§Ø¬Ù‡Ø© Ø¨Ø¯ÙŠÙ‡ÙŠØ© ØªØ³Ù…Ø­ Ù„Ù„Ø¹Ù…Ù„Ø§Ø¡ Ø¨ÙˆØµÙ Ø§Ù„Ù…Ø´ÙƒÙ„Ø©ØŒ Ø¥Ø±ÙØ§Ù‚ Ø§Ù„ØµÙˆØ±ØŒ ÙˆØªØ­Ø¯ÙŠØ¯ Ø§Ù„Ù…ÙˆÙ‚Ø¹ Ø§Ù„Ø¬ØºØ±Ø§ÙÙŠ Ø¨Ø¯Ù‚Ø© ÙÙŠ Ø«ÙˆØ§Ù†Ù Ù…Ø¹Ø¯ÙˆØ¯Ø©.' : 'An intuitive interface that lets customers describe the issue, attach photos, and pinpoint their location in seconds.'; ?></p>
                     <ul class="pc__checklist">
                         <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span> <?php echo $is_rtl ? 'Ø¥Ø±ÙØ§Ù‚ ØµÙˆØ± ÙˆÙÙŠØ¯ÙŠÙˆÙ‡Ø§Øª Ù„Ù„Ù…Ø´ÙƒÙ„Ø©' : 'Attach photos and videos of the issue'; ?></li>
@@ -316,7 +316,7 @@ get_header();
             <article class="pc__spotlight" data-pc-reveal>
                 <div class="pc__spotlight-text">
                     <span class="pc__pill pc__pill--tertiary"><?php echo $is_rtl ? 'Ø¹Ø±ÙˆØ¶ Ø§Ù„Ø£Ø³Ø¹Ø§Ø±' : 'Quotes'; ?></span>
-                    <h3 class="pc__h2"><?php echo $is_rtl ? 'Ù…Ø´Ø§Ø±ÙŠØ¹ New Ùˆ Reno' : 'New & Reno Projects'; ?></h3>
+                    <h2 class="pc__h2"><?php echo $is_rtl ? 'Ù…Ø´Ø§Ø±ÙŠØ¹ New Ùˆ Reno' : 'New & Reno Projects'; ?></h2>
                     <p class="pc__p"><?php echo $is_rtl ? 'Ø³ÙˆØ§Ø¡ ÙƒØ§Ù† Ø§Ù„Ø¹Ù…ÙŠÙ„ ÙŠØ±ØºØ¨ ÙÙŠ ØªØ£Ø³ÙŠØ³ Ø¬Ø¯ÙŠØ¯ (New) Ø£Ùˆ ØªØ±Ù…ÙŠÙ… Ù…Ø¨Ù†Ù‰ Ù‚Ø§Ø¦Ù… (Reno)ØŒ Ø§Ù„Ù…Ù†ØµØ© ØªÙˆÙØ± ØªØ¯ÙÙ‚ Ø¹Ù…Ù„ Ù…Ø®ØµØµ Ù„ÙƒÙ„ Ø­Ø§Ù„Ø©.' : 'Whether the customer needs a new build (New) or renovation of an existing property (Reno), the platform provides a tailored workflow for each scenario.'; ?></p>
                     <ul class="pc__checklist">
                         <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span> <?php echo $is_rtl ? 'ØªÙ‚Ø¯ÙŠÙ… Ø¹Ø±Ø¶ Ø³Ø¹Ø± Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ Ù…ÙØµÙ„' : 'Submit detailed electronic quotes'; ?></li>
@@ -347,7 +347,7 @@ get_header();
     <section class="pc__journey" id="app" aria-labelledby="pc-journey-title">
         <div class="pc__container">
             <div class="pc__journey-head" data-pc-reveal>
-                <h3 class="pc__h2 pc__h2--center" id="pc-journey-title"><?php echo $is_rtl ? 'Ø±Ø­Ù„Ø© Ø§Ù„Ø¹Ù…ÙŠÙ„ Ø§Ù„Ø±Ù‚Ù…ÙŠØ©' : 'The Digital Customer Journey'; ?></h3>
+                <h2 class="pc__h2 pc__h2--center" id="pc-journey-title"><?php echo $is_rtl ? 'Ø±Ø­Ù„Ø© Ø§Ù„Ø¹Ù…ÙŠÙ„ Ø§Ù„Ø±Ù‚Ù…ÙŠØ©' : 'The Digital Customer Journey'; ?></h2>
                 <p class="pc__journey-sub"><?php echo $is_rtl ? 'ØªØ¯ÙÙ‚Ø§Øª Ù…Ø³ØªØ®Ø¯Ù… Ù…Ø¯Ø±ÙˆØ³Ø© Ø¨Ø¹Ù†Ø§ÙŠØ© Ù„Ø¶Ù…Ø§Ù† Ø£Ø¹Ù„Ù‰ Ù…Ø¹Ø¯Ù„Ø§Øª Ø§Ù„ØªØ­ÙˆÙŠÙ„ ÙˆØ§Ù„Ø±Ø¶Ø§.' : 'Carefully crafted user flows designed to maximize conversion rates and customer satisfaction.'; ?></p>
             </div>
 
@@ -471,7 +471,7 @@ get_header();
 
             <div class="pc__v2-text" data-pc-reveal>
                 <span class="pc__v2-badge"><?php echo $is_rtl ? 'Ø§Ù„ØªÙˆØ³Ø¹ Ø§Ù„Ù…Ø³ØªÙ‚Ø¨Ù„ÙŠ' : 'Future Expansion'; ?></span>
-                <h3 class="pc__h2 pc__h2--light" id="pc-v2-title"><?php echo $is_rtl ? 'ØªØ·Ø¨ÙŠÙ‚ Ø§Ù„ÙÙ†ÙŠÙŠÙ† Ø§Ù„Ù…ÙŠØ¯Ø§Ù†ÙŠ (Ø§Ù„Ù…Ø±Ø­Ù„Ø© Ø§Ù„Ø«Ø§Ù†ÙŠØ©)' : 'Field Technician App (Phase Two)'; ?></h3>
+                <h2 class="pc__h2 pc__h2--light" id="pc-v2-title"><?php echo $is_rtl ? 'ØªØ·Ø¨ÙŠÙ‚ Ø§Ù„ÙÙ†ÙŠÙŠÙ† Ø§Ù„Ù…ÙŠØ¯Ø§Ù†ÙŠ (Ø§Ù„Ù…Ø±Ø­Ù„Ø© Ø§Ù„Ø«Ø§Ù†ÙŠØ©)' : 'Field Technician App (Phase Two)'; ?></h2>
                 <p class="pc__v2-copy"><?php echo $is_rtl ? 'ØªÙ… ØªØ¬Ù‡ÙŠØ² Ø§Ù„Ù…Ù†ØµØ© Ù„Ù„ØªÙˆØ³Ø¹ Ù…Ø³ØªÙ‚Ø¨Ù„Ø§Ù‹ Ù…Ù† Ø®Ù„Ø§Ù„ ØªØ·Ø¨ÙŠÙ‚ Ù„Ù„ÙÙ†ÙŠÙŠÙ† ÙŠØºÙ„Ù‚ Ø§Ù„Ø­Ù„Ù‚Ø© Ø§Ù„ØªØ´ØºÙŠÙ„ÙŠØ© Ø¨Ø§Ù„ÙƒØ§Ù…Ù„ØŒ Ù…Ù…Ø§ ÙŠØ³Ù…Ø­ Ø¨Ù…ØªØ§Ø¨Ø¹Ø© Ø¯Ù‚ÙŠÙ‚Ø© Ù„ÙƒÙ„ Ø²ÙŠØ§Ø±Ø© Ù…ÙŠØ¯Ø§Ù†ÙŠØ©.' : 'The platform is built for future expansion with a technician app that closes the operational loop entirely, enabling precise tracking of every field visit.'; ?></p>
                 <ul class="pc__v2-list">
                     <li><span class="material-symbols-outlined" aria-hidden="true">gps_fixed</span> <?php echo $is_rtl ? 'ØªÙƒØ§Ù…Ù„ Ù…Ø¹ GPS Ù„ØªØ­Ø¯ÙŠØ¯ Ù…ÙˆØ§Ù‚Ø¹ Ø§Ù„Ø¹Ù‚Ø§Ø±Ø§Øª Ø¨Ø¯Ù‚Ø©.' : 'GPS integration for precise property location tracking.'; ?></li>
@@ -509,7 +509,7 @@ get_header();
     <section class="pc__cta" aria-labelledby="pc-cta-title">
         <div class="pc__cta-bg" aria-hidden="true"></div>
         <div class="pc__container pc__cta-inner" data-pc-reveal>
-            <h3 class="pc__cta-heading" id="pc-cta-title"><?php echo $is_rtl ? 'Ù‡Ù„ ØªØ­ØªØ§Ø¬ Ù…Ù†ØµØ© ØªØ´ØºÙŠÙ„ÙŠØ© Ù…Ø´Ø§Ø¨Ù‡Ø© Ù„Ø¹Ù…Ù„ÙƒØŸ' : 'Need a Similar Operations Platform for Your Business?'; ?></h3>
+            <h2 class="pc__cta-heading" id="pc-cta-title"><?php echo $is_rtl ? 'Ù‡Ù„ ØªØ­ØªØ§Ø¬ Ù…Ù†ØµØ© ØªØ´ØºÙŠÙ„ÙŠØ© Ù…Ø´Ø§Ø¨Ù‡Ø© Ù„Ø¹Ù…Ù„ÙƒØŸ' : 'Need a Similar Operations Platform for Your Business?'; ?></h2>
             <p class="pc__cta-copy">
                 <?php echo $is_rtl
                     ? 'ÙÙŠ SpinesTechØŒ Ù†Ø­ÙˆÙ„ Ø§Ù„Ø¹Ù…Ù„ÙŠØ§Øª Ø§Ù„Ù…Ø¹Ù‚Ø¯Ø© Ø¥Ù„Ù‰ Ù…Ù†ØªØ¬Ø§Øª Ø±Ù‚Ù…ÙŠØ© ÙˆØ§Ø¶Ø­Ø©ØŒ Ù‚Ø§Ø¨Ù„Ø© Ù„Ù„ØªÙˆØ³Ø¹ØŒ ÙˆÙ…ØµÙ…Ù…Ø© Ù„ØªØ®Ø¯Ù… ÙØ±Ù‚ Ø§Ù„ØªØ´ØºÙŠÙ„ ÙˆØ§Ù„Ø¹Ù…Ù„Ø§Ø¡ ÙÙŠ Ù†ÙØ³ Ø§Ù„ÙˆÙ‚Øª.'
