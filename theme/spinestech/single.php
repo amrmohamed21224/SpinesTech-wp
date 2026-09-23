@@ -682,13 +682,13 @@ if (!empty($article_json_ld) && is_array($article_json_ld)) {
     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
     <section class="single-art__cta reveal">
         <div class="container single-art__cta-inner">
-            <h2><?php echo esc_html($is_rtl ? 'Ø¬Ø§Ù‡Ø² Ù„Ø¨Ù†Ø§Ø¡ Ù…Ù†ØµØªÙƒ Ø§Ù„Ù‚Ø§Ø¯Ù…Ø©ØŸ' : 'Ready to build your next platform?'); ?></h2>
+            <h2><?php echo esc_html($is_rtl ? 'جاهز لبناء منصتك القادمة؟' : 'Ready to build your next platform?'); ?></h2>
             <p><?php echo esc_html($is_rtl
-                ? 'Ø§Ù†Ø¶Ù… Ø¥Ù„Ù‰ Ø¹Ø´Ø±Ø§Øª Ø§Ù„Ø´Ø±ÙƒØ§Øª Ø§Ù„ØªÙŠ ØªØ¹ØªÙ…Ø¯ Ø¹Ù„Ù‰ Ù…Ù†Ù‡Ø¬ÙŠØ© SpinesTech Ù„ØªØµÙ…ÙŠÙ… ÙˆØ¨Ù†Ø§Ø¡ ÙˆØªÙˆØ³ÙŠØ¹ ØªØ¬Ø§Ø±Ø¨ Ø±Ù‚Ù…ÙŠØ© Ø¬Ø§Ù‡Ø²Ø© Ù„Ù„Ù…Ø³ØªÙ‚Ø¨Ù„.'
+                ? 'انضم إلى عشرات الشركات التي تعتمد على منهجية SpinesTech لتصميم وبناء وتوسيع تجارب رقمية جاهزة للمستقبل.'
                 : 'Join dozens of enterprises leveraging SpinesTech\'s methodology to design, build, and scale future-proof digital experiences.'); ?></p>
             <div class="single-art__cta-actions">
-                <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="single-art__cta-btn single-art__cta-btn--fill"><?php echo esc_html($is_rtl ? 'Ø§Ø¨Ø¯Ø£ Ù…Ø´Ø±ÙˆØ¹Ùƒ' : 'Start Your Project'); ?></a>
-                <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="single-art__cta-btn single-art__cta-btn--outline"><?php echo esc_html($is_rtl ? 'ØªÙˆØ§ØµÙ„ Ù…Ø¹Ù†Ø§' : 'Contact Us'); ?></a>
+                <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="single-art__cta-btn single-art__cta-btn--fill"><?php echo esc_html($is_rtl ? 'ابدأ مشروعك' : 'Start Your Project'); ?></a>
+                <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="single-art__cta-btn single-art__cta-btn--outline"><?php echo esc_html($is_rtl ? 'تواصل معنا' : 'Contact Us'); ?></a>
             </div>
         </div>
     </section>

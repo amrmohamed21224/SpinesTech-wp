@@ -119,7 +119,7 @@ get_header();
 			<article class="lh__challenge-card" data-lh-reveal>
 				<div class="lh__challenge-head lh__challenge-head--error">
 					<span class="material-symbols-outlined" aria-hidden="true">report_problem</span>
-					<h2 class="lh__h3"><?php echo esc_html( $is_rtl ? "\u{0627}\u{0644}\u{062A}\u{062D}\u{062F}\u{064A}" : 'The Challenge' ); ?></h2>
+					<h3 class="lh__h3"><?php echo esc_html( $is_rtl ? "\u{0627}\u{0644}\u{062A}\u{062D}\u{062F}\u{064A}" : 'The Challenge' ); ?></h3>
 				</div>
 				<p class="lh__p">
 					<?php echo esc_html( $is_rtl
@@ -137,7 +137,7 @@ get_header();
 				<span class="material-symbols-outlined lh__challenge-watermark" aria-hidden="true">verified</span>
 				<div class="lh__challenge-head lh__challenge-head--gold">
 					<span class="material-symbols-outlined" aria-hidden="true">verified</span>
-					<h2 class="lh__h3"><?php echo esc_html( $is_rtl ? "\u{0627}\u{0644}\u{062D}\u{0644}" : 'The Solution' ); ?></h2>
+					<h3 class="lh__h3"><?php echo esc_html( $is_rtl ? "\u{0627}\u{0644}\u{062D}\u{0644}" : 'The Solution' ); ?></h3>
 				</div>
 				<p class="lh__p lh__p--on-dark">
 					<?php echo esc_html( $is_rtl
